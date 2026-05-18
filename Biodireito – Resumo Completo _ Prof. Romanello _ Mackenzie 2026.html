@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodireito | Prof. Dr. Romanello | Mackenzie</title>
+  <style>
+    /* ── Variáveis de Design (Azul Escuro Pastel / Soft) ─────── */
+    :root {
+      --blue-pastel: #4A6B82;
+      --blue-pastel-light: #62879F;
+      --blue-pastel-bg: #f0f5f8;
+      --blue-pastel-border: #4A6B82;
+      --bg: #fdfdfd;
+      --text: #2b2b2b;
+      --text-muted: #555;
+      --card-bg: #ffffff;
+      --table-head-text: #ffffff;
+      --border-color: #e5e5e5;
+      --tag-bg: #f0f5f8;
+      --callout-bg: #f5f9fc;
+      --shadow: rgba(74, 107, 130, 0.08);
+
+      /* Destaques Semânticos das Caixas */
+      --def-border: #b9935a; --def-bg: #faf7f2;
+      --imp-border: #4A6B82; --imp-bg: #f0f5f8;
+      --exc-border: #cc5c5c; --exc-bg: #fff5f5;
+      --jur-border: #38a169; --jur-bg: #f0fdf4;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── HERO HEADER (IDÊNTICO AO DE PROCESSO PENAL) ── */
+    #hero {
+      background: linear-gradient(135deg, #4A6B82 0%, #2E485A 100%);
+      color: #fff;
+      text-align: center;
+      padding: 58px 28px 52px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    #hero .hero-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 14px;
+    }
+    #hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    #hero .hero-sub {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+    #hero .hero-tags {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #hero .hero-tag {
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── NAV ÍNDICE DE DUAS COLUNAS ── */
+    #nav-index {
+      background: var(--card-bg);
+      border: 2px solid var(--blue-pastel);
+      max-width: 820px;
+      margin: 32px auto 0 auto;
+      padding: 24px 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px var(--shadow);
+    }
+    #nav-index h3 {
+      color: var(--blue-pastel);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+    #nav-index ol {
+      columns: 2;
+      column-gap: 32px;
+      padding-left: 20px;
+    }
+    #nav-index li { margin: 5px 0; break-inside: avoid; font-weight: 600; }
+    #nav-index a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    #nav-index a:hover { color: var(--blue-pastel); text-decoration: underline; }
+    
+    @media (max-width: 600px) {
+      #nav-index ol { columns: 1; }
+      #nav-index { margin: 20px 14px 0 14px; padding: 18px 18px; }
+    }
+
+    /* ── MAIN CONTAINER ── */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 40px 60px 40px;
+    }
+
+    /* ── SECTION CARD (MATRIZ DO LAYOUT) ── */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 14px var(--shadow);
+      margin-bottom: 36px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .section-header {
+      background: var(--blue-pastel);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-number {
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .section-body {
+      padding: 28px 30px;
+    }
+
+    /* ── SUBSECTION ── */
+    .subsection {
+      margin-bottom: 28px;
+    }
+    .subsection:last-child { margin-bottom: 0; }
+    
+    h3 {
+      color: var(--blue-pastel);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--blue-pastel-bg);
+    }
+    h4 {
+      color: var(--blue-pastel);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 18px 0 8px 0;
+    }
+    p { margin-bottom: 12px; text-align: justify; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── LISTAS ── */
+    ul, ol { padding-left: 22px; margin-bottom: 12px; }
+    li { margin-bottom: 5px; }
+    li:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUT BOXES CUSTOMIZADOS ── */
+    .callout {
+      border-left: 5px solid var(--blue-pastel);
+      background: var(--callout-bg);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 18px 0;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: var(--blue-pastel);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .callout.definicao { border-color: var(--def-border); background: var(--def-bg); }
+    .callout.definicao .callout-title { color: #9c7334; }
+    .callout.importante { border-color: var(--imp-border); background: var(--imp-bg); }
+    .callout.importante .callout-title { color: var(--imp-border); }
+    .callout.excecao { border-color: var(--exc-border); background: var(--exc-bg); }
+    .callout.excecao .callout-title { color: var(--exc-border); }
+    .callout.jurisprudencia { border-color: var(--jur-border); background: var(--jur-bg); }
+    .callout.jurisprudencia .callout-title { color: var(--jur-border); }
+
+    /* ── TABELAS ── */
+    .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: 6px; border: 1px solid var(--border-color); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead th {
+      background: var(--blue-pastel);
+      color: #fff;
+      padding: 12px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.3px;
+    }
+    tbody tr:nth-child(even) { background: var(--blue-pastel-bg); }
+    tbody tr:nth-child(odd) { background: var(--card-bg); }
+    tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+    tbody tr:hover { filter: brightness(0.98); }
+
+    /* ── CARD GRIDS INTERNOS ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+    .card {
+      background: #fafbfc;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .card h4 { margin-top: 0; color: var(--blue-pastel); font-size: 0.95rem; margin-bottom: 8px; }
+
+    /* ── ORGAN BOXES ── */
+    .organ-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+    @media(max-width: 680px) { .organ-grid { grid-template-columns: 1fr; } }
+    .organ-box {
+      background: var(--blue-pastel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .organ-box h5 { color: var(--blue-pastel); font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; }
+
+    /* ── TIMELINE ── */
+    .timeline { margin: 20px 0; padding-left: 14px; border-left: 2px solid var(--border-color); }
+    .timeline-item { display: flex; gap: 16px; margin-bottom: 16px; }
+    .timeline-year { min-width: 55px; background: var(--blue-pastel); color: #fff; border-radius: 4px; text-align: center; padding: 2px 6px; font-weight: 700; font-size: 0.8rem; height: fit-content; }
+    .timeline-content { flex: 1; font-size: 0.875rem; }
+
+    /* ── SCROLL TOP ── */
+    #scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--blue-pastel);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 990;
+      transition: background 0.2s;
+    }
+    #scroll-top:hover { background: var(--blue-pastel-light); }
+    #scroll-top.visible { display: flex; }
+
+    blockquote { border-left: 3px solid var(--blue-pastel); padding: 8px 16px; margin: 16px 0; font-style: italic; color: var(--text-muted); background: #fcfcfc; }
+    strong { color: inherit; }
+    em.accent { color: var(--blue-pastel); font-style: normal; font-weight: 700; }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 700px) {
+      .container { padding: 18px 14px 40px 14px; }
+      #nav-index { margin: 16px 14px 0 14px; }
+      .section-body { padding: 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO HEADER -->
+<div id="hero">
+  <div class="hero-label">Universidade Presbiteriana Mackenzie · 7º Semestre</div>
+  <h1>Biodireito</h1>
+  <div class="hero-sub">Prof. Dr. Geraldo Romanello &nbsp;·&nbsp; Ano Letivo 2026</div>
+  <div class="hero-tags">
+    <span class="hero-tag">🤰 Violência Obstétrica</span>
+    <span class="hero-tag">🐾 Direito dos Animais</span>
+    <span class="hero-tag">🩺 Bioética & Eutanásia</span>
+    <span class="hero-tag">🫁 Transplantes e ME</span>
+  </div>
+</div>
+
+<!-- ÍNDICE -->
+<div id="nav-index">
+  <h3>📋 Índice Analítico</h3>
+  <ol>
+    <li><a href="#sec1">Violência Obstétrica — Conceito e Matriz Institutional</a></li>
+    <li><a href="#sec2">Direitos Garantidos da Parturiente e Casos Práticos</a></li>
+    <li><a href="#sec3">Direito dos Animais — Status Civil e Constitucional</a></li>
+    <li><a href="#sec4">Jurisprudência do STF e as Vertentes Filosóficas</a></li>
+    <li><a href="#sec5">Lei Penal Ambiental e o Dilema Prático do JECRIM</a></li>
+    <li><a href="#sec6">Bioética e Fim da Vida — Tipologia das Condutas</a></li>
+    <li><a href="#sec7">Regime Jurídico da Eutanásia e o Testamento Vital</a></li>
+    <li><a href="#sec8">Doação de Órgãos — Requisitos Inter Vivos e Post Mortem</a></li>
+    <li><a href="#sec9">Protocolo Clínico-Legal de Confirmação da Morte Encefálica</a></li>
+    <li><a href="#sec10">Engrenagem Estrutural do SNT e Crise de Insumos</a></li>
+  </ol>
+</div>
+
+<div class="container">
+
+  <!-- SEÇÃO 1 — VIOLÊNCIA OBSTÉTRICA CONCEITO -->
+  <div class="section-card" id="sec1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Violência Obstétrica — Conceito, Matriz Institucional e Hermenêutica</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>1.1 Conceito e Evolução Epistemológica</h3>
+        <p>A discussão contemporânea no Biodireito aponta que o nascimento passou por um processo histórico de <em class="accent">hipermedicalização</em>. A transferência do parto do ambiente doméstico para o hospitalar despojou a mulher do protagonismo da sua própria experiência biológica, submetendo-a a dinâmicas institucionais rígidas. O silenciamento e a naturalização do sofrimento feminino nesse cenário são reflexos diretos de assimetrias estruturais de poder.</p>
+        
+        <div class="callout definicao">
+          <div class="callout-title">📖 Definição Doutrinária Consolidada</div>
+          <p><strong>Violência Obstétrica</strong> configura-se como a apropriação do corpo e dos processos reprodutivos das mulheres pelos profissionais de saúde, manifestada por meio de um tratamento desumanizado, abuso de medicalização e patologização dos processos naturais. Ocorre transversalmente no pré-natal, parto, pós-parto e situações de abortamento.</p>
+        </div>
+      </div>
+      
+      <div class="subsection">
+        <h3>1.2 Perspectiva Interseccional convencional</h3>
+        <p>Sob a ótica convencional internacional, a <strong>Convenção de Belém do Pará (1994)</strong> serve como esteio hermenêutico. Ao definir que a violência contra a mulher engloba sofrimentos físicos, sexuais e psicológicos tanto no espaço público quanto no privado, oferece subsídios para enquadrar a violência obstétrica como uma vertente grave de violência institucional de gênero.</p>
+        
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Dados Estatísticos e Recorte Social</div>
+          <p>Estudos epidemiológicos nacionais demonstram que <strong>25% das mulheres (1 a cada 4)</strong> sofre violência obstétrica no Brasil (Fundação Perseu Abramo). Sob a ótica interseccional, o problema agrava-se conforme recortes socioeconômicos e étnicos: as mulheres negras recebem menos tempo de atendimento médico e sofrem mais agressões verbais.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2 — DIREITOS DA PARTURIENTE -->
+  <div class="section-card" id="sec2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Direitos Garantidos da Parturiente, Tipologias e Respostas Normativas</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>2.1 Quadro de Prerrogativas Legais e Patologias de Cumprimento</h3>
+        <p>A proteção jurídica da parturiente estrutura-se em prerrogativas inalienáveis que visam restaurar sua autonomia corporal e dignidade:</p>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Direito Fundamental</th>
+                <th>Fundamento Positivo</th>
+                <th>Conteúdo Jurídico</th>
+                <th>Patologias de Cumprimento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Acompanhamento</strong></td>
+                <td>Lei Federal 11.108/2005</td>
+                <td>Presença de acompanhante de livre escolha durante o acolhimento, pré-parto, parto e pós-parto imediato.</td>
+                <td>Impedir a entrada alegando infecção; impor restrição de gênero; cobrar taxas pelo uso de paramentos.</td>
+              </tr>
+              <tr>
+                <td><strong>Consentimento Informado</strong></td>
+                <td>Art. 15 do Código Civil</td>
+                <td>Direito de ser informada em linguagem acessível sobre qualquer intervenção e manifestar recusa informada.</td>
+                <td>Realização de manobras cirúrgicas sem consentimento; omissão de riscos reais sobre procedimentos de rotina.</td>
+              </tr>
+              <tr>
+                <td><strong>Autonomia da Mobilidade</strong></td>
+                <td>Diretrizes Nacionais MS</td>
+                <td>Garantia de livre deambulação durante o trabalho de parto e escolha de posições verticalizadas.</td>
+                <td>Manutenção forçada da paciente na posição de litotomia (ginecológica deitada) por conveniência médica.</td>
+              </tr>
+              <tr>
+                <td><strong>Analgesia e Dor</strong></td>
+                <td>Portaria MS 1.820/2009</td>
+                <td>Acesso a métodos farmacológicos e não farmacológicos para alívio da dor do parto.</td>
+                <td>Omissão deliberada de anestesia; punição verbal através da dor; suturas perineais sem bloqueio adequado.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>2.2 Tipologia das Condutas Vedadas e Responsabilidade Civil</h3>
+        <div class="card-grid">
+          <div class="card">
+            <h4>Ofensas Psicológicas</h4>
+            <p>Humilhações, piadas e comentários sobre o corpo ou situação socioeconômica. Situações de abortamento legítimo ou espontâneo são cenários frequentes de desamparo assistencial e julgamento moral.</p>
+          </div>
+          <div class="card">
+            <h4>Intervenções Físicas Abusivas</h4>
+            <p><strong>Manobra de Kristeller:</strong> Pressão violenta sobre o fundo do útero, condenada pela OMS por riscos de ruptura uterina. <strong>Episiotomia de rotina:</strong> Corte perineal sem indicação clínica real.</p>
+          </div>
+          <div class="card">
+            <h4>Fraude Informativa nas Cesáreas</h4>
+            <p>A imposição da cirurgia por meio de justificativas falsas ("cordão enrolado", "bacia estreita") para alinhar o parto à conveniência logística do plantão médico, gerando taxas de cesárea de 85% na rede privada brasileira.</p>
+          </div>
+        </div>
+        
+        <p>Diante da ausência de tipo penal específico, utiliza-se a <strong>Responsabilidade Civil Hospitalar</strong> pelo CDC (art. 14), cuja natureza é objetiva para a instituição hospitalar. A responsabilidade do médico depende da verificação de culpa (negligência, imprudência ou imperícia).</p>
+        
+        <blockquote>
+          <strong>Canais Oficiais para Acionamento de Tutela:</strong> Denúncias processam-se pelo Disque 180, Ouvidoria do SUS (136) e perante o CRM, instruídas obrigatoriamente com a cópia integral do <em>Prontuário Médico</em>, cujo acesso é direito inalienável do paciente.
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3 — DIREITO DOS ANIMAIS -->
+  <div class="section-card" id="sec3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>Direito dos Animais — Status Civil, Constitucional e Prospecção</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>3.1 O Paradoxo Estatutário: Coisa × Bem de Tutela Especial</h3>
+        <p>O ordenamento jurídico brasileiro vive uma nítida crise de identidade em relação ao status jurídico dos animais não humanos. Ocorre um descompasso estrutural entre o Direito Civil patrimonialista e o Direito Constitucional ambiental.</p>
+        
+        <div class="callout definicao">
+          <div class="callout-title">📖 Enquadramento Normativo Atual</div>
+          <p>No <strong>Código Civil (art. 82)</strong>, os animais são classificados estritamente como <strong>coisas (bens móveis semoventes)</strong>, objeto de propriedade e posse. Em contrapartida, a <strong>Constituição Federal (art. 225, §1º, VII)</strong> veda expressamente qualquer prática que submeta os animais a <strong>crueldade</strong>, elevando a proteção da fauna a um patamar ético autônomo.</p>
+        </div>
+
+        <h4>PLS 631/2015 — Estatuto de Proteção dos Animais</h4>
+        <p>O projeto visa sanar essa incongruência introduzindo a tese da <em class="accent">senciência jurídica</em>. Determina que os animais possuem natureza jurídica especial, sendo sujeitos de direitos despersonificados. Abre caminho para institutos modernos como a custódia compartilhada de animais de companhia em dissoluções conjugais e fixação de verbas alimentares de manutenção.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4 — JURISPRUDÊNCIA STF -->
+  <div class="section-card" id="sec4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Jurisprudência Crítica do STF e Vertentes Epistemológicas</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>4.1 Controle de Constitucionalidade e Práticas Culturais</h3>
+        <p>O Supremo Tribunal Federal consolidou a proibição da crueldade como valor constitucional absoluto, impondo limites rígidos a manifestações tradicionais e desportivas:</p>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Caso / Julgado</th>
+                <th>Objeto da Impugnação</th>
+                <th>Ratio Decidendi (Fundamento do Voto)</th>
+                <th>Resultado Jurídico</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>RE 153.531-8/SC</strong></td>
+                <td>Prática tradicional da "Farra do Boi" em SC.</td>
+                <td>Manifestações folclóricas encontram limite intransponível na proibição da crueldade. A tradição não justifica o sadismo institucionalizado.</td>
+                <td>Proibição absoluta da prática sob pena de crime ambiental.</td>
+              </tr>
+              <tr>
+                <td><strong>ADI 2.514/SC e ADI 1.856/RJ</strong></td>
+                <td>Leis estaduais que regulamentavam "Rinhas de Galo".</td>
+                <td>O legislador estadual não pode fraudar a Constituição criando verniz esportivo sobre atividade baseada no sofrimento e mutilação aviária.</td>
+                <td>Declaração de inconstitucionalidade das leis estaduais.</td>
+              </tr>
+              <tr>
+                <td><strong>ADI 4.983/CE</strong></td>
+                <td>Lei cearense que normatizava a prática da Vaquejada.</td>
+                <td>A vedação da crueldade é norma autônoma de matriz ética. Nenhuma regulamentação técnica é capaz de eliminar o sofrimento físico do animal.</td>
+                <td>Inconstitucionalidade da lei regulamentadora.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout excecao">
+          <div class="callout-title">⚡ A Reação do Legislativo: Emenda Constitucional 96/2017</div>
+          <p>Como resposta política ao julgamento da Vaquejada, o Congresso promulgou a <strong>EC 96/2017</strong>, inserindo o §7º ao art. 225 da CF. O texto determina que práticas desportivas e culturais que utilizem animais não são consideradas cruéis, desde que registradas como patrimônio cultural imaterial. Trata-se de um evidente caso de <em>overruling</em> via emenda, cuja constitucionalidade material é severamente questionada pela doutrina.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>4.2 Escolas Filosóficas do Direito Animal</h3>
+        <p>A fundamentação dogmática exige a diferenciação das correntes éticas contemporâneas:</p>
+        <ul>
+          <li><strong>Especismo:</strong> Visão antropocêntrica estrita que justifica a exploração instrumental irrestrita sob a premissa de supremacia da espécie humana.</li>
+          <li><strong>Utilitarismo de Peter Singer (Senciocentrismo):</strong> Lançado na obra <em>Libertação Animal (1975)</em>, defende que a capacidade de sofrer (sencência) é o único critério legítimo de consideração moral. Busca a maximização do bem-estar e redução da dor global.</li>
+          <li><strong>Abolicionismo de Tom Regan:</strong> Vertente deontológica que defende os animais como "sujeitos-de-uma-vida", possuidores de valor inerente. Rejeita o bem-estarismo regulatório e exige o fim do status de propriedade dos animais.</li>
+        </ul>
+        <p>O <strong>Veganismo</strong> ingressa nesse cenário biojurídico como postura política de boicote estrutural, impulsionando o litígio estratégico e a defesa dos interesses difusos da fauna. <em class="accent">Dia Mundial Vegano: 1º de novembro.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5 — TIPICIDADE PENAL ANIMAIS -->
+  <div class="section-card" id="sec5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Direito Comparado e o Dilema Prático do JECRIM</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>5.1 Modelos Globais e Avanços Penais Nacionais</h3>
+        <p>Internacionalmente, a despatrimonialização avança de forma sólida. O Código Civil Alemão (BGB, §90a) afirma expressamente que animais não são coisas. No âmbito judicial, o <strong>Habeas Corpus da Chimpanzé Cecília (Argentina, 2017)</strong> concedeu a soltura da primata de um zoológico e sua transferência para o Santuário de Sorocaba/SP, reconhecendo-a como "sujeito de direitos não humano".</p>
+        
+        <div class="callout importante">
+          <div class="callout-title">⚠️ A Barreira do JECRIM e a Desproporcionalidade de Penas</div>
+          <p>A tutela penal dos animais dá-se pelo <strong>art. 32 da Lei 9.605/98 (Lei de Crimes Ambientais)</strong>. A Lei Sanção (Lei 14.064/2020) promoveu uma importante cisão: se os maus-tratos forem praticados contra <strong>cães ou gatos</strong>, a pena é de <strong>reclusão de 2 a 5 anos</strong>, retirando o crime do âmbito do JECRIM e impedindo transação penal ou sursis processual.</p>
+          <p><strong>O ponto crítico para exames é:</strong> para todos os demais animais (cavalos, bovinos, aves, fauna silvestre), a pena permanece a original de <strong>detenção de 3 meses a 1 ano</strong>. Trata-se de crime de menor potencial ofensivo, processado obrigatoriamente no JECRIM, o que gera severas críticas doutrinárias por instituir proteção diferenciada baseada na espécie de estimação.</p>
+        </div>
+
+        <p>Esta incongruência penal colide frequentemente com fatores de ordem econômica. O Sistema Agroindustrial da carne bovina movimentou <strong>R$ 602,5 bilhões</strong> e as exportações geraram <strong>US$ 8,9 bilhões</strong> (dados de referência setorial), evidenciando as profundas resistências econômicas à ampliação dos direitos da fauna de produção.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 6 — ÉTICA E EUTANÁSIA -->
+  <div class="section-card" id="sec6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>Bioética e Fim da Vida — Tipologia Científica das Condutas</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>6.1 Diferenciação Terminológica e Hermenêutica</h3>
+        <p>O debate biojurídico sobre a terminalidade da vida humana exige rigor terminológico absoluto, afastando confusões conceituais que comprometem a tipificação jurídica na esfera médica. A atuação médica equilibra-se entre a preservação da vida e o alívio do sofrimento:</p>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Modalidade</th>
+                <th>Conceito Técnico</th>
+                <th>Exemplos Clínicos</th>
+                <th>Status Jurídico Pátrio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Eutanásia Ativa</strong></td>
+                <td>Ação deliberada e direta que introduz nexo de causalidade artificial para abreviar a vida por fins misericordiosos.</td>
+                <td>Injeção letal de substâncias; administração deliberada de doses fatais.</td>
+                <td><strong>Crime Ilícito</strong> (Art. 121, CP — Homicídio).</td>
+              </tr>
+              <tr>
+                <td><strong>Eutanásia Passiva / Ortotanásia</strong></td>
+                <td>Abstenção ou interrupção de tratamentos extraordinários e desproporcionais, deixando a doença seguir seu curso natural.</td>
+                <td>Desligamento de ventilador mecânico em morte encefálica; suspensão de quimioterapia fútil.</td>
+                <td><strong>Conduta Lícita</strong> e recomendada pelo CFM (Res. 1.805/06).</td>
+              </tr>
+              <tr>
+                <td><strong>Duplo Efeito</strong></td>
+                <td>Morte promovida indiretamente por ações médicas voltadas exclusivamente ao alívio de dores intoleráveis.</td>
+                <td>Administração de altas doses de morfina que deprimem o sistema respiratório.</td>
+                <td>Lícito; excludente de dolo pelo foco estrito nos cuidados paliativos.</td>
+              </tr>
+              <tr>
+                <td><strong>Distanásia</strong></td>
+                <td>Prolongamento artificial e doloroso do processo de morte biológica por obstinação terapêutica invasiva.</td>
+                <td>Manutenção de paciente terminal em UTI sem prognóstico por mero apego tecnológico.</td>
+                <td>Vedada eticamente; classificada como tratamento degradante.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>6.2 Critérios Relativos à Manifestação de Vontade</h3>
+        <ul>
+          <li><strong>Eutanásia Voluntária:</strong> Ocorre em estrito atendimento à vontade explícita, lúcida e reiterada do paciente. Assemelha-se ao suicídio assistido (a distinção: na eutanásia, o terceiro executa a conduta; no suicídio assistido, o próprio paciente aciona o meio letal fornecido).</li>
+          <li><strong>Eutanásia Involuntária:</strong> Praticada sem o consentimento do paciente que possuía plenas condições de manifestar escolha. Equivale dogmaticamente ao homicídio qualificado de forma pura.</li>
+          <li><strong>Eutanásia Não Voluntária:</strong> Executada sem que o paciente tenha manifestado desejo por encontrar-se temporária ou definitivamente impossibilitado de expressar-se (estado de coma, recém-nascidos com anomalias incompatíveis com a vida).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 7 — REGIME JURÍDICO EUTANÁSIA -->
+  <div class="section-card" id="sec7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2>Regime Jurídico da Eutanásia, LINDB e Autonomia do Paciente</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>7.1 Enquadramento Penal e o Homicídio Privilegiado</h3>
+        <p>O Código Penal brasileiro não contempla a eutanásia como tipo autônomo. A conduta ativa de abreviação da vida é capitulada no <strong>art. 121 (Homicídio)</strong>, ensejando a aplicação do <strong>§1º (Homicídio Privilegiado)</strong> quando movida por compaixão ante o sofrimento alheio (<em class="accent">relevante valor moral / morte piedosa</em>), reduzindo a pena de 1/6 a 1/3.</p>
+        <p>A LINDB (arts. 20 a 30) impõe que as decisões judiciais avaliem as consequências práticas e as dificuldades reais dos agentes. Há nítida colisão entre os princípios constitucionais da <strong>Sacralidade da Vida (art. 5º, caput)</strong> e a <strong>Dignidade da Pessoa Humana (art. 1º, III)</strong> na vertente da autonomia de rejeitar tratamentos inúteis.</p>
+        
+        <div class="callout importante">
+          <div class="callout-title">⚠️ O Instituto do Testamento Vital (Resolução CFM 1.995/2012)</div>
+          <p>O ordenamento jurídico pátrio resguarda o direito às <strong>Diretivas Antecipadas de Vontade</strong>. Qualquer indivíduo capaz pode registrar previamente quais tratamentos deseja ou recusa receber caso se encontre impossibilitado de comunicar-se em fase terminal. O documento possui <strong>caráter vinculante para o médico</strong>, desde que não exija práticas ativas criminosas (como eutanásia ativa ou auxílio ao suicídio pelo art. 122).</p>
+        </div>
+
+        <h4>Casos Paradigmáticos Internacionais</h4>
+        <ul>
+          <li><strong>Caso Terri Schiavo (EUA, 2005):</strong> Paciente em estado vegetativo por 15 anos. A Suprema Corte americana autorizou a retirada dos tubos de alimentação a pedido do marido, configurando eutanásia passiva/ortotanásia sob forte controvérsia global.</li>
+          <li><strong>Caso Terry Wallis (EUA):</strong> Permaneceu em estado de consciência mínima por 19 anos e recuperou as funções da fala. Usado pela doutrina para justificar o princípio da precaução e a impossibilidade de fixação de prazos arbitrários para desligamento de suportes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 8 — DOAÇÃO DE ÓRGÃOS -->
+  <div class="section-card" id="sec8">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2>Transplantes e Doação de Órgãos — Requisitos Inter Vivos e Post Mortem</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>8.1 Natureza Jurídica do Transplante e Fatores Culturais</h3>
+        <p>A doação de órgãos constitui ato jurídico e humanitário voltado à preservação da vida. Fatores religiosos interferem diretamente na captação: a imensa maioria das vertentes incentiva o ato como caridade, enquanto as <strong>Testemunhas de Jeová</strong> vedam transfusões de sangue, mas admitem o transplante de órgãos e tecidos desde que totalmente isentos de sangue circulante, sob o crivo da consciência do fiel.</p>
+        
+        <div class="organ-grid">
+          <div class="organ-box">
+            <h5>🫀 Doação Inter Vivos (Doador Vivo)</h5>
+            <p>Regulada pelo art. 9º da Lei 9.434/97. Exige doador maior, capaz e que o procedimento não cause invalidez permanente à sua saúde. Restringe-se a órgãos duplos ou regeneráveis. Permitida para cônjuges e parentes consanguíneos até o 4º grau; <strong>a doação para não parentes exige autorização judicial expressa</strong> para coibir o comércio espúrio.</p>
+          </div>
+          <div class="organ-box">
+            <h5>🏥 Doação Post Mortem (Cadavérica)</h5>
+            <p>Pressupõe a ocorrência e comprovação científica inequívoca de <strong>Morte Encefálica</strong>. Órgãos vitais (coração, pulmão, fígado integral) só podem ser captados em ambiente de UTI, com o coração mantido batendo artificialmente por suporte de drogas e ventilação mecânica, garantindo a perfusão e viabilidade dos tecidos.</p>
+          </div>
+        </div>
+
+        <div class="callout excecao">
+          <div class="callout-title">⚡ Absoluta Contraindicação (Quem não pode doar)</div>
+          <p>Portadores de infecções generalizadas (sepse) não controladas, portadores de HIV ativo, neoplasias malignas ativas (cânceres, salvo raras exceções) e pessoas sem qualquer identificação civil oficial (cadáveres indigentes), visando obstar fraudes no sistema.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 9 — MORTE ENCEFÁLICA -->
+  <div class="section-card" id="sec9">
+    <div class="section-header">
+      <div class="section-number">9</div>
+      <h2>Morte Encefálica — Protocolo Médico-Leigo de Confirmação</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>9.1 Conceito Legal de Óbito e Rigor de Diagnóstico</h3>
+        <p>A morte encefálica consiste na cessação irreversível e definitiva de todas as funções cerebrais, incluindo as do tronco encefálico. É o critério legal de óbito adotado pela Lei 9.434/97 e pela Resolução CFM 2.173/17. **Ela significa a morte real da pessoa**.</p>
+        
+        <div class="callout importante">
+          <div class="callout-title">⚠️ COMA ≠ MORTE ENCEFÁLICA</div>
+          <ul>
+            <li><strong>Coma:</strong> Estado de inconsciência profundo, mas o cérebro mantém atividade elétrica e fluxo sanguíneo. É um processo <strong>reversível</strong>; o paciente está clinicamente <strong>vivo</strong>.</li>
+            <li><strong>Morte Encefálica:</strong> Interrupção definitiva de toda atividade e fluxo de sangue no cérebro. É um processo <strong>irreversível</strong>; o paciente está juridicamente <strong>morto</strong>.</li>
+          </ul>
+        </div>
+
+        <h4>Protocolo de Confirmação Obrigatório:</h4>
+        <ol>
+          <li>Constatação de causa lesiva intracraniana conhecida e irreversível (TCE grave, AVC devastador).</li>
+          <li>Ausência de hipotermia, distúrbios metabólicos ou uso de drogas sedativas bloqueadoras.</li>
+          <li><strong>Dois exames clínicos neurológicos:</strong> Realizados por médicos diferentes e capacitados, com intervalo adequado. <em class="accent">Regra de Ouro:</em> Nenhum dos médicos avaliadores pode integrar as equipes de captação ou transplante.</li>
+          <li><strong>Teste de Apneia Positivo:</strong> Comprovação de ausência de movimentos respiratórios autônomos sob estímulo hipercapnico ($CO_2$ elevado).</li>
+          <li><strong>Exame Instrumental Complementar:</strong> Comprovação documental de ausência de atividade elétrica (EEG plano), ausência de fluxo sanguíneo (Doppler transcraniano ou Angiografia) ou ausência de metabolismo cerebral.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 10 — SISTEMA NACIONAL DE TRANSPLANTES -->
+  <div class="section-card" id="sec10">
+    <div class="section-header">
+      <div class="section-number">10</div>
+      <h2>Engrenagem Estrutural do SNT, Evolução Normativa e Desafios</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>10.1 Estrutura do SNT e a Lista Única de Espera</h3>
+        <p>O Brasil possui o maior programa público de transplantes do mundo, com 95% dos procedimentos financiados pelo SUS. O sistema opera sob uma rede hierarquizada: os <strong>Hospitais Notificadores</strong> comunicam suspeitas de ME às <strong>Centrais Estaduais (CNCDO)</strong>, e as <strong>Organizações de Procura de Órgãos (OPOs)</strong> conduzem a abordagem familiar.</p>
+        <p>A distribuição de órgãos é controlada por software baseado em critérios puramente objetivos médicos: compatibilidade sanguínea (ABO), compatibilidade genética (antígenos HLA para rins), gravidade do quadro clínico do receptor (critério de urgência) e, em caso de empate, o tempo cronológico em fila.</p>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Órgão Alvo</th>
+                <th>Pacientes Ativos em Fila</th>
+                <th>Transplantes Efetivados / Ano</th>
+                <th>Taxa de Atendimento / Mortalidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Rim</strong></td>
+                <td>Aproximadamente 30.000</td>
+                <td>Cerca de 5.492</td>
+                <td>45% atendida; suporte temporário por hemodiálise.</td>
+              </tr>
+              <tr>
+                <td><strong>Fígado</strong></td>
+                <td>Aproximadamente 2.500</td>
+                <td>Cerca de 1.880</td>
+                <td>Elevada mortalidade em lista (superior a 51%).</td>
+              </tr>
+              <tr>
+                <td><strong>Coração</strong></td>
+                <td>Aproximadamente 400</td>
+                <td>Cerca de 357</td>
+                <td>Crítica; 25% dos pacientes falecem aguardando oferta.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>10.2 Evolução Histórica do Consentimento e o Gargalo Pós-Cirúrgico</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1994</div>
+            <div class="timeline-content"><strong>Lei Municipal 11.479 (SP):</strong> Institui o benefício funerário (isenção de taxas de sepultamento) para famílias que autorizarem a doação de órgãos do falecido.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1997</div>
+            <div class="timeline-content"><strong>Lei Federal 9.434/97:</strong> Cria o modelo de <strong>Consentimento Presumido</strong>. Todo cidadão era considerado doador automático, salvo registro em contrário no RG/CNH. Gerou pânico e explosão de recusas.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2001</div>
+            <div class="timeline-content"><strong>Lei Federal 10.211/2001:</strong> Corrige a rota para o **Consentimento Consentido Familiar**. Extingue anotações documentais. A palavra final é obrigatoriamente da família.</div>
+          </div>
+        </div>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Regra de Ouro Atual do SNT</div>
+          <p>No ordenamento vigente, registros escritos ou manifestações em documentos <strong>não possuem valor jurídico vinculante</strong>. A doação só ocorre com a autorização expressa do cônjuge ou parentes até o 2º grau. A taxa de recusa familiar média no Brasil gira em torno de <strong>43%</strong> (principal motivo de não efetivação). O ato prático mais eficaz é <strong>avisar expressamente a sua família em vida</strong>.</p>
+        </div>
+
+        <div class="callout excecao">
+          <div class="callout-title">⚡ O Calcanhar de Aquiles: A Crise dos Medicamentos Imunossupressores</div>
+          <p>Para evitar o fenômeno da rejeição crônica do órgão, o transplantado necessita de fármacos imunossupressores de alto custo por toda a vida (Tacrolimus, Micofenolato de Mofetila, Ciclosporina). Auditorias apontam interrupções crônicas e desabastecimento dessas drogas nas farmácias de alto custo do SUS fora do eixo Sul-Sudeste, gerando perda irreversível de órgãos captados e risco iminente de óbito aos pacientes.</p>
+        </div>
+        
+        <p>Os crimes relativos a transplantes (remoção ilegal, compra/venda de órgãos) são tipificados na Lei 9.434/97. O **PL 3.176/2019** visa restabelecer o modelo presumido e elevar todas as condutas de comércio e tráfico de órgãos humanos ao status de **crime hediondo**.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SÚMULAS E LEGISLAÇÃO CRÍTICA -->
+  <div class="section-card" id="sec_sumulas">
+    <div class="section-header">
+      <div class="section-number">★</div>
+      <h2>Legislação, Resoluções e Súmulas Críticas — Resumo Rápido</h2>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Diploma / Referência</th>
+              <th>Conteúdo Essencial / Aplicação Dogmática</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Lei 11.108/2005</strong></td><td>Lei do Acompanhante; aplicável a todo o período de trabalho de parto, parto e pós-parto imediato.</td></tr>
+            <tr><td><strong>Art. 225, §1º, VII, CF</strong></td><td>Base constitucional de proteção à fauna e vedação absoluta de submissão de animais a atos de crueldade.</td></tr>
+            <tr><td><strong>EC 96/2017</strong></td><td>A emenda da Vaquejada; excepciona práticas desportivas e culturais desde que registradas como patrimônio imaterial.</td></tr>
+            <tr><td><strong>Art. 32, Lei 9.605/98</strong></td><td>Maus-tratos a animais. Cisão: reclusão (2-5 anos) para cães/gatos; detenção (3m-1a) para os demais (barreira do JECRIM).</td></tr>
+            <tr><td><strong>Art. 121, §1º, CP</strong></td><td>Homicídio Privilegiado; enquadramento legal da eutanásia ativa motivada por compaixão (relevante valor moral).</td></tr>
+            <tr><td><strong>Resolução CFM 1.995/12</strong></td><td>Regulamenta as Diretivas Antecipadas de Vontade (Testamento Vital) e seu caráter vinculante para a equipe médica.</td></tr>
+            <tr><td><strong>Lei 9.434/97</strong></td><td>Lei Geral dos Transplantes; tipifica crimes de comércio de órgãos e estabelece critérios de remoção.</td></tr>
+            <tr><td><strong>Lei 10.211/2001</strong></td><td>Extingue o consentimento presumido e consolida a obrigatoriedade da autorização familiar pós-morte.</td></tr>
+            <tr><td><strong>Resolução CFM 2.173/17</strong></td><td>Atualiza e define os critérios técnicos e exames complementares obrigatórios para diagnóstico de Morte Encefálica.</td></tr>
+            <tr><td><strong>Caso Chimpanzé Cecília</strong></td><td>Precedente internacional (Argentina, 2017) de concessão de Habeas Corpus a animal, reconhecido como sujeito de direitos.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- SCROLL TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+<script>
+  // Controle de visibilidade do botão flutuante Scroll Top
+  const scrollBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
+    }
+  });
+
+  // Rolagem suave com compensação para âncoras internas do índice
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const offset = 20;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+  <script src="highlighter.js"></script>
+</body>
+</html>

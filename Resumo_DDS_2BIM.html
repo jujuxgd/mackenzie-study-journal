@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Direito das Sucessões — 2º Bimestre | Mackenzie</title>
+  <style>
+    /* ── Variáveis de Design (Orange / Laranja Pastel Style) ── */
+    :root {
+      --orange-pastel: #D97A3E;
+      --orange-pastel-light: #EAA375;
+      --orange-pastel-bg: #FAF2EE;
+      --orange-pastel-border: #D97A3E;
+      --bg: #fdfdfd;
+      --text: #2b2b2b;
+      --text-muted: #555;
+      --card-bg: #ffffff;
+      --table-head-text: #ffffff;
+      --border-color: #e5e5e5;
+      --tag-bg: #FAF2EE;
+      --callout-bg: #FCF4F0;
+      --shadow: rgba(217, 122, 62, 0.08);
+
+      /* Destaques Semânticos das Caixas (Padrão das Aulas) */
+      --def-border: #b9935a; --def-bg: #faf7f2;
+      --imp-border: #D97A3E; --imp-bg: #FAF2EE;
+      --exc-border: #cc5c5c; --exc-bg: #fff5f5;
+      --jur-border: #5A9E6F; --jur-bg: #E8F5E9;
+      --lei-border: #2979ff; --lei-bg: #eef3ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── HERO HEADER INTEGRAL ── */
+    #hero {
+      background: linear-gradient(135deg, #D97A3E 0%, #A64F1B 100%);
+      color: #fff;
+      text-align: center;
+      padding: 58px 28px 52px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    #hero .hero-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 14px;
+    }
+    #hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    #hero .hero-sub {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+    #hero .hero-tags {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #hero .hero-tag {
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── NAV ÍNDICE DE DUAS COLUNAS ── */
+    #nav-index {
+      background: var(--card-bg);
+      border: 2px solid var(--orange-pastel);
+      max-width: 820px;
+      margin: 32px auto 0 auto;
+      padding: 24px 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px var(--shadow);
+    }
+    #nav-index h3 {
+      color: var(--orange-pastel);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+    #nav-index ol {
+      columns: 2;
+      column-gap: 32px;
+      padding-left: 20px;
+    }
+    #nav-index li { margin: 5px 0; break-inside: avoid; font-weight: 600; }
+    #nav-index a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    #nav-index a:hover { color: var(--orange-pastel); text-decoration: underline; }
+    
+    @media (max-width: 600px) {
+      #nav-index ol { columns: 1; }
+      #nav-index { margin: 20px 14px 0 14px; padding: 18px 18px; }
+    }
+
+    /* ── MAIN CONTAINER ── */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 40px 60px 40px;
+    }
+
+    /* ── SECTION CARD (MATRIZ DO LAYOUT) ── */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 14px var(--shadow);
+      margin-bottom: 36px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .section-header {
+      background: var(--orange-pastel);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-number {
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .section-body {
+      padding: 28px 30px;
+    }
+
+    /* ── SUBSECTION ── */
+    .subsection {
+      margin-bottom: 28px;
+    }
+    .subsection:last-child { margin-bottom: 0; }
+    
+    h3 {
+      color: var(--orange-pastel);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--orange-pastel-bg);
+    }
+    h4 {
+      color: var(--orange-pastel);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 14px 0 6px 0;
+    }
+    p { margin-bottom: 12px; text-align: justify; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── LISTAS ── */
+    ul, ol { padding-left: 22px; margin-bottom: 12px; color: var(--text-muted); }
+    li { margin-bottom: 5px; }
+    li:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUT BOXES SEMÂNTICOS ── */
+    .callout {
+      border-left: 5px solid var(--orange-pastel);
+      background: var(--callout-bg);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 18px 0;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: var(--orange-pastel);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .callout.definicao { border-color: var(--def-border); background: var(--def-bg); }
+    .callout.definicao .callout-title { color: #9c7334; }
+    .callout.importante { border-color: var(--imp-border); background: var(--imp-bg); }
+    .callout.importante .callout-title { color: var(--orange-pastel); }
+    .callout.excecao { border-color: var(--exc-border); background: var(--exc-bg); }
+    .callout.excecao .callout-title { color: #b84d62; }
+    .callout.excecao p, .callout.excecao li { color: #b84d62; }
+    .callout.jurisprudencia { border-color: var(--jur-border); background: var(--jur-bg); }
+    .callout.jurisprudencia .callout-title { color: #3a7a52; }
+    .callout.jurisprudencia p { color: #2e6040; font-style: italic; }
+    .callout.lei { border-color: var(--lei-border); background: var(--lei-bg); }
+    .callout.lei .callout-title { color: #1e4b73; }
+
+    /* ── TABELAS ── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 6px; border: 1px solid var(--border-color); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    table caption { font-size: 12px; font-weight: 700; color: var(--orange-pastel); text-align: left; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .5px; }
+    thead th {
+      background: var(--orange-pastel);
+      color: #fff;
+      padding: 12px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.3px;
+    }
+    tbody tr:nth-child(even) { background: var(--orange-pastel-bg); }
+    tbody tr:nth-child(odd) { background: var(--card-bg); }
+    tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+    tbody tr:hover { filter: brightness(0.98); }
+
+    /* ── TAG INLINE ── */
+    .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .5px; padding: 2px 9px; border-radius: 20px; margin-left: 6px; vertical-align: middle; }
+    .tag-art { background: #FAF2EE; color: #a64f1b; }
+    .tag-stf { background: #E8F5E9; color: #2e7a52; }
+
+    /* ── SCROLL TOP ── */
+    #scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--orange-pastel);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 990;
+      transition: background 0.2s;
+    }
+    #scroll-top:hover { background: var(--orange-pastel-light); }
+    #scroll-top.visible { display: flex; }
+
+    blockquote { border-left: 3px solid var(--orange-pastel); padding: 8px 16px; margin: 16px 0; font-style: italic; color: var(--text-muted); background: #fcfcfc; }
+    strong { color: #8c4214; font-weight: 600; }
+    em.accent { color: var(--orange-pastel); font-style: normal; font-weight: 700; }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: white; }
+      .section-card { break-inside: avoid; }
+      .container { padding: 20px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO HEADER -->
+<div id="hero">
+  <div class="hero-label">Universidade Presbiteriana Mackenzie · 7º Semestre</div>
+  <h1>Direito das Sucessões</h1>
+  <div class="hero-sub">Prof. Guilherme Augusto Girotto &nbsp;·&nbsp; Resumo Avançado &nbsp;·&nbsp; 2º Bimestre</div>
+  <div class="hero-tags">
+    <span class="hero-tag">📜 CC Arts. 1.805 a 1.963</span>
+    <span class="hero-tag">👥 Ordem de Vocação legítima</span>
+    <span class="hero-tag">⚡ Indignidade & Deserdação</span>
+    <span class="hero-tag">🏛️ Herança Jacente & Vacante</span>
+  </div>
+</div>
+
+<!-- ÍNDICE ANALÍTICO -->
+<div id="nav-index">
+  <h3>📋 Índice Analítico</h3>
+  <ol>
+    <li><a href="#sec1">Aceitação ou Renúncia da Herança</a></li>
+    <li><a href="#sec2">Excluídos da Sucessão — Indignidade e Deserdação</a></li>
+    <li><a href="#sec3">Herança Jacente e Herança Vacante</a></li>
+    <li><a href="#sec4">Petição de Herança e Prazos Prescricionais</a></li>
+    <li><a href="#sec5">Ordem da Vocação Hereditária e Concorrência do Cônjuge</a></li>
+  </ol>
+</div>
+
+<div class="container">
+
+  <!-- SEÇÃO 1 — ACEITAÇÃO OU RENÚNCIA -->
+  <div class="section-card" id="sec1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Aceitação ou Renúncia da Herança</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>Com a abertura da sucessão (morte do autor da herança), os herdeiros legítimos ou testamentários podem manifestar sua <strong>aceitação</strong> ou <strong>renúncia</strong> à herança. Nenhuma dessas opções pode ser realizada de forma parcial, sob condição ou a termo — são sempre manifestações <strong>integrais</strong>.</p>
+        
+        <ul>
+          <li><strong>Aceitação:</strong> Torna definitiva a transmissão da herança ao herdeiro, operando efeitos retroativos imediatos à data da abertura da sucessão (<em class="accent">princípio da saisine</em>).</li>
+          <li><strong>Renúncia:</strong> Negócio jurídico unilateral por meio do qual a transmissão tem-se por <strong>não verificada</strong> — o renunciante é tratado juridicamente como se nunca houvesse sido herdeiro.</li>
+        </ul>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Regra Fundamental — Unidade e Irretratabilidade</div>
+          <p>Tanto a aceitação quanto a renúncia são <strong>indivisíveis, incondicionais e irretratáveis</strong>. Não se admite aceitar ou renunciar apenas frações da quota hereditária. Uma vez formalizados, são <strong>atos irrevogáveis</strong> <span class="tag tag-art">Art. 1.812 CC</span>.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>1.1 Modalidades de Aceitação <span class="tag tag-art">Art. 1.805 CC</span></h3>
+        <div class="table-wrap">
+          <table>
+            <caption>Formas de Manifestação da Aceitação</caption>
+            <thead>
+              <tr>
+                <th>Modalidade</th>
+                <th>Requisitos de Configuração</th>
+                <th>Efeitos e Atos Típicos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Expressa</strong></td>
+                <td>Declaração necessariamente escrita.</td>
+                <td>Pode dar-se por documento público ou instrumento particular.</td>
+              </tr>
+              <tr>
+                <td><strong>Tácita</strong></td>
+                <td>Resulta de <strong>atos próprios e exclusivos da qualidade de herdeiro</strong>.</td>
+                <td>Prática de atos de administração definitiva, alienação de direitos hereditários ou contratação de advogados para abertura de inventário.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>Atos que NÃO exprimem aceitação tácita (Atos Neutros)</h4>
+        <ul>
+          <li><strong>Atos oficiosos:</strong> O custeio do funeral do finado, atos puramente conservatórios de bens ou a administração e guarda provisória do acervo patrimonial.</li>
+          <li><strong>Cessão gratuita, pura e simples:</strong> A cessão gratuita da herança feita em benefício de todos os demais coerdeiros (renúncia abdicativa — art. 1.805, §2°, CC) não configura aceitação implícita.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>1.2 Renúncia da Herança — Rigor Formal <span class="tag tag-art">Art. 1.806 CC</span></h3>
+        <div class="callout excecao">
+          <div class="callout-title">🚫 Forma Exigida — Solenidade Absoluta (Ad Solemnitatem)</div>
+          <p>A renúncia da herança <strong>deve constar expressamente de instrumento público ou de termo lavrado nos autos judiciais</strong>. <strong>NÃO possui validade</strong> jurídica se feita por instrumento particular ou de forma verbal. Trata-se de ato personalíssimo, exigindo procuração com poderes expressos e específicos em caso de representação por mandatário.</p>
+        </div>
+
+        <h4>Efeitos Jurídicos da Renúncia <span class="tag tag-art">Art. 1.810 CC</span></h4>
+        <ul>
+          <li>A quota-parte do herdeiro renunciante <strong>acresce imediatamente à dos outros herdeiros da mesma classe</strong>.</li>
+          <li>Sendo o renunciante o <strong>único de sua classe</strong>, a herança devolve-se integralmente aos herdeiros da classe subsequente na ordem de vocação.</li>
+          <li><strong>Não opera o direito de representação</strong> em favor dos filhos do herdeiro renunciante (ninguém pode suceder representando herdeiro que renunciou).</li>
+          <li><strong>Exceção de linha própria:</strong> Se o renunciante for o único legítimo de sua classe, <em>ou</em> se todos os demais herdeiros da mesma classe renunciarem em conjunto, os <strong>filhos destes herdeiros herdarão por direito próprio e por cabeça</strong> (art. 1.811, CC).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2 — INDIGNIDADE E DESERDAÇÃO -->
+  <div class="section-card" id="sec2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Excluídos da Sucessão — Indignidade e Deserdação</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>2.1 Indignidade Sucessória</h3>
+        <p>A <strong>exclusão por indignidade</strong> consiste em uma sanção civil aplicada ao herdeiro ou legatário que pratica atos de extrema ingratidão ou violência contra o autor da herança ou seus familiares próximos, nas hipóteses taxativas do texto legal.</p>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Necessidade Coagente de Sentença Declaratória</div>
+          <p>A indignidade <strong>não opera de pleno direito ou de forma automática</strong>. Ela exige o ajuizamento de uma <strong>Ação de Exclusão por Indignidade</strong> movida por interessado legítimo ou pelo Ministério Público. Seus efeitos dependem de <strong>sentença judicial declaratória</strong> transitada em julgado <span class="tag tag-art">Art. 1.815 CC</span>.</p>
+        </div>
+
+        <h4>Hipóteses Taxativas de Indignidade <span class="tag tag-art">Art. 1.814 CC</span></h4>
+        <ul>
+          <li><strong>Autoria ou Coautoria em Homicídio Doloso:</strong> Ter sido autor, coautor ou partícipe de homicídio doloso, ou de sua tentativa, contra o autor da herança, seu <strong>cônjuge, companheiro, ascendente ou descendente</strong>.</li>
+          <li><strong>Acusação Caluniosa e Crimes contra a Honra:</strong> Ter acusado caluniosamente o autor da herança em juízo, ou incorrido em crime contra a sua honra (calúnia, difamação ou injúria), ou de seu cônjuge/companheiro.</li>
+          <li><strong>Obstaculização da Última Vontade:</strong> Ter, por violência ou meios fraudulentos, inibido ou obstado o autor da herança de dispor livremente de seus bens por testamento ou ato de última vontade.</li>
+        </ul>
+
+        <h4>Prazo de Exercício e Efeitos Pessoais</h4>
+        <ul>
+          <li><strong>Prazo Decadencial Extintivo:</strong> O direito de demandar a exclusão do indigno extingue-se no prazo de <strong>4 anos</strong>, contados da abertura da sucessão <span class="tag tag-art">Art. 1.815, §1° CC</span>.</li>
+          <li><strong>Efeitos Restritos e Pessoais (Art. 1.816):</strong> A pena de exclusão possui caráter eminentemente pessoal. Portanto, os <strong>descendentes do herdeiro indigno sucedem por direito de representação</strong>, como se o indigno estivesse morto na data da abertura da sucessão. O excluído fica privado de usufruir ou administrar esses bens.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>2.2 Deserdação</h3>
+        <p>A <strong>deserdação</strong> é o instituto por meio do qual o autor da herança exclui, por via de <strong>cláusula testamentária expressa</strong>, um <strong>herdeiro necessário</strong> (descendentes, ascendentes e cônjuge/companheiro) de sua quota da legítima, fundamentando-se nas causas autorizadas em lei.</p>
+
+        <div class="callout excecao">
+          <div class="callout-title">🚫 Distinção Crítica: Indignidade vs. Deserdação</div>
+          <ul>
+            <li><strong>Indignidade:</strong> Aplica-se a qualquer herdeiro ou legatário; decorre de causas pós ou pré-morte; exige ação judicial proposta pelos coerdeiros após o óbito do autor da herança.</li>
+            <li><strong>Deserdação:</strong> Aplica-se <strong>exclusivamente aos herdeiros necessários</strong>; decorre de condutas praticadas em vida; exige manifestação de vontade expressa do <strong>testador dentro do testamento</strong>. Após a morte, os herdeiros beneficiados devem ajuizar ação para provar a causa alegada.</li>
+          </ul>
+        </div>
+
+        <h3>Causas Específicas de Deserdação de Descendentes <span class="tag tag-art">Art. 1.962 CC</span></h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fundamento</th>
+                <th>Conduta Passível de Deserdação do Filho/Neto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Inciso I</strong></td><td>Ofensa física intencional contra o ascendente.</td></tr>
+              <tr><td><strong>Inciso II</strong></td><td>Injúria grave que atente contra a dignidade do ascendente.</td></tr>
+              <tr><td><strong>Inciso III</strong></td><td>Relações ilícitas (comportamento de cunho sexual) com a madrasta ou com o padrasto.</td></tr>
+              <tr><td><strong>Inciso IV</strong></td><td>Desamparo material ou moral do ascendente em estado de alienação mental ou grave enfermidade.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Causas Específicas de Deserdação de Ascendentes <span class="tag tag-art">Art. 1.963 CC</span></h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fundamento</th>
+                <th>Conduta Passível de Deserdação dos Pais/Avós</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Inciso I</strong></td><td>Ofensa física praticada contra o descendente.</td></tr>
+              <tr><td><strong>Inciso II</strong></td><td>Injúria grave desferida contra o descendente.</td></tr>
+              <tr><td><strong>Inciso III</strong></td><td>Relações ilícitas com o cônjuge ou companheiro(a) do filho ou do neto.</td></tr>
+              <tr><td><strong>Inciso IV</strong></td><td>Desamparo do filho ou neto acometido de deficiência mental ou grave enfermidade.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3 — HERANÇA JACENTE E VACANTE -->
+  <div class="section-card" id="sec3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>Herança Jacente e Herança Vacante</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>Configura-se quando ocorre o falecimento de um indivíduo <strong>sem que este tenha deixado disposições testamentárias e não possua herdeiros legítimos conhecidos</strong> ou habilitados no processo <span class="tag tag-art">Art. 1.819 CC</span>.</p>
+
+        <h3>3.1 Herança Jacente</h3>
+        <p>Consiste no <strong>estado provisório e de fato</strong> do patrimônio. O juiz determina a arrecadação imediata dos bens, os quais são colocados sob a guarda, vigilância e administração de um <strong>curador judicial</strong> nomeado, enquanto se promovem diligências e editais de busca de parentes.</p>
+
+        <h3>3.2 Herança Vacante <span class="tag tag-art">Art. 1.820 CC</span></h3>
+        <p>Concluídas as arrecadações e formalizados os inventários, expedem-se editais de convocação. Decorrido o prazo de <strong>1 (um) ano contado da publicação do primeiro edital</strong>, sem que haja herdeiro habilitado ou pedido pendente de julgamento, o juiz proferirá sentença declarando a herança <strong>vacante</strong>.</p>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Fixação de Prazos Decadenciais e Destinação Coagente</div>
+          <ul>
+            <li><strong>1 Ano do Edital:</strong> Prazo para a prolação da sentença de <strong>vacância</strong>.</li>
+            <li><strong>5 Anos da Abertura (Morte):</strong> Prazo absoluto para que os bens arrecadados incorporem definitivamente ao patrimônio estável do <strong>Município ou do Distrito Federal</strong> (onde os bens estiverem situados) ou da <strong>União</strong> (caso localizados em território federal) <span class="tag tag-art">Art. 1.822 CC</span>.</li>
+          </ul>
+        </div>
+
+        <h4>Exclusão dos Colaterais</h4>
+        <p>O parágrafo único do art. 1.822 fixa uma barreira preclusiva severa: <strong>os herdeiros colaterais (irmãos, tios, sobrinhos, primos) que não se habilitarem até a declaração judicial de vacância ficam definitivamente excluídos da sucessão</strong>, restando precluso o direito de pleitear quinhões.</p>
+        
+        <blockquote class="citacao-doutrina">
+          <div class="autor">Análise de Aula — Política Jurídica</div>
+          <p>O professor aponta a justificativa da destinação final dos bens vagos ao Município: fundamenta-se na premissa de que o ente público local concorreu para a valorização e manutenção daquele patrimônio por meio da prestação de serviços urbanos e infraestrutura. Logo, ausentes herdeiros, deve o bem ser revertido à coletividade lindeira.</p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4 — PETIÇÃO DE HERANÇA -->
+  <div class="section-card" id="sec4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Petição de Herança e Prazos Prescricionais</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>A <strong>petição de herança</strong> é a ação de conhecimento por meio da qual um herdeiro preterido demanda o reconhecimento judicial de seu direito sucessório, visando obter, por consequência, a <strong>restituição da universalidade da herança ou de sua quota-parte</strong>, contra quem a possua de fato <span class="tag tag-art">Art. 1.824 CC</span>.</p>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Finalidade Corretiva e Prazo Prescricional Geral</div>
+          <p>Esta ação funciona como instrumento corretivo para partilhas já homologadas ou inventários que omitiram herdeiros legítimos (ex: filho gerado fora do casamento reconhecido posteriormente). Diante da ausência de prazo especial fixado pelo legislador, aplica-se o prazo geral de <strong>prescrição de 10 anos</strong> previsto no art. 205 do Código Civil, contado ininterruptamente a partir da <strong>data da abertura da sucessão (morte)</strong>.</p>
+        </div>
+
+        <div class="callout jurisprudencia">
+          <div class="callout-title">⚖️ Distinção Autônoma de Prazos — Investigação de Paternidade vs. Petição de Herança</div>
+          <p>Conforme jurisprudência pacificada dos tribunais superiores, a <strong>ação de investigação de paternidade é imprescritível</strong>, ligada ao direito de estado da pessoa humana. Contudo, os efeitos patrimoniais sucessórios dela decorrentes devem ser exigidos via <strong>petição de herança, que se sujeita ao prazo prescricional de 10 anos</strong>. Os prazos correm de forma independente a partir da morte do autor da herança.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5 — ORDEM DA VOCAÇÃO HEREDITÁRIA -->
+  <div class="section-card" id="sec5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Ordem da Vocação Hereditária e Concorrência do Cônjuge</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>A sucessão legítima opera por classes de herdeiros estruturadas de forma excludente: a existência de herdeiros de uma classe superior afasta os herdeiros das classes subsequentes, observando a gradação fixa do art. 1.829 do CC:</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Ordem de Vocação Hereditária — Art. 1.829 CC</caption>
+            <thead>
+              <tr>
+                <th>Classe</th>
+                <th>Herdeiros Chamados à Sucessão</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>1° Lugar</strong></td><td>Os <strong>descendentes</strong>, em concorrência com o cônjuge ou companheiro sobrevivente (a depender do regime de bens).</td></tr>
+              <tr><td><strong>2° Lugar</strong></td><td>Os <strong>ascendentes</strong>, em concorrência obrigatória com o cônjuge ou companheiro sobrevivente.</td></tr>
+              <tr><td><strong>3° Lugar</strong></td><td>O <strong>cônjuge ou companheiro sobrevivente</strong>, de forma integral e isolada na ausência de descendentes e ascendentes.</td></tr>
+              <tr><td><strong>4° Lugar</strong></td><td>Os <strong>colaterais</strong> até o quarto grau (irmãos, sobrinhos, tios e primos, nesta ordem).</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout jurisprudencia">
+          <div class="callout-title">⚖️ Equiparação do Companheiro (União Estável) — RE 646.121 / STF</div>
+          <p>O Plenário do Supremo Tribunal Federal declarou a inconstitucionalidade do art. 1.790 do CC, que discriminava a união estável. Restou fixada a tese vinculante de que <strong>o companheiro sobrevivente possui direito sucessório idêntico ao do cônjuge</strong>, aplicando-se integralmente a ordem e as regras de concorrência do art. 1.829 ao instituto da União Estável.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>5.1 Regras de Concorrência do Cônjuge com Descendentes</h3>
+        <p>A concorrência do cônjuge supérstite com os descendentes na primeira classe da vocação hereditária é condicionada pelo <strong>regime patrimonial adotado no casamento</strong>. O professor fixa a matéria em 4 hipóteses hermenêuticas fundamentais:</p>
+
+        <h4>① Regime de Comunhão Universal de Bens — NÃO há concorrência</h4>
+        <p>Pelo casamento, o cônjuge já detém o direito de família à <strong>meação (50%) de todo o patrimônio</strong> comum do casal. Como a meação já garante metade de todo o acervo, a lei <strong>afasta a concorrência na herança</strong> sobre os outros 50%, que seguem exclusivamente para os descendentes.</p>
+        
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Regra de Ouro Didática</div>
+          <p><strong>"Onde meia, não herda. Onde herda, não meia."</strong> Esta máxima resume a lógica do art. 1.829, I: se o cônjuge já retira meação sobre determinada massa patrimonial por direito de família, não pode vir a herdar sobre essa mesma porção em concorrência, evitando o enriquecimento sem causa jurídica.</p>
+        </div>
+
+        <h4>② Regime de Separação Obrigatória ou Legal de Bens — NÃO há concorrência</h4>
+        <p>Trata-se do regime imposto cogentemente pela lei (ex: casamento de pessoas maiores de 70 anos — art. 1.641, CC). Os bens não se comunicam por ato de vontade em vida, e o legislador optou por manter o isolamento patrimonial na morte: <strong>o cônjuge não concorre com os descendentes</strong>.</p>
+
+        <h4>③ Regime de Separação Convencional de Bens — HÁ concorrência obrigatória</h4>
+        <p>Ocorre quando os nubentes escolhem a separação total por meio de <strong>pacto antenupcial</strong>. O art. 1.829, I menciona taxativamente a separação <em>obrigatória</em> (legal) como hipótese de exclusão da concorrência. Aplica-se o princípio hermenêutico clássico:</p>
+        <blockquote>
+          <strong>Regra de Interpretação Restritiva:</strong> Normas constituintes de exceção ou restritivas de direitos não admitem aplicação analógica ou interpretação extensiva. Como o legislador silenciou sobre a separação convencional, esta não ingressa na exceção → <strong>haverá concorrência integral da herança</strong>.
+        </blockquote>
+
+        <h4>④ Regime de Comunhão Parcial de Bens — concorrência híbrida</h4>
+        <p>Na comunhão parcial, o patrimônio divide-se em duas massas distintas que recebem tratamentos sucessórios opostos:</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Tratamento Sucessório na Comunhão Parcial</caption>
+            <thead>
+              <tr>
+                <th>Massa Patrimonial Avaliada</th>
+                <th>Direito à Meação (Família)</th>
+                <th>Concorrência na Herança (Sucessões)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Bens Particulares:</strong> Bens anteriores ao casamento ou recebidos por doação/herança pessoal.</td>
+                <td>❌ Não há meação (o cônjuge sobrevivente não é meeiro deles).</td>
+                <td>✅ <strong>Sim, há concorrência.</strong> O cônjuge herda em quinhão igual ao dos filhos sobre estes bens.</td>
+              </tr>
+              <tr>
+                <td><strong>Bens Comuns:</strong> Adquiridos onerosamente na constância da união.</td>
+                <td>✅ Sim, há meação (o cônjuge retira 50% de plano).</td>
+                <td>❌ <strong>Não há concorrência.</strong> Aplica-se a máxima: onde meia, não herda.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Se o autor da herança <strong>não houver deixado nenhum bem particular</strong>, o cônjuge sobrevivente <strong>não concorrerá</strong> de forma alguma com os descendentes, retendo apenas sua meação de direito de família.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div class="rodape" style="text-align:center;font-size:12px;color:var(--text-muted);padding:30px 0 20px;border-top:1px solid var(--border-color);">
+  Material avançado compilado para exames acadêmicos · Faculdade de Direito · Universidade Presbiteriana Mackenzie · Sucessões Legítimas e Testamentárias
+</div>
+
+<!-- SCROLL TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+<script>
+  // Controle de exibição condicional do botão Scroll Top
+  const scrollBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
+    }
+  });
+
+  // Vinculação de rolagem suave para as âncoras do índice analítico
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const offset = 20;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+<script src="highlighter.js"></script>
+</body>
+</html>

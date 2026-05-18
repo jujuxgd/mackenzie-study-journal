@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACSP – Resumo 2º Bimestre | Mackenzie 7º Sem.</title>
+  <style>
+    /* ── Variáveis de Design (Turquesa / Teal Pastel Style) ── */
+    :root {
+      --turquesa-pastel: #2A9D8F;
+      --turquesa-pastel-light: #4CBFA0;
+      --turquesa-pastel-bg: #E6F4F2;
+      --turquesa-pastel-border: #2A9D8F;
+      --bg: #fdfdfd;
+      --text: #1a2e2d;
+      --text-muted: #4a6867;
+      --card-bg: #ffffff;
+      --table-head-text: #ffffff;
+      --border-color: #cce5e2;
+      --tag-bg: #E6F4F2;
+      --callout-bg: #EDF7F5;
+      --shadow: rgba(42, 157, 143, 0.08);
+
+      /* Destaques Semânticos das Caixas (Padrão de Cores Limpas) */
+      --def-border: #2A9D8F; --def-bg: #E6F4F2;
+      --imp-border: #1f7a6e; --imp-bg: #e0f2f1;
+      --exc-border: #f4a4bc; --exc-bg: #FFE5EC;
+      --jur-border: #81c784; --jur-bg: #E8F5E9;
+      --aten-border: #FFD54F; --aten-bg: #FFF8E1;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── HERO HEADER INTEGRAL ── */
+    #hero {
+      background: linear-gradient(135deg, #2A9D8F 0%, #1a6e63 100%);
+      color: #fff;
+      text-align: center;
+      padding: 58px 28px 52px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    #hero .hero-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 14px;
+    }
+    #hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    #hero .hero-sub {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+    #hero .hero-tags {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #hero .hero-tag {
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── NAV ÍNDICE DE DUAS COLUNAS ── */
+    #nav-index {
+      background: var(--card-bg);
+      border: 2px solid var(--turquesa-pastel);
+      max-width: 820px;
+      margin: 32px auto 0 auto;
+      padding: 24px 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px var(--shadow);
+    }
+    #nav-index h3 {
+      color: var(--turquesa-pastel);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+    #nav-index ol {
+      columns: 2;
+      column-gap: 32px;
+      padding-left: 20px;
+    }
+    #nav-index li { margin: 5px 0; break-inside: avoid; font-weight: 600; }
+    #nav-index a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    #nav-index a:hover { color: var(--turquesa-pastel); text-decoration: underline; }
+    
+    @media (max-width: 600px) {
+      #nav-index ol { columns: 1; }
+      #nav-index { margin: 20px 14px 0 14px; padding: 18px 18px; }
+    }
+
+    /* ── MAIN CONTAINER ── */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 40px 60px 40px;
+    }
+
+    /* ── SECTION CARD (MATRIZ DO LAYOUT) ── */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 14px var(--shadow);
+      margin-bottom: 36px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .section-header {
+      background: var(--turquesa-pastel);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-number {
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .section-body {
+      padding: 28px 30px;
+    }
+
+    /* ── SUBSECTION ── */
+    .subsection {
+      margin-bottom: 28px;
+    }
+    .subsection:last-child { margin-bottom: 0; }
+    
+    h3 {
+      color: var(--turquesa-pastel);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--turquesa-pastel-bg);
+    }
+    h4 {
+      color: var(--turquesa-pastel);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 14px 0 6px 0;
+    }
+    p { margin-bottom: 12px; text-align: justify; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── LISTAS ── */
+    ul, ol { padding-left: 22px; margin-bottom: 12px; color: var(--text-muted); }
+    li { margin-bottom: 5px; }
+    li:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUT BOXES SEMÂNTICOS ── */
+    .callout {
+      border-left: 5px solid var(--turquesa-pastel);
+      background: var(--callout-bg);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 18px 0;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: var(--turquesa-pastel);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .callout.definicao { border-color: var(--def-border); background: var(--def-bg); }
+    .callout.imp { border-color: var(--imp-border); background: var(--imp-bg); }
+    .callout.imp .callout-title { color: var(--accent-dark); }
+    .callout.exc { border-color: var(--exc-border); background: var(--exc-bg); }
+    .callout.exc .callout-title { color: #c05070; }
+    .callout.jur { border-color: var(--jur-border); background: var(--jur-bg); }
+    .callout.jur .callout-title { color: #388e3c; }
+    .callout.aten { border-color: var(--aten-border); background: var(--aten-bg); }
+    .callout.aten .callout-title { color: #b07800; }
+
+    /* ── TABELAS ── */
+    .tbl-wrap { overflow-x: auto; margin: 16px 0; border-radius: 6px; border: 1px solid var(--border-color); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead th {
+      background: var(--turquesa-pastel);
+      color: #fff;
+      padding: 12px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.3px;
+    }
+    tbody tr:nth-child(even) { background: var(--turquesa-pastel-bg); }
+    tbody tr:nth-child(odd) { background: var(--card-bg); }
+    tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+    tbody tr:hover { filter: brightness(0.98); }
+
+    /* ── CARD GRIDS INTERNOS ── */
+    .grid2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+    @media(max-width: 600px){ .grid2 { grid-template-columns: 1fr; } }
+    .card {
+      background: #fafbfc;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .card h4 { margin-top: 0; color: var(--turquesa-pastel); font-size: 0.95rem; margin-bottom: 8px; }
+
+    /* ── TAG INLINE / ARTIGOS ── */
+    .tag { display: inline-block; background: var(--tag-bg); color: var(--turquesa-pastel); font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 6px; vertical-align: middle; }
+    .art { font-size: 12.5px; background: var(--turquesa-pastel-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px 14px; margin: 12px 0; color: var(--text-muted); font-style: italic; }
+    .art strong { color: var(--text); font-style: normal; }
+
+    /* ── SCROLL TOP ── */
+    #scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--turquesa-pastel);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 990;
+      transition: background 0.2s;
+    }
+    #scroll-top:hover { background: var(--turquesa-pastel-light); }
+    #scroll-top.visible { display: flex; }
+
+    blockquote { border-left: 3px solid var(--turquesa-pastel); padding: 8px 16px; margin: 16px 0; font-style: italic; color: var(--text-muted); background: #fcfcfc; }
+    strong { color: inherit; }
+    em.accent { color: var(--turquesa-pastel); font-style: normal; font-weight: 700; }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: white; }
+      .section-card { break-inside: avoid; }
+      .container { padding: 20px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO HEADER -->
+<div id="hero">
+  <div class="hero-label">Universidade Presbiteriana Mackenzie · 7º Semestre</div>
+  <h1>Agentes, Contratações e Serviços Públicos</h1>
+  <div class="hero-sub">Profa. Juliana Cristina Luvizotto &nbsp;·&nbsp; Resumo Avançado &nbsp;·&nbsp; 2º Bimestre</div>
+  <div class="hero-tags">
+    <span class="hero-tag">🤝 Concessões (Lei 8.987/95)</span>
+    <span class="hero-tag">💼 Parcerias Público-Privadas</span>
+    <span class="hero-tag">👥 Agentes Públicos</span>
+    <span class="hero-tag">⚖️ Improbidade Administrativa</span>
+  </div>
+</div>
+
+<!-- ÍNDICE ANALÍTICO -->
+<div id="nav-index">
+  <h3>📋 Índice Analítico</h3>
+  <ol>
+    <li><a href="#concessoes">Concessões de Serviço Público (Lei 8.987/95)</a></li>
+    <li><a href="#ppp">Parcerias Público-Privadas – PPP (Lei 11.079/04)</a></li>
+    <li><a href="#agentes">Agentes Públicos – Conceito, Classificação e Regime</a></li>
+    <li><a href="#improbidade">Improbidade Administrativa (Lei 8.429/92)</a></li>
+    <li><a href="#tabela-comp">Tabela Comparativa: Modalidades de Concessão</a></li>
+    <li><a href="#tabela-agentes">Tabela Comparativa: Espécies de Agentes Públicos</a></li>
+  </ol>
+</div>
+
+<div class="container">
+
+  <!-- SEÇÃO 1 — CONCESSÕES -->
+  <div class="section-card" id="concessoes">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Concessões de Serviço Público</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>1.1 · Origem e Contexto Geral</h3>
+        <p>A concessão nasceu originalmente como <strong>contrato de direito privado</strong> — modelo francês em que o empresário executa obra e a explora por tempo determinado para se ressarcir — e evoluiu para <strong>contrato de direito público</strong>, dominado por imperativos de interesse geral.</p>
+        <ul>
+          <li>No Brasil, antes da Reforma do Estado (crise fiscal dos anos 1990), o Estado atuava via <strong>empresas públicas e sociedades de economia mista</strong> (CESP, Eletropaulo, Telebrás, Embratel).</li>
+          <li>A descentralização foi impulsionada pelo <strong>Decreto-lei 200/1967</strong>.</li>
+          <li>Marco legislativo: <strong>Lei 8.987/1995</strong> (Lei Geral de Concessões) + <strong>Lei 9.074/1995</strong> + <strong>Lei 11.079/2004</strong> (PPPs).</li>
+        </ul>
+
+        <div class="callout imp">
+          <div class="callout-title">⚡ Conceito Central</div>
+          Concessão (sentido amplo) = contrato administrativo pelo qual a Administração confere ao particular a <strong>execução remunerada</strong> de serviço público, obra pública ou serviço de que a AP seja usuária, ou cede uso de bem público, pelo prazo e nas condições regulamentares e contratuais. Só pode ser objeto de concessão <strong>serviço próprio do Estado</strong>.
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>1.2 · Espécies de Concessão</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Espécie</th><th>Objeto</th><th>Lei</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Concessão Comum</strong></td><td>Delegação de serviço público</td><td>Lei 8.987/95</td></tr>
+              <tr><td><strong>Concessão Patrocinada</strong></td><td>Serv. público + contraprestação pública</td><td>Lei 11.079/04</td></tr>
+              <tr><td><strong>Concessão Administrativa</strong></td><td>Serviço à AP como beneficiária direta/indireta</td><td>Lei 11.079/04</td></tr>
+              <tr><td><strong>Concessão de Uso de Bem Público</strong></td><td>Uso privativo de bem público</td><td>Geral</td></tr>
+              <tr><td><strong>Concessão de Obra Pública</strong></td><td>Execução de obra + exploração pelo particular</td><td>Lei 8.987/95</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>1.3 · Características da Concessão de Serviço Público (art. 2º, II, Lei 8.987/95)</h3>
+        <ul>
+          <li>Delegação via <strong>licitação na modalidade concorrência</strong>;</li>
+          <li>Sujeito passivo: <strong>pessoa jurídica ou consórcio</strong> (nunca pessoa física);</li>
+          <li>Conta e risco do concessionário;</li>
+          <li>Remuneração: <strong>tarifa</strong> (natureza de preço público) — critério de julgamento: art. 15, I da Lei 8.987/95;</li>
+          <li>Prazo determinado;</li>
+          <li><strong>Admite arbitragem</strong> (art. 23-A da Lei 8.987/95);</li>
+          <li>Regime jurídico <strong>híbrido</strong>: prerrogativas públicas + sujeição a princípios do serviço público.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>1.4 · Formação do Contrato de Concessão</h3>
+        <h4>Planejamento — PMI (Procedimento de Manifestação de Interesse)</h4>
+        <div class="art"><strong>Art. 21, Lei 8.987/95.</strong> Meio pelo qual pessoa física ou jurídica de direito privado manifesta interesse em apresentar subsídios à AP na estruturação de empreendimentos objeto de concessão, permissão, PPP, arrendamento ou concessão de direito real de uso.</div>
+        <ul>
+          <li>Finalidades: transparência, redução de assimetria informacional, auxílio técnico (modelagem), eficiência econômica;</li>
+          <li><strong>Não vincula</strong> o ente público a adotar os estudos;</li>
+          <li>Ressarcimento dos custos: <em>notadamente obrigatório</em> conforme o disposto no art. 21 da Lei 8.987/95;</li>
+          <li>Ofertantes dos estudos podem participar da licitação.</li>
+        </ul>
+
+        <h4>Licitação — Conteúdo Mínimo do Edital (art. 18, Lei 8.987/95)</h4>
+        <ul>
+          <li>Objeto, metas e prazo da concessão;</li>
+          <li>Condições necessárias à prestação adequada do serviço;</li>
+          <li>Receitas tarifárias, alternativas, complementares ou acessórias;</li>
+          <li>Minuta do contrato;</li>
+          <li>Elementos do projeto básico;</li>
+          <li>Indicação dos <strong>bens reversíveis</strong> (incisos X e XI);</li>
+          <li>Responsáveis pelos ônus de desapropriações ou servidões (inciso XII).</li>
+        </ul>
+
+        <h4>Formalização — SPE e Cláusulas Essenciais</h4>
+        <p><strong>SPE (Sociedade de Propósito Específico):</strong> o poder concedente pode exigir que o licitante vencedor (consórcio) constitua SPE antes da celebração do contrato (art. 20).</p>
+        <p>Cláusulas essenciais do contrato (art. 23):</p>
+        <ul>
+          <li>Objeto, área e prazo; modo, forma e condições de prestação;</li>
+          <li>Critérios de qualidade do serviço; revisão e reajuste de tarifas;</li>
+          <li>Direitos e obrigações do poder concedente e do concessionário;</li>
+          <li>Direitos e deveres dos usuários;</li>
+          <li>Fiscalização; bens reversíveis; extinção da concessão; condições de prorrogação.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>1.5 · Poderes do Poder Concedente (art. 29, Lei 8.987/95)</h3>
+        <ul>
+          <li><strong>Poder de inspeção e fiscalização</strong> — arts. 3, 23-VII, 29-I, 30 pú e 31-V;</li>
+          <li><strong>Poder de alteração unilateral</strong> de cláusulas regulamentares (condições de funcionamento, organization do serviço, tarifas) — art. 9, §4, inciso VII do art. 18, inciso V do art. 23, art. 6, §§1 e 2;</li>
+          <li><strong>Encampação</strong>: poder de extinguir a concessão antes do prazo, por interesse público.</li>
+        </ul>
+
+        <div class="callout exc">
+          <div class="callout-title">⚠️ Hipóteses de Inaplicabilidade da Lei 8.987/95</div>
+          <ul>
+            <li><strong>Vedação expressa</strong> na própria lei — art. 41;</li>
+            <li><strong>Lei especial</strong>: telecomunicações e radiofrequência (art. 210, Lei 9.472/97);</li>
+            <li><strong>Subsidiariedade</strong>: concessões aéreas (CBA e Lei 11.182/05).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>1.6 · Fundamentos Constitucionais</h3>
+        <ul>
+          <li><strong>Art. 22, XXVII, CF</strong> — competência privativa da União para legislar sobre normas gerais de licitação;</li>
+          <li><strong>Art. 37, XXI, CF</strong> — licitação pública para obras, serviços, compras e alienações;</li>
+          <li><strong>Art. 175, CF</strong> — incumbência do poder público prestar serviços públicos direta ou indiretamente.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2 — PPP -->
+  <div class="section-card" id="ppp">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Parcerias Público-Privadas — PPP (Lei 11.079/2004)</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="callout imp">
+          <div class="callout-title">⚡ O que é uma PPP?</div>
+          A PPP é um contrato de concessão especial que combina a prestação de serviço público (ou de serviços à AP) com <strong>contraprestação pecuniária do parceiro público</strong>, visando projetos de maior risco e menor atratividade para o setor privado sozinho.
+        </div>
+
+        <h3>2.1 · Vedações — Art. 2º, §4º, Lei 11.079/04</h3>
+        <ul>
+          <li>Contrato com valor <strong>inferior a R$ 10.000.000,00</strong>;</li>
+          <li>Período de prestação <strong>inferior a 5 anos</strong>;</li>
+          <li>Objeto único: fornecimento de mão de obra, equipamentos ou execução de obra pública;</li>
+          <li>Atividades <strong>indelegáveis</strong>: regulação, jurisdição, poder de polícia e outras exclusivas do Estado (art. 4º, III).</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>2.2 · Espécies de PPP</h3>
+        <div class="grid2">
+          <div class="card">
+            <h4>Concessão Patrocinada (art. 2º, §1º)</h4>
+            <ul>
+              <li>Concessão de serviços públicos ou obras públicas (Lei 8.987/95);</li>
+              <li>Adicionalmente à tarifa dos usuários, inclui <strong>contraprestação pecuniária do parceiro público</strong>;</li>
+              <li>Remuneração: <em>tarifa + contraprestação pública</em>.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Concessão Administrativa (art. 2º, §2º)</h4>
+            <ul>
+              <li>Contrato de prestação de serviços;</li>
+              <li><strong>AP é beneficiária direta ou indireta</strong> (não há tarifa de usuários);</li>
+              <li>Pode contemplar execução de obra ou fornecimento/instalação de bens.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>2.3 · Inovações das PPPs em relação à Concessão Comum</h3>
+        <ul>
+          <li>Remuneração: <strong>tarifa + contraprestação pública</strong>;</li>
+          <li><strong>Obrigatoriedade da SPE</strong>;</li>
+          <li>Pagamento público condicionado à <strong>efetiva prestação e à performance</strong> do parceiro privado;</li>
+          <li><strong>Compartilhamento objetivo de riscos</strong> (art. 4º, VI e art. 5º, III) e de ganhos (art. 5º, IX);</li>
+          <li>Garantias prestadas pelo <strong>parceiro público</strong> ao parceiro privado e aos financiadores;</li>
+          <li>Possibilidade de <strong>penalidade à Administração</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>2.4 · Financiamento — Project Finance</h3>
+        <ul>
+          <li>Maior parte via <strong>capital de terceiros</strong>;</li>
+          <li><strong>Project Finance</strong>: recursos lastreados nas receitas do empreendimento;</li>
+          <li><strong>Step-in rights</strong>: autorização para financiadores assumirem temporariamente a SPE para saneamento de irregularidades (Lei 11.079/04, art. 5º — redação pela Lei 13.097/2015);</li>
+          <li>Indenização por extinção antecipada; pagamento por fundos/empresas estatais garantidoras.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>2.5 · Escolha do Parceiro Privado</h3>
+        <p>Modalidades: <strong>concorrência pública</strong> ou <strong>diálogo competitivo</strong> (atualização pela Lei 14.133/21).</p>
+        <p>Critérios de julgamento: menor tarifa; menor contraprestação da AP; menor tarifa + melhor técnica; combinação de menor contraprestação + melhor técnica.</p>
+
+        <div class="callout aten">
+          <div class="callout-title">🔎 Condições para Contratação de PPP</div>
+          <ul>
+            <li>Motivação e autorização legislativa específica (se &gt;70% de remuneração pelo parceiro público);</li>
+            <li>Responsabilidade fiscal (estimativa de impacto orçamentário, compatibilidade com LDO/LOA/LRF, objeto no PPA);</li>
+            <li>Estimativa de fluxo de recursos suficientes;</li>
+            <li>Submissão do edital à consulta pública;</li>
+            <li>Responsabilidade ambiental.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>2.6 · Garantias — Art. 8º, Lei 11.079/04</h3>
+        <div class="art">
+          <strong>Art. 8º —</strong> As obrigações pecuniárias da AP em contrato de PPP poderão ser garantidas mediante:<br>
+          I – vinculação de receitas (ressalvado art. 167, IV, CF); II – fundos especiais; III – seguro-garantia (companhias não controladas pelo Poder Público); IV – organismos internacionais ou IFs privadas; V – fundo garantidor ou empresa estatal criada para essa finalidade; VI – outros mechanisms admitidos in lei.
+        </div>
+        <div class="callout exc">
+          <div class="callout-title">⚠️ Controvérsia Doutrinária</div>
+          <ul>
+            <li><strong>Celso Antônio Bandeira de Mello + Kiyoshi Harada</strong>: inconstitucionalidade do art. 8º (bens públicos são indisponíveis e irrenunciáveis; vinculação de receitas vedada pelo art. 167, IV, CF).</li>
+            <li><strong>Carlos Sundfeld + Gustavo Binenbojm</strong>: constitucionalidade — o regime de execução do FGP é privado; não viola art. 100 da CF; trata de obrigações vincendas, não vencidas.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>2.7 · Remuneração do Parceiro Privado e Aporte</h3>
+        <p>Formas: ordem bancária; cessão de créditos não tributários; outorga de direitos em face da AP; outorga de direitos sobre bens públicos dominicais; outros meios admitidos em lei.</p>
+
+        <h4>Aporte de Recursos (Lei 12.766/12)</h4>
+        <ul>
+          <li>Introduzido para <strong>reduzir a oneração financeira e tributária</strong> dos projetos de PPP;</li>
+          <li>Limite: <strong>5% da receita corrente líquida</strong> dos Estados, DF e Municípios em contratos de PPP;</li>
+          <li>Contrato pode prever aporte para realização de obras e aquisição de <strong>bens reversíveis</strong> (art. 6º, §2º);</li>
+          <li>Valor excluível da base: lucro real/CSLL, PIS/Pasep, COFINS e CPRB (a partir de 1º/1/2015).</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>2.8 · Equilíbrio Econômico-Financeiro e Matriz de Riscos</h3>
+        <p>Fórmula: <strong>"objeto + risco = remuneração"</strong></p>
+        <p>Três espécies de áleas (além de caso fortuito e força maior):</p>
+        <ul>
+          <li><strong>Álea ordinária/empresarial</strong>: flutuações do mercado (suportada pelo particular);</li>
+          <li><strong>Álea administrativa</strong>: alteração unilateral do contrato, fato do príncipe e fato da Administração;</li>
+          <li><strong>Álea econômica</strong>: eventos imprevisíveis e extraordinários que rompem o equilíbrio.</li>
+        </ul>
+        <p><strong>Princípio de alocação de riscos</strong>: o risco deve ser alocado à parte com <strong>maior capacidade de controlar sua ocorrência ou administrar suas consequências</strong>; matriz: probabilidade × potencialidade do dano.</p>
+
+        <h4>2.9 · SPE — Sociedade de Propósito Específico</h4>
+        <ul>
+          <li>Objetivo: <strong>segregação e segurança jurídica</strong>;</li>
+          <li>Pode ser S/A ou Ltda.;</li>
+          <li>Exigências: padrões de <strong>governança corporativa</strong> e contabilidade/demonstrações financeiras padronizadas;</li>
+          <li><strong>Restrições</strong>: AP não pode ser titular da <em>maioria do capital votante</em>; transferência de controle exige <strong>autorização prévia da AP</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3 — AGENTES PÚBLICOS -->
+  <div class="section-card" id="agentes">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>Agentes Públicos — Conceito, Classificação e Regime</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="callout imp">
+          <div class="callout-title">⚡ Conceito (Thiago Marrara / Doutrina)</div>
+          <strong>Agente público</strong> é toda pessoa física que, a qualquer título, exerce função pública em nome do Estado — com ou sem vínculo permanente, com ou sem remuneração, por tempo determinado ou indeterminado — submetendo-se às normas jurídicas de Direito Público que disciplinam as atividades administrativas necessárias à realização dos direitos fundamentais da coletividade.
+        </div>
+        <p><strong>Por que classificar?</strong> Para identificar o regime jurídico aplicável, definir direitos/deveres/responsabilidades, compreender os limites do controle administrativo e judicial, e resolver casos concretos.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>3.1 · Agentes Políticos</h3>
+        <p><strong>Características identificadoras:</strong></p>
+        <ul>
+          <li>Exercício de <strong>funções de cúpula</strong> no Executivo, Legislativo ou Judiciário;</li>
+          <li>Escolha direta pelo povo ou indicação livre por agente eleito (cargo de livre nomeação — art. 14, §3º, CF);</li>
+          <li>Maior abertura à ação discricionária e a influxos ideológicos, políticos, partidários;</li>
+          <li>Submissão a <strong>regime jurídico especial</strong> (CF, Constituições Estaduais, Leis Orgânicas).</li>
+        </ul>
+        <p><strong>Exemplos:</strong> Presidente, Governadores, Prefeitos, Ministros, Secretários, Parlamentares.</p>
+
+        <h4>Regime Jurídico dos Agentes Políticos</h4>
+        <ul>
+          <li>Predominantemente <strong>constitucional</strong>: elegibilidade (art. 14, §§3º e 7º, CF), inviolabilidade civil e penal por opiniões, palavras e votos;</li>
+          <li>Proibições específicas — <strong>art. 54, CF</strong>;</li>
+          <li>Responsabilização diferenciada — <strong>arts. 55 e 85, CF</strong>;</li>
+          <li><strong>Súmula Vinculante 46</strong> + Decreto-Lei 201/1967 (crimes de responsabilidade de prefeitos).</li>
+        </ul>
+
+        <div class="callout exc">
+          <div class="callout-title">⚠️ Atenção — Quem NÃO é Agente Político</div>
+          <strong>Magistrados de carreira, membros do Ministério Público</strong> e demais profissionais do sistema de Justiça <strong>não</strong> são agentes políticos. São servidores públicos com regime jurídico próprio, pois: (i) não possuem legitimidade decorrente de escolha popular direta; (ii) não exercem ampla discricionariedade política; (iii) atuam com dever de neutralidade.
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>3.2 · Colaboradores (Particulares em Colaboração)</h3>
+        <p>Particulares que exercem função pública <strong>sem integrar a estrutura administrativa</strong> do Estado.</p>
+        <ul>
+          <li>Atuação episódica, temporária ou complementar, vinculada a finalidade pública específica;</li>
+          <li>Fundamento: <strong>delegação estatal, convocação legal ou cooperação</strong> com o Poder Público;</li>
+          <li>Enquanto exercem a função, submetem-se ao Direito Público.</li>
+        </ul>
+        <p><strong>Características jurídicas:</strong> inexistência de vínculo estatutário ou empregatício; exercício transitório; sujeição a deveres de probidade, legalidade e finalidade pública; responsabilização administrativa, civil e penal.</p>
+        <p><strong>Exemplos clássicos:</strong> jurados do Tribunal do Júri, mesários e membros de juntas eleitorais, conselheiros honoríficos, particulares com delegação específica de função pública.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>3.3 · Militares</h3>
+        <div class="art"><strong>Fundamento constitucional:</strong> arts. 42 e 142 da CF. Regime marcado por hierarquia, disciplina e disponibilidade permanente.</div>
+        <ul>
+          <li>Vínculo institutional de natureza <strong>estatutária especial</strong>, distinto do regime civil;</li>
+          <li>Deveres e restrições mais intensas que as impostas aos servidores civis;</li>
+          <li>Lógica da <strong>prontidão, comando e obediência</strong>;</li>
+          <li>Limitações a direitos políticos e sindicais; <strong>proibição de greve e sindicalização</strong>; regime disciplinar próprio.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>3.4 · Agentes Administrativos — Subespécies</h3>
+        <p>Prestam serviço público com <strong>vínculo profissional</strong>, sob subordinação hierárquica, executando funções administrativas em sentido estrito. A CF adota <strong>pluralidade de vínculos jurídicos</strong>, afastando a ideia de regime único.</p>
+
+        <h4>a) Servidores Públicos Estatutários</h4>
+        <ul>
+          <li>Ocupam <strong>cargo público</strong>; vínculo institucional (não contratual) com o Estado;</li>
+          <li>Regime: <strong>estatuto legal próprio</strong> (ex.: Lei 8.112/90 para federais);</li>
+          <li>Ingresso: <strong>concurso público</strong> — art. 37, II, CF;</li>
+          <li><strong>Estabilidade</strong>: após 3 anos + avaliação especial de desempenho — art. 41, CF;</li>
+          <li>Regime próprio de previdência (RPPS).</li>
+        </ul>
+        
+        <div class="grid2">
+          <div class="card">
+            <h4>Direitos Principais</h4>
+            <ul>
+              <li>Remuneração fixada em lei</li>
+              <li>Estabilidade (art. 41, CF)</li>
+              <li>Férias, licenças, adicionais</li>
+              <li>Devido processo legal em procedimentos disciplinares</li>
+              <li>RPPS (quando existente)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Deveres Estruturantes</h4>
+            <ul>
+              <li>Legalidade e fidelidade à finalidade pública</li>
+              <li>Eficiência e zelo</li>
+              <li>Hierarquia e disciplina administrativas</li>
+              <li>Vedação ao uso do cargo para fins privados</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>b) Empregados Públicos</h4>
+        <ul>
+          <li>Vínculo <strong>contratual</strong> (emprego público); regime predominantemente pela <strong>CLT</strong>;</li>
+          <li>Ingresso via concurso público (art. 37, II, CF);</li>
+          <li><strong>Sem estabilidade típica</strong> do art. 41, CF;</li>
+          <li>Atuam em: Administração direta, Autarquias, Empresas públicas e SEM;</li>
+          <li>Direitos trabalhistas (art. 7º, CF): salário mínimo, irredutibilidade, férias, 13º, FGTS, jornada, descanso.</li>
+        </ul>
+        <div class="callout aten">
+          <div class="callout-title">🔎 Observação Dogmática</div>
+          Não há estabilidade constitucional para empregados públicos (art. 41, CF), mas o desligamento deve observar <strong>motivação e controle</strong>, especialmente na Administração direta, autárquica e fundacional (STF — Tema 999).
+        </div>
+
+        <h4>c) Cargos em Comissão e Funções de Confiança</h4>
+        <ul>
+          <li>Destinam-se exclusivamente a atribuições de <strong>direção, chefia e assessoramento</strong> (art. 37, V, CF);</li>
+          <li><strong>Funções de confiança</strong>: exercidas <em>exclusivamente por servidores efetivos</em>;</li>
+          <li><strong>Cargos em comissão</strong>: podem ser ocupados por não servidores, respeitados os limites legais;</li>
+          <li>São modelos excepcionais de provimento funcional, não uma espécie autônoma de servidor.</li>
+        </ul>
+
+        <h4>d) Servidores Temporários</h4>
+        <ul>
+          <li>Contrato por prazo determinado;</li>
+          <li>Exige <strong>excepcional interesse público</strong>;</li>
+          <li>Fundamento: <strong>art. 37, IX, CF</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>3.5 · Provimento de Cargo Público</h3>
+        <p>Ato administrativo pelo qual a Administração investe uma pessoa em cargo público. Aplicável principalmente a servidores estatutários (art. 37, CF).</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Forma de Provimento</th><th>Descrição</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Nomeação</strong></td><td>Ato originário de investidura; pressupõe concurso público (regra)</td></tr>
+              <tr><td><strong>Promoção</strong></td><td>Ascensão dentro da carreira</td></tr>
+              <tr><td><strong>Readaptação</strong></td><td>Alteração de atribuições por limitação física/mental do servidor</td></tr>
+              <tr><td><strong>Reversão</strong></td><td>Retorno do servidor aposentado ao serviço ativo</td></tr>
+              <tr><td><strong>Aproveitamento</strong></td><td>Retorno de servidor em disponibilidade</td></tr>
+              <tr><td><strong>Reintegração</strong></td><td>Retorno em razão de invalidação judicial da demissão</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Vacância</strong>: situação jurídica em que o cargo fica desocupado; encerra ou modifica o vínculo anterior; pode gerar novo provimento.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>3.6 · Prerrogativas e Sujeições — Tópicos Centrais</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Tema</th><th>Regra Geral</th><th>Exceção / Detalhe Crítico</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Teto Remuneratório</strong></td><td>Art. 37, XI, CF — subsídio do Min. STF</td><td>Acúmulo lícito: teto por cargo</td></tr>
+              <tr><td><strong>Estabilidade</strong></td><td>Art. 41, CF — após 3 anos + avaliação</td><td>Perda: processo adm., sentença, avaliação insuficiente, excesso de despesa (art. 169)</td></tr>
+              <tr><td><strong>Vitaliciedade</strong></td><td>Magistratura, MP, TCU — após 2 anos</td><td>Perda apenas por sentença judicial transitada em julgado</td></tr>
+              <tr><td><strong>Nepotismo</strong></td><td>Vedado — Súmula Vinculante 13</td><td>Exceção: cargos políticos stricto sensu (STF)</td></tr>
+              <tr><td><strong>Direito de Greve</strong></td><td>Art. 37, VII, CF — nos termos da lei</td><td>STF: MI 670, 708 e 712 — aplicação analógica da Lei 7.783/89 até edição de lei específica</td></tr>
+              <tr><td><strong>Acúmulo de Cargos</strong></td><td>Vedado como regra — art. 37, XVI, CF</td><td>Exceções: dois cargos de professor; professor + técnico/científico; dois cargos de saúde</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout jur">
+          <div class="callout-title">📚 Jurisprudência e Súmulas Relevantes</div>
+          <ul>
+            <li><strong>SV 13</strong>: proibição de nepotismo, inclusive no Executivo, Legislativo e Judiciário;</li>
+            <li><strong>SV 46</strong>: aplicação do Decreto-Lei 201/1967 aos prefeitos e vereadores;</li>
+            <li><strong>MI 670, 708, 712 (STF)</strong>: greve de servidor público — aplicação analógica da Lei 7.783/89;</li>
+            <li><strong>Tema 999 STF</strong>: empregado público de empresa estatal tem direito à motivação da dispensa;</li>
+            <li><strong>RE 589.998 (STF)</strong>: Correios — necessidade de motivação para dispensa de empregado público.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4 — IMPROBIDADE -->
+  <div class="section-card" id="improbidade">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Improbidade Administrativa — Lei 8.429/92</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="callout imp">
+          <div class="callout-title">⚡ Base Constitucional</div>
+          <strong>Art. 37, §4º, CF</strong>: Os atos de improbidade administrativa importarão a suspensão dos direitos políticos, a perda da função pública, a indisponibilidade de bens e o ressarcimento ao erário, na forma e gradação previstas em lei, <em>sem prejuízo da ação penal cabível</em>.
+        </div>
+
+        <h3>4.1 · Características Fundamentais</h3>
+        <ul>
+          <li><strong>Natureza: ação judicial</strong> (não sanção administrativa direta) — o MP verifica a irregularidade, propõe ação civil pública de improbidade; <strong>é o juiz que condena</strong>;</li>
+          <li>Desde a <strong>reforma de 2021 (Lei 14.230/21)</strong>: só se caracteriza por conduta <strong>dolosa</strong> (elemento subjetivo exigido) — antes, o dano ao erário (art. 10) admitia também culpa;</li>
+          <li>A condenação exige <strong>decisão judicial transitada em julgado</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>4.2 · Atos de Improbidade (Falta Grave)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Categoria de Ato</th><th>Artigo</th><th>Conteúdo e Núcleo do Tipo</th><th>Elemento Subjetivo Exigido</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Enriquecimento Ilícito</strong></td>
+                <td>Art. 9º</td>
+                <td>Auferir vantagem patrimonial indevida em razão do exercício da função</td>
+                <td>Dolo Específico</td>
+              </tr>
+              <tr>
+                <td><strong>Dano ao Erário</strong></td>
+                <td>Art. 10</td>
+                <td>Ação/omissão que cause perda patrimonial efetiva ao Poder Público</td>
+                <td>Dolo (Excluída a modalidade Culposa)</td>
+              </tr>
+              <tr>
+                <td><strong>Violação de Princípios da AP</strong></td>
+                <td>Art. 11</td>
+                <td>Atos que violem deveres de honestidade, legalidade, lealdade e imparcialidade</td>
+                <td>Dolo Específico (Rol Taxativo pós-reforma)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>4.3 · Sanções Aplicáveis (art. 12, Lei 8.429/92 + art. 37, §4º, CF)</h3>
+        <p>As penalidades variam de acordo com a gravidade do ato, englobando de forma isolada ou cumulativa:</p>
+        <ul>
+          <li>Suspensão dos direitos políticos (prazos unificados e ampliados pela reforma).</li>
+          <li>Perda da função pública (alcança o vínculo atual do agente ao tempo do trânsito em julgado).</li>
+          <li>Indisponibilidade de bens (medida cautelar restrita ao dano efetivo, vedado sobre a multa).</li>
+          <li>Ressarcimento ao erário; proibição de contratar com o Poder Público ou receber benefícios fiscais.</li>
+          <li>Multa civil (calculada sobre o valor do dano ou do enriquecimento).</li>
+        </ul>
+
+        <h4>4.4 · Independência de Instâncias e LINDB</h4>
+        <ul>
+          <li>As instâncias <strong>administrativa, civil e penal são independentes</strong>; absolvição criminal só afasta as demais quando nega a autoria ou a materialidade do fato.</li>
+          <li><strong>LINDB (Lei 13.655/18) — arts. 20-30:</strong> Impõe ao julgador fundamentação baseada em consequências práticas reais, vedando decisões motivadas unicamente por valores abstratos, blindando a atuação regular do agente público de boa-fé.</li>
+        </ul>
+
+        <div class="callout jur">
+          <div class="callout-title">📚 Ponto de Atenção Jurisprudencial — Reforma de 2021 (Lei 14.230/21)</div>
+          <ul>
+            <li>Exigência de <strong>dolo específico</strong> em todos os tipos de improbidade administrativa.</li>
+            <li>Legitimidade ativa exclusiva do <strong>Ministério Público</strong> para propor a ação (O STF na ADI 7236 retirou em definitivo a legitimidade das pessoas jurídicas lesadas).</li>
+            <li>Prazo prescricional unificado: <strong>8 anos</strong> a partir da ocorrência do fato ou da cessação da permanência.</li>
+            <li>Retroatividade in mitius: O STF firmou que a revogação da modalidade culposa retroage para beneficiar processos em curso sem trânsito em julgado.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5 — TABELA COMPARATIVA CONCESSÕES -->
+  <div class="section-card" id="tabela-comp">
+    <div class="section-header">
+      <div class="section-number">★</div>
+      <h2>Tabela Comparativa: Modalidades de Concessão</h2>
+    </div>
+    <div class="section-body">
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Critério Vetor</th>
+              <th>Concessão Comum (Lei 8.987/95)</th>
+              <th>Concessão Patrocinada (Lei 11.079/04)</th>
+              <th>Concessão Administrativa (Lei 11.079/04)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Remuneração</strong></td>
+              <td>Tarifa paga diretamente pelos usuários.</td>
+              <td>Tarifa dos usuários + contraprestação pública pecuniária.</td>
+              <td>Contraprestação pública integral (sem tarifa de usuário).</td>
+            </tr>
+            <tr>
+              <td><strong>Quem paga a conta</strong></td>
+              <td>O Usuário do serviço.</td>
+              <td>O Usuário + o Estado (Poder Público).</td>
+              <td>O Estado (Administração Pública como usuária).</td>
+            </tr>
+            <tr>
+              <td><strong>Valor mínimo contratual</strong></td>
+              <td>Não há limite fixado em lei.</td>
+              <td>Mínimo de R$ 10 milhões.</td>
+              <td>Mínimo de R$ 10 milhões.</td>
+            </tr>
+            <tr>
+              <td><strong>Prazo de vigência</strong></td>
+              <td>Não há limite mínimo em lei.</td>
+              <td>De 5 a 35 anos (incluindo prorrogações).</td>
+              <td>De 5 a 35 anos (incluindo prorrogações).</td>
+            </tr>
+            <tr>
+              <td><strong>Sociedade de Propósito Específico</strong></td>
+              <td>Facultativa (a critério do edital).</td>
+              <td>Obrigatória a constituição antes do contrato.</td>
+              <td>Obrigatória a constituição antes do contrato.</td>
+            </tr>
+            <tr>
+              <td><strong>Matriz de Riscos</strong></td>
+              <td>Risco ordinário alocado ao particular.</td>
+              <td>Compartilhamento objetivo de riscos (art. 5º, III).</td>
+              <td>Compartilhamento objetivo de riscos (art. 5º, III).</td>
+            </tr>
+            <tr>
+              <td><strong>Modalidade Licitatória</strong></td>
+              <td>Concorrência técnica ou preço.</td>
+              <td>Concorrência ou Diálogo Competitivo.</td>
+              <td>Concorrência ou Diálogo Competitivo.</td>
+            </tr>
+            <tr>
+              <td><strong>Garantias do Ente Público</strong></td>
+              <td>Não previstas na lei geral.</td>
+              <td>Sim, fundos garantidores e vinculações (art. 8º).</td>
+              <td>Sim, fundos garantidores e vinculações (art. 8º).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 6 — TABELA COMPARATIVA AGENTES -->
+  <div class="section-card" id="tabela-agentes">
+    <div class="section-header">
+      <div class="section-number">★</div>
+      <h2>Tabela Comparativa: Espécies de Agentes Públicos</h2>
+    </div>
+    <div class="section-body">
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Espécie de Agente</th>
+              <th>Natureza do Vínculo</th>
+              <th>Regime Jurídico</th>
+              <th>Estabilidade / Vitaliciedade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Agente Político</strong></td>
+              <td>Vínculo Político / Mandato</td>
+              <td>Constitucional especial</td>
+              <td>Nenhuma (restrito ao tempo do mandato).</td>
+            </tr>
+            <tr>
+              <td><strong>Servidor Estatutário</strong></td>
+              <td>Vínculo Institucional (Estatuto)</td>
+              <td>Regime estatutário próprio</td>
+              <td>Estabilidade constitucional (art. 41) após 3 anos.</td>
+            </tr>
+            <tr>
+              <td><strong>Empregado Público</strong></td>
+              <td>Vínculo Contratual Trabalhista</td>
+              <td>CLT + Princípios públicos</td>
+              <td>Sem estabilidade típica; exige motivação p/ dispensa.</td>
+            </tr>
+            <tr>
+              <td><strong>Cargo em Comissão</strong></td>
+              <td>Institucional de Confiança</td>
+              <td>Estatutário (Livre Nomeação)</td>
+              <td>Nenhuma (Livre exoneração ad nutum).</td>
+            </tr>
+            <tr>
+              <td><strong>Servidor Temporário</strong></td>
+              <td>Contratual por Prazo Certo</td>
+              <td>Lei especial (art. 37, IX)</td>
+              <td>Nenhuma (Vínculo extingue-se com o prazo).</td>
+            </tr>
+            <tr>
+              <td><strong>Militar</strong></td>
+              <td>Estatutário Militar Especial</td>
+              <td>Regime militar próprio</td>
+              <td>Estabilidade especial conforme regulamentos.</td>
+            </tr>
+            <tr>
+              <td><strong>Colaborador</strong></td>
+              <td>Sem vínculo profissional</td>
+              <td>Direito Público na função</td>
+              <td>Não aplicável (Atuação transitória/honorífica).</td>
+            </tr>
+            <tr>
+              <td><strong>Vitalício</strong></td>
+              <td>Institucional de Carreira</td>
+              <td>Estatutário especial superior</td>
+              <td>Vitaliciedade (Perda de cargo só por sentença judicial).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout exc">
+        <div class="callout-title">⚠️ Diferença Crítica: Estabilidade vs. Vitaliciedade</div>
+        <ul>
+          <li><strong>Estabilidade (art. 41, CF):</strong> Adquirida após 3 anos de efetivo exercício + aprovação em avaliação especial de desempenho. O servidor estável pode perder o cargo em razão de processo administrativo disciplinar (PAD) com ampla defesa, insuficiência em avaliação periódica, sentença judicial ou excesso de despesas com pessoal (art. 169).</li>
+          <li><strong>Vitaliciedade:</strong> Prerrogativa de magistrados, membros do Ministério Público e Ministros de Tribunais de Contas. Adquirida após 2 anos de exercício nas carreiras iniciais de concurso (ou da posse no quinto constitucional). **O agente vitalício só perde o cargo por sentença judicial transitada em julgado**, sendo imune à demissão via PAD ou cortes orçamentários.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div style="text-align:center; color: var(--text-muted); font-size: 12px; margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+  ACSP · Direito Administrativo · Faculdade de Direito · Universidade Presbiteriana Mackenzie
+</div>
+<script src="highlighter.js"></script>
+</body>
+</html>

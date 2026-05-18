@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imunidades Tributárias — Fichamento Completo | Mackenzie</title>
+  <style>
+    /* ── Variáveis de Design (Purple / Lilás Pastel Style) ────── */
+    :root {
+      --purple-pastel: #8A6EA7;
+      --purple-pastel-light: #A58CBF;
+      --purple-pastel-bg: #F6F3FA;
+      --purple-pastel-border: #8A6EA7;
+      --bg: #fdfdfd;
+      --text: #2b2b2b;
+      --text-muted: #555;
+      --card-bg: #ffffff;
+      --table-head-text: #ffffff;
+      --border-color: #e5e5e5;
+      --tag-bg: #F6F3FA;
+      --callout-bg: #F8F5FC;
+      --shadow: rgba(138, 110, 167, 0.08);
+
+      /* Destaques Semânticos das Caixas (Padrão Original das Aulas) */
+      --def-border: #8A6EA7; --def-bg: #F6F3FA;
+      --imp-border: #8A6EA7; --imp-bg: #F6F3FA;
+      --exc-border: #D9768A; --exc-bg: #FFE5EC;
+      --jur-border: #5A9E6F; --jur-bg: #E8F5E9;
+      --lei-border: #5B9BD5; --lei-bg: #E8F4FD;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── HERO HEADER INTEGRAL ── */
+    #hero {
+      background: linear-gradient(135deg, #8A6EA7 0%, #5C4575 100%);
+      color: #fff;
+      text-align: center;
+      padding: 58px 28px 52px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    #hero .hero-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 14px;
+    }
+    #hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    #hero .hero-sub {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+    #hero .hero-tags {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #hero .hero-tag {
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── NAV ÍNDICE DE DUAS COLUNAS ── */
+    #nav-index {
+      background: var(--card-bg);
+      border: 2px solid var(--purple-pastel);
+      max-width: 820px;
+      margin: 32px auto 0 auto;
+      padding: 24px 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(138, 110, 167, 0.1);
+    }
+    #nav-index h3 {
+      color: var(--purple-pastel);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+    #nav-index ol {
+      columns: 2;
+      column-gap: 32px;
+      padding-left: 20px;
+    }
+    #nav-index li { margin: 5px 0; break-inside: avoid; font-weight: 600; }
+    #nav-index a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    #nav-index a:hover { color: var(--purple-pastel); text-decoration: underline; }
+    
+    @media (max-width: 600px) {
+      #nav-index ol { columns: 1; }
+      #nav-index { margin: 20px 14px 0 14px; padding: 18px 18px; }
+    }
+
+    /* ── MAIN CONTAINER ── */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 40px 60px 40px;
+    }
+
+    /* ── SECTION CARD ── */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 14px var(--shadow);
+      margin-bottom: 36px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .section-header {
+      background: var(--purple-pastel);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-number {
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .section-body {
+      padding: 28px 30px;
+    }
+
+    /* ── SUBSECTION ── */
+    .subsection {
+      margin-bottom: 28px;
+    }
+    .subsection:last-child { margin-bottom: 0; }
+    
+    h3 {
+      color: var(--purple-pastel);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--purple-pastel-bg);
+    }
+    h4 {
+      color: var(--purple-pastel);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 14px 0 6px 0;
+    }
+    p { margin-bottom: 12px; text-align: justify; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── LISTAS ── */
+    ul, ol { padding-left: 22px; margin-bottom: 12px; color: var(--text-muted); }
+    li { margin-bottom: 5px; }
+    li:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUT BOXES SEMÂNTICOS ── */
+    .callout {
+      border-left: 5px solid var(--purple-pastel);
+      background: var(--callout-bg);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 18px 0;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: var(--purple-pastel);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .callout.definicao { border-color: var(--def-border); background: var(--def-bg); }
+    .callout.importante { border-color: var(--imp-border); background: var(--imp-bg); }
+    .callout.excecao { border-color: var(--exc-border); background: var(--exc-bg); }
+    .callout.excecao .callout-title { color: #b84d62; }
+    .callout.excecao p, .callout.excecao li { color: #b84d62; }
+    .callout.jurisprudencia { border-color: var(--jur-border); background: var(--jur-bg); }
+    .callout.jurisprudencia .callout-title { color: #3a7a52; }
+    .callout.jurisprudencia p { color: #2e6040; font-style: italic; }
+    .callout.lei { border-color: var(--lei-border); background: var(--lei-bg); }
+    .callout.lei .callout-title { color: #2e6da4; }
+    .callout.lei p { color: #1e4b73; font-size: 13.5px; }
+
+    /* ── TABELAS ── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 6px; border: 1px solid var(--border-color); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    table caption { font-size: 12px; font-weight: 700; color: var(--purple-pastel); text-align: left; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .5px; }
+    thead th {
+      background: var(--purple-pastel);
+      color: #fff;
+      padding: 12px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.3px;
+    }
+    tbody tr:nth-child(even) { background: var(--purple-pastel-bg); }
+    tbody tr:nth-child(odd) { background: var(--card-bg); }
+    tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+    tbody tr:hover { filter: brightness(0.98); }
+
+    /* ── TAGS INLINE ── */
+    .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .5px; padding: 2px 9px; border-radius: 20px; margin-left: 6px; vertical-align: middle; }
+    .tag-art  { background: #E8E0F5; color: #6b4caf; }
+    .tag-stf  { background: #D4EAF5; color: #2e6da4; }
+    .tag-sum  { background: #D4F0DE; color: #2e7a4f; }
+    .tag-ec   { background: #FCE9D4; color: #b06020; }
+
+    /* ── SCROLL TOP ── */
+    #scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--purple-pastel);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 990;
+      transition: background 0.2s;
+    }
+    #scroll-top:hover { background: var(--purple-pastel-light); }
+    #scroll-top.visible { display: flex; }
+
+    blockquote { border-left: 3px solid var(--purple-pastel); padding: 8px 16px; margin: 16px 0; font-style: italic; color: var(--text-muted); background: #fcfcfc; }
+    strong { color: #5c3f78; font-weight: 600; }
+    em.accent { color: var(--purple-pastel); font-style: normal; font-weight: 700; }
+
+    /* ── RESPONSIVO / PRINT ── */
+    @media (max-width: 700px) {
+      .container { padding: 18px 14px 40px 14px; }
+      #nav-index { margin: 16px 14px 0 14px; }
+      .section-body { padding: 18px 16px; }
+    }
+    @media print {
+      body { background: white; }
+      .section-card { break-inside: avoid; }
+      .container { padding: 20px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO HEADER -->
+<div id="hero">
+  <div class="hero-label">Universidade Presbiteriana Mackenzie · Faculdade de Direito</div>
+  <h1>Competência Tributária &amp; Imunidades</h1>
+  <div class="hero-sub">Doutrina: Leandro Paulsen (Curso de Direito Tributário Completo) &nbsp;·&nbsp; Jurisprudência do STF</div>
+  <div class="hero-tags">
+    <span class="hero-tag">📜 Art. 150 CRFB/88</span>
+    <span class="hero-tag">🏛️ CTN Arts. 6°–8° e 14</span>
+    <span class="hero-tag">⚡ Reforma EC 132/2023</span>
+    <span class="hero-tag">⚖️ Repercussão Geral</span>
+  </div>
+</div>
+
+<!-- ÍNDICE -->
+<div id="nav-index">
+  <h3>📋 Índice Analítico</h3>
+  <ol>
+    <li><a href="#sec1">Competência Tributária — Noções Gerais e Características</a></li>
+    <li><a href="#sec2">Funções Fiscais × Competência Tributária (Análise Comparativa)</a></li>
+    <li><a href="#sec3">Espécies de Competência (Privativa, Compartilhada, Comum e Residual)</a></li>
+    <li><a href="#sec4">Conflitos de Competência: Bitributação e Bis in Idem</a></li>
+    <li><a href="#sec5">Contribuições Especiais — Teoria Geral e Referibilidade</a></li>
+    <li><a href="#sec6">Subespécies de Contribuições (Sociais, CIDEs e Categorias)</a></li>
+    <li><a href="#sec7">Imunidades Tributárias — Teoria Geral e Hermenêutica</a></li>
+    <li><a href="#sec8">Imunidade Recíproca (Art. 150, VI, "a" — Abrangência Subjetiva)</a></li>
+    <li><a href="#sec9">Imunidade dos Templos de Qualquer Culto (Art. 150, VI, "b")</a></li>
+    <li><a href="#sec10">Partidos, Sindicatos de Trabalhadores, Educação e Assistência</a></li>
+    <li><a href="#sec11">Imunidades como Garantias Fundamentais e Cláusulas Pétreas</a></li>
+    <li><a href="#sec12">Obrigações Acessórias, Contribuinte de Fato e Imunidade Objetiva</a></li>
+  </ol>
+</div>
+
+<div class="container">
+
+  <!-- SEÇÃO 1 — COMPETÊNCIA TRIBUTÁRIA NOÇÕES GERAIS -->
+  <div class="section-card" id="sec1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Competência Tributária — Noções Gerais e Regras do CTN</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>1.1 Conceito e Base Constitucional</h3>
+        <p>A <strong>competência tributária</strong> é o poder constitucionalmente outorgado aos entes políticos (União, Estados, Distrito Federal e Municípios) para <strong>instituir tributos</strong>. As normas que delimitam esse poder constam nos <strong>arts. 145 a 149-A da CRFB/88</strong> e formam um rol <strong>taxativo (<em>numerus clausus</em>)</strong>: somente poderão ser criados tributos reconduzíveis a uma das normas de competência, sob pena de inconstitucionalidade.</p>
+        
+        <blockquote class="citacao-doutrina">
+          <div class="autor">Leandro Paulsen</div>
+          <p>"A competência tributária corresponde à parcela do poder fiscal de cada ente federado, consagrada nos arts. 145 a 149-A, 153 a 156-B e 195 da Constituição, que autoriza e legitima os entes a instituir os tributos ali previstos."</p>
+        </blockquote>
+      </div>
+
+      <div class="subsection">
+        <h3>1.2 Características Essenciais (CTN, arts. 6°–8°)</h3>
+        <ul>
+          <li><strong>Competência legislativa plena</strong> <span class="tag tag-art">Art. 6° CTN</span> — Abrange a possibilidade de legislar instituindo o tributo e regulamentando-o de forma subsequente. A lei é veículo obrigatório de criação.</li>
+          <li><strong>Indelegabilidade</strong> <span class="tag tag-art">Art. 7° CTN</span> — A competência tributária <em>em si</em> (poder de legislar e criar o tributo) é intransferível. A União não pode, por exemplo, delegar aos Estados a instituição do IR. Confundir com as <em>funções fiscais</em>, estas sim delegáveis.</li>
+          <li><strong>Não decadência / irrenunciabilidade</strong> <span class="tag tag-art">Art. 8° CTN</span> — O não exercício da competência não implica perda do poder de tributar nem transfere a competência a outro ente federativo. Não existe prazo decadencial para o ente exercer sua competência.</li>
+        </ul>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Atenção de Prova — Indelegabilidade vs. Delegabilidade</div>
+          <p>A <strong>competência tributária</strong> (poder de instituir tributos por lei) é rigorosamente <strong>Subordinada à indelegabilidade</strong>. Em contrapartida, as <strong>funções fiscais</strong> — arrecadar, fiscalizar, executar leis e realizar lançamentos — são plenamente <strong>delegáveis</strong>, pois implicam apenas transferência da capacidade tributária ativa (posição de credor) ou de atribuições estritamente administrativas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2 — FUNÇÕES FISCAIS -->
+  <div class="section-card" id="sec2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Funções Fiscais × Competência Tributária</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>Segundo o magistério de <strong>Bernardo Ribeiro de Moraes</strong> (citado por Paulsen), deve-se distinguir com rigor técnico as esferas de atuação:</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Competência Tributária × Funções Fiscais</caption>
+            <thead>
+              <tr>
+                <th>Vetor de Análise</th>
+                <th>Competência Tributária</th>
+                <th>Funções Fiscais (Capacidade Ativa)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Natureza Jurídica</strong></td>
+                <td>Parcela do poder fiscal soberano (Político)</td>
+                <td>Dever de administração, arrecadação e execução</td>
+              </tr>
+              <tr>
+                <td><strong>Vinculação Estatal</strong></td>
+                <td>Poder Legislativo (Inovação no Ordenamento)</td>
+                <td>Poder Executivo (Atos Administrativos Vinculados)</td>
+              </tr>
+              <tr>
+                <td><strong>Delegabilidade</strong></td>
+                <td><strong>Não</strong> — Absolutamente indelegável (art. 7° CTN)</td>
+                <td><strong>Sim</strong> — Capacidade de fiscalizar, lançar e arrecadar</td>
+              </tr>
+              <tr>
+                <td><strong>Efeito Operacional</strong></td>
+                <td>Vedado (Invasão de competência / Inconstitucionalidade)</td>
+                <td>Transfere a titularidade ativa ou atribuições de gestão</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>2.1 Exemplos Práticos de Delegação de Funções Fiscais</h3>
+        <ul>
+          <li><strong>INSS:</strong> Até o advento da <strong>Lei n° 11.098/2005</strong>, era o sujeito ativo das contribuições previdenciárias, figurando como autarquia federal arrecadadora. A Lei n° 11.457/2007 centralizou essa função executiva na Receita Federal do Brasil.</li>
+          <li><strong>IBAMA:</strong> A <strong>Lei n° 10.165/2000</strong> colocou a autarquia ambiental como sujeito ativo e arrecadador da <strong>Taxa de Controle e Fiscalização Ambiental (TCFA)</strong>.</li>
+          <li><strong>Convênio de ITR com Municípios</strong> <span class="tag tag-art">Art. 153, §4°, III</span> — Os Municípios podem optar por fiscalizar e cobrar o ITR mediante <strong>convênio com a União</strong>, hipótese em que farão jus a <strong>100% do produto da arrecadação</strong> (em vez dos 50% ordinários), desde que não implante redução ilegal do imposto.</li>
+        </ul>
+
+        <div class="callout excecao">
+          <div class="callout-title">🚫 Exceção de Delegação — Entidades Privadas</div>
+          <p>O <strong>§3° do art. 7° do CTN</strong> dispõe expressamente que <em>"não constitui delegação de competência o cometimento, a pessoas de direito privado, do encargo ou da função de arrecadar tributos"</em>. O repasse da função de arrecadação a redes bancárias conveniadas constitui mero credenciamento operacional, não delegação.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3 — ESPÉCIES DE COMPETÊNCIA -->
+  <div class="section-card" id="sec3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>Espécies de Competência Tributária</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>3.1 Competência Privativa ou Exclusiva</h3>
+        <p>Atribuída pela Carta Magna a <strong>um único ente político</strong> determinado. Confira a matriz de distribuição de impostos e contribuições:</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Impostos por Ente — Competência Privativa</caption>
+            <thead>
+              <tr>
+                <th>Ente Federativo</th>
+                <th>Impostos de Competência Privativa</th>
+                <th>Base Constitucional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>União</strong></td>
+                <td>II, IE, IR, IPI, IOF, ITR, IGF e IS (Imposto Seletivo)</td>
+                <td>Art. 153, I a VIII</td>
+              </tr>
+              <tr>
+                <td><strong>Estados e DF</strong></td>
+                <td>ITCMD, ICMS, IPVA</td>
+                <td>Art. 155, I a III</td>
+              </tr>
+              <tr>
+                <td><strong>Municípios e DF</strong></td>
+                <td>IPTU, ITBI, ISS</td>
+                <td>Art. 156, I a III</td>
+              </tr>
+              <tr>
+                <td><strong>União (Exclusivo)</strong></td>
+                <td>Contribuições Especiais (Sociais, CIDE, Interesses Profissionais)</td>
+                <td>Art. 149, caput</td>
+              </tr>
+              <tr>
+                <td><strong>Municípios e DF</strong></td>
+                <td>COSIP / CIP (Contribuição de Iluminação Pública)</td>
+                <td>Art. 149-A</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>3.2 Competência Compartilhada (Reforma Tributária)</h3>
+        <p>Novidade estrutural inserida pela <strong>EC n° 132/2023</strong>: o <strong>IBS (Imposto sobre Bens e Serviços)</strong> é qualificado como tributo de competência compartilhada entre <strong>Estados, DF e Municípios</strong>, com instituição uniforme por lei complementar e administração integrada via Comitê Gestor paritário <span class="tag tag-art">Art. 156-B</span>.</p>
+
+        <h3>3.3 Competência Comum</h3>
+        <p>Atribuída simultaneamente a <strong>todos os entes políticos</strong> quanto a tributos vinculados por lei a uma atividade estatal contraprestacional direta:</p>
+        <ul>
+          <li><strong>Taxas:</strong> Pelo exercício regular do poder de polícia <em>ou</em> pela prestação de serviços públicos específicos e divisíveis <span class="tag tag-art">Art. 145, II</span>.</li>
+          <li><strong>Contribuição de Melhoria:</strong> Decorrente de obras públicas que importem em efetiva valorização imobiliária dos imóveis lindeiros.</li>
+        </ul>
+
+        <h3>3.4 Competência Residual</h3>
+        <p>Reservada <strong>exclusivamente à União Federal</strong> para instituir novas fontes de custeio sobre <em class="accent">bases econômicas inéditas</em>. Atua em dois campos:</p>
+        <ul>
+          <li><strong>Impostos Residuais:</strong> <span class="tag tag-art">Art. 154, I, CRFB/88</span>.</li>
+          <li><strong>Contribuições de Seguridade Social Residuais:</strong> <span class="tag tag-art">Art. 195, §4°, CRFB/88</span>.</li>
+        </ul>
+
+        <div class="callout importante">
+          <div class="callout-title">📌 Requisitos Cumulativos da Competência Residual</div>
+          <ol>
+            <li><strong>Lei Complementar:</strong> Veículo legislativo obrigatório (vedada Medida Provisória).</li>
+            <li><strong>Não Cumulatividade:</strong> Exige-se mecanismo de compensação em cadeia.</li>
+            <li><strong>Ineditismo da Base (Vedação de Bis in Idem):</strong> Fato gerador e base de cálculo devem ser totalmente distintos dos tributos já previstos e discriminados na CF.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4 — BITRIBUTAÇÃO E BIS IN IDEM -->
+  <div class="section-card" id="sec4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Conflitos de Competência: Bitributação e Bis in Idem</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>A superposição de cobranças tributárias sobre a mesma riqueza exige distinção rigorosa quanto aos sujeitos ativos envolvidos:</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Distinção entre os Institutos de Conflito</caption>
+            <thead>
+              <tr>
+                <th>Fenômeno Conflituoso</th>
+                <th>Definição Jurídica</th>
+                <th>Cenário Prático / Exemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Bitributação</strong></td>
+                <td><strong>Dois ou mais entes políticos distintos</strong> invadem a mesma base econômica e exigem tributos sobre o mesmo fato gerador.</td>
+                <td>Estado exige ICMS e o Município exige ISS sobre a mesmíssima operação de software.</td>
+              </tr>
+              <tr>
+                <td><strong><em>Bis in Idem</em></strong></td>
+                <td><strong>Um único ente político</strong> edita leis diferentes para tributar duas vezes o mesmo fato gerador utilizando a mesma base.</td>
+                <td>A União institui o Imposto de Renda e a CSLL sobre o lucro das pessoas jurídicas.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>4.1 Hermenêutica Constitucional sobre a Dupla Tributação</h3>
+        <p>A doutrina de Paulsen alerta: <strong>não existe no texto constitucional uma vedação genérica e absoluta</strong> contra a bitributação ou o <em>bis in idem</em>. O que existem são cercas de competência distribuídas que, de forma indireta, obstam tais práticas, salvo exceções expressas:</p>
+        <ul>
+          <li><strong>Imposto Extraordinário de Guerra (IEG):</strong> <span class="tag tag-art">Art. 154, II</span> — A União pode instituir o IEG na iminência ou constância de guerra externa, podendo este recair sobre bases já tributadas por Estados e Municípios (Bitributação expressamente autorizada pela CF).</li>
+          <li><strong>Convivência entre Impostos e Contribuições:</strong> É plenamente constitucional a coexistência de bases idênticas para impostos e contribuições (ex: IR e CSLL), visto que as contribuições se diferenciam finalisticamente pela destinação vinculada de seus recursos, e não pelo fato gerador.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5 — CONTRIBUIÇÕES ESPECIAIS TEORIA GERAL -->
+  <div class="section-card" id="sec5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Contribuições Especiais — Teoria Geral e Referibilidade</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>5.1 Conceito e Distinção de Espécie</h3>
+        <p>As <strong>contribuições especiais</strong> compõem a espécie tributária autônoma fundamentada no <strong>art. 149 da CRFB/88</strong>. São tributos de finalidade vinculada instituídos para dar suporte a políticas de Estado voltadas a determinados grupos sociais ou econômicos.</p>
+        <p>Paulsen esclarece um erro comum de bancas de concurso: a denominação antiga de <em>"contribuições parafiscais"</em> está superada, e o termo <em>"contribuições sociais"</em> designa meramente uma das subespécies, e não o gênero tributário completo.</p>
+
+        <div class="callout lei">
+          <div class="callout-title">📋 O Vetor da Referibilidade de Grupo</div>
+          <p>Diferente dos impostos (não vinculados) e das taxas (vinculadas a um serviço individualizado), as contribuições especiais estruturam-se sobre a <strong>referibilidade</strong>: o tributo é direcionado a um grupo econômico ou social que possui relação de pertinência com a atuação do Estado, prescindindo de contraprestação ou benefício direto individual.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>5.2 Destinação do Produto da Arrecadação e Desvio de Finalidade</h3>
+        <p>Nas contribuições do art. 149, o elemento qualificador do tributo é a **destinação legal** do seu produto. A arrecadação deve, obrigatoriamente, custear a finalidade que legitimou sua criação legislativa. O desvio dessas verbas pelo Poder Executivo para finalidades diversas acarreta a <strong>invalidade superveniente da cobrança</strong>, por esvaziamento do suporte constitucional normativo.</p>
+
+        <div class="callout jurisprudencia">
+          <div class="callout-title">⚖️ Flexibilização da Referibilidade nas CIDEs — STF</div>
+          <p>No julgamento do <strong>RE 396.266 (Caso SEBRAE)</strong> e do <strong>RE 449.233</strong>, o Plenário do STF fixou o entendimento de que as Contribuições de Intervenção no Domínio Econômico (CIDEs) dispensam lei complementar para sua instituição e <strong>não exigem uma vinculação direta ou benefício imediato</strong> entre o sujeito passivo pagador e a destinação final da verba pública.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 6 — SUBESPÉCIES DE CONTRIBUIÇÕES -->
+  <div class="section-card" id="sec6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>Subespécies de Contribuições Especiais e Reforma Tributária</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>6.1 Contribuições Sociais e a Introdução da CBS</h3>
+        <p>Destinadas ao financiamento dos direitos sociais previstos na Ordem Social (Saúde, Previdência, Assistência, Educação). Dividem-se em sociais gerais (Salário-Educação) e de Seguridade Social <span class="tag tag-art">Art. 195</span>:</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Contribuições de Seguridade Social</caption>
+            <thead>
+              <tr>
+                <th>Tributo / Sigla</th>
+                <th>Base Econômica Incidente</th>
+                <th>Regime Normativo / Atualização</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Contribuição Previdenciária Patronal</strong></td>
+                <td>Folha de salários e demais rendimentos do trabalho.</td>
+                <td>Art. 195, I, "a"</td>
+              </tr>
+              <tr>
+                <td><strong>PIS e COFINS (Faturamento)</strong></td>
+                <td>Receita bruta ou faturamento das empresas.</td>
+                <td>Art. 195, I, "b" (Extinção gradual até 2027)</td>
+              </tr>
+              <tr>
+                <td><strong>CSLL</strong></td>
+                <td>Lucro Líquido das Pessoas Jurídicas.</td>
+                <td>Art. 195, I, "c"</td>
+              </tr>
+              <tr>
+                <td><strong>CBS (Contribuição s/ Bens e Serviços)</strong></td>
+                <td>Operações com bens e prestações de serviços.</td>
+                <td><strong>Inserção pela EC n° 132/2023</strong> (Art. 195, V)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Impacto da Reforma Tributária (EC 132/2023)</div>
+          <p>A CBS (Contribuição sobre Bens e Serviços) foi instituída como um tributo do tipo IVA Federal, de competência da União, voltada ao custeio da Seguridade Social. Ela substituirá de forma unificada as contribuições ao PIS e à COFINS a partir de 2027, centralizando a incidência sobre o consumo.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>6.2 CIDEs, Categorias Profissionais e COSIP</h3>
+        <ul>
+          <li><strong>CIDE Combustíveis:</strong> <span class="tag tag-art">Art. 177, §4°</span> — Destinada ao financiamento de subsídios de transporte, projetos ambientais e infraestrutura de transportes.</li>
+          <li><strong>INCRA e SEBRAE:</strong> O STF fixou a tese de que a contribuição ao INCRA <span class="tag tag-stf">Tema 495</span> e ao SEBRAE possuem natureza jurídica de **CIDE**, sendo exigíveis mesmo após a EC 33/2001.</li>
+          <li><strong>Interesse de Categorias (Conselhos Profissionais):</strong> Anuidades pagas a órgãos de fiscalização (CREA, CRM, OAB), consideradas tributos federais de competência corporativa.</li>
+          <li><strong>COSIP / CIP:</strong> <span class="tag tag-art">Art. 149-A</span> — De competência de Municípios e DF. A <strong>EC n° 132/2023 expandiu seu escopo</strong>, autorizando seu uso não apenas para iluminação, mas também para o custeio de sistemas de monitoramento voltados à segurança de logradouros públicos.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 7 — IMUNIDADES TEORIA GERAL -->
+  <div class="section-card" id="sec7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2>Imunidades Tributárias — Teoria Geral e Hermenêutica</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>7.1 Conceito Doutrinário e Natureza Jurídica</h3>
+        <p>As imunidades tributárias representam limites intransponíveis ao poder de tributar, atuando no plano constitucional da repartição de competências.</p>
+
+        <blockquote class="citacao-doutrina">
+          <div class="autor">Leandro Paulsen</div>
+          <p>"As regras constitucionais que proíbem a tributação de determinadas pessoas, operações, objetos ou de outras demonstrações de riqueza, negando, portanto, competência tributária, são chamadas de imunidade tributária."</p>
+        </blockquote>
+
+        <blockquote class="citacao-doutrina">
+          <div class="autor">Hugo de Brito Machado</div>
+          <p>"Imunidade é o obstáculo decorrente de regra da Constituição à incidência de regra jurídica de tributação. O que é imune não pode ser tributado... É limitação de competência tributária."</p>
+        </blockquote>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Critério de Distinção Fundamental</div>
+          <ul>
+            <li><strong>Imunidade:</strong> Supressão constitucional da competência legislativa. O ente político sequer possui o poder de criar lei instituindo o tributo sobre aquela hipótese.</li>
+            <li><strong>Isenção:</strong> Dispensa legal do pagamento. O ente possui a competência, cria o tributo por lei, mas a própria lei dispensa certas pessoas do recolhimento (pode ser revogada a qualquer tempo).</li>
+            <li><strong>Não Incidência:</strong> Mera ausência de subsunção do fato real à norma abstrata criada por lei.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>7.2 Hermenêutica e a Interpretação Evolutiva do STF</h3>
+        <p>A jurisprudência da Suprema Corte consolidou o princípio da **Interpretação Evolutiva** das imunidades. Afasta-se o apego à literalidade histórica do texto para garantir que as imunidades acompanhem as transformações tecnológicas da sociedade, impedindo o esvaziamento de garantias fundamentais por obsolescência de termos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 8 — IMUNIDADE RECÍPROCA -->
+  <div class="section-card" id="sec8">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2>Imunidade Recíproca (Art. 150, VI, "a")</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>8.1 Fundamento e Proteção ao Pacto Federativo</h3>
+        <p>A imunidade recíproca veda que os entes políticos instituam <strong>impostos</strong> sobre o patrimônio, renda ou serviços uns dos outros. Seu fundamento reside na salvaguarda do **Pacto Federativo**: impede que um ente federado utilize a coerção fiscal para asfixiar a autonomia financeira de outro membro do pacto. É considerada **cláusula pétrea** <span class="tag tag-art">Art. 60, §4°, I</span>.</p>
+
+        <div class="callout excecao">
+          <div class="callout-title">🚫 Limitação Rígida à Espécie Impostos</div>
+          <p>A imunidade recíproca aplica-se <strong>exclusivamente à espécie tributária Impostos</strong>. Autarquias, Municípios ou a União submetem-se normalmente ao pagamento de Taxas de serviços públicos e Contribuições Especiais (STF, ADI n° 2.024 e RE n° 626.837).</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>8.2 Extensão Subjetiva e a Jurisprudência Estratégica do STF</h3>
+        <p>O texto constitucional estende a imunidade às Autarquias e Fundações Públicas <span class="tag tag-art">Art. 150, §2°</span>. Contudo, o STF estendeu o manto protetor a Empresas Públicas e Sociedades de Economia Mista sob critérios rígidos:</p>
+
+        <div class="callout jurisprudencia">
+          <div class="callout-title">⚖️ Tema 1140 STF — O Paradigma do METRÔ-SP (RE 1.320.054 — 2021)</div>
+          <p><strong>Tese Firmada:</strong> As empresas públicas e sociedades de economia mista delegatárias de <strong>serviços públicos essenciais</strong>, que <strong>não distribuam lucros a acionistas privados nem ofereçam risco ao equilíbrio concorrencial</strong> de mercado, são beneficiárias da imunidade tributária recíproca, independentemente de haver cobrança de tarifa dos usuários.</p>
+        </div>
+
+        <div class="callout jurisprudencia">
+          <div class="callout-title">⚖️ Temas 644, 402 e 235 — O Status de Proteção da ECT (Correios)</div>
+          <p>O STF fixou de forma ampla que a Empresa Brasileira de Correios e Telégrafos (ECT) goza de imunidade recíproca total. A proteção alcança o <strong>IPTU</strong> de seus imóveis (mesmo os não afetos diretamente ao monopólio postal), o <strong>ICMS</strong> sobre o serviço de transporte de encomendas e abrange inclusive as atividades exercidas em concorrência livre com a iniciativa privada.</p>
+        </div>
+
+        <div class="callout excecao">
+          <div class="callout-title">🚫 Exclusão da Proteção — Empresas de Mercado (SABESP e Arrendatárias)</div>
+          <ul>
+            <li><strong>Tema 508 STF (SABESP):</strong> Sociedades de economia mista com capital aberto negociado em **Bolsa de Valores** e voltadas à remuneração de acionistas privados <strong>não possuem direito à imunidade recíproca</strong>.</li>
+            <li><strong>Tema 385 STF:</strong> Empresas privadas que arrendam e exploram imóveis públicos com fins lucrativos (ex: Petrobras no Porto de Santos) **devem pagar IPTU normalmente** ao Município.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 9 — IMUNIDADE DOS TEMPLOS -->
+  <div class="section-card" id="sec9">
+    <div class="section-header">
+      <div class="section-number">9</div>
+      <h2>Imunidade dos Templos de Qualquer Culto (Art. 150, VI, "b")</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>9.1 Fundamento e Liberdade de Crença</h3>
+        <p>Veda-se a instituição de impostos sobre os templos de qualquer culto. A <strong>EC n° 132/2023 expandiu expressamente a redação</strong> do texto constitucional para consignar que a imunidade abrange também as **organizações assistenciais e beneficentes vinculadas às entidades religiosas**.</p>
+        <p>O fundamento central é a proteção absoluta à liberdade de crença e o dever de laicidade e neutralidade religiosa do Estado, que deve conferir tratamento estritamente isonômico a todas as liturgias.</p>
+
+        <div class="callout excecao">
+          <div class="callout-title">🚫 Exclusão Absoluta — Lojas Maçônicas (RE 562.351)</div>
+          <p>O STF firmou o entendimento de que a imunidade conferida pelo art. 150, VI, "b" é restrita a cultos de matriz de fé religiosa. <strong>Não se aplica à Maçonaria</strong>, visto que em suas lojas pratica-se filosofia, ideologia e filantropia, mas <strong>não se professa dogma ou culto religioso</strong>.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>9.2 Extensão Patrimonial e Presunção de Destinação</h3>
+        <p>A jurisprudência da Suprema Corte conferiu máxima eficácia à imunidade dos templos através de critérios ampliativos de afetação patrimonial:</p>
+        <ul>
+          <li><strong>Imóveis Locados a Terceiros:</strong> O templo permanece imune ao IPTU sobre imóveis locados a terceiros, **desde que o valor dos aluguéis seja integralmente revertido** para a manutenção das finalidades religiosas da instituição (Precedente RE 325.822).</li>
+          <li><strong>Terrenos Vagos e Presunção Favorável:</strong> Terrenos sem edificação pertencentes à igreja gozam de imunidade. O STF <span class="tag tag-stf">ARE 658.080</span> fixou que há **presunção de destinação institucional**. Cabe ao Fisco municipal provar que o terreno possui destinação desvinculada para conseguir lavrar auto de infração de IPTU.</li>
+          <li><strong>Imóveis Alugados Pelo Templo (<span class="tag tag-ec">EC 116/2022</span>):</strong> O novo art. 156, §1°-A da CF positivou que o IPTU **não incide sobre os imóveis ocupados por templos**, ainda que a entidade religiosa seja mera **locatária (inquilina)** do bem, superando traves jurisprudenciais do passado.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 10 — PARTIDOS, SINDICATOS, EDUCAÇÃO E ASSISTÊNCIA -->
+  <div class="section-card" id="sec10">
+    <div class="section-header">
+      <div class="section-number">10</div>
+      <h2>Partidos, Sindicatos de Trabalhadores, Educação e Assistência</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>10.1 Escopo Subjetivo e a Restrição Classista</h3>
+        <p>Veda-se a instituição de impostos sobre o patrimônio, renda ou serviços das entidades descritas na alínea "c". Trata-se de uma imunidade subjetiva de caráter condicionado.</p>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Pegadinha Clássica de Exames — Sindicatos</div>
+          <p>A imunidade constitucional protege **exclusivamente as entidades sindicais dos trabalhadores**. Os sindicatos patronais (associações de empregadores, federações de indústrias) **estão totalmente excluídos** do benefício e pagam impostos normalmente.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>10.2 Condições Materiais de Eficácia — O Art. 14 do CTN</h3>
+        <p>Por força do art. 146, II da CF, cabe à **Lei Complementar** fixar os requisitos de gozo da imunidade. O art. 14 do CTN, recepcionado com status de LC, impõe três deveres cumulativos às instituições de educação e assistência social:</p>
+        <ol>
+          <li><strong>Não distribuição de qualquer parcela de seu patrimônio ou de suas rendas</strong>, a qualquer título, a diretores, sócios ou instituidores (Proibição de distribuição de lucros disfarçada).</li>
+          <li><strong>Aplicação integral de seus recursos no território nacional</strong>, voltada estritamente à manutenção de seus objetivos institucionais.</li>
+          <li><strong>Manutenção de escrituração contábil regular</strong> de suas receitas e despesas em livros formais capazes de assegurar exatidão.</li>
+        </ol>
+
+        <div class="callout excecao">
+          <div class="callout-title">✅ Margem Econômica — Superávit de Gestão</div>
+          <p>A exigência de ser "sem fins lucrativos" **não significa que a entidade deve operar em deficit ou com saldo zerado**. É plenamente legítimo que faculdades ou hospitais imunes aufiram **superávit financeiro**, desde que esse lucro contábil seja totalmente reinvestido na própria estrutura, vedado o repasse a CPFs de dirigentes.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>10.3 Súmulas Vinculantes e Repercussão Geral</h3>
+        <div class="callout jurisprudencia">
+          <div class="callout-title">⚖️ Súmula Vinculante 52 STF — Aplicação Unificada p/ Aluguéis</div>
+          <p>Ainda quando alugado a terceiros, permanece imune ao IPTU o imóvel pertencente a qualquer das entidades referidas pelo art. 150, VI, "c", da Constituição Federal, <strong>desde que o valor dos aluguéis seja aplicado nas atividades para as quais tais entidades foram constituídas</strong>.</p>
+        </div>
+
+        <div class="callout jurisprudencia">
+          <div class="callout-title">⚖️ Tema 328 STF — Incidência de IOF sobre Caixa (RE 611.510)</div>
+          <p>A imunidade do art. 150, VI, "c" alcança o **IOF incidente sobre as aplicações financeiras** promovidas por partidos, sindicatos de trabalhadores e entidades de assistência/educação. Presume-se que o ganho financeiro de mercado reverte em prol dos fins institucionais.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 11 — IMUNIDADES COMO GARANTIAS FUNDAMENTAIS -->
+  <div class="section-card" id="sec11">
+    <div class="section-header">
+      <div class="section-number">11</div>
+      <h2>Imunidades como Garantias Fundamentais e Cláusulas Pétreas</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>11.1 Tutela Axiológica dos Direitos de Liberdade</h3>
+        <p>A melhor doutrina de Direito de Estado reconhece que certas regras de imunidade não constituem meras escolhas políticas econômicas reversíveis. Elas operam como **verdadeiras garantias de direitos fundamentais** de primeira dimensão.</p>
+        
+        <blockquote class="citacao-doutrina">
+          <div class="autor">Ricardo Lobo Torres</div>
+          <p>"As imunidades são vedações ao exercício do poder tributário que, tendo fundamento nos direitos de liberdade, não podem ser revogadas nem modificadas. A imunidade é intributabilidade... incompetência absoluta para decretar impostos sobre bens ou coisas indispensáveis à manifestação da liberdade."</p>
+        </blockquote>
+      </div>
+
+      <div class="subsection">
+        <h3>11.2 Alinhamento com as Cláusulas Pétreas (Art. 60, §4°)</h3>
+        <p>A blindagem constitucional das imunidades as insere no rol de matérias insuscetíveis de emenda constitucional tendente a aboli-las:</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Sustentação Axiológica de Cláusula Pétrea</caption>
+            <thead>
+              <tr>
+                <th>Imunidade Específica</th>
+                <th>Valor / Direito Fundamental Salvaguardado</th>
+                <th>Enquadramento no Art. 60, §4°</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Imunidade Recíproca</strong></td>
+                <td>Preservação do pacto federativo e equilíbrio dos entes políticos.</td>
+                <td>Inciso I — A forma federativa de Estado</td>
+              </tr>
+              <tr>
+                <td><strong>Imunidade dos Templos</strong></td>
+                <td>Garantia do livre exercício religioso e inviolabilidade de consciência.</td>
+                <td>Inciso IV — Os direitos e garantias individuais</td>
+              </tr>
+              <tr>
+                <td><strong>Imunidade de Livros e Imprensa</strong></td>
+                <td>Acesso à cultura, vedação à censura fiscal e pluralismo de ideias.</td>
+                <td>Inciso IV — Os direitos e garantias individuais</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 12 — OBRIGAÇÕES ACESSÓRIAS -->
+  <div class="section-card" id="sec12">
+    <div class="section-header">
+      <div class="section-number">12</div>
+      <h2>Obrigações Acessórias, Contribuintes e Imunidade Objetiva</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>12.1 A Clivagem Jurídica: Contribuinte de Direito × Contribuinte de Fato</h3>
+        <p>Para a aplicação correta das imunidades subjetivas (recíproca, templos, entidades), é indispensável identificar a posição jurídica ocupada pelo ente imune na relação tributária:</p>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Regra de Ouro Jurisprudencial do STF</div>
+          <p>A imunidade tributária subjetiva alcança o beneficiário tão somente quando este ocupa a posição jurídica de <strong>contribuinte de direito</strong> (aquele listado na lei como responsável direto pelo recolhimento do imposto). 
+          <br><br>
+          A proteção **não aproveita ao beneficiário quando este é mero contribuinte de fato** (aquele que sofre apenas a repercussão econômica do preço, como o Município que compra mercadorias e suporta o ICMS embutido no preço pelo comerciante). A repercussão econômica não atrai a imunidade.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>12.2 Autonomia das Obrigações Acessórias (Art. 194, Parágrafo Único, CTN)</h3>
+        <p>O reconhecimento da imunidade diz respeito estritamente à obrigação tributária principal (o dever de pagar o imposto). **Não exonera a entidade imune do cumprimento das obrigações acessórias**.</p>
+        <p>Igrejas, partidos políticos e autarquias públicas continuam obrigados a emitir notas fiscais, reter na fonte impostos de seus funcionários, prestar declarações fiscais e submeter-se à fiscalização. O art. 9°, §1° do CTN reitera que a imunidade não afasta a condição de **responsável ou substituto tributário** pelo imposto que caiba reter na fonte.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>12.3 Imunidade Objetiva dos Livros e Imprensa (Art. 150, VI, "d")</h3>
+        <p>Diferente das anteriores, esta é uma imunidade **objetiva** (real): ela não protege a pessoa do editor ou do livreiro, mas protege o **objeto em si** (o livro, o jornal, o periódico e o papel destinado à sua impressão).</p>
+        <p>Aplicando o princípio da interpretação evolutiva, o STF pacificou que a imunidade **alcança os livros eletrônicos (e-books), suportes digitais e os aparelhos leitores exclusivos (e-readers / Kindle)**, equiparando-os ao papel tradicional para fins de desoneração de impostos.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div class="rodape" style="text-align:center; font-size:12px; color:var(--text-muted); padding: 20px 0 30px; border-top: 1px solid var(--border-color);">
+  Material estruturado e revisado com base na matriz curricular de Direito Tributário · Universidade Presbiteriana Mackenzie · Doutrina de Leandro Paulsen · Ano Letivo 2026
+</div>
+
+<!-- SCROLL TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+<script>
+  // Controle de visibilidade do botão flutuante Scroll Top
+  const scrollBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
+    }
+  });
+
+  // Rolagem suave com compensação para as âncoras do índice
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const offset = 20;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+<script src="highlighter.js"></script>
+</body>
+</html>

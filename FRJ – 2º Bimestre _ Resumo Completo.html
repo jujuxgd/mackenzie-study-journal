@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falência e Recuperação Judicial – 2º BIM | Prof. Bruno Boris</title>
+  <style>
+    /* ── Variáveis de Design (Pink Pastel / Soft Style) ─────── */
+    :root {
+      --pink-pastel: #D37A9A;
+      --pink-pastel-light: #E29BB4;
+      --pink-pastel-bg: #FAF0F3;
+      --pink-pastel-border: #D37A9A;
+      --bg: #fdfdfd;
+      --text: #2b2b2b;
+      --text-muted: #555;
+      --card-bg: #ffffff;
+      --table-head-text: #ffffff;
+      --border-color: #e5e5e5;
+      --tag-bg: #FAF0F3;
+      --callout-bg: #FCF5F7;
+      --shadow: rgba(211, 122, 154, 0.08);
+
+      /* Destaques Semânticos das Caixas (Conforme Padrão) */
+      --def-border: #b9935a; --def-bg: #faf7f2;
+      --imp-border: #D37A9A; --imp-bg: #FAF0F3;
+      --exc-border: #2e7d32; --exc-bg: #f1f8f1;
+      --jur-border: #7B5EA7; --jur-bg: #EDE8F7;
+      --lei-border: #2979ff; --lei-bg: #eef3ff;
+      --aten-border: #e6a817; --aten-bg: #fff9ec;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── HERO HEADER INTEGRAL ── */
+    #hero {
+      background: linear-gradient(135deg, #D37A9A 0%, #A24B6B 100%);
+      color: #fff;
+      text-align: center;
+      padding: 58px 28px 52px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    #hero .hero-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 14px;
+    }
+    #hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    #hero .hero-sub {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+    #hero .hero-tags {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #hero .hero-tag {
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── NAV ÍNDICE DE DUAS COLUNAS ── */
+    #nav-index {
+      background: var(--card-bg);
+      border: 2px solid var(--pink-pastel);
+      max-width: 820px;
+      margin: 32px auto 0 auto;
+      padding: 24px 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px var(--shadow);
+    }
+    #nav-index h3 {
+      color: var(--pink-pastel);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+    #nav-index ol {
+      columns: 2;
+      column-gap: 32px;
+      padding-left: 20px;
+    }
+    #nav-index li { margin: 5px 0; break-inside: avoid; font-weight: 600; }
+    #nav-index a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    #nav-index a:hover { color: var(--pink-pastel); text-decoration: underline; }
+    
+    @media (max-width: 600px) {
+      #nav-index ol { columns: 1; }
+      #nav-index { margin: 20px 14px 0 14px; padding: 18px 18px; }
+    }
+
+    /* ── MAIN CONTAINER ── */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 40px 60px 40px;
+    }
+
+    /* ── SECTION CARD (MATRIZ DO LAYOUT) ── */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 14px var(--shadow);
+      margin-bottom: 36px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .section-header {
+      background: var(--pink-pastel);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-number {
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .section-body {
+      padding: 28px 30px;
+    }
+
+    /* ── SUBSECTION ── */
+    .subsection {
+      margin-bottom: 28px;
+    }
+    .subsection:last-child { margin-bottom: 0; }
+    
+    h3 {
+      color: var(--pink-pastel);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--pink-pastel-bg);
+    }
+    h4 {
+      color: var(--pink-pastel);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 14px 0 6px 0;
+    }
+    p { margin-bottom: 12px; text-align: justify; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── LISTAS ── */
+    ul, ol { padding-left: 22px; margin-bottom: 12px; color: var(--text-muted); }
+    li { margin-bottom: 5px; }
+    li:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUT BOXES SEMÂNTICOS ── */
+    .callout {
+      border-left: 5px solid var(--pink-pastel);
+      background: var(--callout-bg);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 18px 0;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: var(--pink-pastel);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .callout.definicao { border-color: var(--def-border); background: var(--def-bg); }
+    .callout.definicao .callout-title { color: #9c7334; }
+    .callout.importante { border-color: var(--imp-border); background: var(--imp-bg); }
+    .callout.importante .callout-title { color: #A03060; }
+    .callout.excecao { border-color: var(--exc-border); background: var(--exc-bg); }
+    .callout.excecao .callout-title { color: #2e7d32; }
+    .callout.excecao p, .callout.excecao li { color: #2e7d32; }
+    .callout.jurisprudencia { border-color: var(--jur-border); background: var(--jur-bg); }
+    .callout.jurisprudencia .callout-title { color: var(--jur-border); }
+    .callout.jurisprudencia p { color: #4A3D7A; font-style: italic; }
+    .callout.lei { border-color: var(--lei-border); background: var(--lei-bg); }
+    .callout.lei .callout-title { color: #1A4E80; }
+    .callout.lei p { color: #1A4E80; font-size: 13.5px; }
+    .callout.atencao { border-color: var(--aten-border); background: var(--aten-bg); }
+    .callout.atencao .callout-title { color: #7A5E00; }
+    .callout.atencao p, .callout.atencao li { color: #5C4500; }
+
+    /* ── TABELAS ── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 6px; border: 1px solid var(--border-color); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead th {
+      background: var(--pink-pastel);
+      color: #fff;
+      padding: 12px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.3px;
+    }
+    tbody tr:nth-child(even) { background: var(--pink-pastel-bg); }
+    tbody tr:nth-child(odd) { background: var(--card-bg); }
+    tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+    tbody tr:hover { filter: brightness(0.98); }
+
+    /* ── CARD GRIDS INTERNOS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 16px;
+      border: 1.5px solid var(--border-color);
+    }
+    .card.card-rosa { border-color: var(--pink-pastel-light); }
+    .card .card-titulo {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--pink-pastel);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--pink-pastel-bg);
+    }
+    .card.card-rosa .card-titulo { color: var(--pink-pastel); border-color: var(--pink-pastel-bg); }
+
+    /* ── TIMELINE / PASSOS ── */
+    .timeline { margin: 18px 0; }
+    .timeline-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .timeline-dot {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--pink-pastel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      color: white;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .timeline-conteudo { flex: 1; }
+    .timeline-conteudo strong { display: block; font-size: 14px; color: var(--text); margin-bottom: 3px; }
+    .timeline-conteudo p { font-size: 13.5px; margin: 0; }
+
+    /* ── DIAGRAMA SIMPLES ── */
+    .diagrama {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 18px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .diagrama-box {
+      background: var(--branco);
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+      min-width: 130px;
+    }
+    .diagrama-box.rosa {
+      border-color: var(--pink-pastel);
+      color: var(--pink-pastel);
+    }
+    .diagrama-seta {
+      font-size: 20px;
+      color: var(--text-muted);
+      padding: 0 6px;
+    }
+
+    /* ── ARTIGO DESTACADO ── */
+    .artigo-destaque {
+      background: var(--pink-pastel-bg);
+      border: 1px solid var(--pink-pastel-light);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .artigo-destaque .art-num {
+      font-weight: 700;
+      color: var(--pink-pastel);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ── SCROLL TOP ── */
+    #scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--pink-pastel);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 990;
+      transition: background 0.2s;
+    }
+    #scroll-top:hover { background: var(--pink-pastel-light); }
+    #scroll-top.visible { display: flex; }
+
+    .citacao-doutrina { border-left: 3px solid var(--text-muted); padding: 8px 16px; margin: 16px 0; font-style: italic; color: var(--text-muted); background: #fcfcfc; }
+    .citacao-doutrina .autor { font-weight: 700; font-style: normal; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    em.accent { color: var(--pink-pastel); font-style: normal; font-weight: 700; }
+    strong { color: inherit; }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: white; }
+      .section-card { break-inside: avoid; }
+      .container { padding: 20px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO HEADER -->
+<div id="hero">
+  <div class="hero-label">Universidade Presbiteriana Mackenzie · 7º Semestre</div>
+  <h1>Falência e Recuperação Judicial</h1>
+  <div class="hero-sub">Prof. Bruno Boris Carlos Croce &nbsp;·&nbsp; Fichamento Doutrinário (Gladston Mamede) &nbsp;·&nbsp; 2º Bimestre</div>
+  <div class="hero-tags">
+    <span class="hero-tag">⚖️ Lei 11.101/05</span>
+    <span class="hero-tag">👥 Quóruns AGC</span>
+    <span class="hero-tag">🏢 Consolidação de Grupos</span>
+    <span class="hero-tag">💸 Atos Ineficazes & Revogáveis</span>
+  </div>
+</div>
+
+<!-- ÍNDICE ANALÍTICO -->
+<div id="nav-index">
+  <h3>📋 Índice Analítico</h3>
+  <ol>
+    <li><a href="#sec0">Revisão N1 — Quóruns de Aprovação na AGC e Credor Retardatário</a></li>
+    <li><a href="#sec1">Conciliação e Mediação Prévia à Recuperação Judicial</a></li>
+    <li><a href="#sec2">Consolidação Processual e Substancial em Grupos Econômicos</a></li>
+    <li><a href="#sec3">Recuperação Judicial Especial — Microempresas (ME) e EPP</a></li>
+    <li><a href="#sec4">Meios de Recuperação Judicial (Análise do Art. 50)</a></li>
+    <li><a href="#sec5">Atos Ineficazes e Revogáveis (Período Suspeito e Termo Legal)</a></li>
+    <li><a href="#sec6">Restituição de Credores em Espécie e Dinheiro (Art. 85)</a></li>
+    <li><a href="#sec7">Quadro Comparativo Final e Artigos Exigidos para Exame</a></li>
+  </ol>
+</div>
+
+<div class="container">
+
+  <!-- SEÇÃO 0 — REVISÃO: QUÓRUNS AGC e RETARDATÁRIO -->
+  <div class="section-card" id="sec0">
+    <div class="section-header">
+      <div class="section-number">0</div>
+      <h2>Revisão N1 — Quóruns de Aprovação na AGC e Credor Retardatário</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>Quóruns da Assembleia Geral de Credores (AGC)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Dispositivo</th>
+                <th>Âmbito de Aplicação</th>
+                <th>Critério de Votação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Art. 38 – Lei 11.101/05</strong></td>
+                <td>Regra ordinária (todas as deliberações, incluindo o Comitê de Credores)</td>
+                <td>Vence o <strong>maior crédito</strong> — critério puramente quantitativo pelo valor.</td>
+              </tr>
+              <tr>
+                <td><strong>Art. 45 – Lei 11.101/05</strong></td>
+                <td>Exceção: apenas para deliberações do <strong>Plano de RJ</strong> (aprovação, aditamento)</td>
+                <td><strong>Critério misto</strong> — maioria de valor + maioria simples de credores presentes, por classe.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout lei">
+          <div class="callout-title">📋 Art. 45 – Detalhamento por Classe</div>
+          <p><strong>Classe com garantia real e quirografários:</strong> mais de metade do valor total dos créditos presentes + maioria simples dos credores presentes. <strong>Classe trabalhista:</strong> maioria simples dos credores presentes, independentemente do valor do crédito. <em>(Fonte: Mamede, 2022, p. 16 do Capítulo 29)</em></p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Habilitação de Credor Retardatário</h3>
+        <p>A habilitação é considerada <em class="accent">retardatária</em> quando realizada após o prazo de <strong>15 dias</strong> do primeiro edital publicado.</p>
+
+        <div class="cards-grid">
+          <div class="card card-rosa">
+            <div class="card-titulo">⚠️ Regras Essenciais</div>
+            <ul>
+              <li>Não é necessário aguardar o prazo do 2º edital.</li>
+              <li>O AJ <strong>não tem competência</strong> para receber habilitação tardia.</li>
+              <li>O credor deve se habilitar <strong>diretamente ao juiz</strong>.</li>
+              <li>Em regra, o retardatário <strong>não constará no 2º edital</strong>.</li>
+              <li>Deve pagar advogado e custas (tanto na RJ quanto na falência).</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-titulo">📌 Exceção ao 2º Edital</div>
+            <p style="font-size:13.5px; color:var(--text-muted)">Excepcionalmente, se o juiz proferir sentença de habilitação antes de o AJ publicar o 2º edital, o crédito poderá ser nele incluído. Esta hipótese é <strong>muito rara</strong> na prática.</p>
+          </div>
+        </div>
+
+        <h3>Consequências do Credor Retardatário — Comparativo</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Aspecto</th>
+                <th>Na Recuperação Judicial (RJ)</th>
+                <th>Na Falência</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Direito de Voto</strong></td>
+                <td>❌ PERDA DEFINITIVA (exceto trabalhador) — não pode recuperar, mesmo entrando no QGC.</td>
+                <td>❌ Perde o direito de voto, mas pode <strong>reaver ao ser habilitado</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Rateios</strong></td>
+                <td>Perde os rateios até se habilitar; a partir daí a empresa deve pagar conforme o plano.</td>
+                <td>Perde rateios ocorridos antes da habilitação. Se não houver mais dinheiro, não recebe nada.</td>
+              </tr>
+              <tr>
+                <td><strong>Reserva (AJ)</strong></td>
+                <td colspan="2" style="text-align:center; font-weight: 600;">Pode evitar perder o rateio por <strong>pedido de reserva</strong> feito pelo administrador judicial.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>Plano de Rateio na Falência</h4>
+        <p>Na falência, a empresa não tem atividade (salvo provisória). A falida pode apresentar um plano de pagamento indicando quanto conseguirá pagar, mas este não se confunde com o Plano de RJ, pois segue lógica diferente. O administrador judicial deve seguir o que o juiz determinar, dentro dos limites legais.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1 — CONCILIAÇÃO E MEDIAÇÃO PRÉVIA -->
+  <div class="section-card" id="sec1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Conciliação e Mediação Prévia à RJ</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>O legislador positivou em <strong>2020</strong> (Lei 14.112/20) procedimento uniforme de conciliação e mediação, fomentando esses incidentes que já eram admitidos na prática. O objetivo é criar uma <em class="accent">"mini RJ"</em>, permitindo que a empresa negocie com credores antes de ingressar com pedido de recuperação judicial formal.</p>
+
+        <div class="callout lei">
+          <div class="callout-title">📋 Art. 20-A – Hipótese Central</div>
+          <p>O inciso IV autoriza a negociação de dívidas com credores, de caráter <strong>antecedente ao pedido de RJ</strong>. Nessa hipótese, as partes têm a faculdade de pedir <strong>tutela de urgência cautelar</strong> para suspender as execuções pelo prazo de <strong>60 dias corridos</strong> (prazo máximo, improrrogável). A instauração da negociação tramita no <strong>CEJUSC</strong>.</p>
+        </div>
+
+        <h3>Fluxo da Conciliação Prévia</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-conteudo">
+              <strong>Pedido de tutela cautelar (facultativo)</strong>
+              <p>Suspensão de execuções por até 60 dias corridos, demonstrando que a empresa atende aos requisitos dos arts. 46, 47 e 51 para eventual RJ.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-conteudo">
+              <strong>Negociação no CEJUSC</strong>
+              <p>Devedor e credores negociam condições de pagamento e reestruturação das dívidas.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-conteudo">
+              <strong>Homologação judicial do acordo (Art. 20-C)</strong>
+              <p>O juiz homologa o acordo. A partir da homologação, inicia-se o cômputo do prazo de <strong>360 dias</strong> (parágrafo único). O credor tem direitos e garantias reconstituídos nas condições originalmente contratadas, deduzidos os valores já pagos.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-conteudo">
+              <strong>Após o 360º dia — Novação permanente</strong>
+              <p>As dívidas renegociadas se tornam <strong>permanentes e não perdem os descontos</strong>. A partir do dia 361, o credor <strong>não pode mais converter em falência</strong> pelo inadimplemento da dívida novada. O credor pode ajuizar ação de execução ou falência autônoma, mas não convolação.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Entrada com RJ antes dos 360 dias</div>
+          <p>Se o devedor entrar com pedido de RJ antes de completar os 360 dias, <strong>perde tudo o que foi renegociado</strong>, devendo pagar o valor integral ou renegociar novamente na recuperação judicial.</p>
+        </div>
+
+        <div class="callout excecao">
+          <div class="callout-title">✅ Vedações nas Negociações (Art. 20-A)</div>
+          <p>É vedado deliberar sobre: <strong>(1)</strong> natureza jurídica e classificação de créditos; <strong>(2)</strong> critérios de votação em AGC. Tais matérias são reservadas ao rito da RJ formal.</p>
+        </div>
+        <p>⚠️ A conciliação/mediação prévia <strong>não precisa ser comunicada à Junta Comercial</strong> como se a empresa estivesse em regime de RJ.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2 — CONSOLIDAÇÃO PROCESSUAL E SUBSTANCIAL -->
+  <div class="section-card" id="sec2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Consolidação Processual e Substancial em Grupos Econômicos</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>Trata-se da <strong>recuperação judicial de grupo de empresas</strong> (grupo econômico). Regulamentada pela Lei 14.112/20 (arts. 69-G a 69-L), que positivou o litisconsórcio ativo em razão da subsidiariedade do CPC. Exige-se <em class="accent">identidade do quadro societário comum</em> como pressuposto básico.</p>
+
+        <h3>Relação Estrutural entre os Institutos</h3>
+        <div class="diagrama">
+          <div class="diagrama-box rosa">Consolidação Processual</div>
+          <div class="diagrama-seta">→</div>
+          <div class="diagrama-box">Pode gerar Consolidação Substancial</div>
+          <div class="diagrama-seta">≠</div>
+          <div class="diagrama-box rosa">Substancial → SEMPRE pressupõe Processual</div>
+        </div>
+
+        <h3>2.1 Consolidação Processual (Art. 69-G)</h3>
+        <p>É a legitimação ativa de duas ou mais sociedades pertencentes ao mesmo grupo para um único pedido de RJ. Trata-se de <strong>litisconsórcio ativo facultativo</strong>, com preservação da autonomia de cada empresa.</p>
+
+        <div class="artigo-destaque">
+          <span class="art-num">Art. 69-G — Requisito Geral</span>
+          Devedores que integrem grupo sob <strong>controle societário comum</strong> poderão requerer recuperação judicial sob consolidação processual. Cada devedor apresenta individualmente a documentação exigida no art. 51.
+        </div>
+
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-titulo">Características Operacionais</div>
+            <ul>
+              <li>Um único administrador judicial nomeado (art. 69-H).</li>
+              <li>Coordenação de atos processuais para economia de rito.</li>
+              <li>Independência patrimonial dos devedores, ativos e passivos.</li>
+              <li><strong>Plano único separado</strong> para cada empresa (ou apresentado em conjunto).</li>
+              <li>AGCs <strong>independentes</strong> para cada devedor da consolidação.</li>
+              <li>Quóruns verificados exclusivamente em relação aos credores de cada devedor.</li>
+              <li>Foro competente: <strong>local do principal estabelecimento</strong> entre os devedores.</li>
+            </ul>
+          </div>
+          <div class="card card-rosa">
+            <div class="card-titulo">Efeito Relevante de Autonomia</div>
+            <p style="font-size:13.5px; color:var(--text-muted)">É perfeitamente possível que apenas um dos devedores se recupere da crise, enquanto outro tenha a falência decretada — em razão da autonomia. Nesse caso, o processo é <strong>desmembrado</strong> (art. 69-I, §§ 4º e 5º).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>2.2 Consolidação Substancial (Art. 69-J)</h3>
+        <p>Os ativos de uma sociedade passam a <strong>responder pelos passivos de outra</strong>. É medida excepcional, autorizada pelo juiz de ofício, independentemente de assembleia geral.</p>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Requisitos Cumulativos para a Consolidação Substancial</div>
+          <p>O juiz deve constatar, <strong>cumulativamente</strong> no caso concreto:</p>
+          <ul>
+            <li><strong>1.</strong> Interconexão e <strong>confusão entre ativos ou passivos</strong> dos devedores, de modo que não seja possível identificar a titularidade sem excessivo dispêndio de tempo ou recursos; <strong>E</strong></li>
+            <li><strong>2.</strong> Ao menos <strong>2 das 4 hipóteses</strong> listadas abaixo:</li>
+          </ul>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Inciso</th>
+                <th>Hipótese de Vinculação entre Devedores</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>I</strong></td><td>Existência de <strong>garantias cruzadas</strong> entre as sociedades postulantes.</td></tr>
+              <tr><td><strong>II</strong></td><td>Relação de <strong>controle ou dependência</strong> econômica estrutural.</td></tr>
+              <tr><td><strong>III</strong></td><td>Identidade <strong>total ou parcial do quadro societário</strong> ativo.</td></tr>
+              <tr><td><strong>IV</strong></td><td><strong>Atuação conjunta</strong> e integrada no mercado de consumo entre os postulantes.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="artigo-destaque">
+          <span class="art-num">Art. 69-K — Efeitos da Consolidação Substancial</span>
+          Ativos e passivos dos devedores são tratados como se pertencessem a <strong>um único devedor</strong>. Acarreta a <strong>extinção imediata das garantias fidejussórias</strong> e dos créditos detidos por um devedor em face de outro. <strong>Não impacta garantia real</strong> de qualquer credor, exceto mediante aprovação expressa do titular (§ 2º).
+        </div>
+
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-titulo">Plano Unificado</div>
+            <ul>
+              <li><strong>Plano unitário</strong> único para todos os devedores agrupados (art. 69-L).</li>
+              <li>Uma única AGC unificada para todos os credores assembleia.</li>
+              <li>Se o plano unitário for <strong>rejeitado</strong>, todos os devedores em consolidação substancial <strong>convolam em falência</strong> de forma imediata (art. 69-L, §2º).</li>
+            </ul>
+          </div>
+          <div class="card card-rosa">
+            <div class="card-titulo">Legitimados Ativos para Requerer</div>
+            <ul>
+              <li>Sociedades devedoras em conjunto.</li>
+              <li>Credores habilitados no processo.</li>
+              <li>Administrador Judicial (AJ).</li>
+              <li>O próprio Juiz da causa (de ofício).</li>
+            </ul>
+            <p style="font-size:12.5px; margin-top:8px; color:#A03060"><strong>Atenção:</strong> Só pode consolidar substancialmente devedores que já estejam em RJ por consolidação processual, salvo em casos de desconsideração da personalidade jurídica.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3 — RECUPERAÇÃO ESPECIAL -->
+  <div class="section-card" id="sec3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>Recuperação Judicial Especial — ME e EPP</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>Disciplinada pelos arts. 70 a 72 da Lei 11.101/05. O devedor qualificado como <strong>Microempresa (ME)</strong> ou <strong>Empresa de Pequeno Porte (EPP)</strong> pode optar entre a RJ ordinária ou a especial. O procedimento especial é simplificado e mais econômico.</p>
+
+        <h3>Limites de Faturamento (Lei Complementar 123/06)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Porte da Empresa</th>
+                <th>Receita Bruta Anual Limite</th>
+                <th>Funcionários (Comércio/Serviços)</th>
+                <th>Funcionários (Indústria)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ME</strong></td>
+                <td>≤ R$ 360.000,00</td>
+                <td>At計 9</td>
+                <td>Até 19</td>
+              </tr>
+              <tr>
+                <td><strong>EPP</strong></td>
+                <td>Acima de R$ 360.000,00 até R$ 4.800.000,00</td>
+                <td>10 a 49</td>
+                <td>20 a 99</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Condições e Limites do Plano Especial (Art. 71)</h3>
+        <ul>
+          <li>Obrigações pagas em até <strong>36 parcelas mensais, iguais e sucessivas</strong>, corrigidas por taxa SELIC.</li>
+          <li>Primeira parcela no prazo máximo de <strong>180 dias</strong> contados da distribuição do pedido de RJ.</li>
+          <li>Abrange todos os créditos existentes na data do pedido, ainda que não vencidos (ressalvados os §§ 3º e 4º do art. 49).</li>
+          <li>O plano pode conter proposta de <em class="accent">abatimento (haircut)</em> do valor das dívidas.</li>
+        </ul>
+
+        <h3>Características Procedimentais — Confronto de Ritos</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Aspecto Procedimental</th>
+                <th>Recuperação Judicial Ordinária</th>
+                <th>Recuperação Judicial Especial (ME/EPP)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>AGC para Deliberar Plano</strong></td>
+                <td>✅ Convocada obrigatoriamente se houver objeção.</td>
+                <td>❌ <strong>Não há AGC</strong> — aprovação dá-se por adesão e prazos.</td>
+              </tr>
+              <tr>
+                <td><strong>Objeções dos Credores</strong></td>
+                <td>Por escrito com prazo de 30 dias do edital.</td>
+                <td>Por simples petição nos autos do processo (exige advogado).</td>
+              </tr>
+              <tr>
+                <td><strong>Decisão sobre o Plano</strong></td>
+                <td>AGC vota as classes; juiz homologa ou aplica cramdown.</td>
+                <td>Quem efetivamente decide sobre a viabilidade é o <strong>juiz</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Remuneração Máxima do AJ</strong></td>
+                <td>Até 5% do valor total das dívidas.</td>
+                <td>Limitada a <strong>2%</strong> do valor das dívidas da empresa.</td>
+              </tr>
+              <tr>
+                <td><strong>Créditos Trabalhistas</strong></td>
+                <td>Limitados taxativamente a 1 ano para pagamento integral.</td>
+                <td>Pode prever parcelamento em <strong>mais vezes</strong> dentro do plano.</td>
+              </tr>
+              <tr>
+                <td><strong>Convolação em Falência</strong></td>
+                <td>Diversas hipóteses taxativas (art. 73 da lei).</td>
+                <td>Se houver objeções de credores representando mais da metade de qualquer classe (art. 72, parágrafo único).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout excecao">
+          <div class="callout-title">✅ Aspectos Comuns Aplicáveis a Ambos os Ritos</div>
+          <p>Requisitos de legitimação para pedir RJ: <strong>mesmos do art. 48</strong>. Documentação contábil necessária: <strong>mesmos do art. 51</strong>. Foro competente: <strong>principal estabelecimento do devedor</strong>. Habilitações de crédito retardatárias ou ordinárias: seguem as mesmas regras da RJ ordinária. Período de stay e biênio de fiscalização judicial: plenamente aplicáveis.</p>
+        </div>
+
+        <div class="callout atencao">
+          <div class="callout-title">📌 Produtor Rural e o Rito Especial</div>
+          <p>O <strong>produtor rural</strong> (pessoa física ou jurídica) e o microempreendedor podem requerer a RJ especial (art. 70-A). Após o decurso do biênio, as obrigações inadimplidas no plano constituem <strong>título executivo judicial</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4 — MEIOS DE RECUPERAÇÃO JUDICIAL -->
+  <div class="section-card" id="sec4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Meios de Recuperação Judicial (Art. 50)</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>O art. 50 apresenta um <em class="accent">rol exemplificativo (numerus开放/não exaustivo)</em> de meios de recuperação judicial. O legislador utiliza deliberadamente a expressão "<em>dentre outros</em>", permitindo engrenagens de engenharia financeira e estratégias diversas propostas no plano.</p>
+
+        <div class="callout jurisprudencia">
+          <div class="callout-title">📚 Fichamento Doutrinário — Gladston Mamede (2022)</div>
+          <p>"O artigo 50 diz que as medidas listadas em seus incisos constituem meios de recuperação judicial, <em>dentre outros</em>. Portanto, observada a legislação pertinente a cada caso, podem-se adotar estratégias as mais diversas para a recuperação da empresa."</p>
+        </div>
+
+        <h3>Principais Meios do Art. 50 — Detalhamento</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Inciso</th>
+                <th>Meio de Recuperação Positivado</th>
+                <th>Detalhamento e Aplicação Dogmática</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>I</strong></td>
+                <td>Concessão de prazos e condições especiais</td>
+                <td>Para pagamento de obrigações vencidas ou vincendas — o meio mais comum na prática empresarial.</td>
+              </tr>
+              <tr>
+                <td><strong>II</strong></td>
+                <td>Cisão, incorporação, fusão, transformação</td>
+                <td>Constituição de subsidiária integral, ou cessão de cotas/ações, respeitados os direitos dos sócios minoritários.</td>
+              </tr>
+              <tr>
+                <td><strong>III</strong></td>
+                <td>Alteração do controle societário</td>
+                <td>Permissão expressa para mudança do grupo controlador da devedora em crise.</td>
+              </tr>
+              <tr>
+                <td><strong>IV</strong></td>
+                <td>Substituição/modificação de administradores</td>
+                <td>Total ou parcial dos administradores do devedor ou órgãos diretivos da empresa.</td>
+              </tr>
+              <tr>
+                <td><strong>V</strong></td>
+                <td>Direito de eleição e poder de veto aos credores</td>
+                <td>Criação de órgãos administrativos e governança. Base para instituição de <strong>golden share</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>VI</strong></td>
+                <td>Aumento de capital social</td>
+                <td>Integralização de novos aportes financeiros — medida incomum para empresas em crise aguda.</td>
+              </tr>
+              <tr>
+                <td><strong>VII</strong></td>
+                <td>Trespasse ou arrendamento de estabelecimento</td>
+                <td>Inclusive para sociedades constituídas pelos próprios empregados da empresa devedora.</td>
+              </tr>
+              <tr>
+                <td><strong>VIII</strong></td>
+                <td>Redução salarial, compensação e jornada</td>
+                <td>Mediante <strong>acordo ou convenção coletiva de trabalho</strong> — exige intervenção obrigatória do sindicato.</td>
+              </tr>
+              <tr>
+                <td><strong>IX</strong></td>
+                <td>Dação em pagamento ou novação</td>
+                <td>Com ou sem constituição de garantia própria ou de terceiros garantidores.</td>
+              </tr>
+              <tr>
+                <td><strong>XVII</strong></td>
+                <td>Conversão de dívida em capital social</td>
+                <td>Mecanismo de <em>debt-to-equity swap</em>; sem sucessão ou responsabilidade por dívidas anteriores ao investidor (art. 50, § 3º).</td>
+              </tr>
+              <tr>
+                <td><strong>XVIII</strong></td>
+                <td>Venda integral da devedora</td>
+                <td>Assegura-se aos credores não aderentes condições equivalentes às da falência (venda como UPI - Unidade Produtiva Isolada).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Institutos Societários e Governança Estratégica</h3>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-titulo">Reestruturação Societária</div>
+            <ul>
+              <li><strong>Cisão parcial:</strong> parte do patrimônio migra para nova empresa; as dívidas seguem proporcionalmente (salvo previsão de isolamento de passivo no plano).</li>
+              <li><strong>Cisão total:</strong> todo o patrimônio é vertido para novas sociedades; a empresa original extingue-se.</li>
+              <li><strong>Incorporação:</strong> uma empresa absorve outra por completo (a incorporada deixa de existir).</li>
+              <li><strong>Fusão:</strong> duas ou mais sociedades unem-se dando vida a uma nova pessoa jurídica.</li>
+              <li><strong>Transformação:</strong> alteração do tipo societário (ex: Ltda → S/A) sem extinção da personalidade jurídica.</li>
+            </ul>
+          </div>
+          <div class="card card-rosa">
+            <div class="card-titulo">Golden Share (Inciso V)</div>
+            <p style="font-size:13.5px; color:var(--text-muted)">Ação preferencial de classe especial, atribuída exclusivamente ao ente público desestatizante, que confere poderes de <strong>veto</strong> em determinadas matérias corporativas estratégicas.</p>
+            <p style="font-size:12.5px; margin-top:8px; color:#A03060"><strong>Exemplo de Aula:</strong> Embraer — o Estado detém percentual mínimo do capital, mas retém poder de veto sobre alterações de controle ou transferência de tecnologia.</p>
+          </div>
+        </div>
+
+        <div class="callout jurisprudencia">
+          <div class="callout-title">⚖️ Orientação do STJ — Deságio para Credores Trabalhistas</div>
+          <p>Superando entendimentos tradicionais que vedavam modificações na classe trabalhista, o Superior Tribunal de Justiça passou a admitir a imposição de deságio (<em>haircut</em>) aos créditos trabalhistas no plano de RJ, desde que expressamente aprovado pela maioria da respectiva classe em AGC, fundamentando-se na autonomia da vontade coletiva da categoria.</p>
+        </div>
+
+        <div class="callout excecao">
+          <div class="callout-title">✅ Limitações Cogentes ao Plano de RJ</div>
+          <ul>
+            <li>Na alienação de bem gravado com garantia real: a supressão ou substituição da garantia exige <strong>aprovação expressa do credor titular</strong>.</li>
+            <li>Créditos em moeda estrangeira: a variação cambial é conservada como índice, salvo anuência expressa em contrário do credor.</li>
+            <li>Créditos trabalhistas vencidos até o pedido: prazo limite improrrogável de <strong>1 ano</strong> para o pagamento integral.</li>
+            <li>Créditos de natureza estritamente salarial (últimos 3 meses): prazo máximo de <strong>30 dias</strong>, limitado ao teto de <strong>5 salários mínimos por trabalhador</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5 — ATOS INEFICAZES E REVOGÁVEIS -->
+  <div class="section-card" id="sec5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Atos Ineficazes e Revogáveis na Falência</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>A legislação falimentar cria mecanismos de proteção da recomposição patrimonial para anular ou declarar a ineficácia de atos praticados pelo devedor antes da quebra, evitando fraudes contra credores. São institutos com pressupostos processuais distintos:</p>
+
+        <h3>Termo Legal da Falência (Período Suspeito)</h3>
+        <p>O <em class="accent">Termo Legal</em> é o marco temporal retrospectivo predeterminado pelo juiz na sentença a partir do qual os atos do falido entram sob presunção absoluta de prejuízo à massa. Pode retroagir em <strong>até 90 dias</strong>.</p>
+
+        <div class="artigo-destaque">
+          <span class="art-num">Art. 99, II — Fixação do Termo Legal</span>
+          A sentença que decreta a falência fixará o termo legal, sem poder retrotraí-lo por mais de <strong>90 dias</strong> contados do: (1) primeiro protesto por falta de pagamento; (2) pedido de falência; ou (3) pedido de recuperação judicial.
+        </div>
+
+        <div class="callout atencao">
+          <div class="callout-title">📌 Critério de Escolha do Período — Linha do Tempo</div>
+          <p>Para fins de contagem dos 90 dias de retroação, considera-se sempre o <strong>março cronológico mais antigo</strong> entre os três eventos previstos no art. 99, II. Os bens alienados dentro desse intervalo retornam à massa independentemente de prova de dolo do terceiro.</p>
+        </div>
+
+        <div class="citacao-doutrina">
+          <div class="autor">Ricardo Negrão — Distinção dos Períodos Suspeitos</div>
+          <p>"Temos três lapsos distintos na lei: a) Período suspeito stricto sensu — fixado em dois anos para atos gratuitos (art. 129, IV e V); b) Termo legal da sentença declaratória — retroativo a até 90 dias; c) Período de 15 dias anteriores ao pedido — relativo ao direito de restituição de mercadorias vendidas a prazo (art. 85, parágrafo único)."</p>
+        </div>
+
+        <h3>5.1 Atos Ineficazes Objetivos (Art. 129)</h3>
+        <p>A ineficácia opera de forma <strong>estritamente objetiva</strong>. Não importa se o terceiro contratante agiu de boa-fé ou se havia intenção de fraudar (<em>consilium fraudis</em>). O rol do art. 129 é **taxativo (numerus clausus)**, podendo ser declarado pelo juiz de ofício.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Inciso</th>
+                <th>Ato Declarado Ineficaz Objetivamente</th>
+                <th>Prazo de Abrangência Temporal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>I</strong></td>
+                <td>Pagamento de dívidas <strong>não vencidas</strong> realizado pelo devedor falido por qualquer meio de extinção de crédito.</td>
+                <td>Praticado dentro do termo legal.</td>
+              </tr>
+              <tr>
+                <td><strong>II</strong></td>
+                <td>Pagamento de dívidas <strong>vencidas e exigíveis</strong> por forma <strong>diversa</strong> da prevista originariamente no contrato (ex: dação em pagamento de imóvel em vez de dinheiro).</td>
+                <td>Praticado dentro do termo legal.</td>
+              </tr>
+              <tr>
+                <td><strong>III</strong></td>
+                <td>Constituição de direito real de garantia (hipoteca, penhor) por <strong>dívida contraída anteriormente</strong> sem garantia.</td>
+                <td>Praticado dentro do termo legal.</td>
+              </tr>
+              <tr>
+                <td><strong>IV</strong></td>
+                <td>Atos praticados <strong>a título gratuito</strong> (doações, comodatos de bens).</td>
+                <td>Nos <strong>2 anos</strong> anteriores à decretação da falência.</td>
+              </tr>
+              <tr>
+                <td><strong>V</strong></td>
+                <td>Renúncia manifesta à <strong>herança ou legado</strong> por parte do devedor.</td>
+                <td>Nos <strong>2 anos</strong> anteriores à decretação da falência.</td>
+              </tr>
+              <tr>
+                <td><strong>VI</strong></td>
+                <td>Venda ou trespasse de estabelecimento sem o consentimento expresso de todos os credores ou sem reter bens suficientes para solver o passivo.</td>
+                <td>A qualquer tempo (regra de ineficácia permanente).</td>
+              </tr>
+              <tr>
+                <td><strong>VII</strong></td>
+                <td>Registros de direitos reais e transferências imobiliárias efetuados <strong>após a decretação da falência</strong>.</td>
+                <td>Após a sentença de quebra (salvo prenotação anterior).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout excecao">
+          <div class="callout-title">✅ Exceção: Atos Chancelados no Plano de RJ</div>
+          <p>Não serão declarados ineficazes ou revogados os atos previstos nos incisos I, II, III e VI se estes forem <strong>expressamente previstos e realizados na forma definida no Plano de Recuperação Judicial</strong> ou Extrajudicial homologado. Proteção ao terceiro investidor (Art. 150 da lei + Doutrina Mamede).</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>5.2 Atos Revogáveis Subjetivos (Art. 130)</h3>
+        <p>Aplica-se a atos praticados pelo devedor que demandam, obrigatoriamente, a comprovação de fraude. Não há limitação a um rol taxativo.</p>
+
+        <h3>Matriz Comparativa: Ineficácia (Art. 129) × Revogabilidade (Art. 130)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Critério Vetor</th>
+                <th>Atos Ineficazes (Art. 129)</th>
+                <th>Atos Revogáveis (Art. 130)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Elemento Subjetivo</strong></td>
+                <td>Objetivo: prescinde de dolo, fraude ou má-fé.</td>
+                <td>Subjetivo: exige prova de conluio fraudulento (<em>consilium fraudis</em>).</td>
+              </tr>
+              <tr>
+                <td><strong>Prejuízo (Dano)</strong></td>
+                <td>Presunção absoluta da lei.</td>
+                <td>Exige prova do efetivo prejuízo à massa (<em>eventus damni</em>).</td>
+              </tr>
+              <tr>
+                <td><strong>Tipicidade do Rol</strong></td>
+                <td>Taxativo (apenas as hipóteses dos incisos).</td>
+                <td>Cláusula aberta (qualquer ato fraudulento lesivo).</td>
+              </tr>
+              <tr>
+                <td><strong>Via Processual</strong></td>
+                <td>Declaração incidental nos próprios autos ou em defesa.</td>
+                <td>Exige, obrigatoriamente, o ajuizamento de <strong>Ação Revocatória</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Prazo Exercício</strong></td>
+                <td>Imprescritível/Perpetuado no curso da falência.</td>
+                <td>Prazo decadencial de <strong>3 anos</strong> contados da sentença de quebra.</td>
+              </tr>
+              <tr>
+                <td><strong>Legitimação Ativa</strong></td>
+                <td>Juiz de ofício, Administrador Judicial ou credores.</td>
+                <td>Administrador Judicial, qualquer credor habilitado ou Ministério Público.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Ação Revocatória Falimentar — Aspectos Processuais</h3>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-titulo">Polo Passivo Coobrigado (Art. 133)</div>
+            <ul>
+              <li>O devedor falido (representado pela massa).</li>
+              <li>Todos os terceiros que participaram diretamente do ato fraudulento.</li>
+              <li>Os terceiros beneficiados indiretamente pelo ato ou garantidos por ele.</li>
+              <li>Subadquirentes de boa-fé que conheciam a fraude estrutural ao tempo da aquisição.</li>
+              <li>Herdeiros e sucessores das figuras acima elencadas.</li>
+            </ul>
+          </div>
+          <div class="card card-rosa">
+            <div class="card-titulo">Efeitos da Sentença de Procedência</div>
+            <ul>
+              <li>Determina o retorno imediato dos bens à massa falida **em espécie**.</li>
+              <li>Caso o bem tenha perecido ou alienado a terceiros de boa-fé, resolve-se em perdas e danos pelo valor equivalente de avaliação.</li>
+              <li>Fixação de honorários de sucumbência de 5% revertidos ao AJ.</li>
+              <li>Recurso cabível contra a sentença: <strong>Apelação</strong> (art. 135, parágrafo único).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout excecao">
+          <div class="callout-title">✅ Contratante de Boa-Fé e a Salvaguarda da Securitização</div>
+          <p><strong>Terceiro de Boa-Fé (Art. 136):</strong> Sendo comprovada a total ausência de ciência da crise, o contratante tem assegurado o direito de restituição dos valores por ele pagos à empresa antes da falência.<br><strong>Proteção à Securitização (Art. 136, §1º):</strong> Não se declarará a ineficácia de cessão de créditos em prejuízo dos investidores portadores de títulos mobiliários estruturados. O prejuízo financeiro é retido na carteira da securitizadora, blindando o mercado financeiro.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 6 — RESTITUIÇÃO DE CREDORES -->
+  <div class="section-card" id="sec6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>Restituição de Credores e Classificação Extraconcursal</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>O pedido de restituição visa resgatar bens arrecadados erroneamente pelo AJ que não pertencem ao patrimônio do devedor falido:</p>
+
+        <div class="artigo-destaque">
+          <span class="art-num">Art. 85 — Pedido de Restituição</span>
+          O <strong>proprietário</strong> de bem arrecadado no processo de falência ou que se encontre em poder do devedor na data da decretação da falência poderá pedir sua restituição.
+          <br>
+          <strong>Parágrafo único (Venda a Crédito nos 15 dias):</strong> Também pode ser pedida a restituição de coisa vendida a crédito e entregue ao devedor nos <strong>15 dias anteriores</strong> ao requerimento de sua falência, se ainda não alienada pela massa.
+        </div>
+
+        <p>O pedido de restituição suspende a disponibilidade do bem e tramita em apartado. A contestação tem prazo de 5 dias comuns para o falido, comitê e AJ. Reconhecido o direito pelo juiz, a ordem de entrega da coisa deve ser cumprida em **48 horas**.</p>
+
+        <h3>Hipóteses Específicas de Restituição em Dinheiro (Art. 86)</h3>
+        <ul>
+          <li><strong>Inciso I:</strong> Se a coisa arrecadada não mais existir ao tempo do pedido, a restituição far-se-á em dinheiro pelo valor de avaliação.</li>
+          <li><strong>Inciso II:</strong> Importâncias adiantadas ao devedor em razão de Contrato de Câmbio para Exportação (ACC) — prerrogativa bancária.</li>
+          <li><strong>Inciso III:</strong> Valores devidos ao terceiro contratante de boa-fé em caso de revogação ou ineficácia de ato judicialmente desfeito.</li>
+          <li><strong>Inciso IV:</strong> Tributos retidos na fonte pelo falido na condição de substituto tributário devidos ao Fisco.</li>
+        </ul>
+
+        <div class="callout excecao">
+          <div class="callout-title">✅ Rateio Proporcional de Caixa nas Restituições</div>
+          <p>Caso o caixa da massa falida seja insuficiente para liquidar todos os pedidos de restituição em dinheiro reconhecidos, realizar-se-á <strong>rateio estritamente proporcional</strong> entre os titulares, sem preferência entre os incisos do art. 86.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>A Ordem de Preferência dos Pagamentos Extraconcursais</h3>
+        <p>Enquanto a restituição da coisa em espécie ocorre de plano por não integrar o acervo da falida, as **restituições em dinheiro** submetem-se à ordem de pagamento dos créditos extraconcursais inscritos no art. 84:</p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">1º</div>
+            <div class="timeline-conteudo">
+              <strong>Arts. 150 e 151 — Prioridades Absolutas de Caixa</strong>
+              <p>Despesas indispensáveis à arrecadação e conservação dos bens da massa falida + salários atrasados dos últimos 3 meses que antecederam a quebra (limitados a 5 salários mínimos por trabalhador).</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">2º</div>
+            <div class="timeline-conteudo">
+              <strong>Financiamento DIP (Art. 84, I-B)</strong>
+              <p>Valores aportados pelo financiador do devedor durante a fase de Recuperação Judicial para manutenção da atividade econômica.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">3º</div>
+            <div class="timeline-conteudo">
+              <strong>Créditos de Restituição em Dinheiro (Art. 84, I-C)</strong>
+              <p>Valores líquidos objeto de restituição reconhecidos com base no art. 86 da Lei 11.101/05.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">4º</div>
+            <div class="timeline-conteudo">
+              <strong>Remuneração do Administrador Judicial (Art. 84, I-D)</strong>
+              <p>Honorários e despesas de custeio devidos ao AJ fixados pelo juízo falimentar.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout importante">
+          <div class="callout-title">⚠️ Gabarito de Prova — Resolução do Caso Prático N2</div>
+          <p>Frente a um cenário de escassez de ativos na massa falida para satisfazer concomitantemente os salários dos trabalhadores, o credor com direito à restituição em dinheiro (Rayane) e os honorários do AJ, o regime legal impõe a seguinte ordem de preferência rígida de liquidação:
+          <br><br>
+          <strong>1º Trabalhadores:</strong> Crédito do art. 84, I-A c/c art. 151 (Até 5 salários mínimos); <br>
+          <strong>2º Restituição em Dinheiro:</strong> Crédito do art. 84, I-C (ACC/Rayane); <br>
+          <strong>3º Administrador Judicial:</strong> Crédito do art. 84, I-D.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 7 — TOPICOS PROVA / CONCLUSÃO -->
+  <div class="section-card" id="sec7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2>Quadro Resumo dos Institutos do 2º Bimestre</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <p>Compilação estruturada para revisão rápida de pressupostos processuais exigidos nas avaliações:</p>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Instituto Legal</th>
+                <th>Legitimação Ativa</th>
+                <th>Prazo Chave</th>
+                <th>Competência / Via</th>
+                <th>Recurso Contra Sentença</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Conciliação Prévia</strong></td>
+                <td>Empresa devedora.</td>
+                <td>60 dias (stay) / 360 dias (novação definitiva).</td>
+                <td>CEJUSC / Homologação judicial.</td>
+                <td>Agravo de Instrumento.</td>
+              </tr>
+              <tr>
+                <td><strong>RJ Especial</strong></td>
+                <td>ME e EPP (Art. 48).</td>
+                <td>36 parcelas (1ª parcela em 180 dias).</td>
+                <td>Juízo Empresarial (sem AGC).</td>
+                <td>Apelação.</td>
+              </tr>
+              <tr>
+                <td><strong>Ato Ineficaz (Art. 129)</strong></td>
+                <td>Juiz, AJ ou credor.</td>
+                <td>Até 90 dias (termo legal) ou 2 anos (incs. IV e V).</td>
+                <td>Incidental nos autos da falência.</td>
+                <td>Apelação.</td>
+              </tr>
+              <tr>
+                <td><strong>Ação Revocatória (Art. 130)</strong></td>
+                <td>AJ, credor ou MP.</td>
+                <td>Decadencial: 3 anos da sentença de quebra.</td>
+                <td>Ação autônoma em apartado.</td>
+                <td>Apelação.</td>
+              </tr>
+              <tr>
+                <td><strong>Pedido Restituição (Art. 85)</strong></td>
+                <td>Proprietário do bem.</td>
+                <td>A qualquer tempo antes do encerramento; entrega em 48h.</td>
+                <td>Incidente autuado em apartado.</td>
+                <td>Apelação (sem efeito suspensivo).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout atencao">
+          <div class="callout-title">📌 O Período Bienal de Fiscalização da RJ</div>
+          <p>O encerramento do prazo de 2 anos de fiscalização judicial após a concessão da RJ **não acarreta a perda automática dos descontos (haircuts)** concedidos no plano. As dívidas novadas consolidam-se de forma permanente. O descumprimento das parcelas após o biênio autoriza o credor a ajuizar execução de título judicial individual, e não a convolação imediata em falência nos autos principais.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- SCROLL TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+<script>
+  // Controle de visibilidade do botão flutuante Scroll Top
+  const scrollBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
+    }
+  });
+
+  // Rolagem suave com compensação para âncoras do índice
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const offset = 20;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+  <script src="highlighter.js"></script>
+</body>
+</html>

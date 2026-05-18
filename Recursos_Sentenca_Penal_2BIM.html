@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursos no Processo Penal – 2º BIM | Profa. Mariana Secorun Inácio</title>
+  <style>
+    :root {
+      --pink: #FF1493;
+      --pink-light: #FF69B4;
+      --pink-bg: #fff0f7;
+      --pink-border: #FF1493;
+      --bg: #fdfdfd;
+      --text: #2b2b2b;
+      --text-muted: #555;
+      --card-bg: #ffffff;
+      --table-head-text: #ffffff;
+      --border-color: #e5e5e5;
+      --tag-bg: #fff0f7;
+      --callout-bg: #fff5fa;
+      --code-bg: #f8f8f8;
+      --shadow: rgba(255,20,147,0.08);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── HERO HEADER ── */
+    #hero {
+      background: linear-gradient(135deg, #FF1493 0%, #c2006e 100%);
+      color: #fff;
+      text-align: center;
+      padding: 58px 28px 52px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    #hero .hero-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 14px;
+    }
+    #hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    #hero .hero-sub {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+    #hero .hero-tags {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #hero .hero-tag {
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── NAV ÍNDICE ── */
+    #nav-index {
+      background: var(--card-bg);
+      border: 2px solid var(--pink);
+      max-width: 820px;
+      margin: 32px auto 0 auto;
+      padding: 24px 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px var(--shadow);
+    }
+    #nav-index h3 {
+      color: var(--pink);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+    #nav-index ol {
+      columns: 2;
+      column-gap: 32px;
+      padding-left: 20px;
+    }
+    #nav-index li { margin: 5px 0; break-inside: avoid; }
+    #nav-index a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    #nav-index a:hover { color: var(--pink); text-decoration: underline; }
+    
+    @media (max-width: 600px) {
+      #nav-index ol { columns: 1; }
+      #nav-index { margin: 20px 14px 0 14px; padding: 18px 18px; }
+    }
+
+    /* ── MAIN CONTAINER ── */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 40px 60px 40px;
+    }
+
+    /* ── SECTION CARD ── */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 14px var(--shadow);
+      margin-bottom: 36px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .section-header {
+      background: var(--pink);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-number {
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .section-body {
+      padding: 28px 30px;
+    }
+
+    /* ── SUBSECTION ── */
+    .subsection {
+      margin-bottom: 28px;
+    }
+    .subsection:last-child { margin-bottom: 0; }
+    
+    h3 {
+      color: var(--pink);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--pink-bg);
+    }
+    h4 {
+      color: var(--pink);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 14px 0 6px 0;
+    }
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── LISTAS ── */
+    ul, ol { padding-left: 22px; margin-bottom: 10px; }
+    li { margin-bottom: 5px; }
+    li:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      border-left: 5px solid var(--pink);
+      background: var(--callout-bg);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: var(--pink);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .callout.yellow { border-color: #e6a817; background: #fff9ec; }
+    .callout.yellow .callout-title { color: #c98a00; }
+    .callout.blue { border-color: #2979ff; background: #eef3ff; }
+    .callout.blue .callout-title { color: #2979ff; }
+    .callout.green { border-color: #2e7d32; background: #f1f8f1; }
+    .callout.green .callout-title { color: #2e7d32; }
+
+    /* ── TABELAS ── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead th {
+      background: var(--pink);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.3px;
+    }
+    tbody tr:nth-child(even) { background: var(--pink-bg); }
+    tbody tr:nth-child(odd) { background: var(--card-bg); }
+    tbody td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+    tbody tr:hover { filter: brightness(0.97); }
+
+    /* ── BADGES / TAGS ── */
+    .badge {
+      display: inline-block;
+      background: var(--pink);
+      color: #fff;
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-right: 4px;
+    }
+    .badge.outline {
+      background: transparent;
+      border: 2px solid var(--pink);
+      color: var(--pink);
+    }
+
+    /* ── PRAZO BOX ── */
+    .prazo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .prazo-item {
+      background: var(--pink-bg);
+      border: 1.5px solid var(--pink);
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+    .prazo-item .dias {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--pink);
+      line-height: 1;
+    }
+    .prazo-item .label {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ── SUMULA BOX ── */
+    .sumula {
+      border: 2px solid var(--pink);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      background: var(--card-bg);
+    }
+    .sumula-num {
+      font-weight: 800;
+      color: var(--pink);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .sumula p { font-size: 0.88rem; font-style: italic; margin: 0; }
+
+    /* ── ARTIGO INLINE ── */
+    .art { font-weight: 700; color: var(--pink); font-size: 0.88rem; }
+
+    /* ── DIVISOR ── */
+    hr.divider {
+      border: none;
+      border-top: 2px dashed var(--border-color);
+      margin: 20px 0;
+    }
+
+    /* ── SCROLL TOP ── */
+    #scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--pink);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 990;
+    }
+    #scroll-top:hover { background: var(--pink-light); }
+    #scroll-top.visible { display: flex; }
+
+    strong { color: inherit; }
+    em.pink { color: var(--pink); font-style: normal; font-weight: 700; }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 700px) {
+      .container { padding: 18px 14px 40px 14px; }
+      #nav-index { margin: 16px 14px 0 14px; }
+      .section-body { padding: 18px 16px; }
+      .prazo-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO HEADER -->
+<div id="hero">
+  <div class="hero-label">Universidade Presbiteriana Mackenzie · 7º Semestre</div>
+  <h1>Recursos no Processo Penal</h1>
+  <div class="hero-sub">Profa. Mariana Secorun Inácio &nbsp;·&nbsp; 2º Bimestre</div>
+  <div class="hero-tags">
+    <span class="hero-tag">⚖️ RESE</span>
+    <span class="hero-tag">📄 Apelação</span>
+    <span class="hero-tag">🏛️ Tribunal do Júri</span>
+    <span class="hero-tag">📚 Doutrina + Jurisprudência</span>
+  </div>
+</div>
+
+<!-- ÍNDICE -->
+<div id="nav-index">
+  <h3>📋 Índice</h3>
+  <ol>
+    <li><a href="#sec1">Recurso em Sentido Estrito (RESE) — Conceito e Natureza</a></li>
+    <li><a href="#sec2">RESE — Hipóteses de Cabimento (art. 581 CPP)</a></li>
+    <li><a href="#sec3">RESE — Prazo, Procedimento e Juízo de Retratação</a></li>
+    <li><a href="#sec4">RESE — Efeitos (Regressivo, Devolutivo, Suspensivo)</a></li>
+    <li><a href="#sec5">Apelação — Conceito, Amplitude e Espécies</a></li>
+    <li><a href="#sec6">Apelação — Legitimidade</a></li>
+    <li><a href="#sec7">Apelação — Hipóteses de Cabimento (art. 593 CPP)</a></li>
+    <li><a href="#sec8">Apelação — Prazo e Procedimento</a></li>
+    <li><a href="#sec9">Apelação — Efeitos (Devolutivo e Suspensivo)</a></li>
+    <li><a href="#sec10">Apelação no JECrim (Lei 9.099/95)</a></li>
+    <li><a href="#sec11">Julgamento nos Tribunais — Procedimento Ordinário e Sumário</a></li>
+    <li><a href="#sec12">Embargos Infringentes e de Nulidade</a></li>
+    <li><a href="#sec13">Tabela Comparativa Final: RESE × Apelação</a></li>
+  </ol>
+</div>
+
+<div class="container">
+
+  <!-- SEÇÃO 1 — RESE CONCEITO -->
+  <div class="section-card" id="sec1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Recurso em Sentido Estrito (RESE) — Conceito e Natureza Jurídica</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>1.1 Conceito e Characteristics Gerais</h3>
+        <p>O Recurso em Sentido Estrito (<strong>RESE</strong>) é um recurso <em class="pink">voluntário</em> que, in regra, destina-se a impugnar <strong>decisões de natureza interlocutória</strong> — isto é, decisões que não têm caráter definitivo ou terminativo. Excepcionalmente, há hipóteses legais de cabimento para atacar decisões que encerram o processo.</p>
+        <p>É considerado <strong>recurso residual em sentido inverso</strong> ao da apelação: enquanto a apelação é residual para decisões definitivas, o RESE é o instrumento previsto para hipóteses taxativas de decisões interlocutórias.</p>
+        <div class="callout">
+          <div class="callout-title">⚠️ Regra de Preferência — art. 593, §4º, CPP</div>
+          <p>A apelação exerce <strong>preferência absoluta</strong> sobre o RESE. Quando cabível a apelação, não poderá ser usado o recurso em sentido estrito, ainda que somente de parte da decisão se recorra. Ex.: sentença condenatória que também reconhece prescrição → cabe apelação (não RESE) para atacar a extinção da punibilidade.</p>
+        </div>
+      </div>
+      
+      <div class="subsection">
+        <h3>1.2 Natureza do Rol — Taxatividade e Interpretação Extensiva</h3>
+        <p>O rol de hipóteses de cabimento do RESE é <strong>taxativo (numerus clausus)</strong>. A taxatividade advém do fato de que as decisões interlocutórias são, em princípio, irrecorríveis, e a apelação é o recurso residual para as definitivas.</p>
+        <div class="callout blue">
+          <div class="callout-title">📚 Doutrina — Tourinho Filho</div>
+          <p>"Cremos que a matéria é de direito estrito e, assim, não pode comportar aplicação analógica. Ali não há uma enumeração exemplificativa, mas taxativa."</p>
+        </div>
+        <p>A taxatividade <strong>não afasta</strong>, todavia, a possibilidade de <strong>interpretação extensiva</strong> das hipóteses (art. 3º, CPP). Ex.: admite-se RESE contra decisão que indefere medida cautelar diversa da prisão, embora o art. 581, V só mencione prisão preventiva (interpretação extensiva, não analogia).</p>
+        <div class="callout">
+          <div class="callout-title">⚠️ Caráter Pro et Contra × Secundum Eventum Litis</div>
+          <ul>
+            <li><strong>Pro et contra:</strong> cabe qualquer que seja a hipótese de sucumbência — ex.: da decisão que decreta <em>ou</em> que indefere a prescrição.</li>
+            <li><strong>Secundum eventum litis:</strong> cabe apenas se verificado determinado direcionamento — ex.: cabe contra a rejection da denúncia, mas <em>não</em> contra o recebimento.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="subsection">
+        <h3>1.3 Hipóteses Revogadas pela LEP</h3>
+        <p>Oito incisos do art. 581 foram <strong>tacitamente revogados</strong> pela Lei de Execução Penal (Lei 7.210/84), que previu o <strong>Agravo (art. 197 LEP)</strong> para as decisões do juízo de execução. Não mais se submetem ao RESE:</p>
+        <ul>
+          <li>Livramento condicional — art. 581, XII</li>
+          <li>Unificação de penas — art. 581, XVII</li>
+          <li>Medida de segurança pós-trânsito em julgado — art. 581, XIX</li>
+          <li>Imposição de medida de segurança por transgressão de outra — art. 581, XX</li>
+          <li>Manutenção ou substituição de medida de segurança — art. 581, XXI</li>
+          <li>Revogação de medida de segurança — art. 581, XXII</li>
+          <li>Deixar de revogar a medida de segurança — art. 581, XXIII</li>
+          <li>Conversão de multa em detenção — art. 581, XXIV</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2 — HIPÓTESES RESE -->
+  <div class="section-card" id="sec2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>RESE — Hipóteses de Cabimento Vigentes (art. 581, CPP)</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h4>a) Não recebimento da denúncia ou queixa — art. 581, I</h4>
+        <p>Cabe RESE contra a decisão que <strong>rejeita</strong> a denúncia ou a queixa (art. 395, CPP). Na hipótese <strong>inversa</strong> (recebimento), o instrumento é o <em>habeas corpus</em> pela defesa.</p>
+        <div class="callout">
+          <div class="callout-title">⚠️ Exceções ao cabimento (rejeição da denúncia)</div>
+          <ul>
+            <li>Infrações do JECrim → Apelação para Turma Recursal (art. 82, Lei 9.099/95)</li>
+            <li>Crimes de competência originária de tribunais → Agravo Regimental</li>
+          </ul>
+        </div>
+        <div class="sumula">
+          <div class="sumula-num">Súmula 707 STF</div>
+          <p>Constitui nulidade a falta de intimação do denunciado para oferecer contrarrazões ao recurso interposto da rejeição da denúncia, não a suprindo a nomeação de defensor dativo.</p>
+        </div>
+        <div class="sumula">
+          <div class="sumula-num">Súmula 709 STF</div>
+          <p>Salvo quando nula a decisão de primeiro grau, o acórdão que provê o recurso contra a rejeição da denúncia vale, desde logo, pelo recebimento dela.</p>
+        </div>
+        
+        <h4>b) Incompetência de juízo — art. 581, II</h4>
+        <p>Refere-se às <strong>decisões declinatórias</strong> proferidas nos autos principais. Nos crimes do júri, havendo desclassificação na fase da pronúncia (art. 419), o RESE se enquadra aqui. A decisão que concluir pela competência é irrecorrível.</p>
+        
+        <h4>c) Decisão que julga procedente exceção, salvo suspeição — art. 581, III</h4>
+        <p>Abrange as exceções de coisa julgada, ilegitimidade de parte, litispendência e incompetência. A exceção de suspeição é excluída. A decisão que julga improcedente qualquer exceção é irrecorrível.</p>
+        
+        <h4>d) Decisão de pronúncia — art. 581, IV</h4>
+        <p>Ao término da fase de sumário da culpa, se houver prolação de pronúncia, cabe RESE. A impronúncia e a absolvição sumária passaram a ser atacadas por <strong>apelação</strong> (Lei 11.689/2008).</p>
+        <div class="callout green">
+          <div class="callout-title">✅ Ponto Crítico — Prisão e Recurso da Pronúncia</div>
+          <p>É inconstitucional condicionar o direito de recorrer da pronúncia ao prévio recolhimento à prisão — STF HC 101.244/MG.</p>
+        </div>
+        
+        <h4>e) Decisões sobre fiança, prisão preventiva e liberdade — art. 581, V</h4>
+        <p>Contempla: <em>conceder, negar, arbitrar, cassar ou julgar inidônea a fiança; indeferir prisão preventiva ou revogá-la; conceder liberdade provisória; relaxar a prisão em flagrante.</em> O dispositivo só prevê o RESE quando a decisão favorece o acusado. São irrecorríveis por este meio as decisões gravosas (cabendo HC).</p>
+        
+        <h4>f) Quebramento ou perdimento de fiança — art. 581, VII</h4>
+        <p>O quebramento gera perda de metade da fiança. O perdimento total ocorre se o condenado não se apresenta para o início da pena. Se decretado, cabe RESE pelo réu.</p>
+        
+        <h4>g) Extinção da punibilidade — art. 581, VIII (pro et contra)</h4>
+        <p>Cabe RESE contra a decisão terminativa que, no processo de conhecimento, declara extinta a punibilidade. <em>Exceção:</em> se ocorrer na sentença final cabe apelação (art. 593, §4º). O acusado não possui interesse em recorrer da extinção.</p>
+        
+        <h4>h) Indeferimento de reconhecimento de extinção da punibilidade — art. 581, IX</h4>
+        <p>Cabe quando o juiz indefere o pedido de reconhecimento de causa extintiva.</p>
+        
+        <h4>i) Concessão ou denegação de HC — art. 581, X</h4>
+        <p>Cabe RESE em caso de concessão, denegação ou julgamento por prejudicado de HC proferido por juiz de 1º grau. A decisão concessiva está sujeita ao reexame obrigatório.</p>
+        
+        <h4>j) Suspensão condicional da pena — art. 581, XI</h4>
+        <p>Aplica-se à concessão/denegação/revogação da suspensão condicional do processo (Lei 9.099/95).</p>
+        
+        <h4>k) Anulação do processo de instrução — art. 581, XIII</h4>
+        <p>Cabe RESE contra a decisão que declara nulo o processo, no todo ou em parte, inclusive à que declara ilícita a prova.</p>
+        
+        <h4>l) Lista de jurados — art. 581, XIV</h4>
+        <p>Contra a lista definitiva de jurados cabe RESE, interposto em 20 dias, dirigido ao presidente do Tribunal.</p>
+        
+        <h4>m) Denegação ou deserção da apelação — art. 581, XV</h4>
+        <p>Cabe RESE contra a decisão do juízo a quo que nega seguimento à apelação ou a julga deserta.</p>
+        <div class="sumula">
+          <div class="sumula-num">Súmula 347 STJ</div>
+          <p>O conhecimento de recurso de apelação do réu independe de sua prisão.</p>
+        </div>
+        
+        <h4>n) Suspensão do processo por questão prejudicial — art. 581, XVI</h4>
+        <p>Se o juiz determinar a suspensão do processo, cabe RESE. Cabe também por extensão contra suspensão do art. 366 do CPP.</p>
+        
+        <h4>o) Incidente de falsidade — art. 581, XVIII</h4>
+        <p>Cabe RESE contra a decisão que decide o incidente de falsidade documental.</p>
+        
+        <h4>p) Recusa de homologação do ANPP — art. 581, XXV</h4>
+        <p>Se o juiz recusar a homologação do Acordo de Não Persecução Penal, as partes poderão interpor RESE.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3 — PRAZO E PROCEDIMENTO RESE -->
+  <div class="section-card" id="sec3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>RESE — Prazo, Procedimento e Juízo de Retratação</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>3.1 Prazos</h3>
+        <div class="prazo-grid">
+          <div class="prazo-item">
+            <div class="dias">5</div>
+            <div class="label">dias — Regra geral de interposição (art. 586 CPP)</div>
+          </div>
+          <div class="prazo-item">
+            <div class="dias">20</div>
+            <div class="label">dias — Inclusão/exclusão de jurado na lista (art. 586, §único)</div>
+          </div>
+          <div class="prazo-item">
+            <div class="dias">15</div>
+            <div class="label">dias — Ofendido não habilitado supletivo (art. 584, §1º)</div>
+          </div>
+          <div class="prazo-item">
+            <div class="dias">2</div>
+            <div class="label">dias — Razões e contrarrazões (art. 588 CPP)</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="subsection">
+        <h3>3.2 Forma de Interposição</h3>
+        <p>A interposição faz-se por petição ou termo nos autos. Processa-se nos próprios autos (hipóteses do art. 583 CPP) ou por instrumento (formando-se traslado nas demais situações). As razões devem ser oferecidas no juízo de 1º grau.</p>
+      </div>
+      
+      <div class="subsection">
+        <h3>3.3 Juízo de Retratação — art. 589, CPP</h3>
+        <div class="callout">
+          <div class="callout-title">📌 Ponto Crítico da Prova — Juízo de Retratação</div>
+          <p>O RESE possui efeito regressivo obrigatório. Após razões e contrarrazões, os autos voltam ao juiz, que poderá manter ou reformar a decisão impugnada.</p>
+        </div>
+        <ul>
+          <li>Se o juiz se retratar, a parte contrária poderá recorrer do novo teor por simples petição (se houver recurso cabível contra o novo ato).</li>
+          <li>Se mantiver, os autos sobem ao tribunal.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4 — EFEITOS RESE -->
+  <div class="section-card" id="sec4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>RESE — Efeitos Recursais</h2>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Efeito</th>
+              <th>Regra</th>
+              <th>Exceções / Observações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Devolutivo</strong></td>
+              <td>Sempre presente</td>
+              <td>Transfere o conhecimento da decisão ao Tribunal.</td>
+            </tr>
+            <tr>
+              <td><strong>Regressivo</strong></td>
+              <td>Sempre presente</td>
+              <td>Obriga o juiz a quo ao juízo de retratação (art. 589). Recursos mistos.</td>
+            </tr>
+            <tr>
+              <td><strong>Suspensivo</strong></td>
+              <td><em class="pink">Regra: NÃO possui</em></td>
+              <td>Exceções taxativas (art. 584): perda ou quebramento da fiança; denegação da apelação; e pronúncia (apenas quanto ao julgamento em plenário).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <div class="callout-title">⚠️ RESE de Pronúncia — Efeito Suspensivo Parcial</div>
+        <p>No RESE contra a pronúncia, o único efeito suspensivo é obstar a realização do julgamento em Plenário do Júri. Os atos preparatórios correm normalmente.</p>
+      </div>
+      <div class="sumula">
+        <div class="sumula-num">Súmula 604 STJ</div>
+        <p>O mandado de segurança não se presta a atacar decisão judicial sujeita a recurso com efeito suspensivo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5 — APELAÇÃO CONCEITO -->
+  <div class="section-card" id="sec5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Apelação — Conceito, Amplitude e Espécies</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>5.1 Conceito e Características</h3>
+        <p>A apelação é o meio ordinário de impugnação de sentenças condenatórias ou absolutórias e decisões definitivas (ou com força de definitivas), propiciando ampla devolução de matéria fática e jurídica ao 2º grau.</p>
+        <ul>
+          <li>Sempre voluntária (não há apelação ex officio).</li>
+          <li>Caráter residual em relação às hipóteses do RESE.</li>
+          <li>Preferencial sobre o RESE (art. 593, §4º).</li>
+        </ul>
+      </div>
+      
+      <div class="subsection">
+        <h3>5.2 Espécies de Apelação</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Critério</th>
+                <th>Espécie</th>
+                <th>Característica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Procedimento</td>
+                <td><strong>Ordinária</strong> (art. 613)</td>
+                <td>Crimes apenados com reclusão. Prazos de vista de 10 dias. Há revisor.</td>
+              </tr>
+              <tr>
+                <td>Procedimento</td>
+                <td><strong>Sumária</strong> (art. 610)</td>
+                <td>Crimes apenados com detenção. Prazos de vista de 5 dias. Não há revisor.</td>
+              </tr>
+              <tr>
+                <td>Iniciativa</td>
+                <td><strong>Principal</strong></td>
+                <td>Oferecida pelas partes originárias (MP ou querelante).</td>
+              </tr>
+              <tr>
+                <td>Iniciativa</td>
+                <td><strong>Supletiva</strong></td>
+                <td>Interposta pelo assistente na inércia do MP.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <div class="callout-title">📌 Atenção — Critério de Classificação Recursal</div>
+          <p>Diferente do 1º grau (onde manda a pena abstrata máxima), no tribunal o rito ordinário ou sumário da apelação é ditado puramente pela espécie de pena privativa de liberdade: <strong>reclusão</strong> (ordinária) ou <strong>detenção</strong> (sumária).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 6 — LEGITIMIDADE APELAÇÃO -->
+  <div class="section-card" id="sec6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>Apelação — Legitimidade (art. 577 CPP)</h2>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Legitimado</th>
+              <th>Hipótese e Condições</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Ministério Público</strong></td>
+              <td>Ampla legitimidade. Pode apelar inclusive em benefício do réu. Não atua nas ações privadas exclusivas.</td>
+            </tr>
+            <tr>
+              <td><strong>Réu / Defensor</strong></td>
+              <td>Legitimidade ampla. Interesse presente inclusive para mudar os fundamentos legais de uma absolvição.</td>
+            </tr>
+            <tr>
+              <td><strong>Assistente de Acusação</strong></td>
+              <td>Legitimidade subsidiária (art. 598). Prazo abre após inércia do MP.<br>Habilitado: 5 dias para interpor. Não habilitado: 15 dias.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sumula">
+        <div class="sumula-num">Súmula 448 STF</div>
+        <p>O prazo para o assistente recorrer, supletivamente, começa a correr imediatamente após o transcurso do prazo do Ministério Público.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 7 — HIPÓTESES APELAÇÃO -->
+  <div class="section-card" id="sec7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2>Apelação — Hipóteses de Cabimento (art. 593, CPP)</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>7.1 Sentenças e Decisões do Juiz Singular</h3>
+        <ul>
+          <li><strong>Inciso I:</strong> Sentenças definitivas de condenação ou absolvição, além da absolvição sumária dos ritos processuais.</li>
+          <li><strong>Inciso II:</strong> Decisões definitivas ou interlocutórias mistas terminativas (com força de definitivas) residuais. Ex: incidente de restituição de coisas apreendidas, cautelares reais (arresto, sequestro) e impronúncia.</li>
+        </ul>
+      </div>
+      
+      <div class="subsection">
+        <h3>7.2 Inciso III — Decisões do Tribunal do Júri (Fundamentação Vinculada)</h3>
+        <div class="sumula">
+          <div class="sumula-num">Súmula 713 STF</div>
+          <p>O efeito devolutivo da apelação contra decisões do Júri é adstrito aos fundamentos da sua interposição.</p>
+        </div>
+        <p>A petição deve conter a indicação expressa da alínea sob pena de não conhecimento.</p>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Alínea</th>
+                <th>Hipótese de Impugnação</th>
+                <th>Efeito decorrente do Provimento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>a)</strong></td>
+                <td>Nulidade posterior à pronúncia.</td>
+                <td>Anulação do ato e determinação de novo Júri.</td>
+              </tr>
+              <tr>
+                <td><strong>b)</strong></td>
+                <td>Sentença do juiz-presidente contrária à lei ou à decisão dos jurados.</td>
+                <td>Substituição: o Tribunal retifica diretamente a decisão (art. 593, §1º).</td>
+              </tr>
+              <tr>
+                <td><strong>c)</strong></td>
+                <td>Erro ou injustiça na dosimetria da pena ou medida de segurança.</td>
+                <td>Substituição: o Tribunal readequa a pena diretamente (art. 593, §2º).</td>
+              </tr>
+              <tr>
+                <td><strong>d)</strong></td>
+                <td>Decisão dos jurados manifestamente contrária à prova dos autos.</td>
+                <td>Cassação: anula o julgamento e determina um novo Júri (cabível uma única vez).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="callout">
+          <div class="callout-title">🔴 NOVIDADE JURISPRUDENCIAL — STF Tema 1.087 (2024)</div>
+          <p>O STF fixou que cabe apelação com fundamento na alínea "d" caso os jurados acolham o quesito genérico absolutório de forma manifestamente contrária à prova dos autos. Contudo, o Tribunal não determinará novo júri se a absolvição fundar-se em clemência compatível com as balizas constitucionais fáticas demonstradas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 8 — PRAZO E PROCEDIMENTO APELAÇÃO -->
+  <div class="section-card" id="sec8">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2>Apelação — Prazo e Procedimento</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>8.1 Prazos</h3>
+        <div class="prazo-grid">
+          <div class="prazo-item">
+            <div class="dias">5</div>
+            <div class="label">dias — Interposição comum (art. 593 CPP)</div>
+          </div>
+          <div class="prazo-item">
+            <div class="dias">8</div>
+            <div class="label">dias — Apresentação de Razões/Contrarrazões (art. 600)</div>
+          </div>
+          <div class="prazo-item">
+            <div class="dias">3</div>
+            <div class="label">dias — Prazos reduzidos (contravenções e assistente)</div>
+          </div>
+          <div class="prazo-item">
+            <div class="dias">10</div>
+            <div class="label">dias — Rito do JECrim (interposição unificada com razões)</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">📌 Regra Importante — Separação dos Prazos</div>
+          <p>Os prazos de interposição (5 dias) e razões (8 dias) são sequenciais e autônomos. Não se somam em um prazo único de 13 dias corridos.</p>
+        </div>
+        <div class="sumula">
+          <div class="sumula-num">Súmula 710 STF</div>
+          <p>No processo penal, contam-se os prazos da data da intimação, e não da juntada aos autos do mandado ou carta precatória ou de ordem.</p>
+        </div>
+      </div>
+      
+      <div class="subsection">
+        <h3>8.2 Aspectos Procedimentais</h3>
+        <p>A interposição é feita perante o juízo a quo. O CPP faculta a apresentação das razões recursais diretamente na instância do Tribunal ad quem, conforme o art. 600, §4º. A falta de razões pela defesa impõe ao juiz o dever de intimar o réu para constituir novo patrono ou indicar defensor dativo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 9 — EFEITOS APELAÇÃO -->
+  <div class="section-card" id="sec9">
+    <div class="section-header">
+      <div class="section-number">9</div>
+      <h2>Apelação — Efeitos Recursais</h2>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Efeito Recursal</th>
+              <th>Regra Aplicável</th>
+              <th>Observações Práticas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Devolutivo</strong></td>
+              <td>Sempre presente</td>
+              <td>Extensão ditada pela impugnação (<em>tantum devolutum quantum appellatum</em>).</td>
+            </tr>
+            <tr>
+              <td><strong>Regressivo</strong></td>
+              <td>Nunca presente</td>
+              <td>Inexiste juízo de retratação em sede de apelação.</td>
+            </tr>
+            <tr>
+              <td><strong>Suspensivo</strong></td>
+              <td>Regra: Possui (art. 597)</td>
+              <td>Exceções: sentença absolutória (soltura imediata — art. 596) e apelação supletiva do assistente.</td>
+            </tr>
+            <tr>
+              <td><strong>Extensivo</strong></td>
+              <td>Eventual (art. 580)</td>
+              <td>No concurso de agentes, beneficia os corréus se fundado em motivos de caráter não pessoal.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="subsection">
+        <h3>9.1 Execução Provisória e o art. 492, I, "e" do CPP</h3>
+        <p>O Pacote Anticrime instituiu a execução provisória imediata das condenações proferidas pelo Plenário do Tribunal do Júri cujas penas sejam iguais ou superiores a 15 anos de reclusão, suspendendo-se excepcionalmente pelo Tribunal se demonstrada tese plausível de decisão manifestamente contrária à prova.</p>
+        <div class="sumula">
+          <div class="sumula-num">Súmula 716 STF</div>
+          <p>Admite-se a progressão de regime de cumprimento da pena ou a aplicação imediata de regime menos severo nela determinada, antes do trânsito em julgado da sentença condenatória.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 10 — APELAÇÃO JECRIM -->
+  <div class="section-card" id="sec10">
+    <div class="section-header">
+      <div class="section-number">10</div>
+      <h2>Apelação no JECrim — Lei 9.099/95</h2>
+    </div>
+    <div class="section-body">
+      <p>Nos Juizados Especiais Criminais (infrações com pena máxima de até 2 anos e contravenções), a apelação possui rito diferenciado:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Decisão Impugnada</th>
+              <th>Fundamentação Legal na Lei 9.099/95</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Sentença que homologa ou rejeita a transação penal.</td><td>Art. 76, §5º</td></tr>
+            <tr><td>Decisão interlocutória de rejeição da denúncia ou queixa.</td><td>Art. 82, caput</td></tr>
+            <tr><td>Sentença definitiva condenatória ou absolutória.</td><td>Art. 82, caput</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <div class="callout-title">📋 Regras Específicas do JECrim</div>
+        <ul>
+          <li><strong>Prazo unificado:</strong> 10 dias para interpor, obrigatoriamente acompanhado das razões escritas.</li>
+          <li><strong>Forma:</strong> Exclusivamente por petição escrita (inadmite-se interposição por termo).</li>
+          <li><strong>Julgamento:</strong> Efetuado por uma Turma Recursal criminal composta por três juízes de primeiro grau.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 11 — JULGAMENTO TRIBUNAIS -->
+  <div class="section-card" id="sec11">
+    <div class="section-header">
+      <div class="section-number">11</div>
+      <h2>Julgamento nos Tribunais — Procedimento Ordinário e Sumário</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>11.1 Trâmite do Rito Ordinário (Reclusão)</h3>
+        <ol>
+          <li>Distribuição e remessa dos autos ao Ministério Público em 2º grau (Procuradoria de Justiça) para parecer em 10 dias.</li>
+          <li>Conclusão ao Juiz Relator para elaboração do relatório escrito em 10 dias.</li>
+          <li>Remessa ao Juiz Revisor para exame dos autos em 10 dias e pedido de inclusão em pauta de julgamento.</li>
+          <li>Publicação da pauta de julgamento e intimação pautada das partes, sob pena de nulidade absoluta (Súmula 431 STF).</li>
+          <li>Sessão de julgamento: Sustentação oral facultada pelo prazo de 15 minutos, seguida da tomada de votos.</li>
+        </ol>
+      </div>
+      
+      <div class="subsection">
+        <h3>11.2 Trâmite do Rito Sumário (Detenção)</h3>
+        <p>Os prazos de vista do MP e do Relator caem para 5 dias. Diferença crítica: <strong>não há figura do revisor</strong> no procedimento de crimes apenados com detenção. A sustentação oral é reduzida para o prazo de 10 minutos.</p>
+      </div>
+      
+      <div class="subsection">
+        <h3>11.3 Critérios de Desempate e Votação Divergente</h3>
+        <div class="callout green">
+          <div class="callout-title">✅ Regras de Votação nos Tribunais (Lei 14.836/2024)</div>
+          <ul>
+            <li><strong>Empate absoluto:</strong> Prevalece compulsoriamente a decisão mais favorável ao réu. O resultado é proclamado imediatamente, mesmo na ausência de componentes da Turma por suspeição, impedimento ou vacância.</li>
+            <li><strong>Divergência de três votos (Voto Médio):</strong> Aplica-se a solução intermediária. Ex: Um voto mantém roubo, outro absolve e o terceiro desclassifica para furto. Prevalece o voto de desclassificação (furto).</li>
+          </ul>
+        </div>
+        <h4>Produção Provas (Art. 616)</h4>
+        <p>O Tribunal possui a faculdade discricionária de converter o julgamento em diligência para reinquirir testemunhas, reinterrogar o réu ou determinar a produção de perícias, sem que isso configure supressão de instância.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 12 — EMBARGOS INFRINGENTES -->
+  <div class="section-card" id="sec12">
+    <div class="section-header">
+      <div class="section-number">12</div>
+      <h2>Embargos Infringentes e de Nulidade</h2>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>12.1 Conceito e Pressupostos Específicos</h3>
+        <p>São recursos exclusivos da defesa, oponíveis contra acórdãos não unânimes proferidos em sede de Apelação, RESE ou Agravo em Execução, desde que a decisão de maioria seja desfavorável ao réu (art. 609, parágrafo único).</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Espécie de Embargos</th>
+                <th>Natureza da Matéria Divergente</th>
+                <th>Escopo do Pedido Defensivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Embargos Infringentes</strong></td><td>Matéria de mérito (questão de fundo penal).</td><td>Reforma substancial do acórdão.</td></tr>
+              <tr><td><strong>Embargos de Nulidade</strong></td><td>Matéria processual (preliminares, nulidades).</td><td>Anulação total ou parcial do julgamento.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>O prazo de interposição consolidado na prática e regimentos internos é de <strong>10 dias</strong>, dirigidos ao Relator do acórdão embargado.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 13 — TABELA COMPARATIVA -->
+  <div class="section-card" id="sec13">
+    <div class="section-header">
+      <div class="section-number">13</div>
+      <h2>Tabela Comparativa Final: RESE × Apelação</h2>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Vetor de Confronto</th>
+              <th>Recurso em Sentido Estrito (RESE)</th>
+              <th>Apelação Criminal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Decisões Impugnáveis</strong></td>
+              <td>Decisões interlocutórias em rol estritamente taxativo (art. 581 do CPP).</td>
+              <td>Sentenças definitivas ou terminativas com força de definitivas (caráter residual).</td>
+            </tr>
+            <tr>
+              <td><strong>Preferência Concorrente</strong></td>
+              <td>Preterido. Cedência compulsória em caso de concorrência com a apelação.</td>
+              <td>Preferencial absoluto (art. 593, §4º). Exclui o cabimento do RESE.</td>
+            </tr>
+            <tr>
+              <td><strong>Prazo de Interposição</strong></td>
+              <td>Regra: 5 dias. Lista de jurados: 20 dias.</td>
+              <td>Regra: 5 dias. Procedimento do JECrim: 10 dias.</td>
+            </tr>
+            <tr>
+              <td><strong>Prazo Oferecimento Razões</strong></td>
+              <td>2 dias (art. 588).</td>
+              <td>8 dias (3 dias em contravenções e rito sumário).</td>
+            </tr>
+            <tr>
+              <td><strong>Efeito Regressivo</strong></td>
+              <td>Sempre presente. Obriga ao juízo de retratação do art. 589. Recurso misto.</td>
+              <td>Nunca presente. O juízo a quo esgota sua jurisdição com a sentença.</td>
+            </tr>
+            <tr>
+              <td><strong>Efeito Suspensivo</strong></td>
+              <td>Regra: Não possui (exceções taxativas do art. 584).</td>
+              <td>Regra: Possui efeito suspensivo automático (art. 597).</td>
+            </tr>
+            <tr>
+              <td><strong>Arrazoamento em Instância Superior</strong></td>
+              <td>Inadmissível. Razões oferecidas obrigatoriamente em 1º grau.</td>
+              <td>Plenamente admissível, conforme faculdade do art. 600, §4º do CPP.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <hr class="divider">
+      
+      <div class="subsection">
+        <h3>🗂️ Súmulas e Artigos Críticos — Resumo Rápido</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Dispositivo / Súmula</th>
+                <th>Aplicação Dogmática nos Exames</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Art. 581, CPP</td><td>Sede do rol taxativo de cabimento do Recurso em Sentido Estrito.</td></tr>
+              <tr><td>Art. 589, CPP</td><td>Previsão do juízo de retratação (efeito regressivo obrigatório do RESE).</td></tr>
+              <tr><td>Art. 593, CPP</td><td>Matriz legal das hipóteses de cabimento do recurso de Apelação Criminal.</td></tr>
+              <tr><td>Art. 609, §único, CPP</td><td>Previsão recursal dos Embargos Infringentes e de Nulidade.</td></tr>
+              <tr><td>Súmula 347 STJ</td><td>Garante o conhecimento da apelação independentemente de prisão do réu.</td></tr>
+              <tr><td>Súmula 431 STF</td><td>Nulidade insanável do julgamento por ausência de pauta publicada.</td></tr>
+              <tr><td>Súmula 448 STF</td><td>O prazo recursal do assistente flui imediatamente após a inércia do MP.</td></tr>
+              <tr><td>Súmula 709 STF</td><td>O provimento do RESE acusatório opera como recebimento imediato da denúncia.</td></tr>
+              <tr><td>Súmula 710 STF</td><td>Os prazos processuais penais contam-se da intimação, e não da juntada do mandado.</td></tr>
+              <tr><td>Súmula 713 STF</td><td>Efeito devolutivo da apelação do Júri é estritamente vinculado às alíneas indicadas.</td></tr>
+              <tr><td>STF Tema 1.087 (2024)</td><td>Fixação das balizas de recorribilidade do quesito genérico absolutório no Júri.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- SCROLL TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+<script>
+  // Scroll top button visibility
+  const scrollBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
+    }
+  });
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const offset = 20;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+  <script src="highlighter.js"></script>
+
+</body>
+</html>

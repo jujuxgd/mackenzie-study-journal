@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Julia’s Study Journal — Mackenzie</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E✦%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ══ TOKENS COZY & PINTEREST AESTHETIC ══════════════════════════ */
+    :root {
+      --bg-warm: #fbf9f6;
+      --aurora-1: #f3e9dc; --aurora-2: #eeddd3; --aurora-3: #e4ccbf;
+      --aurora-4: #ebdcd5; --aurora-5: #e1dad2;
+      --glass-bg:     rgba(252, 250, 247, 0.75);
+      --glass-border: rgba(235, 226, 218, 0.8);
+      --glass-shadow: 0 30px 70px rgba(130,110,100,0.08), 0 8px 24px rgba(130,110,100,0.04);
+      --text-primary:   #3c2f2f;
+      --text-secondary: #705e57;
+      --text-muted:     #a08e86;
+      --accent:         #bc8a7e; /* Dusty Rose */
+      --sticky-note:    #f7f2e8;
+      --radius-xl: 32px; --radius-lg: 24px; --radius-pill: 999px;
+      --ease: cubic-bezier(0.25, 1, 0.5, 1); --dur: 0.4s;
+      /* ── Cores das Matérias Neutras/Pastel ── */
+      --dds-base: #f5eae6;  --dds-deep: #a66e60;  --dds-glow: rgba(166,110,96,0.15);
+      --acsp-base: #e6ecf2; --acsp-deep: #5e7a93; --acsp-glow: rgba(94,122,147,0.15);
+      --trib-base: #ece6f2; --trib-deep: #7d6391; --trib-glow: rgba(125,99,145,0.15);
+      --bio-base: #e7eedf;  --bio-deep: #667852;  --bio-glow: rgba(102,120,82,0.15);
+      --frj-base: #f5f0e1;  --frj-deep: #968352;  --frj-glow: rgba(150,131,82,0.15);
+      --penal-base: #f5e2db; --penal-deep: #ac634b; --penal-glow: rgba(172,99,75,0.15);
+      --trab-base: #f5ebd5;  --trab-deep: #9e7d4a;  --trab-glow: rgba(158,125,74,0.15);
+      --proc-base: #dfedf0;  --proc-deep: #4d7c8a;  --proc-glow: rgba(77,124,138,0.15);
+      --rec-base: #f0e1e6;   --rec-deep: #9e5369;   --rec-glow: rgba(158,83,105,0.15);
+    }
+    /* ── DARK ACADEMIA MODE ── */
+    [data-theme="dark"] {
+      --bg-warm: #1c1615;
+      --aurora-1: #2d2220; --aurora-2: #281e1b; --aurora-3: #231917;
+      --aurora-4: #211917; --aurora-5: #1e1614;
+      --glass-bg:     rgba(28, 22, 21, 0.82);
+      --glass-border: rgba(255,255,255,0.04);
+      --glass-shadow: 0 40px 90px rgba(0,0,0,0.65), 0 10px 30px rgba(0,0,0,0.4);
+      --text-primary:   #ede4e0;
+      --text-secondary: #bfaa9f;
+      --text-muted:     #6e5d56;
+      --accent:         #dca99e;
+      --sticky-note:    #2a201e;
+      --dds-glow: rgba(221,170,157,0.2);  --acsp-glow: rgba(144,173,200,0.2);
+      --trib-glow: rgba(181,154,204,0.2);  --bio-glow: rgba(159,180,136,0.2);
+      --frj-glow: rgba(206,186,134,0.2);
+      --penal-glow: rgba(224,147,122,0.2);  --trab-glow: rgba(212,177,122,0.2);
+      --proc-glow: rgba(129,179,191,0.2);  --rec-glow: rgba(214,143,165,0.2);
+    }
+    /* ══ RESET ═══════════════════════════════════════════════════ */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:'Plus Jakarta Sans',sans-serif;color:var(--text-primary);background:var(--bg-warm)}
+    body{overflow:hidden;display:flex;transition:color .4s var(--ease), background .4s var(--ease)}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:99px}
+    /* ══ BACKGROUND BLUR BLOG STYLE ══════════════════════════════ */
+    .aurora-bg{position:fixed;inset:0;z-index:0;overflow:hidden;opacity:0.6;transition:opacity .6s var(--ease)}
+    .aurora-blob{position:absolute;border-radius:50%;filter:blur(110px);will-change:transform}
+    .ab1{width:800px;height:800px;top:-250px;left:-100px;background:var(--aurora-1);animation:floatA 22s ease-in-out infinite alternate}
+    .ab2{width:600px;height:600px;top:15%;right:-100px;background:var(--aurora-2);animation:floatB 26s ease-in-out infinite alternate}
+    .ab3{width:550px;height:550px;bottom:-150px;left:25%;background:var(--aurora-3);animation:floatC 20s ease-in-out infinite alternate}
+    .ab4{width:450px;height:450px;top:50%;left:10%;background:var(--aurora-4);animation:floatD 24s ease-in-out infinite alternate}
+    @keyframes floatA{from{transform:translate(0,0) scale(1)}to{transform:translate(40px,30px) scale(1.05)}}
+    @keyframes floatB{from{transform:translate(0,0) scale(1.03)}to{transform:translate(-30px,50px) scale(.97)}}
+    @keyframes floatC{from{transform:translate(0,0) scale(1)}to{transform:translate(-50px,-30px) scale(1.06)}}
+    @keyframes floatD{from{transform:translate(0,0) scale(.97)}to{transform:translate(30px,-50px) scale(1.03)}}
+    /* ══ SIDEBAR (TUMBLR / NOTION JOURNAL) ═══════════════════════ */
+    .sidebar {
+      width: 290px; height: 100vh;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-right: 1px solid var(--glass-border);
+      padding: 32px 24px;
+      display: flex; flex-direction: column; gap: 28px;
+      z-index: 9999; flex-shrink: 0;
+      transition: transform var(--dur) var(--ease), margin-left var(--dur) var(--ease);
+    }
+    .sidebar.closed { margin-left: -290px; transform: translateX(-100%); }
+    .sidebar-title {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 18px; color: var(--accent); font-weight: 500;
+    }
+    .sidebar-section { display: flex; flex-direction: column; gap: 8px; }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 4px;
+    }
+    /* Grid de Matérias Globais */
+    .global-subject-grid { display: flex; flex-direction: column; gap: 6px; }
+    .sidebar-nav-btn {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-radius: 14px;
+      background: transparent; border: 1px solid transparent;
+      font-size: 12.5px; font-weight: 500; text-align: left;
+      color: var(--text-secondary); cursor: pointer; transition: all 0.25s;
+    }
+    .sidebar-nav-btn:hover { background: rgba(255,255,255,0.4); color: var(--text-primary); transform: translateX(3px); }
+    [data-theme="dark"] .sidebar-nav-btn:hover { background: rgba(255,255,255,0.03); }
+    .sidebar-nav-btn.active {
+      background: rgba(255,255,255,0.7); border-color: var(--glass-border);
+      color: var(--text-primary); font-weight: 600;
+    }
+    [data-theme="dark"] .sidebar-nav-btn.active { background: rgba(255,255,255,0.06); }
+    .sidebar-nav-btn .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); }
+    /* Bloco de Anotações Journal Style */
+    .journal-notes-wrap { flex: 1; display: flex; flex-direction: column; min-height: 140px; }
+    .journal-textarea {
+      width: 100%; flex: 1; padding: 16px; border-radius: 20px;
+      background: var(--sticky-note); border: 1px solid var(--glass-border);
+      font-family: inherit; font-size: 13px; line-height: 1.6;
+      color: var(--text-primary); resize: none; outline: none;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.01);
+      transition: all 0.3s;
+    }
+    .journal-textarea::placeholder { font-style: italic; color: var(--text-muted); opacity: 0.7; }
+    .journal-textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(188,138,126,0.1); }
+    /* ══ MAIN WORKSPACE SHELL ════════════════════════════════════ */
+    .app-shell{position:relative;z-index:1;flex:1;height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;transition: padding var(--dur) var(--ease);}
+    .glass-card{
+      width:100%;max-width:1380px;height:calc(100vh - 48px);max-height:960px;
+      display:flex;flex-direction:column;
+      background:var(--glass-bg);
+      backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px);
+      border:1px solid var(--glass-border); border-radius:var(--radius-xl);
+      box-shadow:var(--glass-shadow); overflow:hidden;
+      transition:all .5s var(--ease)
+    }
+    /* ══ TOP NAVIGATION (TUMBLR HEADER VIBES) ═════════════════════ */
+    .top-bar{display:flex;align-items:center;justify-content:space-between;padding:24px 40px 0;flex-shrink:0;gap:16px}
+    .top-bar-left { display: flex; align-items:center; gap: 16px; }
+    .toggle-sidebar-btn {
+      background: rgba(255, 255, 255, 0.6); border: 1px solid var(--glass-border); font-size: 22px;
+      color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px; border-radius: 50%; transition: all 0.2s; z-index: 1000;
+    }
+    [data-theme="dark"] .toggle-sidebar-btn { background: rgba(0,0,0,0.3); }
+    .toggle-sidebar-btn:hover { transform: scale(1.05); color: var(--text-primary); }
+    .eyebrow-tag{
+      display:inline-flex;align-items:center;gap:8px;
+      font-family:'Playfair Display', serif;font-style:italic;
+      font-size:14px;font-weight:500;color:var(--text-secondary);
+    }
+    .eyebrow-sparkle{color:var(--accent);animation:sparkPulse 3s ease-in-out infinite}
+    @keyframes sparkPulse{0%,100%{opacity:.4;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
+    .theme-btn{
+      display:flex;align-items:center;gap:10px;padding:6px 14px;border-radius:var(--radius-pill);
+      background:transparent;border:1px solid var(--glass-border);
+      cursor:pointer;font-size:12px;font-weight:500;color:var(--text-secondary);
+      transition:all .3s var(--ease);
+    }
+    .theme-btn:hover{background:rgba(255,255,255,0.4);transform:translateY(-1px)}
+    [data-theme="dark"] .theme-btn:hover{background:rgba(255,255,255,0.05)}
+    .toggle-pill{
+      width:36px;height:18px;border-radius:var(--radius-pill);
+      background:rgba(130,110,100,0.15);position:relative;transition:background .3s
+    }
+    .toggle-knob{
+      position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+      background:var(--text-secondary);transition:transform .3s var(--ease)
+    }
+    [data-theme="dark"] .toggle-knob{transform:translateX(18px);background:var(--accent)}
+    /* ══ EDITORIAL HEADER BLOG STYLE ═════════════════════════════ */
+    .header{padding:12px 40px 10px;flex-shrink:0;text-align:center}
+    .header-title{
+      font-family:'Playfair Display', serif;
+      font-size:clamp(1.6rem, 3vw, 2.7rem);font-weight:400;letter-spacing:-0.02em;
+      color:var(--text-primary);
+    }
+    .header-title span{font-style:italic;font-weight:600;color:var(--accent)}
+    .header-sub{
+      margin-top:6px;font-family:'Plus Jakarta Sans', sans-serif;
+      font-size:13px;font-weight:400;color:var(--text-secondary);letter-spacing:.02em;opacity:0.85
+    }
+    /* ══ PINTEREST WEEK SELECTOR ═════════════════════════════════ */
+    .week-bar{padding:8px 40px 0;display:flex;align-items:center;justify-content:center;gap:12px;flex-shrink:0}
+    .week-pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 18px;border-radius:var(--radius-pill);
+      font-size:12px;font-weight:500;cursor:pointer;
+      border:1px solid var(--glass-border);background:transparent;
+      color:var(--text-secondary);transition:all .3s var(--ease);
+    }
+    .week-pill:hover:not(.active){background:rgba(255,255,255,0.5);color:var(--text-primary)}
+    [data-theme="dark"] .week-pill:hover:not(.active){background:rgba(255,255,255,0.03)}
+    .week-pill.active{
+      background: var(--text-primary); border-color: var(--text-primary);
+      color: var(--bg-warm); box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    [data-theme="dark"] .week-pill.active{
+      background: var(--accent); border-color: var(--accent); color: var(--bg-warm);
+    }
+    .week-pill .wk-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.7}
+    /* ══ DIVIDER ═════════════════════════════════════════════════ */
+    .divider{height:1px;margin:12px 40px 0;flex-shrink:0;background:linear-gradient(90deg,transparent,rgba(130,110,100,0.12) 20%,rgba(130,110,100,0.12) 80%,transparent)}
+    /* ══ PINTEREST PILLS / TABS ══════════════════════════════════ */
+    .tabs-section{padding:12px 40px 8px;flex-shrink:0;display:flex;justify-content:center}
+    .tabs-wrap{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .tab-pill{
+      position:relative;display:inline-flex;align-items:center;gap:8px;
+      padding:10px 20px;border-radius:var(--radius-pill);
+      cursor:pointer;font-size:13px;font-weight:500;
+      border:1px solid var(--glass-border);background:rgba(255,255,255,0.3);
+      color:var(--text-secondary);box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition:all var(--dur) var(--ease);
+      user-select:none;
+    }
+    [data-theme="dark"] .tab-pill{background:rgba(255,255,255,0.02)}
+    .tab-pill:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(130,110,100,0.08);background:rgba(255,255,255,0.6)}
+    [data-theme="dark"] .tab-pill:hover{background:rgba(255,255,255,0.05)}
+    .tab-pill .tab-emoji{font-size:14px;opacity:0.8}
+    /* Active States */
+    .tab-pill.active[data-subject="dds"]  {background:var(--dds-base); border-color:var(--dds-deep);  color:var(--dds-deep);  box-shadow:0 0 0 3px var(--dds-glow); transform:translateY(-2px)}
+    .tab-pill.active[data-subject="acsp"] {background:var(--acsp-base);border-color:var(--acsp-deep); color:var(--acsp-deep); box-shadow:0 0 0 3px var(--acsp-glow);transform:translateY(-2px)}
+    .tab-pill.active[data-subject="trib"] {background:var(--trib-base);border-color:var(--trib-deep); color:var(--trib-deep); box-shadow:0 0 0 3px var(--trib-glow);transform:translateY(-2px)}
+    .tab-pill.active[data-subject="bio"]  {background:var(--bio-base); border-color:var(--bio-deep);  color:var(--bio-deep);  box-shadow:0 0 0 3px var(--bio-glow); transform:translateY(-2px)}
+    .tab-pill.active[data-subject="frj"]  {background:var(--frj-base); border-color:var(--frj-deep);  color:var(--frj-deep);  box-shadow:0 0 0 3px var(--frj-glow); transform:translateY(-2px)}
+    .tab-pill.active[data-subject="penal"]{background:var(--penal-base);border-color:var(--penal-deep);color:var(--penal-deep);box-shadow:0 0 0 3px var(--penal-glow);transform:translateY(-2px)}
+    .tab-pill.active[data-subject="trab"] {background:var(--trab-base);border-color:var(--trab-deep); color:var(--trab-deep); box-shadow:0 0 0 3px var(--trab-glow);transform:translateY(-2px)}
+    .tab-pill.active[data-subject="proc"] {background:var(--proc-base);border-color:var(--proc-deep); color:var(--proc-deep); box-shadow:0 0 0 3px var(--proc-glow);transform:translateY(-2px)}
+    .tab-pill.active[data-subject="rec"]  {background:var(--rec-base); border-color:var(--rec-deep);  color:var(--rec-deep);  box-shadow:0 0 0 3px var(--rec-glow); transform:translateY(-2px)}
+    /* ══ JOURNAL IFRAME WORKSPACE ════════════════════════════════ */
+    .content-area{flex:1;min-height:0;padding:0 32px 32px;display:flex;flex-direction:column}
+    .iframe-topbar{
+      display:flex;align-items:center;gap:12px;padding:12px 24px;
+      border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+      background:rgba(255,255,255,0.4);border:1px solid var(--glass-border);border-bottom:none;
+      flex-shrink:0;
+    }
+    [data-theme="dark"] .iframe-topbar{background:rgba(0,0,0,0.15)}
+    .mac-dots{display:flex;gap:6px}
+    .mac-dot{width:10px;height:10px;border-radius:50%;background:var(--text-muted);opacity:0.4}
+    .topbar-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+    .topbar-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+    .topbar-subject{
+      font-size:12px;font-weight:500;color:var(--text-secondary);
+      display:flex;align-items:center;gap:6px;
+      padding:4px 14px;border-radius:var(--radius-pill);
+      background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);
+    }
+    [data-theme="dark"] .topbar-subject{background:rgba(255,255,255,0.02)}
+    
+    /* 👇 DICA DE GRIFO COM FONTE AJUSTADA PARA 11PX */
+    .hl-hint {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      letter-spacing: 0.02em;
+    }
+    
+    .hl-clear-btn{
+      font-size:11px;font-weight:500;color:var(--text-muted);
+      display:flex;align-items:center;gap:4px;padding:3px 12px;
+      border-radius:var(--radius-pill);background:transparent;border:1px solid transparent;
+      cursor:pointer;transition:all .2s;
+    }
+    .hl-clear-btn:hover{color:var(--accent);background:rgba(188,138,126,0.08);border-color:rgba(188,138,126,0.15)}
+    /* ── IFRAME EMBED SHELL ── */
+    .iframe-shell{
+      flex:1;min-height:0;position:relative;
+      border-radius:0 0 var(--radius-lg) var(--radius-lg);overflow:hidden;
+      background:#ffffff;border:1px solid var(--glass-border);border-top:none;
+      box-shadow:0 20px 50px rgba(130,110,100,0.04);
+      transition:all .4s var(--ease);
+    }
+    [data-theme="dark"] .iframe-shell{background:#171211;box-shadow:none}
+    .pane{
+      position:absolute;inset:0;opacity:0;pointer-events:none;
+      transform:translateY(10px);
+      transition:opacity .4s var(--ease), transform .4s var(--ease);
+      overflow: auto !important; -webkit-overflow-scrolling: touch !important;
+    }
+    .pane.active{opacity:1;pointer-events:all;transform:translateY(0)}
+    .pane iframe{width:100%;height:100%;border:none;display:block;transition:filter .4s var(--ease)}
+    /* ══ RESPONSIVE LUXURY TUNING (MOBILE REPAIR) ═════════════════ */
+    @media(max-width:992px) {
+      html { height: auto; }
+      body { overflow-y: auto !important; height: auto !important; min-height: 100vh; }
+      .sidebar {
+        position: fixed; left: 0; top: 0; bottom: 0;
+         transform: translateX(0); margin-left: 0;
+        box-shadow: 25px 0 60px rgba(0,0,0,0.15);
+      }
+      .sidebar.closed { margin-left: 0; transform: translateX(-100%); }
+    }
+    @media(max-width:700px){
+      .app-shell{padding:6px; height: auto; min-height: 100vh; min-height: 100svh; align-items: flex-start;}
+      .glass-card{border-radius:20px; height: auto; max-height: unset; overflow: visible; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none;}
+      .top-bar{padding:12px 12px 0}
+      .header{padding:12px 12px 6px}
+      .week-bar{padding:6px 12px 0; gap: 8px;}
+      .week-pill { padding: 5px 12px; font-size: 11px; }
+      /* Tabs rolam horizontalmente para nunca ficar cortadas no Safari */
+      .tabs-section{padding:8px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;}
+      .tabs-section::-webkit-scrollbar{display:none}
+      .tabs-wrap{flex-wrap: nowrap; padding: 0 12px; justify-content: flex-start; min-width: max-content;}
+      .tab-pill{padding:6px 12px; font-size:11.5px; white-space: nowrap; flex-shrink: 0;}
+      /* Área de conteúdo com altura definida */
+      .content-area{padding:0 8px 12px; height: 72vh; height: 72svh; min-height: 380px; flex-shrink: 0;}
+      .iframe-shell {
+        overflow: hidden !important;
+        position: relative;
+      }
+      /* Panes inativas com display:none para não empilhar espaço na página */
+      .pane:not(.active) { display: none !important; }
+      .pane.active {
+        position: absolute; inset: 0;
+        opacity: 1; pointer-events: all; transform: none;
+        overflow: auto !important; -webkit-overflow-scrolling: touch !important;
+      }
+      .pane iframe {
+        height: 100%; width: 100%;
+      }
+      .eyebrow-tag, .hl-hint {display:none}
+      .iframe-topbar { padding: 8px 10px; }
+    }
+    @media(max-width:480px){
+      .topbar-subject,.hl-clear-btn{display:none}
+      .header-title { font-size: 1.3rem; }
+      .header-sub { font-size: 11px; }
+    }
+  </style>
+</head>
+<body onclick="closeSidebarOnOutsideClick(event)">
+
+  <div class="aurora-bg" aria-hidden="true">
+    <div class="aurora-blob ab1"></div>
+    <div class="aurora-blob ab2"></div>
+    <div class="aurora-blob ab3"></div>
+    <div class="aurora-blob ab4"></div>
+  </div>
+
+  <aside class="sidebar closed" id="sidebar">
+    <div class="sidebar-title">julia’s workspace</div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Todas as Matérias</span>
+      <div class="global-subject-grid">
+        <button class="sidebar-nav-btn" onclick="jumpToSubject(0, 0)" id="global-btn-0"><span class="tab-emoji">🌸</span> Direito das Sucessões</button>
+        <button class="sidebar-nav-btn" onclick="jumpToSubject(0, 1)" id="global-btn-1"><span class="tab-emoji">🧊</span> Contratações Públicas</button>
+        <button class="sidebar-nav-btn" onclick="jumpToSubject(0, 2)" id="global-btn-2"><span class="tab-emoji">🔮</span> Direito Tributário</button>
+        <button class="sidebar-nav-btn" onclick="jumpToSubject(0, 3)" id="global-btn-3"><span class="tab-emoji">🌿</span> Biodireito</button>
+        <button class="sidebar-nav-btn" onclick="jumpToSubject(0, 4)" id="global-btn-4"><span class="tab-emoji">🍯</span> Falência e Recuperação</button>
+        <button class="sidebar-nav-btn" onclick="jumpToSubject(1, 0)" id="global-btn-5"><span class="tab-emoji">⚖️</span> Prática Jurídica Penal</button>
+        <button class="sidebar-nav-btn" onclick="jumpToSubject(1, 1)" id="global-btn-6"><span class="tab-emoji">🏛️</span> Trabalho Coletivo</button>
+        <button class="sidebar-nav-btn" onclick="jumpToSubject(1, 2)" id="global-btn-7"><span class="tab-emoji">📋</span> Procedimentos Especiais</button>
+        <button class="sidebar-nav-btn" onclick="jumpToSubject(1, 3)" id="global-btn-8"><span class="tab-emoji">🎯</span> Recursos Penais</button>
+      </div>
+    </div>
+    <div class="journal-notes-wrap">
+      <span class="sidebar-label">Anotações da Matéria</span>
+      <textarea class="journal-textarea" id="journal-textarea" placeholder="Escreva seus comentários, insights ou lembretes rápidos sobre esta matéria..." oninput="saveCurrentNote()"></textarea>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <div class="glass-card">
+
+      <div class="top-bar">
+        <div class="top-bar-left">
+          <button class="toggle-sidebar-btn" onclick="toggleSidebar(event)" aria-label="Abrir menu">☰</button>
+          <div class="eyebrow-tag">
+            <span class="eyebrow-sparkle">✦</span>
+            study dashboard &nbsp;/&nbsp; mackenzie 2026
+          </div>
+        </div>
+        <button class="theme-btn" onclick="toggleTheme()" aria-label="Alternar tema">
+          <span>Toggle Theme</span>
+          <div class="toggle-pill"><div class="toggle-knob"></div></div>
+        </button>
+      </div>
+
+      <div class="header">
+        <h1 class="header-title">Estudos do <span>2º Bimestre</span> &mdash; <span id="header-dates">18/05 a 22/05</span></h1>
+        <p class="header-sub">Respira fundo, toma um café quentinho e foca no processo. Você já é gigante. 🤎✨</p>
+      </div>
+
+      <div class="week-bar">
+        <button class="week-pill active" data-week="0" onclick="activateWeek(0)">
+          <span class="wk-dot"></span>Semana 1
+          <span style="opacity:.6;font-weight:400;font-size:11px">· 18—22 Mai</span>
+        </button>
+        <button class="week-pill" data-week="1" onclick="activateWeek(1)">
+          <span class="wk-dot"></span>Semana 2
+          <span style="opacity:.6;font-weight:400;font-size:11px">· 25—29 Mai</span>
+        </button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="tabs-section">
+        <div class="tabs-wrap" id="tabs-wrap" role="tablist"></div>
+      </div>
+
+      <div class="content-area">
+        <div class="iframe-topbar">
+          <div class="mac-dots">
+            <div class="mac-dot"></div>
+            <div class="mac-dot"></div>
+            <div class="mac-dot"></div>
+          </div>
+          <span class="topbar-label">Journal View</span>
+          <div class="topbar-right">
+            <div class="hl-hint">✏️ Selecione o texto para grifar</div>
+            <button class="hl-clear-btn" onclick="clearCurrentHighlights()" title="Limpar grifos desta aba">
+              🗑️ Limpar grifos
+            </button>
+            <div class="topbar-subject">
+              <span id="topbar-emoji">🌸</span>
+              <span id="topbar-name">Direito das Sucessões</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="iframe-shell">
+          <div class="pane" id="pane-0"><iframe src="Resumo_DDS_2BIM.html" title="Direito das Sucessões"></iframe></div>
+          <div class="pane" id="pane-1"><iframe src="ACSP%20%E2%80%93%20Resumo%202%C2%BA%20Bimestre%20_%20Mackenzie%207%C2%BA%20Sem..html" title="ACSP"></iframe></div>
+          <div class="pane" id="pane-2"><iframe src="Imunidades%20Tribut%C3%A1rias%20%E2%80%94%20Fichamento%20Completo.html" title="Tributário"></iframe></div>
+          <div class="pane" id="pane-3"><iframe src="Biodireito%20%E2%80%93%20Resumo%20Completo%20_%20Prof.%20Romanello%20_%20Mackenzie%202026.html" title="Biodireito"></iframe></div>
+          <div class="pane" id="pane-4"><iframe src="FRJ%20%E2%80%93%202%C2%BA%20Bimestre%20_%20Resumo%20Completo.html" title="FRJ"></iframe></div>
+          <div class="pane" id="pane-5"><iframe src="Pratica_Penal_2BIM.html" title="Prática Jurídica Penal"></iframe></div>
+          <div class="pane" id="pane-6"><iframe src="Trabalho_Coletivo_2BIM.html" title="Direito Coletivo do Trabalho"></iframe></div>
+          <div class="pane" id="pane-7"><iframe src="Procedimentos_Tutelas_2BIM.html" title="Procedimentos Especiais"></iframe></div>
+          <div class="pane" id="pane-8"><iframe src="Recursos_Sentenca_Penal_2BIM.html" title="Recursos e Execuções"></iframe></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var WEEKS = [
+      {
+        dates:'18/05 até 22/05',
+        subjects:[
+          {id:'dds',  emoji:'🌸', name:'Direito das Sucessões'},
+          {id:'acsp', emoji:'🧊', name:'Agentes, Contratações e Serviços Públicos'},
+          {id:'trib', emoji:'🔮', name:'Sistema Tributário Constitucional'},
+          {id:'bio',  emoji:'🌿', name:'Biodireito'},
+          {id:'frj',  emoji:'🍯', name:'Falência e Recuperação Judicial'},
+        ]
+      },
+      {
+        dates:'25/05 até 29/05',
+        subjects:[
+          {id:'penal', emoji:'⚖️',  name:'Prática Jurídica Penal'},
+          {id:'trab',  emoji:'🏛️',  name:'Direito Coletivo do Trabalho'},
+          {id:'proc',  emoji:'📋',  name:'Procedimentos Especiais e Tutelas Provisórias'},
+          {id:'rec',   emoji:'🎯',  name:'Recursos, Execuções e Sentença Penal'},
+        ]
+      }
+    ];
+
+    var currentWeek     = 0;
+    var currentSubjects = [0, 0];
+
+    function globalIdx(weekIdx, subjIdx) {
+      var off = 0;
+      for (var i = 0; i < weekIdx; i++) off += WEEKS[i].subjects.length;
+      return off + subjIdx;
+    }
+    function activeGlobalIdx() {
+      return globalIdx(currentWeek, currentSubjects[currentWeek]);
+    }
+
+    function renderTabs() {
+      var wrap  = document.getElementById('tabs-wrap');
+      var week  = WEEKS[currentWeek];
+      var actIdx = currentSubjects[currentWeek];
+      wrap.innerHTML = '';
+      week.subjects.forEach(function (s, i) {
+        var btn = document.createElement('button');
+        btn.className = 'tab-pill' + (i === actIdx ? ' active' : '');
+        btn.dataset.subject = s.id;
+        btn.dataset.idx     = i;
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-selected', i === actIdx ? 'true' : 'false');
+        btn.innerHTML = '<span class="tab-emoji">' + s.emoji + '</span>' + s.name;
+        btn.addEventListener('click', function () { activateSubject(i); });
+        wrap.appendChild(btn);
+      });
+    }
+
+    function activateSubject(newIdx) {
+      var oldGlobal = activeGlobalIdx();
+      var newGlobal = globalIdx(currentWeek, newIdx);
+
+      var oldPane = document.getElementById('pane-' + oldGlobal);
+      if (oldPane) oldPane.classList.remove('active');
+
+      currentSubjects[currentWeek] = newIdx;
+
+      var newPane = document.getElementById('pane-' + newGlobal);
+      if (newPane) {
+        newPane.classList.add('active');
+      }
+
+      document.querySelectorAll('#tabs-wrap .tab-pill').forEach(function (t) {
+        var on = +t.dataset.idx === newIdx;
+        t.classList.toggle('active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+
+      var s = WEEKS[currentWeek].subjects[newIdx];
+      document.getElementById('topbar-emoji').textContent = s.emoji;
+      document.getElementById('topbar-name').textContent  = s.name;
+      syncSidebarActiveState(newGlobal);
+      loadCurrentNote();
+      saveState();
+    }
+
+    function activateWeek(weekIdx) {
+      if (weekIdx === currentWeek) return;
+
+      var oldPane = document.getElementById('pane-' + activeGlobalIdx());
+      if (oldPane) oldPane.classList.remove('active');
+
+      currentWeek = weekIdx;
+      document.querySelectorAll('.week-pill').forEach(function (p) {
+        p.classList.toggle('active', +p.dataset.week === weekIdx);
+      });
+
+      document.getElementById('header-dates').textContent = WEEKS[weekIdx].dates;
+      renderTabs();
+
+      var subjIdx  = currentSubjects[currentWeek];
+      var newGlobal = activeGlobalIdx();
+      var newPane  = document.getElementById('pane-' + newGlobal);
+      if (newPane) {
+        newPane.classList.add('active');
+      }
+
+      var s = WEEKS[currentWeek].subjects[subjIdx];
+      document.getElementById('topbar-emoji').textContent = s.emoji;
+      document.getElementById('topbar-name').textContent  = s.name;
+      syncSidebarActiveState(newGlobal);
+      loadCurrentNote();
+      saveState();
+    }
+
+    function jumpToSubject(weekIdx, subjIdx) {
+      if (currentWeek !== weekIdx) {
+        var oldPane = document.getElementById('pane-' + activeGlobalIdx());
+        if (oldPane) oldPane.classList.remove('active');
+        currentWeek = weekIdx;
+        document.querySelectorAll('.week-pill').forEach(function (p) {
+          p.classList.toggle('active', +p.dataset.week === weekIdx);
+        });
+        document.getElementById('header-dates').textContent = WEEKS[weekIdx].dates;
+        renderTabs();
+      }
+      activateSubject(subjIdx);
+      if (window.innerWidth <= 992) {
+        document.getElementById('sidebar').classList.add('closed');
+      }
+    }
+
+    function syncSidebarActiveState(activeGlobalIdx) {
+      document.querySelectorAll('.sidebar-nav-btn').forEach(function (btn, idx) {
+        btn.classList.toggle('active', idx === activeGlobalIdx);
+      });
+    }
+
+    function saveCurrentNote() {
+      var globalKey = 'note_subject_' + activeGlobalIdx();
+      var text = document.getElementById('journal-textarea').value;
+      localStorage.setItem(globalKey, text);
+    }
+    
+    function loadCurrentNote() {
+      var globalKey = 'note_subject_' + activeGlobalIdx();
+      var savedText = localStorage.getItem(globalKey) || '';
+      document.getElementById('journal-textarea').value = savedText;
+    }
+
+    function toggleSidebar(e) {
+      if (e) e.stopPropagation();
+      var sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('closed');
+    }
+
+    function closeSidebarOnOutsideClick(e) {
+      var sidebar = document.getElementById('sidebar');
+      if (window.innerWidth <= 992 && !sidebar.classList.contains('closed')) {
+        if (!sidebar.contains(e.target) && !e.target.classList.contains('toggle-sidebar-btn')) {
+          sidebar.classList.add('closed');
+        }
+      }
+    }
+
+    function clearCurrentHighlights() {
+      var frame = document.querySelector('#pane-' + activeGlobalIdx() + ' iframe');
+      if (frame && frame.contentWindow) {
+        frame.contentWindow.postMessage({ type: 'hl-clear' }, '*');
+      }
+    }
+
+    var DARK_FILTER = 'invert(0.93) hue-rotate(180deg) brightness(0.92) contrast(0.95)';
+    
+    function applyDarkFilter(frame) {
+      frame.style.filter = document.documentElement.dataset.theme === 'dark' ? DARK_FILTER : '';
+    }
+    
+    function applyAllFilters() {
+      document.querySelectorAll('.pane iframe').forEach(applyDarkFilter);
+    }
+    
+    function toggleTheme() {
+      var html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('dashTheme', html.dataset.theme);
+      applyAllFilters();
+    }
+
+    function saveState() {
+      localStorage.setItem('currentWeek', currentWeek);
+      localStorage.setItem('currentSubjects', JSON.stringify(currentSubjects));
+    }
+    
+    function restoreState() {
+      var w = localStorage.getItem('currentWeek');
+      var s = localStorage.getItem('currentSubjects');
+      if (w !== null) currentWeek = parseInt(w);
+      if (s !== null) currentSubjects = JSON.parse(s);
+    }
+
+    document.querySelectorAll('.pane iframe').forEach(function (f) {
+      f.addEventListener('load', function () { applyDarkFilter(this); });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+      var subs = WEEKS[currentWeek].subjects;
+      var cur  = currentSubjects[currentWeek];
+      if (e.key === 'ArrowRight') activateSubject(Math.min(cur + 1, subs.length - 1));
+      if (e.key === 'ArrowLeft')  activateSubject(Math.max(cur - 1, 0));
+      if (e.key >= '1' && e.key <= '5') { var i = +e.key - 1; if (i < subs.length) activateSubject(i); }
+      if (e.key.toLowerCase() === 'w')  activateWeek(currentWeek === 0 ? 1 : 0);
+    });
+
+    (function () {
+      var t = localStorage.getItem('dashTheme');
+      if (t) document.documentElement.dataset.theme = t;
+      restoreState();
+      document.querySelectorAll('.week-pill').forEach(function (p) {
+        p.classList.toggle('active', +p.dataset.week === currentWeek);
+      });
+      document.getElementById('header-dates').textContent = WEEKS[currentWeek].dates;
+      renderTabs();
+      activateSubject(currentSubjects[currentWeek]);
+    })();
+  </script>
+</body>
+</html>

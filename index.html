@@ -133,7 +133,7 @@
       transition:all .5s var(--ease)
     }
     /* ══ TOP NAVIGATION (TUMBLR HEADER VIBES) ═════════════════════ */
-    .top-bar{display:flex;align-items:center;justify-content:space-between;padding:24px 40px 0;flex-shrink:0;gap:16px}
+    .top-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 32px 0;flex-shrink:0;gap:16px}
     .top-bar-left { display: flex; align-items:center; gap: 16px; }
     .toggle-sidebar-btn {
       background: rgba(255, 255, 255, 0.6); border: 1px solid var(--glass-border); font-size: 22px;
@@ -167,22 +167,22 @@
     }
     [data-theme="dark"] .toggle-knob{transform:translateX(18px);background:var(--accent)}
     /* ══ EDITORIAL HEADER BLOG STYLE ═════════════════════════════ */
-    .header{padding:12px 40px 10px;flex-shrink:0;text-align:center}
+    .header{padding:4px 32px 4px;flex-shrink:0;text-align:center}
     .header-title{
       font-family:'Playfair Display', serif;
-      font-size:clamp(1.6rem, 3vw, 2.7rem);font-weight:400;letter-spacing:-0.02em;
+      font-size:clamp(1.2rem, 2.2vw, 1.7rem);font-weight:400;letter-spacing:-0.02em;
       color:var(--text-primary);
     }
     .header-title span{font-style:italic;font-weight:600;color:var(--accent)}
     .header-sub{
-      margin-top:6px;font-family:'Plus Jakarta Sans', sans-serif;
-      font-size:13px;font-weight:400;color:var(--text-secondary);letter-spacing:.02em;opacity:0.85
+      margin-top:2px;font-family:'Plus Jakarta Sans', sans-serif;
+      font-size:11px;font-weight:400;color:var(--text-secondary);letter-spacing:.02em;opacity:0.85
     }
     /* ══ PINTEREST WEEK SELECTOR ═════════════════════════════════ */
-    .week-bar{padding:8px 40px 0;display:flex;align-items:center;justify-content:center;gap:12px;flex-shrink:0}
+    .week-bar{padding:4px 32px 0;display:flex;align-items:center;justify-content:center;gap:10px;flex-shrink:0}
     .week-pill{
       display:inline-flex;align-items:center;gap:8px;
-      padding:6px 18px;border-radius:var(--radius-pill);
+      padding:4px 14px;border-radius:var(--radius-pill);
       font-size:12px;font-weight:500;cursor:pointer;
       border:1px solid var(--glass-border);background:transparent;
       color:var(--text-secondary);transition:all .3s var(--ease);
@@ -198,14 +198,14 @@
     }
     .week-pill .wk-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.7}
     /* ══ DIVIDER ═════════════════════════════════════════════════ */
-    .divider{height:1px;margin:12px 40px 0;flex-shrink:0;background:linear-gradient(90deg,transparent,rgba(130,110,100,0.12) 20%,rgba(130,110,100,0.12) 80%,transparent)}
+    .divider{height:1px;margin:5px 32px 0;flex-shrink:0;background:linear-gradient(90deg,transparent,rgba(130,110,100,0.12) 20%,rgba(130,110,100,0.12) 80%,transparent)}
     /* ══ PINTEREST PILLS / TABS ══════════════════════════════════ */
-    .tabs-section{padding:12px 40px 8px;flex-shrink:0;display:flex;justify-content:center}
+    .tabs-section{padding:6px 32px 6px;flex-shrink:0;display:flex;justify-content:center}
     .tabs-wrap{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
     .tab-pill{
       position:relative;display:inline-flex;align-items:center;gap:8px;
-      padding:10px 20px;border-radius:var(--radius-pill);
-      cursor:pointer;font-size:13px;font-weight:500;
+      padding:7px 16px;border-radius:var(--radius-pill);
+      cursor:pointer;font-size:12px;font-weight:500;
       border:1px solid var(--glass-border);background:rgba(255,255,255,0.3);
       color:var(--text-secondary);box-shadow: 0 2px 6px rgba(0,0,0,0.02);
       transition:all var(--dur) var(--ease);
@@ -226,9 +226,9 @@
     .tab-pill.active[data-subject="proc"] {background:var(--proc-base);border-color:var(--proc-deep); color:var(--proc-deep); box-shadow:0 0 0 3px var(--proc-glow);transform:translateY(-2px)}
     .tab-pill.active[data-subject="rec"]  {background:var(--rec-base); border-color:var(--rec-deep);  color:var(--rec-deep);  box-shadow:0 0 0 3px var(--rec-glow); transform:translateY(-2px)}
     /* ══ JOURNAL IFRAME WORKSPACE ════════════════════════════════ */
-    .content-area{flex:1;min-height:0;padding:0 32px 32px;display:flex;flex-direction:column}
+    .content-area{flex:1;min-height:0;padding:0 24px 20px;display:flex;flex-direction:column}
     .iframe-topbar{
-      display:flex;align-items:center;gap:12px;padding:12px 24px;
+      display:flex;align-items:center;gap:12px;padding:7px 18px;
       border-radius:var(--radius-lg) var(--radius-lg) 0 0;
       background:rgba(255,255,255,0.4);border:1px solid var(--glass-border);border-bottom:none;
       flex-shrink:0;
@@ -308,7 +308,9 @@
       .sidebar.closed{margin-left:0;transform:translateX(-100%);}
 
       /* position:fixed no shell = viewport sempre correto, independente
-         de quanto espaço a barra do Chrome Android ocupa no 100vh          */
+         de quanto espaço a barra do Chrome Android ocupa no 100vh.
+         overflow:hidden no shell evita que o box-shadow do glass-card
+         (70px de blur) extravase o viewport e crie scrollbar horizontal. */
       .app-shell{
         position:fixed!important;
         top:0!important;right:0!important;bottom:0!important;left:0!important;
@@ -317,11 +319,14 @@
         display:flex!important;
         align-items:stretch!important;
         justify-content:flex-start!important;
+        overflow:hidden!important;
       }
       .glass-card{
         width:100%;height:100%;
         max-width:none;max-height:none;
         border-radius:var(--radius-lg);
+        box-shadow:none;
+        overflow:hidden;
       }
 
       /* Chrome compacto para maximizar área do iframe */

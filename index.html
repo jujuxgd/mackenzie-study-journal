@@ -281,52 +281,136 @@
     }
     .pane.active{opacity:1;pointer-events:all;transform:translateY(0)}
     .pane iframe{width:100%;height:100%;border:none;display:block;transition:filter .4s var(--ease)}
-    /* ══ RESPONSIVE LUXURY TUNING (MOBILE REPAIR) ═════════════════ */
-    @media(max-width:992px) {
-      html { height: auto; }
-      body { overflow-y: auto !important; height: auto !important; min-height: 100vh; }
-      .sidebar {
-        position: fixed; left: 0; top: 0; bottom: 0;
-         transform: translateX(0); margin-left: 0;
-        box-shadow: 25px 0 60px rgba(0,0,0,0.15);
+    /* ══ RESPONSIVE — MOBILE & TABLET ══════════════════════════════ */
+
+    /* Tablet ≤992px: sidebar vira overlay fixo */
+    @media(max-width:992px){
+      .sidebar{
+        position:fixed;left:0;top:0;bottom:0;
+        transform:translateX(0);margin-left:0;
+        box-shadow:25px 0 60px rgba(0,0,0,0.15);
       }
-      .sidebar.closed { margin-left: 0; transform: translateX(-100%); }
+      .sidebar.closed{margin-left:0;transform:translateX(-100%);}
     }
+
+    /* Mobile ≤700px: layout full-screen tipo app */
     @media(max-width:700px){
-      .app-shell{padding:6px; height: auto; min-height: 100vh; min-height: 100svh; align-items: flex-start;}
-      .glass-card{border-radius:20px; height: auto; max-height: unset; overflow: visible; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none;}
-      .top-bar{padding:12px 12px 0}
-      .header{padding:12px 12px 6px}
-      .week-bar{padding:6px 12px 0; gap: 8px;}
-      .week-pill { padding: 5px 12px; font-size: 11px; }
-      /* Tabs rolam horizontalmente para nunca ficar cortadas no Safari */
-      .tabs-section{padding:8px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;}
-      .tabs-section::-webkit-scrollbar{display:none}
-      .tabs-wrap{flex-wrap: nowrap; padding: 0 12px; justify-content: flex-start; min-width: max-content;}
-      .tab-pill{padding:6px 12px; font-size:11.5px; white-space: nowrap; flex-shrink: 0;}
-      /* Área de conteúdo com altura definida */
-      .content-area{padding:0 8px 12px; height: 72vh; height: 72svh; min-height: 380px; flex-shrink: 0;}
-      .iframe-shell {
-        overflow: hidden !important;
-        position: relative;
+      /* Body e html preenchem a tela sem scroll externo */
+      html,body{height:100%;overflow:hidden!important;}
+
+      /* Aurora pesada demais para mobile — esconde */
+      .aurora-bg{display:none;}
+
+      /* App-shell ocupa tudo */
+      .app-shell{
+        padding:0;
+        height:100vh;height:100svh;  /* svh = height sem a barra do Safari */
+        align-items:stretch;
+        justify-content:stretch;
       }
-      /* Panes inativas com display:none para não empilhar espaço na página */
-      .pane:not(.active) { display: none !important; }
-      .pane.active {
-        position: absolute; inset: 0;
-        opacity: 1; pointer-events: all; transform: none;
-        overflow: auto !important; -webkit-overflow-scrolling: touch !important;
+
+      /* Card preenche a tela inteira */
+      .glass-card{
+        border-radius:0;
+        width:100%;
+        height:100vh;height:100svh;
+        max-width:none;max-height:none;
+        overflow:hidden;
+        backdrop-filter:none;-webkit-backdrop-filter:none;
+        box-shadow:none;
+        /* safe-area para notch do iPhone */
+        padding-top:env(safe-area-inset-top);
+        padding-bottom:env(safe-area-inset-bottom);
       }
-      .pane iframe {
-        height: 100%; width: 100%;
+
+      /* Topo compacto */
+      .top-bar{padding:10px 14px 0;flex-shrink:0;}
+      .eyebrow-tag,.hl-hint{display:none;}
+      .toggle-sidebar-btn{width:36px;height:36px;font-size:18px;}
+      .theme-btn span{display:none;}  /* esconde texto do botão de tema */
+
+      /* Cabeçalho minimalista */
+      .header{padding:4px 14px;flex-shrink:0;}
+      .header-title{font-size:1rem;letter-spacing:0;}
+      .header-sub{display:none;}
+
+      /* Semanas compactas */
+      .week-bar{padding:4px 14px 0;gap:6px;flex-shrink:0;}
+      .week-pill{padding:4px 12px;font-size:10px;}
+      .week-pill span[style]{display:none;}  /* esconde "18-22 Mai" */
+
+      /* Divisor fino */
+      .divider{margin:5px 14px 0;flex-shrink:0;}
+
+      /* Abas em fila única com scroll horizontal — nunca ficam cortadas */
+      .tabs-section{
+        flex-shrink:0;
+        padding:5px 0;
+        overflow-x:auto;overflow-y:visible;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+        display:block;
       }
-      .eyebrow-tag, .hl-hint {display:none}
-      .iframe-topbar { padding: 8px 10px; }
+      .tabs-section::-webkit-scrollbar{display:none;}
+      .tabs-wrap{
+        display:inline-flex;
+        flex-wrap:nowrap;
+        gap:7px;
+        padding:2px 14px;
+      }
+      .tab-pill{
+        padding:5px 12px;font-size:11px;
+        white-space:nowrap;flex-shrink:0;
+      }
+
+      /* Área de conteúdo ocupa o espaço restante via flex */
+      .content-area{
+        flex:1;min-height:0;
+        padding:0 8px 8px;
+        display:flex;flex-direction:column;
+      }
+      .iframe-topbar{padding:6px 10px;flex-shrink:0;}
+
+      /* Shell do iframe: posicionamento relativo para filhos absolutos */
+      .iframe-shell{
+        flex:1;min-height:0;
+        position:relative;
+        overflow:hidden!important;
+        border-radius:0 0 14px 14px;
+      }
+
+      /* Pane inativa: completamente removida do fluxo */
+      .pane:not(.active){display:none!important;}
+
+      /* Pane ativa: preenche o shell com scroll próprio */
+      .pane.active{
+        position:absolute!important;
+        top:0!important;right:0!important;bottom:0!important;left:0!important;
+        opacity:1!important;
+        pointer-events:all!important;
+        transform:none!important;
+        overflow:auto!important;
+        -webkit-overflow-scrolling:touch!important;
+      }
+      .pane.active iframe{width:100%;height:100%;display:block;border:none;}
     }
+
+    /* Telefones menores ≤480px */
     @media(max-width:480px){
-      .topbar-subject,.hl-clear-btn{display:none}
-      .header-title { font-size: 1.3rem; }
-      .header-sub { font-size: 11px; }
+      .topbar-subject,.hl-clear-btn{display:none;}
+      .mac-dots{display:none;}
+    }
+
+    /* Paisagem em telas pequenas (altura ≤500px) */
+    @media(max-height:500px) and (orientation:landscape){
+      .header{display:none;}
+      .week-bar{padding:2px 10px 0;}
+      .week-pill{padding:3px 8px;font-size:9px;}
+      .divider{margin:3px 10px 0;}
+      .tabs-section{padding:3px 0;}
+      .tab-pill{padding:3px 8px;font-size:10px;}
+      .iframe-topbar{padding:4px 10px;}
+      .topbar-label{display:none;}
     }
   </style>
 </head>

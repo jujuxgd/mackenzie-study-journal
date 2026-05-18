@@ -293,6 +293,29 @@
       .sidebar.closed{margin-left:0;transform:translateX(-100%);}
     }
 
+    /* ── TABLET LANDSCAPE (769px–1180px): compacta o dashboard
+       para deixar mais espaço para o conteúdo do iframe.          */
+    @media(min-width:769px) and (max-width:1180px){
+      .app-shell{padding:12px;}
+      .glass-card{height:calc(100vh - 24px);max-height:none;}
+      .top-bar{padding:12px 24px 0;gap:10px;}
+      .toggle-sidebar-btn{width:36px;height:36px;font-size:18px;}
+      .eyebrow-tag{font-size:12px;}
+      .theme-btn{padding:5px 10px;font-size:11px;}
+      .header{padding:5px 24px 4px;}
+      .header-title{font-size:1.25rem;}
+      .header-sub{display:none;}
+      .week-bar{padding:4px 24px 0;gap:8px;}
+      .week-pill{padding:4px 13px;font-size:11px;}
+      .divider{margin:5px 24px 0;}
+      .tabs-section{padding:5px 24px 4px;}
+      .tab-pill{padding:7px 14px;font-size:12px;}
+      .content-area{padding:0 18px 16px;}
+      .iframe-topbar{padding:7px 16px;}
+      .topbar-label{font-size:10px;}
+      .hl-hint{font-size:10px;}
+    }
+
     /* ── MOBILE: portrait (≤768px) E landscape (altura ≤480px) ──
        position:fixed garante que o app trava exatamente no
        tamanho atual da tela em qualquer orientação.               */

@@ -281,9 +281,9 @@
     }
     .pane.active{opacity:1;pointer-events:all;transform:translateY(0)}
     .pane iframe{width:100%;height:100%;border:none;display:block;transition:filter .4s var(--ease)}
-    /* ══ RESPONSIVE — MOBILE & TABLET ══════════════════════════════ */
+    /* ══ RESPONSIVE ════════════════════════════════════════════════ */
 
-    /* Tablet ≤992px: sidebar vira overlay fixo */
+    /* Sidebar vira overlay fixo em tablet/mobile */
     @media(max-width:992px){
       .sidebar{
         position:fixed;left:0;top:0;bottom:0;
@@ -293,43 +293,47 @@
       .sidebar.closed{margin-left:0;transform:translateX(-100%);}
     }
 
-    /* Mobile ≤700px: layout full-screen tipo app */
-    @media(max-width:700px){
-      /* Body e html preenchem a tela sem scroll externo */
-      html,body{height:100%;overflow:hidden!important;}
+    /* ── MOBILE: portrait (≤768px) E landscape (altura ≤480px) ──
+       position:fixed garante que o app trava exatamente no
+       tamanho atual da tela em qualquer orientação.               */
+    @media(max-width:768px),(max-height:480px){
 
-      /* Aurora pesada demais para mobile — esconde */
+      /* Remove aurora pesada no mobile */
       .aurora-bg{display:none;}
 
-      /* App-shell ocupa tudo */
+      /* App-shell fixo ao viewport — não depende de 100vh nem de scroll do body */
       .app-shell{
-        padding:0;
-        height:100vh;height:100svh;  /* svh = height sem a barra do Safari */
-        align-items:stretch;
-        justify-content:stretch;
+        position:fixed!important;
+        top:0!important;right:0!important;bottom:0!important;left:0!important;
+        padding:0!important;
+        height:auto!important;
+        display:flex!important;
+        align-items:stretch!important;
+        justify-content:flex-start!important;
       }
 
-      /* Card preenche a tela inteira */
+      /* Glass-card ocupa tudo dentro do shell */
       .glass-card{
         border-radius:0;
-        width:100%;
-        height:100vh;height:100svh;
+        width:100%;height:100%;
         max-width:none;max-height:none;
         overflow:hidden;
         backdrop-filter:none;-webkit-backdrop-filter:none;
         box-shadow:none;
-        /* safe-area para notch do iPhone */
+        display:flex;flex-direction:column;
+        /* Notch do iPhone: respeita a safe-area */
         padding-top:env(safe-area-inset-top);
         padding-bottom:env(safe-area-inset-bottom);
+        padding-left:env(safe-area-inset-left);
+        padding-right:env(safe-area-inset-right);
       }
 
-      /* Topo compacto */
+      /* Top bar compacto */
       .top-bar{padding:10px 14px 0;flex-shrink:0;}
       .eyebrow-tag,.hl-hint{display:none;}
       .toggle-sidebar-btn{width:36px;height:36px;font-size:18px;}
-      .theme-btn span{display:none;}  /* esconde texto do botão de tema */
 
-      /* Cabeçalho minimalista */
+      /* Header compacto */
       .header{padding:4px 14px;flex-shrink:0;}
       .header-title{font-size:1rem;letter-spacing:0;}
       .header-sub{display:none;}
@@ -337,12 +341,11 @@
       /* Semanas compactas */
       .week-bar{padding:4px 14px 0;gap:6px;flex-shrink:0;}
       .week-pill{padding:4px 12px;font-size:10px;}
-      .week-pill span[style]{display:none;}  /* esconde "18-22 Mai" */
 
       /* Divisor fino */
       .divider{margin:5px 14px 0;flex-shrink:0;}
 
-      /* Abas em fila única com scroll horizontal — nunca ficam cortadas */
+      /* Abas: fila única com scroll horizontal — nunca cortadas */
       .tabs-section{
         flex-shrink:0;
         padding:5px 0;
@@ -353,25 +356,25 @@
       }
       .tabs-section::-webkit-scrollbar{display:none;}
       .tabs-wrap{
-        display:inline-flex;
-        flex-wrap:nowrap;
-        gap:7px;
-        padding:2px 14px;
+        display:inline-flex;flex-wrap:nowrap;
+        gap:7px;padding:2px 14px;
       }
       .tab-pill{
         padding:5px 12px;font-size:11px;
         white-space:nowrap;flex-shrink:0;
       }
+      .tab-pill:hover{transform:none;}
 
-      /* Área de conteúdo ocupa o espaço restante via flex */
+      /* Área de conteúdo preenche o espaço restante */
       .content-area{
         flex:1;min-height:0;
         padding:0 8px 8px;
         display:flex;flex-direction:column;
       }
       .iframe-topbar{padding:6px 10px;flex-shrink:0;}
+      .topbar-subject,.hl-clear-btn,.mac-dots{display:none;}
 
-      /* Shell do iframe: posicionamento relativo para filhos absolutos */
+      /* Shell do iframe */
       .iframe-shell{
         flex:1;min-height:0;
         position:relative;
@@ -379,30 +382,21 @@
         border-radius:0 0 14px 14px;
       }
 
-      /* Pane inativa: completamente removida do fluxo */
+      /* Pane inativa: removida do fluxo */
       .pane:not(.active){display:none!important;}
 
-      /* Pane ativa: preenche o shell com scroll próprio */
+      /* Pane ativa: preenche o shell */
       .pane.active{
         position:absolute!important;
         top:0!important;right:0!important;bottom:0!important;left:0!important;
-        opacity:1!important;
-        pointer-events:all!important;
-        transform:none!important;
-        overflow:auto!important;
-        -webkit-overflow-scrolling:touch!important;
+        opacity:1!important;pointer-events:all!important;transform:none!important;
+        overflow:auto!important;-webkit-overflow-scrolling:touch!important;
       }
       .pane.active iframe{width:100%;height:100%;display:block;border:none;}
     }
 
-    /* Telefones menores ≤480px */
-    @media(max-width:480px){
-      .topbar-subject,.hl-clear-btn{display:none;}
-      .mac-dots{display:none;}
-    }
-
-    /* Paisagem em telas pequenas (altura ≤500px) */
-    @media(max-height:500px) and (orientation:landscape){
+    /* Paisagem em telefones: esconde header pra ganhar altura */
+    @media(max-height:420px){
       .header{display:none;}
       .week-bar{padding:2px 10px 0;}
       .week-pill{padding:3px 8px;font-size:9px;}
@@ -410,7 +404,6 @@
       .tabs-section{padding:3px 0;}
       .tab-pill{padding:3px 8px;font-size:10px;}
       .iframe-topbar{padding:4px 10px;}
-      .topbar-label{display:none;}
     }
   </style>
 </head>

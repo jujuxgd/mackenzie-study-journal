@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procedimentos Especiais e Tutelas Provisórias — 2º Bimestre</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg2: #f0f8ff;
+    --text: #0d2137;
+    --text-muted: #355070;
+    --h1: #0d47a1;
+    --h2: #1565c0;
+    --h3: #1976d2;
+    --h4: #2196f3;
+    --accent: #90caf9;
+    --table-head-bg: #dbeafe;
+    --table-head-text: #1e3a5f;
+    --table-alt: #eff6ff;
+    --table-border: #bfdbfe;
+    --imp-bg: #fff8e1;
+    --imp-border: #f59e0b;
+    --imp-text: #92400e;
+    --exc-bg: #fce4ec;
+    --exc-border: #f472b6;
+    --exc-text: #831843;
+    --sum-bg: #f0fdf4;
+    --sum-border: #22c55e;
+    --sum-text: #14532d;
+    --jur-bg: #e3f2fd;
+    --jur-border: #1976d2;
+    --jur-text: #0d47a1;
+    --tip-bg: #e8f5e9;
+    --tip-border: #388e3c;
+    --tip-text: #1b5e20;
+    --card-bg: #f0f8ff;
+    --card-border: #bfdbfe;
+    --hr: #bfdbfe;
+  }
+  body.dark-mode {
+    --bg: #080f1e;
+    --bg2: #0d1b35;
+    --text: #dbeafe;
+    --text-muted: #93c5fd;
+    --h1: #93c5fd;
+    --h2: #60a5fa;
+    --h3: #38bdf8;
+    --h4: #7dd3fc;
+    --accent: #1d4ed8;
+    --table-head-bg: #1e3a5f;
+    --table-head-text: #bfdbfe;
+    --table-alt: #0d1b35;
+    --table-border: #1e40af;
+    --imp-bg: #451a03; --imp-border: #f59e0b; --imp-text: #fde68a;
+    --exc-bg: #4a1628; --exc-border: #f472b6; --exc-text: #fce7f3;
+    --sum-bg: #14532d; --sum-border: #22c55e; --sum-text: #dcfce7;
+    --jur-bg: #1e3a5f; --jur-border: #60a5fa; --jur-text: #bfdbfe;
+    --tip-bg: #14532d; --tip-border: #22c55e; --tip-text: #dcfce7;
+    --card-bg: #0d1b35; --card-border: #1e40af; --hr: #1e3a5f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+    transition: background 0.3s, color 0.3s;
+  }
+  /* HEADER */
+  .main-header {
+    text-align: center;
+    padding: 40px 0 32px;
+    border-bottom: 2px solid var(--hr);
+    margin-bottom: 40px;
+  }
+  .main-header .tag {
+    display: inline-block;
+    background: var(--h2);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .main-header h1 {
+    font-size: 2.4rem;
+    color: var(--h1);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    border: none;
+    padding: 0;
+    margin-top: 0;
+  }
+  .main-header p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0; }
+  /* ÍNDICE */
+  .indice {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+  }
+  .indice h2 {
+    color: var(--h2);
+    margin-bottom: 14px;
+    font-size: 1.1rem;
+    border: none;
+    padding: 0;
+    margin-top: 0;
+  }
+  .indice ol { padding-left: 20px; }
+  .indice li { margin-bottom: 4px; font-size: 0.9rem; color: var(--text-muted); }
+  .indice a { color: var(--h3); text-decoration: none; }
+  .indice a:hover { text-decoration: underline; }
+  /* SEÇÕES */
+  h2 {
+    color: var(--h2);
+    font-size: 1.35rem;
+    font-weight: 700;
+    border-left: 4px solid var(--h2);
+    padding-left: 14px;
+    margin: 40px 0 16px;
+  }
+  h3 {
+    color: var(--h3);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 28px 0 12px;
+    padding-left: 8px;
+    padding-bottom: 0;
+    border-left: 3px solid var(--accent);
+    border-bottom: none;
+  }
+  h4 {
+    color: var(--h4);
+    font-size: 0.97rem;
+    font-weight: 700;
+    margin: 20px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  p { margin-bottom: 14px; }
+  hr { border: none; border-top: 1px solid var(--hr); margin: 36px 0; }
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+  strong { color: inherit; font-weight: 700; }
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    border-left: 4px solid;
+    font-size: 0.92rem;
+  }
+  .callout-imp { background: var(--imp-bg); border-color: var(--imp-border); color: var(--imp-text); }
+  .callout-exc { background: var(--exc-bg); border-color: var(--exc-border); color: var(--exc-text); }
+  .callout-jur { background: var(--jur-bg); border-color: var(--jur-border); color: var(--jur-text); }
+  .callout-tip { background: var(--tip-bg); border-color: var(--tip-border); color: var(--tip-text); }
+  .callout-title {
+    font-weight: 800;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    display: block;
+  }
+  /* TABELAS */
+  .table-wrap { overflow-x: auto; margin: 18px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; background: var(--bg); }
+  th {
+    background: var(--table-head-bg);
+    color: var(--table-head-text);
+    font-weight: 700;
+    padding: 11px 14px;
+    text-align: left;
+    border: 1px solid var(--table-border);
+  }
+  td { padding: 10px 14px; border: 1px solid var(--table-border); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--table-alt); }
+  tr:hover td { background: var(--card-bg); }
+  /* ART BOX */
+  .art-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 0.9rem;
+  }
+  .art-box strong { color: var(--h3); }
+  /* PRAZO GRID */
+  .prazo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 12px 0; }
+  .prazo-card { background: var(--table-alt); border: 1px solid var(--accent); border-radius: 8px; padding: 10px 14px; text-align: center; }
+  .prazo-num { font-size: 1.6rem; font-weight: 900; color: var(--h2); line-height: 1; }
+  .prazo-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+  /* FLOW */
+  .flow { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 12px 0; }
+  .flow-step { background: var(--table-alt); border: 1px solid var(--accent); border-radius: 6px; padding: 6px 12px; font-size: 0.82rem; font-weight: 600; color: var(--h2); }
+  .flow-arrow { color: var(--h3); font-size: 1.1rem; font-weight: 900; }
+  @media (max-width: 640px) { body { padding: 16px 12px 48px; } }
+  @media print { body { font-size: 13px; } }
+</style>
+</head>
+<body>
+
+<div class="main-header">
+  <span class="tag">Mackenzie · 7º Semestre · Prof. Rodolpho Vannucci</span>
+  <h1>Procedimentos Especiais e Tutelas Provisórias</h1>
+  <p>Resumo completo do 2º Bimestre &nbsp;|&nbsp; Ação Monitória · Possessórias · Família · Alimentos · Jurisdição Voluntária</p>
+</div>
+
+<div class="indice">
+  <h2>Sumário</h2>
+  <ol>
+    <li><a href="#monitoria">Ação Monitória</a></li>
+    <li><a href="#possessorias">Ações Possessórias (Arts. 554–568)</a></li>
+    <li><a href="#familia">Ações de Família (Arts. 693–699-A)</a></li>
+    <li><a href="#alimentos">Ações de Alimentos (Lei 5.478/68)</a></li>
+    <li><a href="#jv">Jurisdição Voluntária (Arts. 719–770)</a></li>
+  </ol>
+</div>
+
+<!-- ═══════════════════ 1. MONITÓRIA ═══════════════════ -->
+<h2 id="monitoria">1. Ação Monitória</h2>
+
+<h3>Hipóteses de Cabimento</h3>
+<p>A monitória é usada para:</p>
+<ol>
+  <li>Exigir cumprimento de obrigação de <strong>pagar quantia</strong> em dinheiro.</li>
+  <li><strong>Entrega de coisa</strong> fungível ou infungível ou de bem móvel ou imóvel.</li>
+  <li>Adimplemento de <strong>obrigação de fazer ou de não fazer</strong>.</li>
+</ol>
+
+<p><strong>Requisito especial:</strong> prova escrita robusta que <em>não é título executivo</em>.</p>
+<ul>
+  <li><strong>Sem prova escrita:</strong> entra com ação de cobrança.</li>
+  <li><strong>Se há título executivo:</strong> entra com ação de execução.</li>
+</ul>
+
+<p>Sendo evidente o direito do autor, o juiz expede <strong>mandado de pagamento, entrega de coisa ou execução da obrigação</strong>, para cumprimento em <strong>15 dias</strong> e honorários de <strong>5%</strong> do valor da causa.</p>
+
+<h3>As Três Opções do Réu (prazo: 15 dias)</h3>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <th>Opção</th>
+    <th>O que ocorre</th>
+    <th>Consequência</th>
+  </tr>
+  <tr>
+    <td><strong>(i) Embargar</strong></td>
+    <td>Opõe embargos à ação monitória nos próprios autos</td>
+    <td>Suspende o mandado; réu assume o ônus de desconstituir a tese do autor; sem garantia do juízo</td>
+  </tr>
+  <tr>
+    <td><strong>(ii) Cumprir</strong></td>
+    <td>Paga/entrega/faz dentro do prazo de 15 dias</td>
+    <td>Isento do pagamento de custas processuais</td>
+  </tr>
+  <tr>
+    <td><strong>(iii) Inércia</strong></td>
+    <td>Não faz nada</td>
+    <td>Vira <em>de pleno direito</em> título executivo judicial</td>
+  </tr>
+</table>
+</div>
+
+<div class="callout callout-imp">
+  <div class="callout-title">Embargos Monitórios — ponto central</div>
+  Chama de embargos porque na monitória há presunção do juiz em favor do autor — o réu deve <strong>efetivamente desconstituir</strong> a tese do autor. Ônus da prova = réu. Sem garantia do juízo (diferente dos embargos à execução).
+</div>
+
+<h3>Resumo em 3 pontos</h3>
+<ol>
+  <li>Se a monitória é embargada e o juiz julga em favor do autor, a apelação <strong>não tem efeito suspensivo</strong> — pode iniciar cumprimento de sentença.</li>
+  <li>Quanto à inércia, na monitória <strong>vira título executivo judicial</strong>.</li>
+  <li>Chama de embargos porque o réu tem o ônus de provar que o autor está errado.</li>
+</ol>
+
+<div class="callout callout-exc">
+  <div class="callout-title">Indeferimento da Monitória</div>
+  O juiz decide se vai deferir ou indeferir o processamento da monitória. Indeferindo, o autor deve ingressar com ação de cobrança pelo <strong>procedimento comum</strong>.
+</div>
+
+<h3>Tabela Comparativa — Comum × Execução × Monitória</h3>
+<div class="table-wrap">
+<table>
+  <tr>
+    <th></th>
+    <th>Comum</th>
+    <th>Execução</th>
+    <th>Monitória</th>
+  </tr>
+  <tr>
+    <td><strong>Defesa</strong></td>
+    <td>Contestação</td>
+    <td>Embargos à execução</td>
+    <td>Embargos à ação monitória</td>
+  </tr>
+  <tr>
+    <td><strong>Prazo</strong></td>
+    <td>15 dias</td>
+    <td>3 dias corridos</td>
+    <td>15 dias</td>
+  </tr>
+  <tr>
+    <td><strong>Modo de apresentar</strong></td>
+    <td>Nos próprios autos</td>
+    <td>Ação autônoma distribuída por dependência</td>
+    <td>Nos próprios autos</td>
+  </tr>
+  <tr>
+    <td><strong>Ônus da prova</strong></td>
+    <td>Autor</td>
+    <td>Réu</td>
+    <td>Réu</td>
+  </tr>
+  <tr>
+    <td><strong>Garantia do juízo</strong></td>
+    <td>Não precisa</td>
+    <td>É intimado para pagar → Penhora</td>
+    <td>Não precisa</td>
+  </tr>
+  <tr>
+    <td><strong>Inércia do réu</strong></td>
+    <td>Revelia e confissão ficta (não garante procedência)</td>
+    <td>Penhora</td>
+    <td>Vira título executivo judicial</td>
+  </tr>
+  <tr>
+    <td><strong>Efeito da defesa</strong></td>
+    <td>Apelação → há efeito suspensivo</td>
+    <td>—</td>
+    <td>Se o réu apelar da rejeição dos embargos, o autor já pode iniciar o cumprimento de sentença</td>
+  </tr>
+</table>
+</div>
+
+<hr>
+
+<!-- ═══════════════════ 2. POSSESSÓRIAS ═══════════════════ -->
+<h2 id="possessorias">2. Ações Possessórias <span style="font-size:0.9rem;font-weight:400;color:var(--text-muted);">Arts. 554–568</span></h2>
+
+<h3>Conceito e Teoria</h3>
+<p>A posse (arts. 1.196 a 1.224 CC) é entendida como um direito autônomo com natureza especial — não se enquadra como direito real ou pessoal patrimonial. Consiste na sujeição direta e imediata da coisa, com eficácia <em>erga omnes</em>.</p>
+
+<p><strong>Teoria Central:</strong> o CC adota parcialmente a <strong>Teoria Objetiva (Ihering)</strong> — basta o <em>corpus</em> (poder físico de disponibilidade sobre a coisa), dispensando o <em>animus domini</em> (intenção de ser dono, exigida por Savigny). Há tendência moderna para a <strong>Posse Social (Tartuce)</strong>, que valoriza o cumprimento da função social do bem.</p>
+
+<p><strong>Detenção:</strong> o detentor (fâmulo da posse) conserva a posse em nome de outrem, em relação de dependência ou subordinação (ex: caseiro registrado). O detentor <em>pode defender a posse</em>, mas apenas em nome do possuidor.</p>
+
+<h3>Classificações Essenciais da Posse</h3>
+<div class="table-wrap">
+<table>
+  <tr>
+    <th>Classificação</th>
+    <th>Definição</th>
+  </tr>
+  <tr>
+    <td><strong>Direta / Indireta</strong></td>
+    <td>Direta: quem tem a coisa materialmente (ex: locatário). Indireta: quem cedeu, geralmente o proprietário (ex: locador).</td>
+  </tr>
+  <tr>
+    <td><strong>Justa / Injusta</strong></td>
+    <td>Justa: "limpa", sem vícios. Injusta: apresenta vícios de <em>violência</em> (força física/moral), <em>clandestinidade</em> (obtida de forma oculta) ou <em>precariedade</em> (abuso de confiança — ex: não devolver o bem alugado). <em>Obs: injusta só pode ser de boa-fé ou má-fé.</em></td>
+  </tr>
+  <tr>
+    <td><strong>Boa-fé / Má-fé</strong></td>
+    <td>Boa-fé: possuidor ignora o vício que impede a aquisição, ou possui justo título. Má-fé: possuidor sabe do vício.</td>
+  </tr>
+  <tr>
+    <td><strong>Ad Interdicta / Ad Usucapionem</strong></td>
+    <td>Ad Interdicta: regra geral — passível de defesa pelas ações possessórias, mas não conduz à usucapião. Ad Usucapionem: exceção — mansa, pacífica e duradoura → permite usucapião.</td>
+  </tr>
+</table>
+</div>
+
+<h3>As 3 Ações Possessórias Típicas</h3>
+<div class="table-wrap">
+<table>
+  <tr>
+    <th>Ação</th>
+    <th>Hipótese</th>
+    <th>O que se busca</th>
+  </tr>
+  <tr>
+    <td><strong>Reintegração de Posse</strong></td>
+    <td><strong>Esbulho</strong> — perda total da posse ou atentado consolidado (violência, clandestinidade ou precariedade)</td>
+    <td>Reaver a posse perdida</td>
+  </tr>
+  <tr>
+    <td><strong>Manutenção de Posse</strong></td>
+    <td><strong>Turbação</strong> — atentados fracionados que dificultam, mas não tiram totalmente a posse</td>
+    <td>Cessar a perturbação; o judiciário impede o réu de continuar "atrapalhando"</td>
+  </tr>
+  <tr>
+    <td><strong>Interdito Proibitório</strong></td>
+    <td><strong>Ameaça iminente</strong> — risco de atentado à posse ainda não consumado</td>
+    <td>Prevenir o esbulho ou turbação futura</td>
+  </tr>
+</table>
+</div>
+
+<div class="callout callout-jur">
+  <div class="callout-title">Fungibilidade — Art. 554 CPC</div>
+  O juiz pode conceder a proteção cabível mesmo que a ação proposta seja diferente daquela cujos pressupostos estejam provados. <strong>Não pode ser utilizada para erro grosseiro.</strong> A dinâmica dos fatos é rápida: a ameaça pode virar esbulho e turbação — um interdito proibitório pode automaticamente virar reintegração de posse. Difere da propriedade, que é causal.
+</div>
+
+<h3>Posse Nova × Posse Velha — O Critério de 1 Ano e 1 Dia</h3>
+<div class="prazo-grid">
+  <div class="prazo-card">
+    <div class="prazo-num" style="font-size:1rem;">≤ 1 ano e 1 dia</div>
+    <div class="prazo-label"><strong>Posse Nova</strong> — Procedimento Especial. Liminar é da natureza do procedimento.</div>
+  </div>
+  <div class="prazo-card">
+    <div class="prazo-num" style="font-size:1rem;">&gt; 1 ano e 1 dia</div>
+    <div class="prazo-label"><strong>Posse Velha</strong> — Procedimento Comum. Sem perder o caráter possessório.</div>
+  </div>
+</div>
+
+<div class="callout callout-tip">
+  <div class="callout-title">Observação importante</div>
+  Não prescreve o direito possessório — entretanto, em algum momento a posse pode se tornar legítima, como na usucapião (prescrição aquisitiva). Além disso, na pendência da possessória, <strong>não se discute domínio/propriedade</strong> (art. 557 CPC). A alegação de propriedade não impede a manutenção ou reintegração da posse.
+</div>
+
+<h3>Autodefesa</h3>
+<p>O possuidor pode usar a <strong>legítima defesa</strong> (contra ameaça/turbação) ou o <strong>desforço imediato</strong> (contra esbulho), desde que o faça logo e os atos não excedam o indispensável (art. 1.210, §1º CC).</p>
+
+<h3>Requisitos do Art. 561 — Ônus da Prova do Autor</h3>
+<ol>
+  <li>A sua <strong>posse</strong> — admitidos todos os meios de prova; não pode confundir com propriedade; B.O., ata notarial são válidos.</li>
+  <li>A <strong>turbação ou o esbulho</strong> praticado pelo réu.</li>
+  <li>A <strong>data</strong> da turbação ou do esbulho.</li>
+  <li>A <strong>continuação da posse</strong> (embora turbada, na manutenção) ou a <strong>perda da posse</strong> (na reintegração).</li>
+</ol>
+
+<div class="callout callout-imp">
+  <div class="callout-title">Valor da Causa</div>
+  O valor da causa <strong>não pode ser o mesmo da propriedade</strong>. É estimado um valor de locação do imóvel multiplicado por 12.
+</div>
+
+<h3>Audiência de Justificação Prévia — Art. 562</h3>
+<p>Serve para que o autor produza prova oral (testemunhas) de que tinha posse.</p>
+<ul>
+  <li>O réu é citado e participa, podendo fazer perguntas à testemunha.</li>
+  <li>Se o juiz entender que está provado: acolhe a liminar. Caso contrário, não.</li>
+  <li>De plano, pode indeferir a liminar sem designar audiência.</li>
+  <li><strong>Recurso cabível:</strong> Agravo de Instrumento (art. 1.015, I CPC).</li>
+</ul>
+
+<h3>Contestação e Procedimento Posterior</h3>
+<ul>
+  <li>Prazo: <strong>15 dias</strong> da audiência de justificação prévia ou da decisão do juiz sobre a liminar.</li>
+  <li>Após a contestação → vira <strong>procedimento comum</strong> (réplica → saneador → instrução).</li>
+  <li><strong>Não cabe reconvenção</strong> em ação tipicamente possessória — não precisa porque é <strong>dúplice</strong>: o réu pode pedir a proteção possessória para ele na própria contestação.</li>
+</ul>
+
+<h3>Cumulação de Pedidos — Art. 555 CPC</h3>
+<ol>
+  <li>Condenação em perdas e danos.</li>
+  <li>Indenização dos frutos.</li>
+  <li>Evitar nova turbação ou esbulho.</li>
+  <li>Cumprir-se a tutela provisória ou final.</li>
+</ol>
+
+<h3>Fluxograma das Ações Possessórias</h3>
+<div class="flow">
+  <div class="flow-step">Petição Inicial</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Juiz</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Defere liminar de plano</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Citação + intimação do réu</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">CTT (15 dias)</div>
+</div>
+<p style="margin: 6px 0 4px;"><em>ou</em></p>
+<div class="flow">
+  <div class="flow-step">Juiz designa AUD. Justificativa</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Citação</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Audiência</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Decisão "liminar"</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Intimação → CTT</div>
+</div>
+<p style="margin: 6px 0 4px;"><em>ou</em></p>
+<div class="flow">
+  <div class="flow-step">Juiz indefere liminar</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Citação</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">AI (Agravo de Instrumento)</div>
+</div>
+
+<hr>
+
+<!-- ═══════════════════ 3. FAMÍLIA ═══════════════════ -->
+<h2 id="familia">3. Ações de Família <span style="font-size:0.9rem;font-weight:400;color:var(--text-muted);">Arts. 693–699-A</span></h2>
+
+<div class="callout callout-jur">
+  <div class="callout-title">Justificativa do Procedimento Especial</div>
+  Historicamente, a separação em grupos distintos durante a elaboração do CPC resultou em poucas diferenças práticas — uma falha no processo legislativo. A razão reside na necessidade de um <strong>tratamento mais zeloso e específico</strong> para as demandas de cunho familiar.
+</div>
+
+<h3>Âmbito de Aplicação</h3>
+
+<h4>Casamento</h4>
+<ul>
+  <li>Casos de divórcio e separação.</li>
+  <li><strong>Requisito especial:</strong> Certidão de casamento.</li>
+</ul>
+
+<h4>União Estável</h4>
+<ul>
+  <li>O regime patrimonial aplicado é o da <strong>comunhão parcial de bens</strong>.</li>
+  <li>Devido à complexidade da prova de quando começou, exige-se <strong>dilação probatória</strong>.</li>
+</ul>
+
+<h4>Guarda e Direito de Visita</h4>
+<ul>
+  <li><strong>Requisito especial:</strong> Certidão do Registro Civil.</li>
+  <li>A decisão baseia-se no <strong>princípio do melhor interesse da criança</strong>, analisado de forma subjetiva conforme o caso concreto.</li>
+</ul>
+
+<h4>Filiação</h4>
+<p>O requisito especial depende do caso. O rol de ações <strong>não é exaustivo</strong>. Existe a possibilidade de cumulação com pedidos de alimentos, embora parte da doutrina defenda a necessidade de ação autônoma (art. 693, parágrafo único, CPC).</p>
+<div class="table-wrap">
+<table>
+  <tr>
+    <th>Tipo de Ação de Filiação</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><strong>Reconhecimento formal de paternidade</strong></td>
+    <td>Formalização do reconhecimento voluntário</td>
+  </tr>
+  <tr>
+    <td><strong>Investigação de paternidade</strong></td>
+    <td>Aplicada quando a identidade do pai é desconhecida</td>
+  </tr>
+  <tr>
+    <td><strong>Anulação do reconhecimento</strong></td>
+    <td>Prazo decadencial de <strong>4 anos</strong> em situações de dolo ou coação</td>
+  </tr>
+  <tr>
+    <td><strong>Ação negatória de paternidade</strong></td>
+    <td>Contestação da filiação presumida no casamento; o desfecho <strong>não depende exclusivamente</strong> de exame de DNA — considera-se o vínculo socioafetivo</td>
+  </tr>
+</table>
+</div>
+
+<h3>Rito Processual — Pontos Divergentes do Comum</h3>
+<p>A citação é o único ponto divergente; no mais, segue o Procedimento Comum do CPC.</p>
+<ul>
+  <li>Iniciam-se com decisões sobre <strong>tutela provisória incidental</strong> (guarda compartilhada, alimentos com rito próprio, regime de visitas ou separação de corpos).</li>
+  <li>Prazo de defesa: <strong>15 dias</strong>, contados da juntada do mandado ou da data da audiência de conciliação.</li>
+  <li>A citação deve ser <strong>pessoal, via oficial de justiça</strong> (art. 695, §1º).</li>
+  <li>Competência fixada pelo domicílio das partes ou último domicílio da causa.</li>
+  <li>Valor da causa: varia conforme o objeto (divórcio, partilha de bens, filiação ou 12 parcelas no caso de alimentos).</li>
+  <li>O regime recursal permanece idêntico ao comum.</li>
+</ul>
+
+<hr>
+
+<!-- ═══════════════════ 4. ALIMENTOS ═══════════════════ -->
+<h2 id="alimentos">4. Ações de Alimentos <span style="font-size:0.9rem;font-weight:400;color:var(--text-muted);">Lei 5.478/68</span></h2>
+
+<p>A ação de alimentos (Lei 5.478/68) caracteriza-se por ser um <strong>rito célere e personalizado</strong>. Contudo, sua efetivação depende da presença do magistrado e do representante do Ministério Público na audiência de conciliação e julgamento.</p>
+
+<div class="callout callout-imp">
+  <div class="callout-title">Cerne da discussão</div>
+  A existência do <strong>dever de o réu prover alimentos ao filho</strong>. É indispensável a apresentação da Certidão de Registro Civil.
+</div>
+
+<h3>Elementos Centrais</h3>
+<ul>
+  <li><strong>Binômio alimentar:</strong> <em>necessidade</em> (limite do pedido) + <em>possibilidade</em> (verificada na fase de instrução).</li>
+  <li>Recomenda-se requerer ofícios ao <strong>empregador, Receita Federal e Banco Central</strong> para quebra de sigilo, visando agilizar o julgamento na própria audiência de instrução.</li>
+  <li>A citação admite a via postal (inclusive rogatória) e, excepcionalmente, por edital.</li>
+  <li>A <strong>defesa (contestação)</strong> deve ser apresentada durante a audiência.</li>
+</ul>
+
+<h3>Alimentos Provisórios — Art. 4º Lei 5.478/68</h3>
+<p>O processo inicia-se com o pedido de alimentos provisórios, uma tutela específica prevista no art. 4º da Lei 5.478, que <strong>independe dos requisitos genéricos de urgência</strong>.</p>
+<ul>
+  <li>Dada a natureza do direito, o pedido é inerente ao rito — dispensa discussões sobre <em>periculum in mora</em> e <em>fumus boni iuris</em>.</li>
+  <li>Diante de distorções na prática, é prudente reforçar esses fundamentos na petição.</li>
+</ul>
+
+<div class="art-box">
+  <strong>Art. 4º da Lei 5.478/68.</strong> Ao despachar o pedido, o juiz fixará desde logo alimentos provisórios a serem pagos pelo devedor, <em>salvo se o credor expressamente declarar que deles não necessita</em>.<br><br>
+  <strong>Parágrafo único.</strong> Se se tratar de alimentos provisórios pedidos pelo cônjuge, casado pelo regime da comunhão universal de bens, o juiz determinará igualmente que seja entregue ao credor, mensalmente, parte da renda líquida dos bens comuns, administrados pelo devedor.
+</div>
+
+<h3>Recursos Cabíveis</h3>
+<div class="table-wrap">
+<table>
+  <tr>
+    <th>Decisão</th>
+    <th>Recurso</th>
+    <th>Efeito Suspensivo?</th>
+  </tr>
+  <tr>
+    <td>Alimentos <strong>provisórios</strong></td>
+    <td>Agravo de Instrumento (art. 1.015, I CPC)</td>
+    <td>Não</td>
+  </tr>
+  <tr>
+    <td>Alimentos <strong>definitivos</strong></td>
+    <td>Apelação (art. 1.009 CPC)</td>
+    <td><strong>Não</strong> — sem efeito suspensivo</td>
+  </tr>
+</table>
+</div>
+
+<h3>Alimentos Gravídicos — Lei 11.804/08</h3>
+<ul>
+  <li>Na constância do casamento, tem-se a <strong>presunção da filiação</strong>.</li>
+  <li>É difícil quando não se sabe de quem é.</li>
+  <li>Pode ser concedida por <strong>existência de indícios da paternidade</strong>.</li>
+</ul>
+
+<div class="art-box">
+  <strong>Art. 6º da Lei 11.804/08.</strong> Convencido da existência de indícios da paternidade, o juiz fixará alimentos gravídicos que perdurarão até o nascimento da criança, sopesando as necessidades da parte autora e as possibilidades da parte ré.<br><br>
+  <strong>Parágrafo único.</strong> Após o nascimento com vida, os alimentos gravídicos ficam convertidos em pensão alimentícia em favor do menor até que uma das partes solicite a sua revisão.
+</div>
+
+<h3>Fluxograma — Ação de Alimentos (Lei 5.478/68)</h3>
+<div class="flow">
+  <div class="flow-step">Petição Inicial<br><small>(competência, legitimidade, causa de pedir, prova do parentesco)</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Despacho Inicial<br><small>(desig. AUD · cite-se · ofícios · alimentos provisórios)</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Citação<br><small>(carta ou edital — exceção)</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Audiência Conciliação/Julgamento<br><small>(tentativa de conciliação → contestação → instrução → aleg. finais → sentença)</small></div>
+</div>
+
+<h3>Fluxograma — Alimentos Gravídicos (Lei 11.804/08)</h3>
+<div class="flow">
+  <div class="flow-step">Petição Inicial</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Despacho Inicial</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Citação</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">CTT (5 dias)</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Audiência Conciliação/Julgamento → Sentença</div>
+</div>
+
+<hr>
+
+<!-- ═══════════════════ 5. JURISDIÇÃO VOLUNTÁRIA ═══════════════════ -->
+<h2 id="jv">5. Jurisdição Voluntária <span style="font-size:0.9rem;font-weight:400;color:var(--text-muted);">Arts. 719–770</span></h2>
+
+<h3>Procedimento Comum — Arts. 719–725</h3>
+
+<div class="art-box">
+  <strong>Art. 719.</strong> Quando este Código não estabelecer procedimento especial, regem os procedimentos de jurisdição voluntária as disposições constantes desta Seção.<br><br>
+  <strong>Art. 720.</strong> O procedimento terá início por provocação do interessado, do Ministério Público ou da Defensoria Pública, cabendo-lhes formular o pedido devidamente instruído com os documentos necessários e com a indicação da providência judicial.<br><br>
+  <strong>Art. 721.</strong> Serão citados todos os interessados, bem como intimado o Ministério Público, nos casos do art. 178, para que se manifestem, querendo, no <strong>prazo de 15 (quinze) dias</strong>.<br><br>
+  <strong>Art. 722.</strong> A Fazenda Pública será sempre ouvida nos casos em que tiver interesse.<br><br>
+  <strong>Art. 723.</strong> O juiz decidirá o pedido no prazo de <strong>10 (dez) dias</strong>.<br><br>
+  <strong>Art. 723, parágrafo único.</strong> O juiz não é obrigado a observar critério de legalidade estrita, podendo adotar em cada caso a solução que considerar mais conveniente ou oportuna.<br><br>
+  <strong>Art. 724.</strong> Da sentença caberá apelação.
+</div>
+
+<h4>Art. 725 — Rol de Procedimentos</h4>
+<div class="art-box">
+  Processar-se-á na forma estabelecida nesta Seção o pedido de:<br>
+  I – emancipação;<br>
+  II – sub-rogação;<br>
+  III – alienação, arrendamento ou oneração de bens de crianças ou adolescentes, de órfãos e de interditos;<br>
+  IV – alienação, locação e administração da coisa comum;<br>
+  V – alienação de quinhão em coisa comum;<br>
+  VI – extinção de usufruto (quando não decorrer da morte do usufrutuário, do termo ou da consolidação) e de fideicomisso (quando decorrer de renúncia ou ocorrer antes da condição resolutória);<br>
+  VII – expedição de alvará judicial;<br>
+  VIII – homologação de autocomposição extrajudicial, de qualquer natureza ou valor.
+</div>
+
+<h3>Fluxograma — Procedimento Geral</h3>
+<div class="flow">
+  <div class="flow-step">Petição Inicial ou Pedido</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Citação + Intimação Fazenda/MP</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Manifestações (15 dias)</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Sentença (10 dias)</div>
+</div>
+
+<div class="prazo-grid">
+  <div class="prazo-card">
+    <div class="prazo-num">15d</div>
+    <div class="prazo-label">Prazo para interessados se manifestarem (art. 721)</div>
+  </div>
+  <div class="prazo-card">
+    <div class="prazo-num">10d</div>
+    <div class="prazo-label">Prazo para o juiz decidir (art. 723)</div>
+  </div>
+</div>
+
+<h3>Notificação e Interpelação — Arts. 726–729</h3>
+
+<div class="art-box">
+  <strong>Art. 726.</strong> Quem tiver interesse em manifestar formalmente sua vontade a outrem sobre assunto juridicamente relevante poderá notificar pessoas participantes da mesma relação jurídica para dar-lhes ciência de seu propósito.<br>
+  §1º Se a pretensão for de dar conhecimento geral ao público (edital), o juiz só a deferirá se a tiver por fundada e necessária ao resguardo de direito.<br>
+  §2º Aplica-se esta Seção, no que couber, ao protesto judicial.<br><br>
+  <strong>Art. 727.</strong> Também poderá o interessado <strong>interpelar</strong> o requerido para que faça ou deixe de fazer o que o requerente entenda ser de seu direito.<br><br>
+  <strong>Art. 729.</strong> Deferida e realizada a notificação ou interpelação, os autos serão entregues ao requerente.
+</div>
+
+<div class="flow">
+  <div class="flow-step">Petição Inicial</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Citação e Notificação</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Sentença Homologatória</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Entrega dos autos ao requerente</div>
+</div>
+
+<h3>Alienação Judicial — Art. 730</h3>
+<p>Usada para extinção de condomínio ou quando o depositário de bem jurídico precisa vendê-lo e prestar contas.</p>
+<ul>
+  <li>Se o bem for <strong>divisível:</strong> Ação de divisão do imóvel (procedimento especial próprio).</li>
+  <li>Se o bem for <strong>indivisível:</strong> venda judicial — avaliação, tentativa de acordo entre as partes ou realização de leilão.</li>
+</ul>
+
+<div class="art-box">
+  <strong>Art. 730.</strong> Nos casos expressos em lei, não havendo acordo entre os interessados sobre o modo como se deve realizar a alienação do bem, o juiz, de ofício ou a requerimento dos interessados ou do depositário, mandará aliená-lo em leilão, observando-se o disposto na Seção I deste Capítulo e, no que couber, os arts. 879 a 903.
+</div>
+
+<h3>Ações Consensuais de Família — Arts. 731–732</h3>
+
+<div class="art-box">
+  <strong>Art. 731.</strong> A homologação do divórcio ou da separação consensuais, observados os requisitos legais, poderá ser requerida em petição assinada por ambos os cônjuges, da qual constarão:<br>
+  I – disposições relativas à descrição e partilha dos bens comuns;<br>
+  II – disposições relativas à pensão alimentícia entre os cônjuges;<br>
+  III – o acordo relativo à guarda dos filhos incapazes e ao regime de visitas;<br>
+  IV – o valor da contribuição para criar e educar os filhos.<br><br>
+  <strong>Parágrafo único.</strong> Se os cônjuges não acordarem sobre a partilha dos bens, far-se-á esta depois de homologado o divórcio, na forma dos arts. 647 a 658.<br><br>
+  <strong>Art. 732.</strong> As disposições relativas ao processo de homologação judicial de divórcio ou de separação consensuais aplicam-se, no que couber, ao processo de homologação da extinção consensual de <strong>união estável</strong>.
+</div>
+
+<h3>Testamentos e Codicilos — Arts. 735–737</h3>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <th>Tipo</th>
+    <th>Art.</th>
+    <th>Procedimento</th>
+  </tr>
+  <tr>
+    <td><strong>Testamento cerrado</strong></td>
+    <td>Art. 735</td>
+    <td>Juiz abre e manda o escrivão ler na presença do apresentante. Após MP, manda registrar, arquivar e cumprir. Testamenteiro assina o termo; se ausente/recusante, juiz nomeia testamenteiro dativo.</td>
+  </tr>
+  <tr>
+    <td><strong>Testamento público</strong></td>
+    <td>Art. 736</td>
+    <td>Qualquer interessado, exibindo o traslado ou certidão, requer ao juiz que ordene seu cumprimento.</td>
+  </tr>
+  <tr>
+    <td><strong>Testamento particular, codicilos e testamentos especiais</strong></td>
+    <td>Art. 737</td>
+    <td>Publicação requerida pelo herdeiro, legatário, testamenteiro ou terceiro detentor. Juiz intima herdeiros, ouve o MP e, verificados os requisitos, <strong>confirma</strong> o testamento.</td>
+  </tr>
+</table>
+</div>
+
+<div class="art-box">
+  <strong>Art. 737, §3º.</strong> Aplica-se o disposto neste artigo ao codicilo e aos testamentos marítimo, aeronáutico, militar e nuncupativo.
+</div>
+
+<h3>Interdição — Arts. 747–756</h3>
+
+<h4>Legitimidade para Promover a Interdição — Art. 747</h4>
+<div class="art-box">
+  I – pelo cônjuge ou companheiro;<br>
+  II – pelos parentes ou tutores;<br>
+  III – pelo representante da entidade em que se encontra abrigado o interditando;<br>
+  IV – pelo Ministério Público.<br><br>
+  <strong>Parágrafo único.</strong> A legitimidade deverá ser comprovada por documentação que acompanhe a petição inicial.<br><br>
+  <strong>Art. 748.</strong> O MP só promoverá interdição em caso de <strong>doença mental grave</strong>: se as pessoas dos incisos I, II e III do art. 747 não existirem ou não promoverem a interdição; ou se, existindo, forem incapazes.
+</div>
+
+<h4>Petição Inicial — Art. 749–750</h4>
+<div class="art-box">
+  <strong>Art. 749.</strong> Incumbe ao autor especificar os fatos que demonstram a incapacidade do interditando para administrar seus bens e, se for o caso, para praticar atos da vida civil, bem como o momento em que a incapacidade se revelou.<br>
+  <strong>Parágrafo único.</strong> Justificada a urgência, o juiz pode nomear <strong>curador provisório</strong> ao interditando para a prática de determinados atos.<br><br>
+  <strong>Art. 750.</strong> O requerente deverá juntar <strong>laudo médico</strong> para fazer prova de suas alegações ou informar a impossibilidade de fazê-lo.
+</div>
+
+<h4>Entrevista Judicial — Art. 751</h4>
+<div class="art-box">
+  O interditando será citado para comparecer perante o juiz, que o <strong>entrevistará minuciosamente</strong> acerca de sua vida, negócios, bens, vontades, preferências e laços familiares e afetivos.<br>
+  §1º Não podendo deslocar-se, o juiz o ouvirá no local onde estiver.<br>
+  §2º A entrevista poderá ser acompanhada por especialista.<br>
+  §3º Durante a entrevista, é assegurado o emprego de recursos tecnológicos para auxiliar o interditando a expressar suas vontades e responder às perguntas.<br>
+  §4º A critério do juiz, poderá ser requisitada a oitiva de parentes e pessoas próximas.
+</div>
+
+<h4>Impugnação e Perícia — Arts. 752–753</h4>
+<div class="art-box">
+  <strong>Art. 752.</strong> Dentro do prazo de <strong>15 (quinze) dias</strong> contado da entrevista, o interditando poderá impugnar o pedido.<br>
+  §1º O MP intervirá como fiscal da ordem jurídica.<br>
+  §2º O interditando poderá constituir advogado; caso não o faça, deverá ser nomeado <strong>curador especial</strong>.<br>
+  §3º Caso não constitua advogado, seu cônjuge, companheiro ou qualquer parente sucessível poderá intervir como <strong>assistente</strong>.<br><br>
+  <strong>Art. 753.</strong> Decorrido o prazo, o juiz determinará a produção de <strong>prova pericial</strong> para avaliação da capacidade do interditando.<br>
+  §1º A perícia pode ser realizada por equipe <strong>multidisciplinar</strong>.<br>
+  §2º O laudo indicará especificamente os atos para os quais haverá necessidade de curatela.
+</div>
+
+<h4>Sentença — Arts. 754–755</h4>
+<div class="art-box">
+  <strong>Art. 754.</strong> Apresentado o laudo, produzidas as demais provas e ouvidos os interessados, o juiz proferirá sentença.<br><br>
+  <strong>Art. 755.</strong> Na sentença que decretar a interdição, o juiz:<br>
+  I – nomeará curador (que poderá ser o requerente) e <strong>fixará os limites da curatela</strong>, segundo o estado e o desenvolvimento mental do interdito;<br>
+  II – considerará as características pessoais do interdito, observando suas potencialidades, habilidades, vontades e preferências.<br>
+  §3º A sentença de interdição será inscrita no <strong>registro de pessoas naturais</strong>.
+</div>
+
+<h4>Levantamento da Curatela — Art. 756</h4>
+<div class="art-box">
+  <strong>Art. 756.</strong> Levantar-se-á a curatela quando cessar a causa que a determinou.<br>
+  §1º O pedido de levantamento poderá ser feito pelo interdito, pelo curador ou pelo MP, e será apensado aos autos da interdição.<br>
+  §2º O juiz nomeará perito ou equipe multidisciplinar para examinar o interdito e designará audiência de instrução e julgamento após o laudo.<br>
+  §3º Acolhido o pedido, o juiz decretará o levantamento da interdição e determinará a publicação da sentença após o trânsito em julgado, seguindo-se a averbação no registro de pessoas naturais.<br>
+  §4º A interdição poderá ser <strong>levantada parcialmente</strong>.
+</div>
+
+<h4>Fluxograma — Interdição</h4>
+<div class="flow">
+  <div class="flow-step">Petição Inicial + Laudo Médico</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Despacho Inicial<br><small>(curatela provisória se urgente · *participação do MP)</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Citação</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Audiência: Inspeção Judicial / Entrevista</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Impugnação (15 dias)<br><small>Advogado do interdito ou Curador Especial<br>Assistente: cônjuge ou parente</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Perícia Médica<br><small>(possibilidade + outras provas)</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Sentença</div>
+</div>
+
+<div class="prazo-grid">
+  <div class="prazo-card">
+    <div class="prazo-num">15d</div>
+    <div class="prazo-label">para o interditando impugnar o pedido (art. 752)</div>
+  </div>
+  <div class="prazo-card">
+    <div class="prazo-num">15d</div>
+    <div class="prazo-label">manifestação geral dos interessados na JV (art. 721)</div>
+  </div>
+  <div class="prazo-card">
+    <div class="prazo-num">10d</div>
+    <div class="prazo-label">para o juiz decidir na JV (art. 723)</div>
+  </div>
+</div>
+
+<div class="callout callout-imp">
+  <div class="callout-title">Ponto central — equidade na Jurisdição Voluntária</div>
+  O juiz não é obrigado a observar critério de legalidade estrita (art. 723, parágrafo único) — pode adotar a solução que considerar mais conveniente ou oportuna. É a principal diferença axiológica da jurisdição voluntária em relação à contenciosa.
+</div>
+
+</body>
+</html>

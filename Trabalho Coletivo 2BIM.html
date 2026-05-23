@@ -1,1083 +1,1091 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Direito Coletivo do Trabalho — 2º Bimestre | Mackenzie</title>
-<style>
-  :root {
-    --bg: #ffffff;
-    --bg2: #f8fafc;
-    --text: #1e293b;
-    --text-muted: #475569;
-    --h1: #6d28d9;
-    --h2: #7c3aed;
-    --h3: #8b5cf6;
-    --h4: #9333ea;
-    --accent: #a78bfa;
-    --table-head-bg: #e8f0fe;
-    --table-head-text: #1e3a5f;
-    --table-alt: #f1f5f9;
-    --table-border: #cbd5e1;
-    --imp-bg: #eff6ff;
-    --imp-border: #3b82f6;
-    --imp-text: #1e3a5f;
-    --exc-bg: #fff0f3;
-    --exc-border: #f472b6;
-    --exc-text: #831843;
-    --sum-bg: #f0fdf4;
-    --sum-border: #22c55e;
-    --sum-text: #14532d;
-    --card-bg: #f8fafc;
-    --card-border: #e2e8f0;
-    --btn-bg: #7c3aed;
-    --btn-text: #ffffff;
-    --hr: #e2e8f0;
-    --code-bg: #f1f5f9;
-  }
-  body.dark-mode {
-    --bg: #0f172a;
-    --bg2: #1e293b;
-    --text: #e2e8f0;
-    --text-muted: #94a3b8;
-    --h1: #c4b5fd;
-    --h2: #a78bfa;
-    --h3: #818cf8;
-    --h4: #93c5fd;
-    --accent: #7c3aed;
-    --table-head-bg: #1e3a5f;
-    --table-head-text: #bfdbfe;
-    --table-alt: #1e293b;
-    --table-border: #334155;
-    --imp-bg: #1e3a5f;
-    --imp-border: #3b82f6;
-    --imp-text: #bfdbfe;
-    --exc-bg: #4a1628;
-    --exc-border: #f472b6;
-    --exc-text: #fce7f3;
-    --sum-bg: #14532d;
-    --sum-border: #22c55e;
-    --sum-text: #dcfce7;
-    --card-bg: #1e293b;
-    --card-border: #334155;
-    --btn-bg: #a78bfa;
-    --btn-text: #0f172a;
-    --hr: #334155;
-    --code-bg: #1e293b;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    font-size: 15px;
-    transition: background 0.3s, color 0.3s;
-  }
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 32px 24px 64px;
-  }
-  /* HEADER */
-  .main-header {
-    text-align: center;
-    padding: 40px 0 32px;
-    border-bottom: 2px solid var(--hr);
-    margin-bottom: 40px;
-  }
-  .main-header .tag {
-    display: inline-block;
-    background: var(--h2);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    border-radius: 20px;
-    margin-bottom: 16px;
-  }
-  .main-header h1 {
-    font-size: 2.4rem;
-    color: var(--h1);
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    margin-bottom: 8px;
-  }
-  .main-header p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-  }
-  /* ÍNDICE */
-  .indice {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 24px 28px;
-    margin-bottom: 40px;
-  }
-  .indice h2 { color: var(--h2); margin-bottom: 14px; font-size: 1.1rem; }
-  .indice ol { padding-left: 20px; }
-  .indice li { margin-bottom: 4px; font-size: 0.9rem; color: var(--text-muted); }
-  .indice li a { color: var(--h3); text-decoration: none; }
-  .indice li a:hover { text-decoration: underline; }
-  /* SEÇÕES */
-  .parte-header {
-    background: linear-gradient(135deg, var(--h2), var(--h3));
-    color: white;
-    border-radius: 12px;
-    padding: 22px 28px;
-    margin: 48px 0 32px;
-  }
-  .parte-header h2 { font-size: 1.4rem; font-weight: 700; color: white; margin: 0; }
-  .parte-header p { color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-top: 4px; }
-  h2.section-title {
-    color: var(--h2);
-    font-size: 1.35rem;
-    font-weight: 700;
-    border-left: 4px solid var(--h2);
-    padding-left: 14px;
-    margin: 40px 0 16px;
-  }
-  h3.sub-title {
-    color: var(--h3);
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin: 28px 0 12px;
-    padding-left: 8px;
-    border-left: 3px solid var(--accent);
-  }
-  h4.mini-title {
-    color: var(--h4);
-    font-size: 0.97rem;
-    font-weight: 700;
-    margin: 20px 0 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  p { margin-bottom: 14px; }
-  hr { border: none; border-top: 1px solid var(--hr); margin: 36px 0; }
-  /* LISTAS */
-  ul, ol { padding-left: 22px; margin-bottom: 14px; }
-  li { margin-bottom: 6px; }
-  strong { color: inherit; font-weight: 700; }
-  /* CALLOUT BOXES */
-  .callout {
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin: 18px 0;
-    border-left: 4px solid;
-    font-size: 0.92rem;
-  }
-  .callout-imp {
-    background: var(--imp-bg);
-    border-color: var(--imp-border);
-    color: var(--imp-text);
-  }
-  .callout-exc {
-    background: var(--exc-bg);
-    border-color: var(--exc-border);
-    color: var(--exc-text);
-  }
-  .callout-sum {
-    background: var(--sum-bg);
-    border-color: var(--sum-border);
-    color: var(--sum-text);
-  }
-  .callout-title {
-    font-weight: 800;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-    display: block;
-  }
-  /* TABELAS */
-  .table-wrap { overflow-x: auto; margin: 18px 0; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.88rem;
-    background: var(--bg);
-  }
-  thead th {
-    background: var(--table-head-bg);
-    color: var(--table-head-text);
-    font-weight: 700;
-    padding: 11px 14px;
-    text-align: left;
-    border-bottom: 2px solid var(--table-border);
-  }
-  tbody td {
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--table-border);
-    vertical-align: top;
-  }
-  tbody tr:nth-child(even) td { background: var(--table-alt); }
-  tbody tr:hover td { background: var(--card-bg); }
-  /* QUOTE / ARTIGO */
-  blockquote {
-    border-left: 4px solid var(--accent);
-    padding: 12px 18px;
-    margin: 16px 0;
-    background: var(--card-bg);
-    border-radius: 0 8px 8px 0;
-    font-style: italic;
-    color: var(--text-muted);
-    font-size: 0.91rem;
-  }
-  /* CARD */
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 10px;
-    padding: 18px 22px;
-    margin: 16px 0;
-  }
-  /* BADGES */
-  .badge {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-right: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .badge-art { background: #dbeafe; color: #1e40af; }
-  .badge-lei { background: #ede9fe; color: #5b21b6; }
-  .badge-sum { background: #dcfce7; color: #15803d; }
-  .badge-oj { background: #fef9c3; color: #854d0e; }
-  body.dark-mode .badge-art { background: #1e3a5f; color: #93c5fd; }
-  body.dark-mode .badge-lei { background: #3b0764; color: #c4b5fd; }
-  body.dark-mode .badge-sum { background: #14532d; color: #86efac; }
-  body.dark-mode .badge-oj { background: #431407; color: #fde68a; }
-  /* GRID 2 colunas */
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-  @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
-  /* ARTIGO HEADER */
-  .artigo-header {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin: 24px 0 20px;
-  }
-  .artigo-header .num {
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: var(--h3);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 4px;
-  }
-  .artigo-header h3 { color: var(--h2); font-size: 1.15rem; margin: 0 0 4px; }
-  .artigo-header .autor { color: var(--text-muted); font-size: 0.88rem; font-style: italic; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Direito Coletivo do Trabalho – 2º BIM | Profa. Francesca Columbu</title>
+  <style>
+    :root {
+      --pink: #FF1493;
+      --pink-light: #FF69B4;
+      --pink-bg: #fff0f7;
+      --pink-border: #FF1493;
+      --bg: #fdfdfd;
+      --text: #2b2b2b;
+      --text-muted: #555;
+      --card-bg: #ffffff;
+      --table-head-text: #ffffff;
+      --border-color: #e5e5e5;
+      --tag-bg: #fff0f7;
+      --callout-bg: #fff5fa;
+      --code-bg: #f8f8f8;
+      --shadow: rgba(255,20,147,0.08);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── HERO HEADER ── */
+    #hero {
+      background: linear-gradient(135deg, #FF1493 0%, #c2006e 100%);
+      color: #fff;
+      text-align: center;
+      padding: 58px 28px 52px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    #hero .hero-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 14px;
+    }
+    #hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    #hero .hero-sub {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+    #hero .hero-tags {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #hero .hero-tag {
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── NAV ÍNDICE ── */
+    #nav-index {
+      background: var(--card-bg);
+      border: 2px solid var(--pink);
+      max-width: 820px;
+      margin: 32px auto 0 auto;
+      padding: 24px 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px var(--shadow);
+    }
+    #nav-index h3 {
+      color: var(--pink);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+    #nav-index ol {
+      columns: 2;
+      column-gap: 32px;
+      padding-left: 20px;
+    }
+    #nav-index li { margin: 5px 0; break-inside: avoid; }
+    #nav-index a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    #nav-index a:hover { color: var(--pink); text-decoration: underline; }
+    
+    @media (max-width: 600px) {
+      #nav-index ol { columns: 1; }
+      #nav-index { margin: 20px 14px 0 14px; padding: 18px 18px; }
+    }
+
+    /* ── MAIN CONTAINER ── */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 40px 60px 40px;
+    }
+
+    /* ── SECTION CARD ── */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 14px var(--shadow);
+      margin-bottom: 36px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .section-header {
+      background: var(--pink);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-number {
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .section-body {
+      padding: 28px 30px;
+    }
+
+    /* ── SUBSECTION ── */
+    .subsection {
+      margin-bottom: 28px;
+    }
+    .subsection:last-child { margin-bottom: 0; }
+    
+    h3 {
+      color: var(--pink);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--pink-bg);
+    }
+    h4 {
+      color: var(--pink);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 14px 0 6px 0;
+    }
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── LISTAS ── */
+    ul, ol { padding-left: 22px; margin-bottom: 10px; }
+    li { margin-bottom: 5px; }
+    li:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      border-left: 5px solid var(--pink);
+      background: var(--callout-bg);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: var(--pink);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .callout.yellow { border-color: #e6a817; background: #fff9ec; }
+    .callout.yellow .callout-title { color: #c98a00; }
+    .callout.blue { border-color: #2979ff; background: #eef3ff; }
+    .callout.blue .callout-title { color: #2979ff; }
+    .callout.green { border-color: #2e7d32; background: #f1f8f1; }
+    .callout.green .callout-title { color: #2e7d32; }
+
+    /* ── TABELAS ── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead th {
+      background: var(--pink);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.3px;
+    }
+    tbody tr:nth-child(even) { background: var(--pink-bg); }
+    tbody tr:nth-child(odd) { background: var(--card-bg); }
+    tbody td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+    tbody tr:hover { filter: brightness(0.97); }
+
+    /* ── BADGES / TAGS ── */
+    .badge {
+      display: inline-block;
+      background: var(--pink);
+      color: #fff;
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-right: 4px;
+    }
+    .badge.outline {
+      background: transparent;
+      border: 2px solid var(--pink);
+      color: var(--pink);
+    }
+
+    /* ── PRAZO BOX ── */
+    .prazo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .prazo-item {
+      background: var(--pink-bg);
+      border: 1.5px solid var(--pink);
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+    .prazo-item .dias {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--pink);
+      line-height: 1;
+    }
+    .prazo-item .label {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ── SUMULA BOX ── */
+    .sumula {
+      border: 2px solid var(--pink);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      background: var(--card-bg);
+    }
+    .sumula-num {
+      font-weight: 800;
+      color: var(--pink);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .sumula p { font-size: 0.88rem; font-style: italic; margin: 0; }
+
+    /* ── ADIÇÕES PARA O RESUMO ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    .card-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 14px 0;
+    }
+    blockquote {
+      border-left: 4px solid var(--pink-light);
+      padding: 12px 18px;
+      margin: 16px 0;
+      background: var(--pink-bg);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.91rem;
+    }
+
+    /* ── ARTIGO INLINE ── */
+    .art { font-weight: 700; color: var(--pink); font-size: 0.88rem; }
+
+    /* ── DIVISOR ── */
+    hr.divider {
+      border: none;
+      border-top: 2px dashed var(--border-color);
+      margin: 20px 0;
+    }
+
+    /* ── SCROLL TOP ── */
+    #scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--pink);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 990;
+    }
+    #scroll-top:hover { background: var(--pink-light); }
+    #scroll-top.visible { display: flex; }
+
+    strong { color: inherit; }
+    em.pink { color: var(--pink); font-style: normal; font-weight: 700; }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 700px) {
+      .container { padding: 18px 14px 40px 14px; }
+      #nav-index { margin: 16px 14px 0 14px; }
+      .section-body { padding: 18px 16px; }
+      .prazo-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-
-
-<div class="container">
-
-<!-- HEADER -->
-<div class="main-header">
-  <span class="tag">Mackenzie · 7º Semestre · Profa. Francesca Columbu</span>
+<!-- HERO HEADER -->
+<div id="hero">
+  <div class="hero-label">Universidade Presbiteriana Mackenzie · 7º Semestre</div>
   <h1>Direito Coletivo do Trabalho</h1>
-  <p>Resumo completo do 2º Bimestre &nbsp;|&nbsp; Custeio Sindical · Representação · Greve · Boicote</p>
+  <div class="hero-sub">Profa. Francesca Columbu &nbsp;·&nbsp; 2º Bimestre</div>
+  <div class="hero-tags">
+    <span class="hero-tag">🤝 Negociação Coletiva</span>
+    <span class="hero-tag">💰 Custeio Sindical</span>
+    <span class="hero-tag">✊ Greve e Resistência</span>
+    <span class="hero-tag">📚 Doutrina (Reis, Mallet, Viana)</span>
+  </div>
 </div>
 
 <!-- ÍNDICE -->
-<div class="indice">
-  <h2>Sumário</h2>
+<div id="nav-index">
+  <h3>📋 Índice</h3>
   <ol>
-    <li><a href="#neg-col">Negociação Coletiva — Introdução</a></li>
-    <li><a href="#cissao">1.0 Cissão, Dissociação e Segmentação de Sindicatos</a></li>
-    <li><a href="#custeio">2.0 Custeio dos Sindicatos</a> — Contribuição Sindical · Confederativa · Assistencial · Mensalidade</li>
-    <li><a href="#repr">3.0 Formas Alternativas de Representação Obreira</a> — Centrais Sindicais · Comissão Interna</li>
-    <li><a href="#greve-p1">PARTE II — Greve, Trabalho e Resistência</a></li>
-    <li><a href="#art1">Artigo 1 — A Greve Negra de 1857 na Bahia (João José Reis)</a></li>
-    <li><a href="#art2">Artigo 2 — O Direito de Greve na Iniciativa Privada (Estêvão Mallet)</a></li>
-    <li><a href="#art3">Artigo 3 — Da Greve ao Boicote (Márcio Túlio Viana)</a></li>
-    <li><a href="#conclusao">Conclusão Integrada — 7 Eixos de Articulação</a></li>
+    <li><a href="#sec1">Negociação Coletiva — Introdução</a></li>
+    <li><a href="#sec2">Cissão, Dissociação e Segmentação de Sindicatos</a></li>
+    <li><a href="#sec3">Custeio dos Sindicatos</a></li>
+    <li><a href="#sec4">Formas Alternativas de Representação Obreira</a></li>
+    <li><a href="#sec5">Artigo 1 — A Greve Negra de 1857 na Bahia (João José Reis)</a></li>
+    <li><a href="#sec6">Artigo 2 — O Direito de Greve na Iniciativa Privada (Estêvão Mallet)</a></li>
+    <li><a href="#sec7">Artigo 3 — Da Greve ao Boicote (Márcio Túlio Viana)</a></li>
+    <li><a href="#sec8">Conclusão Integrada — 7 Eixos de Articulação</a></li>
   </ol>
 </div>
 
-<!-- ============================= PARTE I ============================= -->
-<div class="parte-header">
-  <h2>PARTE I — Conteúdo da Disciplina (Prof.ª Francesca Columbu)</h2>
-  <p>Negociação Coletiva · Custeio Sindical · Representação Obreira</p>
-</div>
+<div class="container">
 
-<!-- NEGOCIAÇÃO COLETIVA -->
-<section id="neg-col">
-<h2 class="section-title">Negociação Coletiva — Introdução</h2>
-<p>A negociação coletiva se destina a <strong>estabelecer regras e direitos que o trabalhador terá em sua empresa</strong>. É o principal instrumento do Direito Coletivo do Trabalho para a criação de normas autônomas.</p>
-
-<div class="grid2">
-  <div class="callout callout-imp">
-    <span class="callout-title">⚡ Empresas com Filiais</span>
-    Se a filial for autônoma (ex.: CNPJ próprio), a <strong>negociação deve ser realizada com o sindicato correspondente àquela filial</strong>, e não com o da matriz.
-  </div>
-  <div class="callout callout-exc">
-    <span class="callout-title">⚠ Enquadramento Incorreto ("Promíscuas")</span>
-    Se houver enquadramento sindical equivocado, os trabalhadores têm <strong>direito às diferenças salariais e demais valores</strong> não auferidos por causa desse erro.
-  </div>
-</div>
-
-<div class="callout callout-imp">
-  <span class="callout-title">📌 Sindicato Eclético</span>
-  O sindicato eclético pode existir tanto na <strong>categoria patronal</strong> quanto na categoria dos <strong>empregados</strong>. Representa simultaneamente atividades similares e conexas.
-</div>
-</section>
-
-<hr>
-
-<!-- 1.0 CISSÃO -->
-<section id="cissao">
-<h2 class="section-title">1.0 Cissão, Dissociação ou Segmentação de Sindicatos</h2>
-<p>É possível surgir novos sindicatos por meio do <strong>desmembramento de um sindicato já existente</strong> ou por meio da criação de um sindicato em local até então sem organização sindical.</p>
-
-<h3 class="sub-title">1.1 Dissociação de Categorias</h3>
-<p>Os sindicatos podem ser organizados por atividades <strong>idênticas, similares e conexas</strong>. Se demonstrada a independência e autonomia de uma dessas atividades, é possível a <strong>dissociação da categoria</strong>, com o surgimento de um novo sindicato.</p>
-<div class="callout callout-imp">
-  <span class="callout-title">🔑 Regra Central</span>
-  A dissociação de categorias é a <strong>mudança de um sindicato eclético para um específico</strong>. A nova entidade representará apenas a categoria que demonstrou autonomia suficiente para se desligar do grupo mais amplo.
-</div>
-
-<h3 class="sub-title">1.2 Redução da Base Territorial</h3>
-<p>O <strong>art. 8º, II, da CF/88</strong> limita os sindicatos ao limite de um município. No entanto, existem sindicatos com abrangência intermunicipal, estadual e até nacional. Caso demonstrada a capacidade de representação da categoria, é possível o <strong>desmembramento</strong> com surgimento de um novo sindicato em base territorial menor.</p>
-</section>
-
-<hr>
-
-<!-- 2.0 CUSTEIO -->
-<section id="custeio">
-<h2 class="section-title">2.0 Custeio dos Sindicatos</h2>
-<p>Os sindicatos exercem funções indispensáveis ao Direito do Trabalho: <strong>celebração de acordo e convenção coletiva</strong> e <strong>defesa judicial e extrajudicial</strong> dos trabalhadores. Para tanto, necessitam de recursos financeiros. As fontes de custeio são quatro:</p>
-
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Fonte de Custeio</th><th>Quem Paga</th><th>Natureza Jurídica</th><th>Previsão Legal</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Contribuição Sindical</strong></td><td>Filiados (após Reforma, facultativa)</td><td>Perdeu natureza tributária</td><td>CLT + art. 8º, IV CF</td></tr>
-    <tr><td><strong>Contribuição Confederativa</strong></td><td>Somente sindicalizados</td><td>Sindical (não tributária)</td><td>Art. 8º, IV CF</td></tr>
-    <tr><td><strong>Contribuição Assistencial</strong> (taxa de reversão)</td><td>Filiados; não-filiados com direito de oposição</td><td>Sindical</td><td>Art. 513, "e" CLT</td></tr>
-    <tr><td><strong>Mensalidade Sindical</strong></td><td>Somente sindicalizados</td><td>Voluntária</td><td>Art. 548 CLT</td></tr>
-  </tbody>
-</table>
-</div>
-
-<div class="callout callout-sum">
-  <span class="callout-title">⚖ OJ 17 SDC do TST</span>
-  As cláusulas coletivas que estabeleçam contribuição em favor de entidade sindical, a qualquer título, <strong>obrigando trabalhadores não sindicalizados, são nulas</strong>, sendo passíveis de devolução dos valores eventualmente descontados.
-</div>
-
-<!-- 2.1 CONTRIBUIÇÃO SINDICAL -->
-<h3 class="sub-title">2.1 Contribuição Sindical</h3>
-<p>Anteriormente denominada <strong>imposto sindical</strong>, estava prevista na CLT e no art. 8º, IV, CF.</p>
-<ul>
-  <li><strong>Antes da Reforma Trabalhista:</strong> considerada tributo, recolhimento obrigatório de todos os empregados, empregadores e trabalhadores liberais.</li>
-  <li><strong>Após a Reforma (Lei 13.467/2017):</strong> perdeu a natureza tributária e <strong>somente pode ser cobrada com prévia e expressa autorização</strong> do empregado, empregador ou trabalhador liberal.</li>
-  <li>Recolhida <strong>anualmente</strong>.</li>
-  <li>Para o trabalhador: equivale a <strong>1 (um) dia de trabalho</strong>, descontado em <strong>março</strong>, repassado às entidades sindicais em <strong>abril</strong>.</li>
-  <li>Para autônomos e profissionais liberais: pagamento em <strong>fevereiro</strong>.</li>
-  <li>Para o empregador: varia conforme o <strong>capital social da empresa</strong>, mediante alíquotas progressivas.</li>
-</ul>
-
-<div class="callout callout-sum">
-  <span class="callout-title">⚖ Posição do STF</span>
-  O STF já se posicionou que são <strong>compatíveis com a CF/88</strong> os dispositivos da Reforma Trabalhista que extinguiram a obrigatoriedade da contribuição sindical e condicionaram o pagamento à prévia e expressa autorização dos filiados.
-</div>
-
-<h4 class="mini-title">Rateio da Contribuição Sindical (art. 589, I e II, CLT)</h4>
-<div class="grid2">
-<div class="card">
-  <strong>a) Contribuição dos Empregados:</strong>
-  <ul style="margin-top:8px">
-    <li>5% → confederações</li>
-    <li>10% → centrais sindicais (o sindicato indica a central)</li>
-    <li>15% → federações</li>
-    <li>60% → sindicatos</li>
-    <li>10% → Conta Especial do Emprego e Salário (FAT)</li>
-  </ul>
-</div>
-<div class="card">
-  <strong>b) Contribuição dos Empregadores:</strong>
-  <ul style="margin-top:8px">
-    <li>5% → confederações</li>
-    <li>15% → federações</li>
-    <li>60% → sindicatos</li>
-    <li>20% → Conta Especial do Emprego e Salário</li>
-  </ul>
-</div>
-</div>
-
-<h4 class="mini-title">Alíquotas Progressivas para Empregadores</h4>
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Classe de Capital Social</th><th>Alíquota</th></tr></thead>
-  <tbody>
-    <tr><td>Até 150 vezes o maior valor-de-referência</td><td><strong>0,8%</strong></td></tr>
-    <tr><td>Acima de 150 até 1.500 vezes</td><td><strong>0,2%</strong></td></tr>
-    <tr><td>Acima de 1.500 até 150.000 vezes</td><td><strong>0,1%</strong></td></tr>
-    <tr><td>Acima de 150.000 até 800.000 vezes</td><td><strong>0,02%</strong></td></tr>
-  </tbody>
-</table>
-</div>
-
-<!-- 2.2 CONFEDERATIVA -->
-<h3 class="sub-title">2.2 Contribuição Confederativa</h3>
-<p>É <strong>fixada em assembleia geral</strong> do sindicato. Destina-se ao custeio do sistema confederativo.</p>
-<ul>
-  <li>Prevista no <span class="badge badge-art">Art. 8º, IV, CF</span></li>
-  <li><strong>Voluntária</strong> — somente paga por quem opta pela filiação sindical.</li>
-  <li><strong>Quem paga:</strong> exclusivamente <strong>empregados sindicalizados</strong>, pois não possui natureza jurídica tributária.</li>
-</ul>
-
-<div class="callout callout-sum">
-  <span class="callout-title">⚖ Súmula Vinculante 40 do STF</span>
-  A contribuição confederativa de que trata o art. 8º, IV, da Constituição Federal, <strong>só é exigível dos filiados</strong> ao sindicato respectivo.
-</div>
-
-<div class="callout callout-imp">
-  <span class="callout-title">📌 Sindicalizado Opositor</span>
-  A posição <strong>majoritária</strong> admite a cobrança dos sindicalizados que se oponham à contribuição confederativa, uma vez que esses trabalhadores, em tese, tiveram o <strong>direito de participar da assembleia geral</strong> que a fixou.
-</div>
-
-<!-- 2.3 ASSISTENCIAL -->
-<h3 class="sub-title">2.3 Contribuição Assistencial (Taxa de Reversão)</h3>
-<p>Também denominada <strong>taxa de reversão</strong>. Destina-se a custear a <strong>negociação coletiva</strong> e está prevista no instrumento coletivo.</p>
-<ul>
-  <li>Previsão legal: <span class="badge badge-art">Art. 513, "e", CLT</span></li>
-  <li><strong>Natureza jurídica:</strong> apenas sindical (não tributária).</li>
-  <li>Em regra, somente cobrada dos empregados <strong>filiados</strong> ao sindicato.</li>
-</ul>
-
-<div class="callout callout-sum">
-  <span class="callout-title">⚖ Art. 513, "e", CLT</span>
-  "São prerrogativas dos sindicatos: (...) e) impor contribuições a todos aqueles que participam das categorias econômicas ou profissionais ou das profissões liberais representadas."
-</div>
-
-<div class="callout callout-sum">
-  <span class="callout-title">⚖ Tema 935 do STF — Direito de Oposição</span>
-  É <strong>constitucional</strong> a instituição, por acordo ou convenção coletivos, de contribuições assistenciais a serem impostas a <strong>todos os empregados da categoria, ainda que não sindicalizados</strong>, desde que assegurado o <strong>direito de oposição</strong>.
-</div>
-
-<!-- 2.4 MENSALIDADE -->
-<h3 class="sub-title">2.4 Mensalidade Sindical</h3>
-<p>Destina-se ao custeio de atividades <strong>recreativas e assistenciais</strong> dos sindicatos.</p>
-<ul>
-  <li>Previsão legal: <span class="badge badge-art">Art. 548, "b", CLT</span></li>
-  <li><strong>Somente</strong> pode ser cobrada dos trabalhadores <strong>sindicalizados</strong>.</li>
-  <li>É <strong>espontânea</strong>, cancelável a qualquer momento e objeto de imediata contrapartida — ao contrário das fontes compulsórias.</li>
-</ul>
-</section>
-
-<hr>
-
-<!-- 3.0 REPRESENTAÇÃO -->
-<section id="repr">
-<h2 class="section-title">3.0 Formas Alternativas de Representação Obreira Não Sindical</h2>
-<p>Existem <strong>3 canais</strong> de representação do ser obreiro:</p>
-<ol>
-  <li><strong>Sindicato</strong> — poder normativo</li>
-  <li><strong>Centrais Sindicais</strong> — representação geral, sem poder de negociação</li>
-  <li><strong>Comissões Internas de Empresas</strong> — diálogo direto com o empregador</li>
-</ol>
-
-<!-- 3.1 CENTRAIS -->
-<h3 class="sub-title">3.1 Centrais Sindicais</h3>
-<p>Disciplinadas na <span class="badge badge-lei">Lei 11.648/08</span>. As centrais sindicais <strong>não possuem poderes de negociação coletiva</strong>, tampouco podem deflagrar greves.</p>
-
-<div class="callout callout-imp">
-  <span class="callout-title">📌 Características Essenciais</span>
-  <ul>
-    <li>Não integram o <strong>sistema confederativo</strong>.</li>
-    <li>Funcionam como órgão de <strong>representação geral</strong> dos trabalhadores.</li>
-    <li>Não estão vinculadas a nenhuma categoria profissional ou econômica específica.</li>
-  </ul>
-</div>
-
-<h4 class="mini-title">Atribuições (art. 1º, Lei 11.648/08)</h4>
-<ul>
-  <li>Coordenar a representação dos trabalhadores por meio das organizações sindicais a ela filiadas.</li>
-  <li>Participar de negociações em fóruns, colegiados de órgãos públicos e demais espaços onde se discutam assuntos de interesse geral dos trabalhadores.</li>
-</ul>
-
-<h4 class="mini-title">Requisitos de Representatividade (art. 2º, Lei 11.648/08)</h4>
-<p>Os índices são aferidos pelo <strong>MTE</strong> e são <strong>critérios cumulativos</strong>:</p>
-<ol>
-  <li>Filiação de, no mínimo, <strong>100 sindicatos</strong> distribuídos nas 5 regiões do País;</li>
-  <li>Filiação em pelo menos <strong>3 regiões</strong> do País de, no mínimo, <strong>20 sindicatos</strong> em cada uma;</li>
-  <li>Filiação de sindicatos em, no mínimo, <strong>5 setores de atividade econômica</strong>;</li>
-  <li>Filiação de sindicatos que representem, no mínimo, <strong>7% do total de empregados sindicalizados</strong> em âmbito nacional.</li>
-</ol>
-
-<!-- 3.2 COMISSÃO INTERNA -->
-<h3 class="sub-title">3.2 Comissão Interna de Empregados</h3>
-<p>O <strong>art. 11 da CF/88</strong> estabelece que é <strong>obrigatória a eleição de um representante</strong> dos trabalhadores nas empresas com mais de 200 empregados, com a finalidade exclusiva de promover entendimento direto com o empregador.</p>
-
-<h4 class="mini-title">Composição da Comissão (art. 510-A, CLT)</h4>
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Número de Empregados</th><th>Membros da Comissão</th></tr></thead>
-  <tbody>
-    <tr><td>Até 200 empregados</td><td>Não há previsão de comissão</td></tr>
-    <tr><td>De 200 até 3.000 empregados</td><td><strong>3 membros</strong></td></tr>
-    <tr><td>Mais de 3.000 até 5.000 empregados</td><td><strong>5 membros</strong></td></tr>
-    <tr><td>Mais de 5.000 empregados</td><td><strong>7 membros</strong></td></tr>
-  </tbody>
-</table>
-</div>
-
-<h4 class="mini-title">Atribuições (art. 510-B, CLT)</h4>
-<ul>
-  <li>I — Representar os empregados perante a administração da empresa;</li>
-  <li>II — Aprimorar o relacionamento entre empresa e empregados com base na <strong>boa-fé e respeito mútuo</strong>;</li>
-  <li>III — Promover o diálogo e o entendimento no ambiente de trabalho para prevenir conflitos;</li>
-  <li>IV — Buscar soluções para conflitos decorrentes da relação de trabalho, de forma rápida e eficaz;</li>
-  <li>V — Assegurar tratamento justo e imparcial, impedindo discriminação por motivo de sexo, idade, religião, opinião política ou atuação sindical;</li>
-  <li>VI — Encaminhar reivindicações específicas dos empregados;</li>
-  <li>VII — Acompanhar o cumprimento das leis trabalhistas, previdenciárias e das convenções/acordos coletivos.</li>
-</ul>
-
-<div class="callout callout-imp">
-  <span class="callout-title">📌 Características Importantes da Comissão</span>
-  <ul>
-    <li>Só existe se os <strong>trabalhadores pedirem</strong> para instaurar (não automática).</li>
-    <li><strong>Não tem poder decisório ou normativo</strong> — é órgão consultivo e canal de diálogo.</li>
-    <li>Assegura o <strong>direito de informação</strong> dos trabalhadores.</li>
-  </ul>
-</div>
-
-<div class="callout callout-sum">
-  <span class="callout-title">⚖ Estabilidade do Membro — Art. 510-D, §3º, CLT</span>
-  Desde o <strong>registro da candidatura até 1 (um) ano após o fim do mandato</strong>, o membro da comissão não poderá sofrer <strong>despedida arbitrária</strong>. Somente pode ser dispensado por motivo disciplinar, técnico, econômico ou financeiro — i.e., apenas com justa causa.
-</div>
-</section>
-
-<!-- ============================= PARTE II ============================= -->
-<div class="parte-header" id="greve-p1">
-  <h2>PARTE II — Greve, Trabalho e Resistência</h2>
-  <p>Análise doutrinária de três artigos fundamentais: Reis · Mallet · Viana</p>
-</div>
-
-<!-- ARTIGO 1 -->
-<section id="art1">
-<div class="artigo-header">
-  <div class="num">Artigo 1</div>
-  <h3>A Greve Negra de 1857 na Bahia</h3>
-  <div class="autor">João José Reis — História social do trabalho e protesto coletivo</div>
-</div>
-
-<h3 class="sub-title">Contexto Histórico e Demográfico</h3>
-<p>Em 1857, a maioria dos negros de Salvador — escravos ou não — trabalhava na rua ou entre a casa e a rua. Eram responsáveis pela circulação de coisas e pessoas pela cidade. O viajante alemão <strong>Robert Avé-Lallemant</strong> observou em 1858: <em>"Tudo que corre, grita, trabalha, tudo que transporta e carrega é negro."</em></p>
-<p>No dia <strong>1º de junho de 1857</strong> (segunda-feira), as ruas de Salvador amanheceram estranhamente calmas. Os negros haviam decidido cruzar os braços em protesto contra uma postura municipal.</p>
-
-<h4 class="mini-title">A Postura Municipal — O Estopim</h4>
-<p>Publicada três meses antes, a postura exigia dos ganhadores para trabalhar:</p>
-<ul>
-  <li><strong>Licença da Câmara Municipal</strong> (matrícula): 2.000 réis</li>
-  <li><strong>Chapa de metal</strong> com número de inscrição (uso obrigatório no pescoço): 3.000 réis</li>
-  <li>Custo total: <strong>5.000 réis</strong> (equivalia a ~15 kg de carne)</li>
-  <li><strong>Libertos</strong> (ex-escravos): deviam ainda apresentar <em>fiador idôneo</em>.</li>
-</ul>
-<p>A lei distinguia tipos de ganhadores: (1) ganhadores de cesto ou tina; (2) ganhadores de pau e corda; (3) carregadores de cadeiras.</p>
-
-<h4 class="mini-title">Os Cantos — Organização do Trabalho</h4>
-<p>Os ganhadores estavam organizados em <strong>cantos</strong> — grupos <strong>etnicamente delimitados</strong> reunidos em locais fixos da cidade. Inspirados provavelmente nos grupos de trabalho voluntários africanos como o <em>aro</em> entre os iorubas.</p>
-<ul>
-  <li>Cada canto tinha um <strong>capitão-de-canto</strong>: contratava serviços, designava tarefas, recebia e dividia a féria, mediava conflitos.</li>
-  <li>A cerimônia de posse do capitão envolvia <strong>ritualização africana</strong>: tonel com água do mar, cortejo pelas ruas, derrame de cachaça no chão para demarcar território.</li>
-  <li>Os ganhadores tornavam-se <strong>malungos</strong> — parentesco simbólico ligado à travessia do Atlântico.</li>
-</ul>
-
-<h4 class="mini-title">A Greve — Cronologia</h4>
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Data</th><th>Evento</th></tr></thead>
-  <tbody>
-    <tr><td><strong>1º/6/1857</strong></td><td>Início da paralisação. "Os pretos occultaram-se." Nenhum ganhador nas ruas.</td></tr>
-    <tr><td><strong>2/6</strong></td><td>Associação Comercial protesta contra a lei — aliado acidental dos grevistas. A cidade-porto paralisa.</td></tr>
-    <tr><td><strong>3/6</strong></td><td>"Os cantos ainda estiveram desertos." Homens livres recusavam trabalhar "a par de africanos libertos ou escravos".</td></tr>
-    <tr><td><strong>4/6</strong></td><td>Primeiras desistências entre escravos. Grevistas reagem com <strong>piquetes</strong>: apedrejam os fura-greves com chapas, fazem "charivari trabalhista africano".</td></tr>
-    <tr><td><strong>5/6</strong></td><td>Jornal da Bahia: <em>"Essa resistência inesperada... vai tomando um carácter de crise."</em> Fala-se em "revolução dos ganhadores".</td></tr>
-    <tr><td><strong>~9/6</strong></td><td>Segunda semana: primeiros carregadores voltam aos cantos, <strong>sem chapa</strong>. A Câmara revoga a postura.</td></tr>
-  </tbody>
-</table>
-</div>
-
-<div class="callout callout-imp">
-  <span class="callout-title">⚡ Resultado da Greve de 1857</span>
-  <strong>Sucesso parcial</strong>: derrubou a <strong>taxa de matrícula</strong> e modificou os termos da fiança. Conseguiu parar um setor inteiro durante <strong>mais de uma semana</strong>. Conquista notável para um movimento de trabalhadores informais sem reconhecimento jurídico algum.
-  <ul style="margin-top:8px">
-    <li><strong>Mantido:</strong> obrigatoriedade da chapa; obrigatoriedade do fiador (modificado).</li>
-    <li><strong>Derrubado:</strong> taxa de matrícula.</li>
-    <li><strong>Etnia dominante:</strong> Nagôs — 77% das matrículas/fianças identificadas.</li>
-  </ul>
-</div>
-
-<h4 class="mini-title">Significado Teórico (Charles Tilly)</h4>
-<p>A greve é um método de luta típico do <strong>trabalhador urbano moderno</strong>. A greve de 1857 foi <strong>movimento híbrido</strong>: reação contra tentativa do Estado de subtrair aos africanos "direitos e rotinas estabelecidos", mas realizada na forma de greve (não motim). Os ganhadores não tinham fábrica, mas tinham cidade — eram trabalhadores informais, mas <strong>coletivamente organizados</strong>.</p>
-</section>
-
-<hr>
-
-<!-- ARTIGO 2 -->
-<section id="art2">
-<div class="artigo-header">
-  <div class="num">Artigo 2</div>
-  <h3>O Direito de Greve na Iniciativa Privada</h3>
-  <div class="autor">Estêvão Mallet — Dogmática jurídica da greve no ordenamento brasileiro</div>
-</div>
-
-<h3 class="sub-title">A Greve como Fenômeno Jurídico</h3>
-<p>A greve, vista frequentemente como patológica, é <strong>inerente à realidade produtiva fundada no trabalho livre</strong>. Não é distúrbio: é o <em>contrapeso natural</em> da preeminência econômica do tomador do serviço diante de quem vive do trabalho.</p>
-<blockquote>Tribunal Constitucional de Portugal: o direito de greve serve para "reequilibrar uma relação que, em si mesma, é descompensada".</blockquote>
-
-<h3 class="sub-title">Tipologia de Calamandrei</h3>
-<p>Formulada após a Constituição italiana de 1947, a tipologia indica <strong>três reações possíveis da ordem jurídica</strong> diante da greve:</p>
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Figura</th><th>Tratamento Jurídico</th><th>Contexto Histórico</th></tr></thead>
-  <tbody>
-    <tr>
-      <td><strong>Greve-Delito</strong></td>
-      <td>Paralisação tipificada como <strong>ilícito penal</strong>. Punição criminal.</td>
-      <td>França (Código Penal de 1810): 1-3 meses de prisão; chefes 2-5 anos. Brasil (CP 1890): "prisão celular" 1 mês a 1 ano. <strong>Constituição de 1937</strong>: greve como recurso antissocial.</td>
-    </tr>
-    <tr>
-      <td><strong>Greve-Liberdade</strong></td>
-      <td>Sem punição criminal, mas sem reconhecimento como direito. O trabalhador exerce <em>mera liberdade de não trabalhar</em>. Há <strong>inadimplemento contratual</strong> — sujeita-se à dispensa motivada.</td>
-      <td>Concepção do Estado liberal clássico.</td>
-    </tr>
-    <tr>
-      <td><strong>Greve-Direito</strong></td>
-      <td>Trabalhador conta com <strong>prerrogativa legal</strong> de não cumprir as obrigações contratuais. <strong>Não há mora ou inadimplemento.</strong> A ausência é justificada, como na licença-maternidade.</td>
-      <td>CF/88 (Brasil). Direito fundamental com aplicabilidade imediata (art. 5º, §1º).</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<h3 class="sub-title">A Greve no Ordenamento Brasileiro — Evolução Constitucional</h3>
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Constituição</th><th>Tratamento da Greve</th></tr></thead>
-  <tbody>
-    <tr><td><strong>1937</strong></td><td>Greve como recurso antissocial — proibida. Estado autoritário.</td></tr>
-    <tr><td><strong>1946 (art. 158)</strong></td><td>Consagrava o direito de greve, remetendo disciplina à lei ordinária.</td></tr>
-    <tr><td><strong>1967</strong></td><td>Greve como direito, mas proibida nos serviços públicos e atividades essenciais.</td></tr>
-    <tr><td><strong>1988 (art. 9º)</strong></td><td><strong>Amplia o direito:</strong> estende ao setor público; atribui aos trabalhadores a decisão sobre oportunidade e interesses; substitui proibição em essenciais por limitação com atendimento das necessidades inadiáveis; substitui "greve ilegal" por <strong>exercício abusivo</strong>.</td></tr>
-  </tbody>
-</table>
-</div>
-
-<div class="callout callout-imp">
-  <span class="callout-title">⚡ Características do Direito de Greve na CF/88</span>
-  <ul>
-    <li><strong>Direito fundamental</strong> com aplicabilidade imediata (art. 5º, §1º, CF).</li>
-    <li>Lei regulamentadora <strong>não pode</strong> estabelecer limitações não previstas, inviabilizar o direito ou comprometer seu núcleo essencial.</li>
-    <li><strong>Não é direito absoluto</strong> — sujeito a limites derivados de outros bens constitucionalmente protegidos.</li>
-    <li><strong>Lockout:</strong> proibido pela Lei 7.783. Mesmo sem proibição legal, seria ilegítimo.</li>
-    <li><strong>Irrenunciável:</strong> inválido ajuste em contrato individual de não participar; sindicato não pode renunciar nem por vantagem econômica.</li>
-  </ul>
-</div>
-
-<h3 class="sub-title">Definição Legal de Greve (Lei 7.783/89, art. 2º)</h3>
-<div class="callout callout-sum">
-  <span class="callout-title">📜 Definição Legal</span>
-  <strong>"A suspensão coletiva, temporária e pacífica, total ou parcial, de prestação pessoal de serviços a empregador."</strong>
-</div>
-
-<h4 class="mini-title">Elementos Caracterizadores</h4>
-
-<div class="card">
-  <strong>(a) Abrangência Subjetiva</strong>
-  <p style="margin-top:8px">Abrange todos os empregados, independentemente do tipo de contrato (com ou sem prazo, urbano/rural), tamanho da empresa, origem do capital. <strong>Empregados de confiança, dirigentes e gestores</strong> não ficam privados do direito.</p>
-  <p><strong>NÃO</strong> são favorecidos: diretores de S/A sem vínculo, autônomos, associados, cooperados, usuários, consumidores, presidiários. <em>Greve de fome</em> não é greve no sentido jurídico-trabalhista. Sit-in, sit-down, jail-in não caracterizam greve.</p>
-</div>
-
-<div class="card">
-  <strong>(b) Movimento Coletivo — Dimensão Individual e Coletiva</strong>
-  <div class="table-wrap" style="margin-top:8px">
-  <table>
-    <thead><tr><th>Dimensão</th><th>Conteúdo</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Coletiva</strong></td><td>Deflagração supõe manifestação e <strong>aprovação dos interessados</strong> (art. 4º). Sem aprovação = greve selvagem (<em>wilder streik</em>).</td></tr>
-      <tr><td><strong>Individual</strong></td><td>Aprovação cria <strong>direito</strong> de cessar prestação, <strong>não obrigação</strong>. "Total liberdade de não adesão" (Menezes Cordeiro). Sindicato não pode discriminar não-aderentes.</td></tr>
-    </tbody>
-  </table>
-  </div>
-</div>
-
-<div class="card">
-  <strong>(c) Forma — Suspensão Total da Prestação</strong>
-  <p style="margin-top:8px">Greve implica <strong>abstenção total do trabalho</strong>. "Total ou parcial" do art. 2º refere-se à atividade <em>da empresa</em>, não ao trabalho <em>do empregado</em>.</p>
-  <div class="grid2" style="margin-top:10px">
-    <div>
-      <strong style="color:var(--exc-border)">NÃO são greve:</strong>
-      <ul>
-        <li><em>Greves perlées</em> — diminuição voluntária do ritmo</li>
-        <li><em>Greves de zelo</em> — excesso de procedimentos</li>
-        <li>Recusa de horas extras (inadimplemento parcial)</li>
-      </ul>
+  <!-- SEÇÃO 1 — NEGOCIAÇÃO COLETIVA -->
+  <div class="section-card" id="sec1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Negociação Coletiva — Introdução</h2>
     </div>
-    <div>
-      <strong style="color:var(--sum-border)">SÃO greve (cessação peculiar):</strong>
-      <ul>
-        <li><em>Greve rotativa</em> — setores diferentes em sucessão</li>
-        <li><em>Greve trombose</em> — setor vital paralisa os demais</li>
-        <li><em>Greve intermitente</em> (<em>sciopero a singhiozzo</em>) — períodos alternados</li>
-      </ul>
+    <div class="section-body">
+      <p>A negociação coletiva se destina a <strong>estabelecer regras e direitos que o trabalhador terá em sua empresa</strong>. É o principal instrumento do Direito Coletivo do Trabalho para a criação de normas autônomas.</p>
+
+      <div class="grid-2">
+        <div class="callout blue">
+          <div class="callout-title">⚡ Empresas com Filiais</div>
+          <p>Se a filial for autônoma (ex.: CNPJ próprio), a <strong>negociação deve ser realizada com o sindicato correspondente àquela filial</strong>, e não com o da matriz.</p>
+        </div>
+        <div class="callout yellow">
+          <div class="callout-title">⚠ Enquadramento Incorreto</div>
+          <p>Se houver enquadramento sindical equivocado ("Promíscuas"), os trabalhadores têm <strong>direito às diferenças salariais e demais valores</strong> não auferidos por causa desse erro.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">📌 Sindicato Eclético</div>
+        <p>O sindicato eclético pode existir tanto na <strong>categoria patronal</strong> quanto na categoria dos <strong>empregados</strong>. Representa simultaneamente atividades similares e conexas.</p>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="card">
-  <strong>(d) Duração</strong>
-  <p style="margin-top:8px">Caráter temporário — não se confunde com abandono coletivo. <strong>Sem prazo mínimo ou máximo</strong>. Pode ser de minutos (<em>"un quart d'heure"</em>, jurisprudência francesa) ou quase um ano (mineiros ingleses 1984-85).</p>
-</div>
-
-<div class="card">
-  <strong>(e) Fundamento — Tipos de Greve e Avaliação Jurídica</strong>
-  <div class="table-wrap" style="margin-top:8px">
-  <table>
-    <thead><tr><th>Tipo de Greve</th><th>Avaliação</th></tr></thead>
-    <tbody>
-      <tr><td>Reivindicação profissional — cumprimento de obrigação existente</td><td><strong style="color:var(--sum-border)">Aceitável</strong> (lei, norma coletiva). Possibilidade de ação de cumprimento não tolhe a greve.</td></tr>
-      <tr><td>Reivindicação profissional — direito novo</td><td><strong style="color:var(--sum-border)">Aceitável</strong>. "Ato ilícito individual pode tornar-se lícito em nível coletivo" (Márcio Túlio Viana).</td></tr>
-      <tr><td>Greve de solidariedade típica</td><td><strong style="color:var(--sum-border)">Aceitável</strong> — empregados de um setor em apoio a outro, com afinidade de exigências.</td></tr>
-      <tr><td>Greve política conexa com o profissional</td><td><strong style="color:var(--sum-border)">Aceitável</strong> — ex.: contestar política trabalhista do Governo (OIT).</td></tr>
-      <tr><td>Subverter a ordem jurídica</td><td><strong style="color:var(--exc-border)">Inaceitável</strong>. Não há greve quando se visa subverter o sistema constitucional.</td></tr>
-      <tr><td>Greve discriminatória</td><td><strong style="color:var(--exc-border)">Inaceitável</strong> (contra admissão de minorias, contra mulheres). Aplica-se art. 187 do CC.</td></tr>
-      <tr><td>Greve política pura</td><td><strong style="color:var(--exc-border)">Inaceitável</strong> — sem ligação com realidade profissional (ex.: pedágios, rompimento diplomático). Desvio de finalidade.</td></tr>
-    </tbody>
-  </table>
+  <!-- SEÇÃO 2 — CISSÃO E SEGMENTAÇÃO -->
+  <div class="section-card" id="sec2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Cissão, Dissociação ou Segmentação de Sindicatos</h2>
+    </div>
+    <div class="section-body">
+      <p>É possível surgir novos sindicatos por meio do <strong>desmembramento de um sindicato já existente</strong> ou por meio da criação de um sindicato em local até então sem organização sindical.</p>
+      
+      <div class="subsection">
+        <h3>2.1 Dissociação de Categorias</h3>
+        <p>Os sindicatos podem ser organizados por atividades <strong>idênticas, similares e conexas</strong>. Se demonstrada a independência e autonomia de uma dessas atividades, é possível a <strong>dissociação da categoria</strong>, com o surgimento de um novo sindicato.</p>
+        <div class="callout blue">
+          <div class="callout-title">🔑 Regra Central</div>
+          <p>A dissociação de categorias é a <strong>mudança de um sindicato eclético para um específico</strong>. A nova entidade representará apenas a categoria que demonstrou autonomia suficiente para se desligar do grupo mais amplo.</p>
+        </div>
+      </div>
+      
+      <div class="subsection">
+        <h3>2.2 Redução da Base Territorial</h3>
+        <p>O <strong>art. 8º, II, da CF/88</strong> limita os sindicatos ao limite de um município. No entanto, existem sindicatos com abrangência intermunicipal, estadual e até nacional. Caso demonstrada a capacidade de representação da categoria, é possível o <strong>desmembramento</strong> com surgimento de um novo sindicato em base territorial menor.</p>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="card">
-  <strong>(f) Efeitos sobre o Contrato — Suspensão</strong>
-  <p style="margin-top:8px">A greve <strong>suspende o contrato de trabalho</strong> (Lei 7.783, art. 7º). Afeta a obrigação principal (prestar serviço) e acessórias (assiduidade, pontualidade). O empregado <strong>não comete falta</strong> ao não comparecer.</p>
-  <p><strong>Permanecem durante a suspensão:</strong> lealdade, respeito e sigilo.</p>
-  <h4 class="mini-title" style="margin-top:12px">Salários Durante a Greve — Solução Equilibrada de Mallet</h4>
-  <div class="table-wrap">
-  <table>
-    <thead><tr><th>Tipo de Greve</th><th>Salários</th></tr></thead>
-    <tbody>
-      <tr><td>Cumprimento de obrigação existente (greve por descumprimento patronal)</td><td><strong>Devidos</strong> — evita paradoxo de exonerar empregador justamente por descumprir.</td></tr>
-      <tr><td>Criação de novas condições de trabalho</td><td><strong>Não devidos</strong> em regra — empregados assumem o ônus do não trabalho. Depende de acordo final.</td></tr>
-    </tbody>
-  </table>
+  <!-- SEÇÃO 3 — CUSTEIO DOS SINDICATOS -->
+  <div class="section-card" id="sec3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>Custeio dos Sindicatos</h2>
+    </div>
+    <div class="section-body">
+      <p>Os sindicatos exercem funções indispensáveis ao Direito do Trabalho: <strong>celebração de acordo e convenção coletiva</strong> e <strong>defesa judicial e extrajudicial</strong> dos trabalhadores. Para tanto, necessitam de recursos financeiros. As fontes de custeio são quatro:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Fonte de Custeio</th><th>Quem Paga</th><th>Natureza Jurídica</th><th>Previsão Legal</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Contribuição Sindical</strong></td><td>Filiados (após Reforma, facultativa)</td><td>Perdeu natureza tributária</td><td>CLT + art. 8º, IV CF</td></tr>
+            <tr><td><strong>Contribuição Confederativa</strong></td><td>Somente sindicalizados</td><td>Sindical (não tributária)</td><td>Art. 8º, IV CF</td></tr>
+            <tr><td><strong>Contribuição Assistencial</strong> (taxa de reversão)</td><td>Filiados; não-filiados com direito de oposição</td><td>Sindical</td><td>Art. 513, "e" CLT</td></tr>
+            <tr><td><strong>Mensalidade Sindical</strong></td><td>Somente sindicalizados</td><td>Voluntária</td><td>Art. 548 CLT</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sumula">
+        <div class="sumula-num">OJ 17 SDC do TST</div>
+        <p>As cláusulas coletivas que estabeleçam contribuição em favor de entidade sindical, a qualquer título, <strong>obrigando trabalhadores não sindicalizados, são nulas</strong>, sendo passíveis de devolução dos valores eventualmente descontados.</p>
+      </div>
+
+      <hr class="divider">
+
+      <div class="subsection">
+        <h3>3.1 Contribuição Sindical</h3>
+        <p>Anteriormente denominada <strong>imposto sindical</strong>, estava prevista na CLT e no art. 8º, IV, CF.</p>
+        <ul>
+          <li><strong>Antes da Reforma Trabalhista:</strong> considerada tributo, recolhimento obrigatório de todos os empregados, empregadores e trabalhadores liberais.</li>
+          <li><strong>Após a Reforma (Lei 13.467/2017):</strong> perdeu a natureza tributária e <strong>somente pode ser cobrada com prévia e expressa autorização</strong> do empregado, empregador ou trabalhador liberal.</li>
+          <li>Recolhida <strong>anualmente</strong>.</li>
+          <li>Para o trabalhador: equivale a <strong>1 (um) dia de trabalho</strong>, descontado em <strong>março</strong>, repassado às entidades sindicais em <strong>abril</strong>.</li>
+          <li>Para autônomos e profissionais liberais: pagamento em <strong>fevereiro</strong>.</li>
+          <li>Para o empregador: varia conforme o <strong>capital social da empresa</strong>, mediante alíquotas progressivas.</li>
+        </ul>
+
+        <div class="sumula">
+          <div class="sumula-num">Posição do STF</div>
+          <p>O STF já se posicionou que são <strong>compatíveis com a CF/88</strong> os dispositivos da Reforma Trabalhista que extinguiram a obrigatoriedade da contribuição sindical e condicionaram o pagamento à prévia e expressa autorização dos filiados.</p>
+        </div>
+
+        <h4>Rateio da Contribuição Sindical (art. 589, I e II, CLT)</h4>
+        <div class="grid-2">
+          <div class="card-box">
+            <strong>a) Contribuição dos Empregados:</strong>
+            <ul style="margin-top:8px">
+              <li>5% → confederações</li>
+              <li>10% → centrais sindicais</li>
+              <li>15% → federações</li>
+              <li>60% → sindicatos</li>
+              <li>10% → Conta Especial do Emprego e Salário (FAT)</li>
+            </ul>
+          </div>
+          <div class="card-box">
+            <strong>b) Contribuição dos Empregadores:</strong>
+            <ul style="margin-top:8px">
+              <li>5% → confederações</li>
+              <li>15% → federações</li>
+              <li>60% → sindicatos</li>
+              <li>20% → Conta Especial do Emprego e Salário</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>Alíquotas Progressivas para Empregadores</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Classe de Capital Social</th><th>Alíquota</th></tr></thead>
+            <tbody>
+              <tr><td>Até 150 vezes o maior valor-de-referência</td><td><strong>0,8%</strong></td></tr>
+              <tr><td>Acima de 150 até 1.500 vezes</td><td><strong>0,2%</strong></td></tr>
+              <tr><td>Acima de 1.500 até 150.000 vezes</td><td><strong>0,1%</strong></td></tr>
+              <tr><td>Acima de 150.000 até 800.000 vezes</td><td><strong>0,02%</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="subsection">
+        <h3>3.2 Contribuição Confederativa</h3>
+        <p>É <strong>fixada em assembleia geral</strong> do sindicato. Destina-se ao custeio do sistema confederativo.</p>
+        <ul>
+          <li>Prevista no <span class="badge outline">Art. 8º, IV, CF</span></li>
+          <li><strong>Voluntária</strong> — somente paga por quem opta pela filiação sindical.</li>
+          <li><strong>Quem paga:</strong> exclusivamente <strong>empregados sindicalizados</strong>, pois não possui natureza jurídica tributária.</li>
+        </ul>
+
+        <div class="sumula">
+          <div class="sumula-num">Súmula Vinculante 40 do STF</div>
+          <p>A contribuição confederativa de que trata o art. 8º, IV, da Constituição Federal, <strong>só é exigível dos filiados</strong> ao sindicato respectivo.</p>
+        </div>
+
+        <div class="callout blue">
+          <div class="callout-title">📌 Sindicalizado Opositor</div>
+          <p>A posição <strong>majoritária</strong> admite a cobrança dos sindicalizados que se oponham à contribuição confederativa, uma vez que esses trabalhadores, em tese, tiveram o <strong>direito de participar da assembleia geral</strong> que a fixou.</p>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="subsection">
+        <h3>3.3 Contribuição Assistencial (Taxa de Reversão)</h3>
+        <p>Também denominada <strong>taxa de reversão</strong>. Destina-se a custear a <strong>negociação coletiva</strong> e está prevista no instrumento coletivo.</p>
+        <ul>
+          <li>Previsão legal: <span class="badge outline">Art. 513, "e", CLT</span></li>
+          <li><strong>Natureza jurídica:</strong> apenas sindical (não tributária).</li>
+          <li>Em regra, somente cobrada dos empregados <strong>filiados</strong> ao sindicato.</li>
+        </ul>
+
+        <div class="sumula">
+          <div class="sumula-num">Art. 513, "e", CLT</div>
+          <p>"São prerrogativas dos sindicatos: (...) e) impor contribuições a todos aqueles que participam das categorias econômicas ou profissionais ou das profissões liberais representadas."</p>
+        </div>
+
+        <div class="sumula">
+          <div class="sumula-num">Tema 935 do STF — Direito de Oposição</div>
+          <p>É <strong>constitucional</strong> a instituição, por acordo ou convenção coletivos, de contribuições assistenciais a serem impostas a <strong>todos os empregados da categoria, ainda que não sindicalizados</strong>, desde que assegurado o <strong>direito de oposição</strong>.</p>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="subsection">
+        <h3>3.4 Mensalidade Sindical</h3>
+        <p>Destina-se ao custeio de atividades <strong>recreativas e assistenciais</strong> dos sindicatos.</p>
+        <ul>
+          <li>Previsão legal: <span class="badge outline">Art. 548, "b", CLT</span></li>
+          <li><strong>Somente</strong> pode ser cobrada dos trabalhadores <strong>sindicalizados</strong>.</li>
+          <li>É <strong>espontânea</strong>, cancelável a qualquer momento e objeto de imediata contrapartida — ao contrário das fontes compulsórias.</li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="callout callout-sum" style="margin-top:10px">
-    <span class="callout-title">⚖ TST — Salários na Greve</span>
-    Salários não são devidos, salvo acordo diverso ou <strong>conduta recriminável do empregador</strong> (atraso de salários, lockout). Dedução proporcional ao período não trabalhado — dedução maior é punição (Tribunal Constitucional espanhol). Empregados não aderentes: <strong>remuneração integral</strong>.
+
+  <!-- SEÇÃO 4 — REPRESENTAÇÃO -->
+  <div class="section-card" id="sec4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Formas Alternativas de Representação Obreira Não Sindical</h2>
+    </div>
+    <div class="section-body">
+      <p>Existem <strong>3 canais</strong> de representação do ser obreiro:</p>
+      <ol>
+        <li><strong>Sindicato</strong> — poder normativo</li>
+        <li><strong>Centrais Sindicais</strong> — representação geral, sem poder de negociação</li>
+        <li><strong>Comissões Internas de Empresas</strong> — diálogo direto com o empregador</li>
+      </ol>
+
+      <div class="subsection">
+        <h3>4.1 Centrais Sindicais</h3>
+        <p>Disciplinadas na <span class="badge">Lei 11.648/08</span>. As centrais sindicais <strong>não possuem poderes de negociação coletiva</strong>, tampouco podem deflagrar greves.</p>
+
+        <div class="callout blue">
+          <div class="callout-title">📌 Características Essenciais</div>
+          <ul>
+            <li>Não integram o <strong>sistema confederativo</strong>.</li>
+            <li>Funcionam como órgão de <strong>representação geral</strong> dos trabalhadores.</li>
+            <li>Não estão vinculadas a nenhuma categoria profissional ou econômica específica.</li>
+          </ul>
+        </div>
+
+        <h4>Atribuições (art. 1º, Lei 11.648/08)</h4>
+        <ul>
+          <li>Coordenar a representação dos trabalhadores por meio das organizações sindicais a ela filiadas.</li>
+          <li>Participar de negociações em fóruns, colegiados de órgãos públicos e demais espaços onde se discutam assuntos de interesse geral dos trabalhadores.</li>
+        </ul>
+
+        <h4>Requisitos de Representatividade (art. 2º, Lei 11.648/08)</h4>
+        <p>Os índices são aferidos pelo <strong>MTE</strong> e são <strong>critérios cumulativos</strong>:</p>
+        <ol>
+          <li>Filiação de, no mínimo, <strong>100 sindicatos</strong> distribuídos nas 5 regiões do País;</li>
+          <li>Filiação em pelo menos <strong>3 regiões</strong> do País de, no mínimo, <strong>20 sindicatos</strong> em cada uma;</li>
+          <li>Filiação de sindicatos em, no mínimo, <strong>5 setores de atividade econômica</strong>;</li>
+          <li>Filiação de sindicatos que representem, no mínimo, <strong>7% do total de empregados sindicalizados</strong> em âmbito nacional.</li>
+        </ol>
+      </div>
+
+      <hr class="divider">
+
+      <div class="subsection">
+        <h3>4.2 Comissão Interna de Empregados</h3>
+        <p>O <strong>art. 11 da CF/88</strong> estabelece que é <strong>obrigatória a eleição de um representante</strong> dos trabalhadores nas empresas com mais de 200 empregados, com a finalidade exclusiva de promover entendimento direto com o empregador.</p>
+
+        <h4>Composição da Comissão (art. 510-A, CLT)</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Número de Empregados</th><th>Membros da Comissão</th></tr></thead>
+            <tbody>
+              <tr><td>Até 200 empregados</td><td>Não há previsão de comissão</td></tr>
+              <tr><td>De 200 até 3.000 empregados</td><td><strong>3 membros</strong></td></tr>
+              <tr><td>Mais de 3.000 até 5.000 empregados</td><td><strong>5 membros</strong></td></tr>
+              <tr><td>Mais de 5.000 empregados</td><td><strong>7 membros</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>Atribuições (art. 510-B, CLT)</h4>
+        <ul>
+          <li>I — Representar os empregados perante a administração da empresa;</li>
+          <li>II — Aprimorar o relacionamento entre empresa e empregados com base na <strong>boa-fé e respeito mútuo</strong>;</li>
+          <li>III — Promover o diálogo e o entendimento no ambiente de trabalho para prevenir conflitos;</li>
+          <li>IV — Buscar soluções para conflitos decorrentes da relação de trabalho, de forma rápida e eficaz;</li>
+          <li>V — Assegurar tratamento justo e imparcial, impedindo discriminação por motivo de sexo, idade, religião, opinião política ou atuação sindical;</li>
+          <li>VI — Encaminhar reivindicações específicas dos empregados;</li>
+          <li>VII — Acompanhar o cumprimento das leis trabalhistas, previdenciárias e das convenções/acordos coletivos.</li>
+        </ul>
+
+        <div class="callout blue">
+          <div class="callout-title">📌 Características Importantes da Comissão</div>
+          <ul>
+            <li>Só existe se os <strong>trabalhadores pedirem</strong> para instaurar (não automática).</li>
+            <li><strong>Não tem poder decisório ou normativo</strong> — é órgão consultivo e canal de diálogo.</li>
+            <li>Assegura o <strong>direito de informação</strong> dos trabalhadores.</li>
+          </ul>
+        </div>
+
+        <div class="sumula">
+          <div class="sumula-num">Estabilidade do Membro — Art. 510-D, §3º, CLT</div>
+          <p>Desde o <strong>registro da candidatura até 1 (um) ano após o fim do mandato</strong>, o membro da comissão não poderá sofrer <strong>despedida arbitrária</strong>. Somente pode ser dispensado por motivo disciplinar, técnico, econômico ou financeiro — i.e., apenas com justa causa.</p>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<h3 class="sub-title">Proteção Legal da Greve (Lei 7.783, art. 6º)</h3>
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Proteção</th><th>Conteúdo</th></tr></thead>
-  <tbody>
-    <tr><td>Persuadir/aliciar (I)</td><td>Decorre da liberdade de manifestação, expressão, reunião e associação.</td></tr>
-    <tr><td>Arrecadar fundos / divulgar (II)</td><td>Decorre dos mesmos direitos constitucionais.</td></tr>
-    <tr><td>Proibição de meios para constranger</td><td>Inclui <strong>prêmios anti-greve</strong> — natureza discriminatória. Compreende vantagens não pecuniárias (descansos, promoções).</td></tr>
-  </tbody>
-</table>
-</div>
+  <!-- SEÇÃO 5 — ARTIGO 1 -->
+  <div class="section-card" id="sec5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Artigo 1 — A Greve Negra de 1857 na Bahia</h2>
+    </div>
+    <div class="section-body">
+      <p style="color:var(--text-muted); font-style:italic; margin-bottom: 16px;">João José Reis — História social do trabalho e protesto coletivo</p>
 
-<div class="callout callout-sum">
-  <span class="callout-title">⚖ Garantia Mais Relevante — Art. 7º, §único, Lei 7.783</span>
-  <ul>
-    <li><strong>Proibição de dispensa</strong> durante a greve (a partir da comunicação do aviso prévio). Dispensa é <strong>nula</strong>, não apenas ineficaz.</li>
-    <li><strong>Proibição de contratação de substitutos</strong> (inclusive deslocamento de outras unidades; uso de não-aderentes em horas extras).</li>
-  </ul>
-  <span class="badge badge-sum">Súmula 348 TST</span>: Aviso prévio para fluir após greve — não cabe.
-</div>
+      <div class="subsection">
+        <h3>Contexto Histórico e Demográfico</h3>
+        <p>Em 1857, a maioria dos negros de Salvador — escravos ou não — trabalhava na rua ou entre a casa e a rua. Eram responsáveis pela circulação de coisas e pessoas pela cidade. O viajante alemão <strong>Robert Avé-Lallemant</strong> observou em 1858: <em>"Tudo que corre, grita, trabalha, tudo que transporta e carrega é negro."</em></p>
+        <p>No dia <strong>1º de junho de 1857</strong> (segunda-feira), as ruas de Salvador amanheceram estranhamente calmas. Os negros haviam decidido cruzar os braços em protesto contra uma postura municipal.</p>
 
-<h3 class="sub-title">Procedimento da Greve</h3>
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Etapa</th><th>Detalhamento</th></tr></thead>
-  <tbody>
-    <tr><td><strong>1. Negociação prévia</strong></td><td>"Frustrada a negociação" (art. 3º, Lei 7.783). Sem negociação prévia = <strong>abuso</strong> (<span class="badge badge-oj">OJ 11 SDI TST</span>). Negociação de boa-fé exigida.</td></tr>
-    <tr><td><strong>2. Aprovação em assembleia</strong> (art. 4º)</td><td>Greve selvagem é proscrita. Votam todos os interessados, mesmo de categorias diferenciadas.</td></tr>
-    <tr><td><strong>3. Definição de reivindicações</strong></td><td>Mesmas apresentadas ao empregador (exigência de boa-fé).</td></tr>
-    <tr><td><strong>4. Aviso prévio</strong></td><td><strong>48 horas</strong> ao empregador (atividade comum); <strong>72 horas</strong> também aos usuários (essenciais). OIT admite até 20 dias em essenciais.</td></tr>
-    <tr><td><strong>5. Forma do aviso</strong></td><td>Sem formalidade especial (CC art. 107). Pode ser por notificação pessoal, AR, telegrama, e-mail. Para usuários: carros de som, jornal, rádios.</td></tr>
-    <tr><td><strong>6. Conteúdo do aviso</strong></td><td>Indicar com precisão o <strong>momento exato do início</strong>. Não basta aviso de "estado de greve" (TST). Não basta menção a "novas medidas".</td></tr>
-    <tr><td><strong>7. Contagem do prazo</strong></td><td>CC art. 132, §4º. Receptício — começa do <strong>recebimento</strong>. Em horas: minuto a minuto.</td></tr>
-    <tr><td><strong>8. Prorrogação</strong></td><td>Possível, mas exige nova assembleia e novo aviso prévio mínimo.</td></tr>
-  </tbody>
-</table>
-</div>
+        <h4>A Postura Municipal — O Estopim</h4>
+        <p>Publicada três meses antes, a postura exigia dos ganhadores para trabalhar:</p>
+        <ul>
+          <li><strong>Licença da Câmara Municipal</strong> (matrícula): 2.000 réis</li>
+          <li><strong>Chapa de metal</strong> com número de inscrição (uso obrigatório no pescoço): 3.000 réis</li>
+          <li>Custo total: <strong>5.000 réis</strong> (equivalia a ~15 kg de carne)</li>
+          <li><strong>Libertos</strong> (ex-escravos): deviam ainda apresentar <em>fiador idôneo</em>.</li>
+        </ul>
+        <p>A lei distinguia tipos de ganhadores: (1) ganhadores de cesto ou tina; (2) ganhadores de pau e corda; (3) carregadores de cadeiras.</p>
 
-<h3 class="sub-title">Atividades Essenciais (Lei 7.783, art. 10)</h3>
-<p>O direito atual <strong>não proíbe</strong> a greve em serviços essenciais — estabelece <strong>condições adicionais</strong>. Solução afinada com o reconhecimento como direito fundamental.</p>
+        <h4>Os Cantos — Organização do Trabalho</h4>
+        <p>Os ganhadores estavam organizados em <strong>cantos</strong> — grupos <strong>etnicamente delimitados</strong> reunidos em locais fixos da cidade. Inspirados provavelmente nos grupos de trabalho voluntários africanos como o <em>aro</em> entre os iorubas.</p>
+        <ul>
+          <li>Cada canto tinha um <strong>capitão-de-canto</strong>: contratava serviços, designava tarefas, recebia e dividia a féria, mediava conflitos.</li>
+          <li>A cerimônia de posse do capitão envolvia <strong>ritualização africana</strong>: tonel com água do mar, cortejo pelas ruas, derrame de cachaça no chão para demarcar território.</li>
+          <li>Os ganhadores tornavam-se <strong>malungos</strong> — parentesco simbólico ligado à travessia do Atlântico.</li>
+        </ul>
 
-<div class="callout callout-imp">
-  <span class="callout-title">📌 Conceito de "Essencial" pela OIT</span>
-  <em>"Menace évidente et imminente pour la vie, la sécurité et la santé."</em> (ameaça evidente e iminente à vida, segurança ou saúde). Não deve incluir toda e qualquer atividade importante economicamente.
-</div>
+        <h4>A Greve — Cronologia</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Data</th><th>Evento</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1º/6/1857</strong></td><td>Início da paralisação. "Os pretos occultaram-se." Nenhum ganhador nas ruas.</td></tr>
+              <tr><td><strong>2/6</strong></td><td>Associação Comercial protesta contra a lei — aliado acidental dos grevistas. A cidade-porto paralisa.</td></tr>
+              <tr><td><strong>3/6</strong></td><td>"Os cantos ainda estiveram desertos." Homens livres recusavam trabalhar "a par de africanos libertos ou escravos".</td></tr>
+              <tr><td><strong>4/6</strong></td><td>Primeiras desistências entre escravos. Grevistas reagem com <strong>piquetes</strong>: apedrejam os fura-greves com chapas, fazem "charivari trabalhista africano".</td></tr>
+              <tr><td><strong>5/6</strong></td><td>Jornal da Bahia: <em>"Essa resistência inesperada... vai tomando um carácter de crise."</em> Fala-se em "revolução dos ganhadores".</td></tr>
+              <tr><td><strong>~9/6</strong></td><td>Segunda semana: primeiros carregadores voltam aos cantos, <strong>sem chapa</strong>. A Câmara revoga a postura.</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-<p><strong>Atendimento das necessidades inadiáveis:</strong> serviços mínimos para evitar <em>perigo iminente</em> à sobrevivência, saúde ou segurança. Conceito restrito. Exemplo prático: em hospital, cirurgias de urgência <strong>sim</strong>; cirurgias estéticas, manutenção de jardins, faturamento — <strong>não</strong>.</p>
-<p><strong>Responsabilidade:</strong> primariamente dos sindicatos e grevistas; subsidiariamente o Poder Público.</p>
+        <div class="callout blue">
+          <div class="callout-title">⚡ Resultado da Greve de 1857</div>
+          <p><strong>Sucesso parcial</strong>: derrubou a <strong>taxa de matrícula</strong> e modificou os termos da fiança. Conseguiu parar um setor inteiro durante <strong>mais de uma semana</strong>. Conquista notável para um movimento de trabalhadores informais sem reconhecimento jurídico algum.</p>
+          <ul style="margin-top:8px">
+            <li><strong>Mantido:</strong> obrigatoriedade da chapa; obrigatoriedade do fiador (modificado).</li>
+            <li><strong>Derrubado:</strong> taxa de matrícula.</li>
+            <li><strong>Etnia dominante:</strong> Nagôs — 77% das matrículas/fianças identificadas.</li>
+          </ul>
+        </div>
 
-<h3 class="sub-title">Abuso do Direito de Greve</h3>
-<div class="callout callout-exc">
-  <span class="callout-title">⚠ Configuram Abuso</span>
-  <ul>
-    <li>Não realização de assembleia prévia</li>
-    <li>Não concessão de aviso prévio (ou aviso insuficiente)</li>
-    <li>Piquete violento (fechamento de acesso)</li>
-    <li>Ocupação do local de trabalho</li>
-    <li>Destruição de máquinas, equipamentos, matéria-prima</li>
-    <li>Não manutenção de serviços mínimos em atividades essenciais</li>
-    <li>Não manutenção de serviço para evitar prejuízos irreparáveis</li>
-    <li>Prosseguimento após acordo, convenção ou decisão judicial (ressalva: <em>rebus sic stantibus</em> — art. 14, II, Lei 7.783)</li>
-  </ul>
-</div>
+        <h4>Significado Teórico (Charles Tilly)</h4>
+        <p>A greve é um método de luta típico do <strong>trabalhador urbano moderno</strong>. A greve de 1857 foi <strong>movimento híbrido</strong>: reação contra tentativa do Estado de subtrair aos africanos "direitos e rotinas estabelecidos", mas realizada na forma de greve (não motim). Os ganhadores não tinham fábrica, mas tinham cidade — eram trabalhadores informais, mas <strong>coletivamente organizados</strong>.</p>
+      </div>
+    </div>
+  </div>
 
-<div class="callout callout-imp">
-  <span class="callout-title">📌 NÃO tornam abusiva a greve</span>
-  Inconvenientes naturais (atrasos, demora, perdas, gastos suplementares) e o não acolhimento das reivindicações. Hélène Sinay: <em>"la nocivité est de l'essence même de la grève"</em>.
-</div>
+  <!-- SEÇÃO 6 — ARTIGO 2 -->
+  <div class="section-card" id="sec6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>Artigo 2 — O Direito de Greve na Iniciativa Privada</h2>
+    </div>
+    <div class="section-body">
+      <p style="color:var(--text-muted); font-style:italic; margin-bottom: 16px;">Estêvão Mallet — Dogmática jurídica da greve no ordenamento brasileiro</p>
 
-<h3 class="sub-title">Responsabilidade pelo Exercício da Greve</h3>
-<div class="callout callout-sum">
-  <span class="callout-title">⚖ Súmula 316 do STF</span>
-  A greve <strong>suspende</strong> as obrigações contratuais. A participação passiva em greve, <strong>mesmo que abusiva</strong>, não configura justa causa para demissão.
-</div>
+      <div class="subsection">
+        <h3>A Greve como Fenômeno Jurídico</h3>
+        <p>A greve, vista frequentemente como patológica, é <strong>inerente à realidade produtiva fundada no trabalho livre</strong>. Não é distúrbio: é o <em>contrapeso natural</em> da preeminência econômica do tomador do serviço diante de quem vive do trabalho.</p>
+        <blockquote>Tribunal Constitucional de Portugal: o direito de greve serve para "reequilibrar uma relação que, em si mesma, é descompensada".</blockquote>
 
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Situação</th><th>Responsabilidade</th></tr></thead>
-  <tbody>
-    <tr><td>Prejuízos naturais da greve regular</td><td><strong>Não há responsabilidade.</strong> "Statutory immunity" no direito inglês (TULRA 1992).</td></tr>
-    <tr><td>Atos que exorbitam o direito (destruição etc.)</td><td>Responsabilidade <strong>civil + trabalhista (justa causa) + penal</strong>. Pessoal e dependente de prova de envolvimento.</td></tr>
-    <tr><td>Sindicato não participante</td><td><strong>Não responde</strong> por atos de que não tenha participado (agente ou instigador).</td></tr>
-    <tr><td>Sindicato participante</td><td>Responsabilidade <em>in solidum</em> com trabalhadores (CC art. 942, §único). Pode cumular.</td></tr>
-  </tbody>
-</table>
-</div>
-</section>
+        <h3>Tipologia de Calamandrei</h3>
+        <p>Formulada após a Constituição italiana de 1947, a tipologia indica <strong>três reações possíveis da ordem jurídica</strong> diante da greve:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Figura</th><th>Tratamento Jurídico</th><th>Contexto Histórico</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Greve-Delito</strong></td>
+                <td>Paralisação tipificada como <strong>ilícito penal</strong>. Punição criminal.</td>
+                <td>França (CP 1810). Brasil (CP 1890). <strong>Constituição de 1937</strong>: greve como recurso antissocial.</td>
+              </tr>
+              <tr>
+                <td><strong>Greve-Liberdade</strong></td>
+                <td>Sem punição criminal, mas sem reconhecimento como direito. Há <strong>inadimplemento contratual</strong> — sujeita-se à dispensa motivada.</td>
+                <td>Concepção do Estado liberal clássico.</td>
+              </tr>
+              <tr>
+                <td><strong>Greve-Direito</strong></td>
+                <td>Trabalhador conta com <strong>prerrogativa legal</strong> de não trabalhar. <strong>Não há mora.</strong> Ausência é justificada.</td>
+                <td>CF/88 (Brasil). Direito fundamental (art. 5º, §1º).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-<hr>
+        <h3>A Greve no Ordenamento Brasileiro — Evolução</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Constituição</th><th>Tratamento da Greve</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1937</strong></td><td>Greve como recurso antissocial — proibida. Estado autoritário.</td></tr>
+              <tr><td><strong>1946 (art. 158)</strong></td><td>Consagrava o direito de greve, remetendo disciplina à lei ordinária.</td></tr>
+              <tr><td><strong>1967</strong></td><td>Greve como direito, mas proibida nos serviços públicos e atividades essenciais.</td></tr>
+              <tr><td><strong>1988 (art. 9º)</strong></td><td><strong>Amplia o direito:</strong> estende ao setor público; atribui aos trabalhadores a decisão; substitui "greve ilegal" por <strong>exercício abusivo</strong>.</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-<!-- ARTIGO 3 -->
-<section id="art3">
-<div class="artigo-header">
-  <div class="num">Artigo 3</div>
-  <h3>Da Greve ao Boicote</h3>
-  <div class="autor">Márcio Túlio Viana — Crítica, significados e novas possibilidades da resistência operária</div>
-</div>
+        <div class="callout blue">
+          <div class="callout-title">⚡ Características do Direito de Greve na CF/88</div>
+          <ul>
+            <li><strong>Direito fundamental</strong> com aplicabilidade imediata (art. 5º, §1º, CF).</li>
+            <li>Lei regulamentadora <strong>não pode</strong> estabelecer limitações não previstas, inviabilizar o direito ou comprometer seu núcleo essencial.</li>
+            <li><strong>Não é direito absoluto</strong> — sujeito a limites derivados de outros bens constitucionalmente protegidos.</li>
+            <li><strong>Lockout:</strong> proibido pela Lei 7.783. Mesmo sem proibição legal, seria ilegítimo.</li>
+            <li><strong>Irrenunciável:</strong> inválido ajuste em contrato individual de não participar.</li>
+          </ul>
+        </div>
 
-<h3 class="sub-title">A Resistência ao Longo da História</h3>
-<p>Tal como a opressão (seu avesso), a resistência <strong>marca a história dos trabalhadores</strong>. Suas formas são múltiplas — "como uma espécie de camaleão, percebe e imita os modos e cores do ambiente":</p>
+        <h3>Definição Legal de Greve (Lei 7.783/89, art. 2º)</h3>
+        <div class="sumula">
+          <div class="sumula-num">Definição Legal</div>
+          <p><strong>"A suspensão coletiva, temporária e pacífica, total ou parcial, de prestação pessoal de serviços a empregador."</strong></p>
+        </div>
 
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Forma de Resistência</th><th>Exemplo Histórico</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Individual e caótica</strong></td><td>Escravos fingindo "faltas de jeito" para danificar ferramentas.</td></tr>
-    <tr><td><strong>Racional e coletiva</strong></td><td>Luddistas séc. XIX — juravam sobre Bíblia, enviavam ultimatos, quebravam máquinas em pedaços pequenos.</td></tr>
-    <tr><td><strong>Anterior a Taylor</strong></td><td>Operários trabalhando lentamente, regendo cansaços e ditando cadência.</td></tr>
-    <tr><td><strong>Preguiçosa e libertária</strong></td><td>Pós-Lei Áurea: muitos negros negaram não só o trabalho, mas o próprio trabalho, símbolo de degradação.</td></tr>
-    <tr><td><strong>Nostálgica e musical</strong></td><td>Escravos do Alabama proibidos de conversar mas instados a cantar — inventaram o blues.</td></tr>
-    <tr><td><strong>Poética</strong></td><td>Castro Alves ("Navio Negreiro"); Chico Buarque ("Gente Humilde").</td></tr>
-  </tbody>
-</table>
-</div>
+        <h4>Elementos Caracterizadores</h4>
+        <div class="card-box">
+          <strong>(a) Abrangência Subjetiva</strong>
+          <p style="margin-top:8px">Abrange todos os empregados, independentemente do tipo de contrato, tamanho da empresa ou origem do capital. <strong>Empregados de confiança, dirigentes e gestores</strong> não ficam privados do direito. <strong>NÃO</strong> são favorecidos: autônomos, associados, usuários, consumidores. <em>Greve de fome</em> não é greve no sentido jurídico-trabalhista.</p>
+        </div>
 
-<h3 class="sub-title">Os Paradoxos do Sistema — Anatomia do Conflito</h3>
-<p><strong>Paradoxo central:</strong> o trabalhador, ao contratar, cede o domínio de seus gestos — "usa sua liberdade para perdê-la". Para o sistema se perpetuar, é preciso <em>liberdade formal para contratar</em> e <em>falta de liberdade real para não contratar</em>.</p>
-<blockquote>Marx sobre a alienação: o trabalho é externo ao trabalhador, não pertence ao seu ser; no trabalho ele se nega, sente-se em si <em>fora do trabalho</em> e fora de si <em>no trabalho</em>; trabalho não voluntário, mas forçado; não pertence a ele, mas a outro.</blockquote>
-<div class="callout callout-imp">
-  <span class="callout-title">📌 Conflito como Anatomia</span>
-  O conflito é <strong>anatomia do sistema</strong>, não patologia. Multiplica-se no interior das classes: empresários vs. empresários; sindicatos vs. sindicatos; sindicatos vs. trabalhadores; trabalhadores vs. trabalhadores.
-</div>
+        <div class="card-box">
+          <strong>(b) Movimento Coletivo — Dimensão Individual e Coletiva</strong>
+          <div class="table-wrap" style="margin-top:8px">
+            <table>
+              <thead><tr><th>Dimensão</th><th>Conteúdo</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Coletiva</strong></td><td>Deflagração supõe manifestação e <strong>aprovação dos interessados</strong> (art. 4º). Sem aprovação = greve selvagem.</td></tr>
+                <tr><td><strong>Individual</strong></td><td>Aprovação cria <strong>direito</strong> de cessar prestação, <strong>não obrigação</strong>. "Total liberdade de não adesão".</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-<h3 class="sub-title">Os Significados Linguísticos e Filosóficos da Greve</h3>
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Língua</th><th>Palavra</th><th>Significado Adicional</th></tr></thead>
-  <tbody>
-    <tr><td>Francês</td><td><strong>Grève</strong></td><td>"Terreno plano coberto de graveto e areia ao longo do mar ou curso de água" — no Rio Sena, onde trabalhadores se reuniam.</td></tr>
-    <tr><td>Inglês</td><td><strong>Strike</strong></td><td>Ataque; golpear, bater, chocar-se.</td></tr>
-    <tr><td>Espanhol</td><td><strong>Huelga</strong></td><td>Folga, férias, descanso, folguedo (mesma raiz de <em>huelgo</em> = fôlego, alento).</td></tr>
-    <tr><td>Italiano</td><td><strong>Sciopero</strong></td><td>Mesmo prefixo de <em>sciolto</em> = livre de ligações, de vínculos.</td></tr>
-  </tbody>
-</table>
-</div>
-<p><strong>A greve é tudo isso ao mesmo tempo:</strong></p>
-<ul>
-  <li><em>Strike</em> — violência: golpeia o contrato, questiona o ajustado.</li>
-  <li><em>Huelga</em> — fôlego: momento de parêntese na rotina, desprendimento do poder de comando.</li>
-  <li><em>Sciopero</em> — solto: liberdade que volta, mitigada, temporária, contraditória.</li>
-  <li><em>Strike up</em> — "travar relações": se tem êxito, abre diálogo em nível diferente.</li>
-  <li><em>Grève/rio extravasando</em> — o contrato sai do leito, incorpora novas cláusulas.</li>
-</ul>
+        <div class="card-box">
+          <strong>(c) Forma — Suspensão Total da Prestação</strong>
+          <p style="margin-top:8px">Greve implica <strong>abstenção total do trabalho</strong>. "Total ou parcial" do art. 2º refere-se à atividade <em>da empresa</em>, não ao trabalho <em>do empregado</em>.</p>
+          <div class="grid-2" style="margin-top:10px">
+            <div>
+              <strong style="color:var(--pink)">NÃO são greve:</strong>
+              <ul>
+                <li><em>Greves perlées</em> — diminuição voluntária do ritmo</li>
+                <li><em>Greves de zelo</em> — excesso de procedimentos</li>
+                <li>Recusa de horas extras</li>
+              </ul>
+            </div>
+            <div>
+              <strong style="color:var(--pink)">SÃO greve (cessação peculiar):</strong>
+              <ul>
+                <li><em>Greve rotativa</em> — setores diferentes em sucessão</li>
+                <li><em>Greve trombose</em> — setor vital paralisa os demais</li>
+                <li><em>Greve intermitente</em> — períodos alternados</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-<h3 class="sub-title">A Greve e a Constituição (art. 9º, CF/88)</h3>
-<div class="callout callout-sum">
-  <span class="callout-title">📜 Art. 9º, CF/88</span>
-  "É assegurado o direito de greve, <strong>competindo aos trabalhadores decidir</strong> sobre a oportunidade de exercê-lo e sobre os interesses que devam por meio dele defender. §1º A lei definirá os serviços ou atividades essenciais... §2º Os abusos cometidos sujeitam os responsáveis às penas da lei."
-</div>
-<p>Com o passar do tempo, a greve foi perdendo a face utópica, guerreira e louca. Em compensação, o Direito concedeu regalias. <strong>Três funções jurídicas sucessivas da greve</strong>:</p>
-<ol>
-  <li><strong>Fonte material</strong> — pressão para construir norma</li>
-  <li><strong>Fonte formal</strong> — se transformada em convenção coletiva</li>
-  <li><strong>Modo de garantir</strong> que normas se cumpram</li>
-</ol>
+        <div class="card-box">
+          <strong>(d) Fundamento — Tipos de Greve e Avaliação Jurídica</strong>
+          <div class="table-wrap" style="margin-top:8px">
+            <table>
+              <thead><tr><th>Tipo de Greve</th><th>Avaliação</th></tr></thead>
+              <tbody>
+                <tr><td>Reivindicação profissional — obrigação existente</td><td><strong>Aceitável</strong>. Possibilidade de ação não tolhe a greve.</td></tr>
+                <tr><td>Reivindicação profissional — direito novo</td><td><strong>Aceitável</strong>. "Ato ilícito pode tornar-se lícito no coletivo".</td></tr>
+                <tr><td>Greve de solidariedade típica</td><td><strong>Aceitável</strong> — apoio a outro setor com afinidade.</td></tr>
+                <tr><td>Subverter a ordem jurídica</td><td><strong>Inaceitável</strong>. Visa subverter o sistema constitucional.</td></tr>
+                <tr><td>Greve discriminatória</td><td><strong>Inaceitável</strong> (contra minorias). Aplica-se art. 187 CC.</td></tr>
+                <tr><td>Greve política pura</td><td><strong>Inaceitável</strong> — sem ligação com realidade profissional.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-<h4 class="mini-title">A Natureza Jurídica da Greve — Debate Doutrinário</h4>
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Jurista</th><th>Posição</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Carnelutti</strong></td><td>"O direito de greve é a negação do direito (...) contém uma <em>contradictio in adjecto</em>".</td></tr>
-    <tr><td><strong>Cesarino Júnior</strong></td><td>"Trata-se de consagração do direito de fazer justiça pelas próprias mãos."</td></tr>
-    <tr><td><strong>Durand</strong></td><td>"O vencedor não é o que tem razão, mas o que pode agir ou resistir mais tempo."</td></tr>
-    <tr><td><strong>Hauriou</strong></td><td>Greve é "um ato de violação que se compara à legítima defesa".</td></tr>
-    <tr><td><strong>Trindade</strong></td><td>Direito natural do homem; resistência à opressão. Greve: "sistema para denunciar uma dose de injustiça na lei; dose insuportável".</td></tr>
-    <tr><td><strong>Doutrina dominante</strong></td><td>"Direito individual exercido coletivamente" — legitima o fura-greve.</td></tr>
-    <tr><td><strong>Viana (inversão)</strong></td><td>Greve é <strong>direito coletivo</strong> que cada indivíduo <em>pode e deve exercer</em>, integrando-se ao grupo. Quantidade altera qualidade.</td></tr>
-  </tbody>
-</table>
-</div>
+        <div class="card-box">
+          <strong>(e) Efeitos sobre o Contrato — Suspensão</strong>
+          <p style="margin-top:8px">A greve <strong>suspende o contrato de trabalho</strong> (Lei 7.783, art. 7º). O empregado <strong>não comete falta</strong> ao não comparecer. Permanecem: lealdade, respeito e sigilo.</p>
+          <h4 style="margin-top:12px">Salários Durante a Greve</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Tipo de Greve</th><th>Salários</th></tr></thead>
+              <tbody>
+                <tr><td>Cumprimento de obrigação existente (ex: descumprimento patronal)</td><td><strong>Devidos</strong> — evita paradoxo de exonerar o empregador.</td></tr>
+                <tr><td>Criação de novas condições de trabalho</td><td><strong>Não devidos</strong> em regra — empregados assumem o ônus.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="sumula" style="margin-top:10px">
+            <div class="sumula-num">TST — Salários na Greve</div>
+            <p>Salários não são devidos, salvo acordo diverso ou <strong>conduta recriminável do empregador</strong> (atraso de salários, lockout).</p>
+          </div>
+        </div>
 
-<div class="callout callout-exc">
-  <span class="callout-title">⚠ O Fura-Greve (Viana)</span>
-  Ao exercer o suposto "direito individual", o fura-greve <strong>dificulta o direito real da maioria</strong>. "Realmente fura a greve, como se abrisse buraco em cano de água." Revela <strong>dupla submissão</strong>; esvazia o sindicato; dificulta a convenção coletiva. OIT reconhece (lamentavelmente, na visão de Viana) a liberdade de trabalho dos não-grevistas.
-  <p style="margin-top:8px"><strong>Conflito constitucional:</strong> liberdade individual <em>vs.</em> autonomia coletiva. Solução proposta: deixar ao fura-greve a possibilidade de demonstrar, caso a caso, a falta de representatividade do sindicato.</p>
-</div>
+        <h3>Proteção Legal da Greve (Lei 7.783, art. 6º)</h3>
+        <div class="sumula">
+          <div class="sumula-num">Garantia Mais Relevante — Art. 7º, §único</div>
+          <p><strong>Proibição de dispensa</strong> durante a greve (a partir do aviso). Dispensa é <strong>nula</strong>. <strong>Proibição de contratação de substitutos</strong>. Súmula 348 TST: Aviso prévio para fluir após greve não cabe.</p>
+        </div>
 
-<h3 class="sub-title">Crise da Greve em Tempos Pós-Modernos</h3>
-<p>O sindicato é resultado da <strong>fábrica concentrada</strong>. As novas tecnologias permitem produzir sem reunir. A fábrica fragmenta-se, dividindo trabalhadores e minando normas. O modelo <strong>pós-fordista</strong> exige adesão completa dos trabalhadores (<em>just in time</em>) — vai além da força-trabalho e alcança a dimensão humana.</p>
-<ul>
-  <li>Difusão de contratos atípicos</li>
-  <li>Terceirizações para dentro e para fora (<em>out-sourcing</em> e trabalho temporário)</li>
-  <li>Dissimulação do conflito capital-trabalho</li>
-  <li>Hiperindividualismo pós-moderno (Lipovetsky)</li>
-</ul>
-<p><strong>Crise do sindicato = crise da greve.</strong> Greve restringe-se a categorias fortes com segurança no emprego.</p>
+        <h3>Procedimento da Greve</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Etapa</th><th>Detalhamento</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1. Negociação prévia</strong></td><td>"Frustrada a negociação" (art. 3º). Sem negociação prévia = <strong>abuso</strong> (OJ 11 SDI TST).</td></tr>
+              <tr><td><strong>2. Aprovação em assembleia</strong></td><td>Greve selvagem é proscrita. Votam todos os interessados.</td></tr>
+              <tr><td><strong>3. Aviso prévio</strong></td><td><strong>48 horas</strong> ao empregador; <strong>72 horas</strong> aos usuários (essenciais).</td></tr>
+              <tr><td><strong>4. Forma e Conteúdo</strong></td><td>Indicar com precisão o <strong>momento exato do início</strong>. Não basta aviso de "estado de greve".</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-<h3 class="sub-title">O Boicote — Ontem e Hoje</h3>
-<p><strong>Origem:</strong> final do século XIX — irlandês <strong>James Boycott</strong>, gerente cruel de propriedade rural. Comunidade vizinha deixou de comprar produtos da fazenda. Daí surgiu o termo <em>boicotagem</em>.</p>
+        <h3>Atividades Essenciais e Abuso (Lei 7.783)</h3>
+        <p>O direito atual <strong>não proíbe</strong> a greve em serviços essenciais — estabelece <strong>condições adicionais</strong> (atendimento das necessidades inadiáveis).</p>
+        
+        <div class="callout yellow">
+          <div class="callout-title">⚠ Configuram Abuso</div>
+          <ul>
+            <li>Não realização de assembleia prévia ou aviso insuficiente.</li>
+            <li>Piquete violento ou ocupação do local de trabalho.</li>
+            <li>Destruição de equipamentos ou não manutenção de serviços mínimos (essenciais).</li>
+          </ul>
+        </div>
 
-<p><strong>Por que o boicote é viável hoje?</strong> Cinco fundamentos:</p>
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Fundamento</th><th>Explicação</th></tr></thead>
-  <tbody>
-    <tr><td><strong>1. Nivelamento dos produtos</strong></td><td>Ciência e técnica nivelaram qualidade. Responsabilidade social da empresa torna-se traço de distinção entre produtos igualmente perfeitos.</td></tr>
-    <tr><td><strong>2. Consumidor pós-moderno</strong></td><td>Preocupado com a própria imagem; quer parecer politicamente correto. Compra como forma de compensar sentimento de culpa.</td></tr>
-    <tr><td><strong>3. Globalização da informação</strong></td><td>Internet e mídia: quase não há limites para o que pode ser sabido e quem pode ser atingido.</td></tr>
-    <tr><td><strong>4. Direitos humanos como patamar</strong></td><td>Globalização: o que acontece aqui repercute ali. Direitos do trabalho não são apenas internos.</td></tr>
-    <tr><td><strong>5. Estado-nação fragilizado</strong></td><td>Vazios reocupados democraticamente pela sociedade civil (associações, cooperativas, estratégias coletivas).</td></tr>
-  </tbody>
-</table>
-</div>
+        <div class="sumula">
+          <div class="sumula-num">Súmula 316 do STF</div>
+          <p>A greve <strong>suspende</strong> as obrigações contratuais. A participação passiva em greve, <strong>mesmo que abusiva</strong>, não configura justa causa para demissão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="callout callout-imp">
-  <span class="callout-title">💡 Tese Central de Viana</span>
-  Com o passar dos anos, a prática do <strong>consumo solidário pode tornar-se hegemônica</strong>. Ao comprar um tênis, a presença ou ausência de trabalho digno será componente tão importante quanto bolhas de ar. O boicote seria uma <strong>alternativa parajurídica para a greve</strong> — especialmente para o "trabalho decente".
-</div>
-</section>
+  <!-- SEÇÃO 7 — ARTIGO 3 -->
+  <div class="section-card" id="sec7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2>Artigo 3 — Da Greve ao Boicote</h2>
+    </div>
+    <div class="section-body">
+      <p style="color:var(--text-muted); font-style:italic; margin-bottom: 16px;">Márcio Túlio Viana — Crítica, significados e novas possibilidades da resistência operária</p>
 
-<hr>
+      <div class="subsection">
+        <h3>A Resistência e os Paradoxos do Sistema</h3>
+        <p>A resistência <strong>marca a história dos trabalhadores</strong>. Suas formas são múltiplas (individual caótica, luddista, preguiçosa, poética). O paradoxo central é que o trabalhador cede o domínio de seus gestos — "usa sua liberdade para perdê-la" (Marx sobre a alienação).</p>
+        <div class="callout blue">
+          <div class="callout-title">📌 Conflito como Anatomia</div>
+          <p>O conflito é <strong>anatomia do sistema</strong>, não patologia. Multiplica-se no interior das classes: empresários vs. empresários; sindicatos vs. sindicatos.</p>
+        </div>
 
-<!-- CONCLUSÃO INTEGRADA -->
-<section id="conclusao">
-<h2 class="section-title">Conclusão Integrada — Os 7 Eixos de Articulação entre os Três Artigos</h2>
-<p>Embora distantes no tempo, no método e no objeto, os três artigos compartilham um núcleo comum: a <strong>greve como manifestação social, jurídica e cultural da resistência coletiva diante de uma relação estruturalmente desequilibrada</strong>.</p>
+        <h3>Significados da Greve</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Língua</th><th>Palavra</th><th>Significado</th></tr></thead>
+            <tbody>
+              <tr><td>Francês</td><td><strong>Grève</strong></td><td>Terreno plano com areia ao longo do rio Sena (onde se reuniam).</td></tr>
+              <tr><td>Inglês</td><td><strong>Strike</strong></td><td>Ataque; golpear, bater, chocar-se.</td></tr>
+              <tr><td>Espanhol</td><td><strong>Huelga</strong></td><td>Folga, descanso (raiz de huelgo = fôlego).</td></tr>
+              <tr><td>Italiano</td><td><strong>Sciopero</strong></td><td>Livre de ligações, de vínculos.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>A greve é <em>strike</em> (golpeia o contrato), <em>huelga</em> (fôlego/pausa), <em>sciopero</em> (solto) e <em>grève</em> (o contrato sai do leito, incorpora novas cláusulas).</p>
 
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Eixo</th><th>Reis (1857)</th><th>Mallet (Dogmática)</th><th>Viana (Crítica)</th></tr></thead>
-  <tbody>
-    <tr>
-      <td><strong>1. Desequilíbrio Estrutural</strong></td>
-      <td>Senhores vs. ganhadores; Estado escravocrata tentando subtrair "direitos e rotinas estabelecidos" (Tilly)</td>
-      <td>Greve como "contrapeso natural da preeminência econômica do tomador de serviço" (TCP)</td>
-      <td>Trabalhador "usa sua liberdade para perdê-la". Marx sobre alienação.</td>
-    </tr>
-    <tr>
-      <td><strong>2. Fenômeno Coletivo vs. Individual</strong></td>
-      <td>Identidade nagô e rede dos cantos tornaram a greve possível. Sem estrutura coletiva = impossível.</td>
-      <td>Dimensão coletiva (aprovação do grupo) + dimensão individual (liberdade de não adesão)</td>
-      <td>Greve é direito coletivo que cada indivíduo deve exercer. Critica o fura-greve por "dupla submissão".</td>
-    </tr>
-    <tr>
-      <td><strong>3. Greve como Fonte de Direito</strong></td>
-      <td>Derrubou a taxa de matrícula — produziu direito material efetivo.</td>
-      <td>"Particularismo significativo": admite cessação para modificar o quadro legal.</td>
-      <td>Três funções: fonte material, fonte formal, modo de garantir cumprimento.</td>
-    </tr>
-    <tr>
-      <td><strong>4. Lógica do Sistema Usada Contra o Sistema</strong></td>
-      <td>Associação Comercial aderiu porque dependia dos ganhadores. A cidade-porto parou.</td>
-      <td>Trabalhador recusa trabalhar para reclamar salário — algo inconcebível no direito civil.</td>
-      <td>"A empresa não pode parar. A lógica da greve é o prejuízo."</td>
-    </tr>
-    <tr>
-      <td><strong>5. Identidade e Cultura Importam</strong></td>
-      <td>Identidade nagô como coluna vertebral. O preconceito era étnico, não de cor nem de classe.</td>
-      <td>Trata a greve em chave universalizante, mas reconhece caráter histórico-contextual.</td>
-      <td>Nova utopia: sindicato em torno de indignação geral, reunindo empregados/desempregados.</td>
-    </tr>
-    <tr>
-      <td><strong>6. Tipologia de Calamandrei</strong></td>
-      <td>Greve-delito: repressão policial; capatazia de 1835 era "polícia dos ganhadores".</td>
-      <td>Sistema teórico das três figuras: delito, liberdade, direito.</td>
-      <td>O Direito "capturou" a greve para domesticá-la (Garcia): "sua consagração realizou seu pior inimigo".</td>
-    </tr>
-    <tr>
-      <td><strong>7. Crise e Caminhos Alternativos</strong></td>
-      <td>Pré-história: trabalhadores informais, sem fábrica, organizados em estruturas culturais.</td>
-      <td>Presente jurídico: greve como direito fundamental amplamente regulamentado.</td>
-      <td>Futuro: greve em crise; necessidade de incorporar o boicote como alternativa parajurídica.</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+        <h3>A Natureza Jurídica da Greve — Viana</h3>
+        <p>Para Viana (em oposição à doutrina dominante que vê como "direito individual exercido coletivamente"), a greve é um <strong>direito coletivo</strong> que cada indivíduo <em>pode e deve exercer</em>, integrando-se ao grupo.</p>
+        
+        <div class="callout yellow">
+          <div class="callout-title">⚠ O Fura-Greve</div>
+          <p>Ao exercer o suposto "direito individual", o fura-greve <strong>dificulta o direito real da maioria</strong>. Revela <strong>dupla submissão</strong>; esvazia o sindicato; dificulta a convenção coletiva. A solução proposta é deixar ao fura-greve o ônus de demonstrar a falta de representatividade do sindicato.</p>
+        </div>
 
-<div class="callout callout-sum">
-  <span class="callout-title">💬 Síntese Final</span>
-  <em>"Sem as greves, não é possível entender a História contemporânea."</em> — M. Olga Martinez (citada por Viana)
-  <p style="margin-top:10px">Reis ilustra a frase com um caso histórico em que a greve antecede o reconhecimento jurídico; Mallet a sustenta com a sistematização constitucional e legal vigente; Viana a projeta para o futuro, identificando os limites e as novas potências do direito de resistência. Compreender os três é compreender a greve não como um instituto jurídico isolado, mas como <strong>prática histórica, social e cultural em constante transformação</strong>.</p>
-</div>
+        <h3>Crise da Greve e o Boicote</h3>
+        <p>A greve está em crise no modelo pós-fordista (terceirizações, hiperindividualismo, fábrica fragmentada). O boicote ressurge como alternativa viável hoje devido a 5 fundamentos:</p>
+        <ol>
+          <li><strong>Nivelamento dos produtos:</strong> Responsabilidade social torna-se o diferencial.</li>
+          <li><strong>Consumidor pós-moderno:</strong> Quer parecer politicamente correto.</li>
+          <li><strong>Globalização da informação:</strong> Tudo se sabe rápido.</li>
+          <li><strong>Direitos humanos como patamar.</strong></li>
+          <li><strong>Estado-nação fragilizado.</strong></li>
+        </ol>
 
-<h4 class="mini-title" style="margin-top:28px">Mapa Visual — Dimensões dos Três Artigos</h4>
-<div class="table-wrap">
-<table>
-  <thead><tr><th>Dimensão</th><th>Reis (1857)</th><th>Mallet (séc. XXI)</th><th>Viana (séc. XXI)</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Foco</strong></td><td>História social</td><td>Dogmática jurídica</td><td>Crítica e prospectiva</td></tr>
-    <tr><td><strong>Período</strong></td><td>Bahia escravista</td><td>Brasil CF/88</td><td>Pós-modernidade</td></tr>
-    <tr><td><strong>Sujeito</strong></td><td>Ganhadores nagôs</td><td>Empregado da iniciativa privada</td><td>Trabalhador precarizado</td></tr>
-    <tr><td><strong>Tipo de greve</strong></td><td>Informal, pré-jurídica</td><td>Greve-direito (Lei 7.783)</td><td>Greve em crise + boicote</td></tr>
-    <tr><td><strong>Organização</strong></td><td>Cantos e capitães-de-canto</td><td>Sindicato e categoria</td><td>Sindicato em crise / consumidor</td></tr>
-    <tr><td><strong>Resultado</strong></td><td>Vitória parcial</td><td>Sistematização do direito</td><td>Proposta de renovação</td></tr>
-  </tbody>
-</table>
-</div>
-</section>
+        <div class="callout blue">
+          <div class="callout-title">💡 Tese Central de Viana</div>
+          <p>O <strong>consumo solidário pode tornar-se hegemônico</strong>. O boicote seria uma <strong>alternativa parajurídica para a greve</strong> — exigindo "trabalho decente" ao comprar um produto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- RODAPÉ -->
-<div style="text-align:center; margin-top:60px; padding-top:24px; border-top:1px solid var(--hr); color:var(--text-muted); font-size:0.82rem;">
-  <p>Universidade Presbiteriana Mackenzie &nbsp;·&nbsp; 7º Semestre — Direito Coletivo do Trabalho</p>
-  <p>Profa. Francesca Columbu &nbsp;·&nbsp; Material de estudos compilado para o 2º Bimestre</p>
-</div>
+  <!-- SEÇÃO 8 — CONCLUSÃO -->
+  <div class="section-card" id="sec8">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2>Conclusão Integrada — 7 Eixos de Articulação</h2>
+    </div>
+    <div class="section-body">
+      <p>Os três artigos compartilham um núcleo comum: a <strong>greve como manifestação social, jurídica e cultural da resistência coletiva diante de uma relação estruturalmente desequilibrada</strong>.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Eixo</th><th>Reis (1857)</th><th>Mallet (Dogmática)</th><th>Viana (Crítica)</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Desequilíbrio</strong></td>
+              <td>Senhores vs. ganhadores.</td>
+              <td>Greve como "contrapeso natural" (TCP).</td>
+              <td>Trabalhador "usa sua liberdade para perdê-la".</td>
+            </tr>
+            <tr>
+              <td><strong>2. Coletivo vs Individual</strong></td>
+              <td>Identidade nagô tornou greve possível.</td>
+              <td>Dimensão coletiva (aprovação) + individual (adesão).</td>
+              <td>Greve como direito estritamente coletivo (crítica ao fura-greve).</td>
+            </tr>
+            <tr>
+              <td><strong>3. Fonte de Direito</strong></td>
+              <td>Derrubou a taxa (direito material efetivo).</td>
+              <td>Admite cessação para modificar o quadro legal.</td>
+              <td>Fonte material, formal e modo de garantia.</td>
+            </tr>
+            <tr>
+              <td><strong>4. Lógica Contra o Sistema</strong></td>
+              <td>Associação Comercial apoiou por depender deles.</td>
+              <td>Recusa de trabalhar para reclamar salário.</td>
+              <td>"A lógica da greve é o prejuízo."</td>
+            </tr>
+            <tr>
+              <td><strong>5. Identidade</strong></td>
+              <td>Preconceito étnico, não apenas de classe.</td>
+              <td>Reconhece o caráter histórico-contextual.</td>
+              <td>Nova utopia: sindicato da indignação geral.</td>
+            </tr>
+            <tr>
+              <td><strong>6. Calamandrei</strong></td>
+              <td>Greve-delito: repressão policial.</td>
+              <td>Sistema teórico: delito, liberdade, direito.</td>
+              <td>O Direito "capturou" a greve para domesticá-la.</td>
+            </tr>
+            <tr>
+              <td><strong>7. Novos Caminhos</strong></td>
+              <td>Trabalhadores informais sem fábrica.</td>
+              <td>Greve como direito fundamental.</td>
+              <td>Necessidade de incorporar o boicote.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sumula" style="margin-top: 24px;">
+        <div class="sumula-num">💬 Síntese Final</div>
+        <p>Reis ilustra a greve como força pré-jurídica; Mallet a sustenta com a sistematização constitucional vigente; Viana a projeta para o futuro com o boicote. A greve não é um instituto isolado, mas uma <strong>prática histórica, social e cultural em constante transformação</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RODAPÉ -->
+  <div style="text-align:center; margin-top:60px; padding-top:24px; border-top:1px solid var(--hr); color:var(--text-muted); font-size:0.82rem;">
+    <p>Universidade Presbiteriana Mackenzie &nbsp;·&nbsp; 7º Semestre — Direito Coletivo do Trabalho</p>
+    <p>Profa. Francesca Columbu &nbsp;·&nbsp; Material de estudos compilado para o 2º Bimestre</p>
+  </div>
 
 </div><!-- /container -->
 
+<!-- SCROLL TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+<script>
+  const scrollBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
+    }
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const offset = 20;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
 </body>
 </html>

@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Núcleo de Prática Jurídica I – 2º BIM | Profa. Cristina Rego de Oliveira</title>
+  <style>
+    :root {
+      --green: #81C784;
+      --green-dark: #4caf6e;
+      --green-light: #c8e6c9;
+      --green-bg: #f1f8f2;
+      --bg: #fdfdfd;
+      --text: #1a2e1e;
+      --text-muted: #4a6a52;
+      --card-bg: #ffffff;
+      --border-color: #dceedd;
+      --callout-bg: #f4fbf5;
+      --shadow: rgba(129,199,132,0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, #81C784 0%, #4caf6e 100%);
+      color: #fff;
+      text-align: center;
+      padding: 58px 28px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    #hero .hero-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; opacity: 0.85; margin-bottom: 14px; }
+    #hero h1 { font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.2; margin-bottom: 14px; text-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+    #hero .hero-sub { font-size: 0.95rem; opacity: 0.9; font-weight: 400; letter-spacing: 0.3px; }
+    #hero .hero-tags { margin-top: 22px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    #hero .hero-tag { background: rgba(255,255,255,0.2); border: 1.5px solid rgba(255,255,255,0.45); border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; }
+
+    /* ── ÍNDICE ── */
+    #nav-index {
+      background: var(--card-bg);
+      border: 2px solid var(--green);
+      max-width: 820px;
+      margin: 32px auto 0;
+      padding: 24px 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px var(--shadow);
+    }
+    #nav-index h3 { color: var(--green-dark); font-size: 0.88rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1.5px; text-align: center; }
+    #nav-index ol { columns: 2; column-gap: 32px; padding-left: 20px; }
+    #nav-index li { margin: 5px 0; break-inside: avoid; }
+    #nav-index a { color: var(--text); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    #nav-index a:hover { color: var(--green-dark); text-decoration: underline; }
+    @media (max-width: 600px) { #nav-index ol { columns: 1; } #nav-index { margin: 20px 14px 0; padding: 18px; } }
+
+    /* ── CONTAINER ── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 32px 40px 60px; }
+
+    /* ── SECTION CARD ── */
+    .section-card { background: var(--card-bg); border-radius: 10px; box-shadow: 0 2px 14px var(--shadow); margin-bottom: 36px; overflow: hidden; border: 1px solid var(--border-color); }
+    .section-header { background: var(--green); color: #fff; padding: 14px 24px; display: flex; align-items: center; gap: 14px; }
+    .section-number { background: rgba(255,255,255,0.25); border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; flex-shrink: 0; }
+    .section-header h2 { font-size: 1.15rem; font-weight: 700; letter-spacing: 0.3px; color: #fff; }
+    .section-body { padding: 28px 30px; }
+    .subsection { margin-bottom: 28px; }
+    .subsection:last-child { margin-bottom: 0; }
+
+    /* ── HEADINGS ── */
+    h3 { color: var(--green-dark); font-size: 1rem; font-weight: 700; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 2px solid var(--green-bg); }
+    h4 { color: var(--green-dark); font-size: 0.92rem; font-weight: 700; margin: 14px 0 6px; }
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+    ul, ol { padding-left: 22px; margin-bottom: 10px; }
+    li { margin-bottom: 5px; }
+    li:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUTS ── */
+    .callout { border-left: 5px solid var(--green); background: var(--callout-bg); padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 14px 0; }
+    .callout-title { font-weight: 800; color: var(--green-dark); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .callout.yellow { border-color: #e6a817; background: #fff9ec; }
+    .callout.yellow .callout-title { color: #c98a00; }
+    .callout.red { border-color: #d32f2f; background: #fff5f5; }
+    .callout.red .callout-title { color: #d32f2f; }
+    .callout.purple { border-color: #7b4fa6; background: #f5f0fb; }
+    .callout.purple .callout-title { color: #7b4fa6; }
+    .callout.blue { border-color: #2979ff; background: #eef3ff; }
+    .callout.blue .callout-title { color: #2979ff; }
+
+    /* ── TABELAS ── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead th { background: var(--green); color: #fff; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.3px; }
+    tbody tr:nth-child(even) { background: var(--green-bg); }
+    tbody tr:nth-child(odd) { background: var(--card-bg); }
+    tbody td { padding: 9px 14px; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+    tbody tr:hover { filter: brightness(0.97); }
+
+    /* ── ART BOX ── */
+    .art-box { background: var(--green-bg); border: 1.5px solid var(--green-light); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: 0.88rem; color: var(--text); }
+    .art-box strong { color: var(--green-dark); }
+
+    /* ── PRAZO GRID ── */
+    .prazo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 14px 0; }
+    .prazo-item { background: var(--green-bg); border: 1.5px solid var(--green); border-radius: 8px; padding: 12px 14px; text-align: center; }
+    .prazo-item .dias { font-size: 1.6rem; font-weight: 800; color: var(--green-dark); line-height: 1; }
+    .prazo-item .label { font-size: 0.74rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* ── FLOW ── */
+    .flow { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 12px 0; }
+    .flow-step { background: var(--green-bg); border: 1px solid var(--green); border-radius: 6px; padding: 6px 12px; font-size: 0.82rem; font-weight: 600; color: var(--green-dark); }
+    .flow-step small { display: block; font-weight: 400; font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .flow-arrow { color: var(--green-dark); font-size: 1.1rem; font-weight: 900; }
+
+    /* ── GRID 2 ── */
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+    @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+
+    /* ── INNER CARD ── */
+    .inner-card { background: var(--green-bg); border: 1.5px solid var(--green-light); border-radius: 8px; padding: 14px 16px; }
+    .inner-card strong { color: var(--green-dark); }
+
+    /* ── BADGE ── */
+    .badge { display: inline-block; background: var(--green); color: #fff; border-radius: 20px; padding: 2px 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; margin-right: 4px; }
+    .badge.red-b { background: #c62828; }
+    .badge.blue-b { background: #1565c0; }
+
+    /* ── SUMULA ── */
+    .sumula { border: 2px solid var(--green); border-radius: 8px; padding: 12px 16px; margin: 12px 0; background: var(--card-bg); }
+    .sumula-num { font-weight: 800; color: var(--green-dark); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .sumula p { font-size: 0.88rem; font-style: italic; margin: 0; }
+
+    /* ── DIVISOR ── */
+    hr.divider { border: none; border-top: 2px dashed var(--border-color); margin: 20px 0; }
+
+    /* ── SCROLL TOP ── */
+    #scroll-top { position: fixed; bottom: 28px; right: 28px; background: var(--green); color: #fff; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.15); display: none; align-items: center; justify-content: center; transition: background 0.2s; z-index: 990; }
+    #scroll-top:hover { background: var(--green-dark); }
+    #scroll-top.visible { display: flex; }
+
+    blockquote { border-left: 4px solid var(--green); padding: 10px 16px; margin: 14px 0; background: var(--callout-bg); border-radius: 0 8px 8px 0; font-style: italic; color: var(--text-muted); font-size: 0.91rem; }
+
+    @media (max-width: 700px) { .container { padding: 18px 14px 40px; } .section-body { padding: 18px 16px; } .prazo-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+
+<div id="hero">
+  <div class="hero-label">Universidade Presbiteriana Mackenzie · 7º Semestre</div>
+  <h1>Núcleo de Prática Jurídica I</h1>
+  <div class="hero-sub">Profa. Cristina Rego de Oliveira &nbsp;·&nbsp; 2º Bimestre</div>
+  <div class="hero-tags">
+    <span class="hero-tag">✍️ Queixa-Crime</span>
+    <span class="hero-tag">📋 Denúncia</span>
+    <span class="hero-tag">⚖️ Ritos Processuais</span>
+    <span class="hero-tag">🔍 Juízo de Admissibilidade</span>
+    <span class="hero-tag">🛡️ Teses Defensivas</span>
+    <span class="hero-tag">📢 Alegações Finais</span>
+    <span class="hero-tag">🏛️ Apelação</span>
+  </div>
+</div>
+
+<div id="nav-index">
+  <h3>📋 Sumário</h3>
+  <ol>
+    <li><a href="#sec1">Queixa-Crime — Conceito, Legitimidade e Requisitos</a></li>
+    <li><a href="#sec2">Procuração com Poderes Especiais e Prazos</a></li>
+    <li><a href="#sec3">Denúncia — Ação Penal Pública</a></li>
+    <li><a href="#sec4">Ritos Processuais e Procedimento Comum</a></li>
+    <li><a href="#sec5">Juízo de Admissibilidade — Art. 395 CPP</a></li>
+    <li><a href="#sec6">Resposta à Acusação e Teses Defensivas</a></li>
+    <li><a href="#sec7">Absolvição Sumária — Art. 397 CPP</a></li>
+    <li><a href="#sec8">Alegações Finais / Memoriais</a></li>
+    <li><a href="#sec9">Apelação — Cabimento, Prazo e Procedimento</a></li>
+    <li><a href="#sec10">Modelos de Peças Processuais</a></li>
+  </ol>
+</div>
+
+<div class="container">
+
+  <!-- ══════════════ SEC 1 — QUEIXA-CRIME ══════════════ -->
+  <div class="section-card" id="sec1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Queixa-Crime — Conceito, Legitimidade e Requisitos</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <h3>1.1 Conceito</h3>
+        <p>A <strong>Queixa-Crime</strong> é a <strong>petição inicial da Ação Penal Privada</strong>. Trata-se do instrumento pelo qual o ofendido (ou seu representante legal) provoca a jurisdição penal para apurar crime que depende de iniciativa exclusivamente privada.</p>
+        <div class="callout blue">
+          <div class="callout-title">📜 Art. 41 CPP — Requisitos da Peça Acusatória</div>
+          "A denúncia ou queixa conterá a <strong>exposição do fato criminoso</strong>, com todas as suas circunstâncias, a <strong>qualificação do acusado</strong> ou esclarecimentos pelos quais se possa identificá-lo, a <strong>classificação do crime</strong> e, quando necessário, o <strong>rol das testemunhas</strong>."
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>1.2 Legitimidade Ativa — Quem Pode Propor</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Hipótese</th><th>Legitimado</th><th>Fundamento</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Regra geral</strong></td><td>Vítima/ofendido ou seu representante legal</td><td>Art. 100, §2º, CP + Art. 30 CPP</td></tr>
+              <tr><td><strong>Morte ou ausência do ofendido</strong></td><td>Cônjuge, ascendente, descendente ou irmão (nessa ordem preferencial)</td><td>Arts. 31 + 36 CPP</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout yellow">
+          <div class="callout-title">⚠️ Ação Penal Privada Subsidiária da Pública</div>
+          Existe também a queixa subsidiária, cabível quando o MP permanece inerte no prazo legal. Nesse caso, o ofendido assume temporariamente a titularidade da ação, que permanece de natureza pública (art. 100, §3º, CP; art. 29 CPP). O MP pode aditar, repudiar, oferecer denúncia substitutiva, intervir e prosseguir.
+        </div>
+        <div class="callout">
+          <div class="callout-title">📌 Querelante × Querelado</div>
+          <ul>
+            <li><strong>Querelante</strong>: o ofendido (ou seu representante/sucessor) que propõe a ação.</li>
+            <li><strong>Querelado</strong>: o suposto autor do crime — réu na ação penal privada.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>1.3 Requisitos de Conteúdo (Art. 41 CPP)</h3>
+        <ol>
+          <li><strong>Exposição do fato criminoso</strong> com todas as suas circunstâncias (conduta, resultado, nexo causal, elementares e circunstâncias do tipo).</li>
+          <li><strong>Qualificação do acusado</strong> ou esclarecimentos que permitam sua identificação (nome, RG, CPF, endereço).</li>
+          <li><strong>Classificação do crime</strong> — enquadramento típico (ex.: art. 138 CP — calúnia).</li>
+          <li><strong>Rol de testemunhas</strong> — quando necessário (máximo 8 no ordinário; 5 no sumário).</li>
+        </ol>
+        <div class="callout red">
+          <div class="callout-title">⚠️ Inépcia Formal da Queixa</div>
+          A inépcia formal ocorre quando a peça não atende aos requisitos do art. 41 CPP, prejudicando o direito de defesa. Hipóteses: ausência de descrição mínima da conduta, imputação genérica, impossibilidade de identificação do acusado. Consequência: <strong>rejeição da queixa</strong> (art. 395, I, CPP) — cabe RESE (art. 581, I, CPP).
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SEC 2 — PROCURAÇÃO E PRAZOS ══════════════ -->
+  <div class="section-card" id="sec2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Procuração com Poderes Especiais e Prazos</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <h3>2.1 Procuração Ad Judicia com Poderes Especiais</h3>
+        <div class="art-box">
+          <strong>Art. 44 CPP.</strong> A queixa poderá ser dada por procurador <strong>com poderes especiais</strong>, devendo constar do instrumento do mandato <strong>o nome do querelante</strong> e a <strong>menção do fato criminoso</strong>, salvo quando tais esclarecimentos dependerem de diligências que devem ser previamente requeridas no juízo criminal.
+        </div>
+        <div class="callout yellow">
+          <div class="callout-title">⚠️ Requisitos Obrigatórios da Procuração</div>
+          <ul>
+            <li>Identificação completa do <strong>outorgante</strong> (querelante) e do <strong>outorgado</strong> (advogado).</li>
+            <li>Menção expressa ao <strong>fato criminoso</strong> que se pretende apurar.</li>
+            <li>Poderes especiais: receber, dar quitação, transigir, desistir, confessar, reconhecer procedência do pedido — além dos poderes <em>ad judicia</em> genéricos.</li>
+            <li>A ausência de tais requisitos gera <strong>nulidade da procuração</strong> e, consequentemente, ilegitimidade de representação.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>2.2 Prazo Decadencial para Oferecimento da Queixa</h3>
+        <div class="prazo-grid">
+          <div class="prazo-item">
+            <div class="dias">6</div>
+            <div class="label">meses — prazo decadencial para oferecer a queixa (Art. 38 CPP)</div>
+          </div>
+          <div class="prazo-item">
+            <div class="dias">D+0</div>
+            <div class="label">Início: dia em que o ofendido soube quem é o autor do crime</div>
+          </div>
+        </div>
+        <div class="art-box">
+          <strong>Art. 38 CPP.</strong> Salvo disposição em contrário, o ofendido, ou seu representante legal, decairá do direito de queixa ou de representação, se não o exercer dentro do prazo de <strong>seis meses</strong>, contado do dia em que vier a saber quem é o autor do crime, ou, no caso do art. 29, do dia em que se esgotar o prazo para o oferecimento da denúncia.
+        </div>
+        <div class="callout purple">
+          <div class="callout-title">⚖️ Posição Doutrinária — Natureza Penal do Prazo</div>
+          A doutrina consolidou entendimento de que o prazo decadencial deve ser tratado como de <strong>natureza penal</strong> (não processual penal), pois a decadência gera extinção da punibilidade (art. 107, IV, CP). Consequência prática: <strong>inclui-se na contagem o dia em que o ofendido descobriu a autoria</strong> — interpretação mais benéfica ao réu (princípio da retroatividade da lei mais benéfica e <em>in dubio pro reo</em>).
+        </div>
+        <div class="callout red">
+          <div class="callout-title">❌ Consequência da Decadência</div>
+          A perda do prazo de 6 meses gera a <strong>extinção da punibilidade</strong> (art. 107, IV, CP). É causa de rejeição da queixa (art. 395, II, CPP — falta de condição para o exercício da ação). Não há suspensão ou interrupção do prazo decadencial.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SEC 3 — DENÚNCIA ══════════════ -->
+  <div class="section-card" id="sec3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>Denúncia — Ação Penal Pública</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <h3>3.1 Conceito e Natureza</h3>
+        <p>A <strong>Denúncia</strong> é a peça inaugural da <strong>Ação Penal Pública</strong> (condicionada e incondicionada). É de titularidade exclusiva do <strong>Ministério Público</strong> (art. 129, I, CF/88). Obedece aos mesmos requisitos de conteúdo do art. 41 CPP.</p>
+        <div class="grid2">
+          <div class="inner-card">
+            <strong>Ação Penal Pública Incondicionada</strong>
+            <p style="margin-top:6px">MP age de ofício, sem necessidade de autorização da vítima. Regra geral nos crimes mais graves.</p>
+          </div>
+          <div class="inner-card">
+            <strong>Ação Penal Pública Condicionada</strong>
+            <p style="margin-top:6px">Depende de <strong>representação do ofendido</strong> ou de <strong>requisição do Ministro da Justiça</strong> — condição de procedibilidade (art. 24 CPP).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>3.2 Prazos para Oferecimento</h3>
+        <div class="prazo-grid">
+          <div class="prazo-item">
+            <div class="dias">5</div>
+            <div class="label">dias — réu <strong>PRESO</strong> (Art. 46 CPP)</div>
+          </div>
+          <div class="prazo-item">
+            <div class="dias">15</div>
+            <div class="label">dias — réu <strong>SOLTO</strong> (Art. 46 CPP)</div>
+          </div>
+        </div>
+        <div class="callout yellow">
+          <div class="callout-title">⚠️ Consequência da Inércia do MP</div>
+          Se o MP não oferecer a denúncia no prazo legal: (a) o Procurador-Geral pode designar outro promotor ou oferecê-la pessoalmente (art. 28 CPP); (b) o ofendido pode oferecer <strong>queixa subsidiária</strong> (art. 29 CPP) no prazo de 6 meses.
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>3.3 Modelo Tópico-Interrogativo da Denúncia</h3>
+        <p>Técnica doutrinária para estruturar a narração fática da denúncia respondendo às seguintes perguntas:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Pergunta</th><th>Conteúdo</th></tr></thead>
+            <tbody>
+              <tr><td><strong>QUIS</strong></td><td>Quem é o acusado? (qualificação completa)</td></tr>
+              <tr><td><strong>QUID</strong></td><td>Quais condutas estão sendo imputadas a ele?</td></tr>
+              <tr><td><strong>QUANDO</strong></td><td>Quando as condutas foram praticadas?</td></tr>
+              <tr><td><strong>UBI</strong></td><td>Onde elas foram praticadas?</td></tr>
+              <tr><td><strong>QUIBUS AUXILIIS</strong></td><td>Quais os meios utilizados para praticá-las?</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>3.4 Inépcia da Denúncia — Jurisprudência</h3>
+        <div class="callout purple">
+          <div class="callout-title">⚖️ STJ — APN XXXXX/DF (Min. Nancy Andrighi, 16/02/2022)</div>
+          "Ocorre a <strong>inépcia da denúncia</strong> quando sua deficiência resultar em prejuízo ao exercício da ampla defesa do acusado, ante a ausência de descrição da conduta criminosa, da imputação de fatos determinados, ou quando da exposição circunstancial não resultar logicamente a conclusão."
+        </div>
+        <div class="callout purple">
+          <div class="callout-title">⚖️ STF — HC 159.697 (Min. Gilmar Mendes, 15/05/2020)</div>
+          "Denúncias genéricas, que não descrevem os fatos na sua devida conformação, não se coadunam com os postulados básicos do Estado de Direito."
+        </div>
+        <div class="callout red">
+          <div class="callout-title">❌ Hipóteses de Inépcia Material</div>
+          <ul>
+            <li>Denúncia que narra fatos cuja incompatibilidade temporal ou espacial demonstra, desde logo, a impossibilidade de ocorrência.</li>
+            <li>Narrativa incompleta e sem devida subsunção dos fatos ao tipo penal — impede o exercício do contraditório e da ampla defesa.</li>
+            <li>Imputação de conduta dissociada dos fatos narrados no inquérito policial.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SEC 4 — RITOS PROCESSUAIS ══════════════ -->
+  <div class="section-card" id="sec4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Ritos Processuais e Procedimento Comum</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <h3>4.1 Critério de Escolha do Rito</h3>
+        <div class="callout yellow">
+          <div class="callout-title">⚠️ Regra Fundamental</div>
+          A escolha do rito deve sempre levar em conta a <strong>pena máxima abstrata cominada ao delito</strong> (art. 394, §1º, CPP). Errar o rito pode gerar nulidade relativa (por ausência de prejuízo) ou absoluta, conforme o caso.
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>4.2 Procedimento Comum — Art. 394 CPP</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Rito</th><th>Critério (Pena Máxima)</th><th>Fundamento</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Ordinário</strong></td><td>Igual ou superior a 4 anos</td><td>Art. 394, §1º, I, CPP</td></tr>
+              <tr><td><strong>Sumário</strong></td><td>Superior a 2 anos e inferior a 4 anos</td><td>Art. 394, §1º, II, CPP</td></tr>
+              <tr><td><strong>Sumaríssimo</strong></td><td>Não superior a 2 anos (infrações de menor potencial ofensivo)</td><td>Art. 394, §1º, III, CPP + Lei 9.099/95, arts. 77 e ss.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>4.3 Ritos Especiais — Crimes com Procedimento Próprio</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Crime / Situação</th><th>Rito Aplicável</th></tr></thead>
+            <tbody>
+              <tr><td>Crimes Dolosos contra a Vida</td><td>Rito do Júri (Arts. 406–497 CPP)</td></tr>
+              <tr><td>Pena máx. ≤ 2 anos / contravenções</td><td>Sumaríssimo (JECrim) — <em>exceto</em> violência doméstica (Lei 11.340/2006, art. 41)</td></tr>
+              <tr><td>Crimes contra a Honra (arts. 138–145 CP)</td><td>Rito específico — Arts. 519–523 CPP</td></tr>
+              <tr><td>Crimes contra a Adm. Pública (arts. 312–327 CP)</td><td>Rito próprio — Arts. 513–518 CPP</td></tr>
+              <tr><td>Lei de Drogas (Lei 11.343/2006)</td><td>Rito específico da Lei de Drogas</td></tr>
+              <tr><td>Pena máx. &lt; 4 anos</td><td>Rito Sumário</td></tr>
+              <tr><td>Pena máx. ≥ 4 anos</td><td>Rito Ordinário</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>4.4 Comparativo Ordinário × Sumário</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Critério</th><th>Ordinário</th><th>Sumário</th></tr></thead>
+            <tbody>
+              <tr><td>Número de testemunhas</td><td><strong>08</strong></td><td><strong>05</strong></td></tr>
+              <tr><td>Prazo da audiência de instrução</td><td><strong>60 dias</strong></td><td><strong>30 dias</strong></td></tr>
+              <tr><td>Pedido de provas ao fim da audiência</td><td>Há previsão expressa</td><td>Não há previsão expressa</td></tr>
+              <tr><td>Conversão de debates orais em memoriais</td><td>Há previsão expressa</td><td>Não há previsão expressa</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>4.5 Fluxograma — Procedimento Ordinário (Art. 394 ss. CPP)</h3>
+        <div class="flow">
+          <div class="flow-step">Recebimento da Denúncia/Queixa</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Citação do réu</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Resposta à Acusação<small>10 dias — Art. 396 CPP</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Juiz: absolver sumariamente?<small>Art. 397 CPP</small></div>
+        </div>
+        <p style="margin: 6px 0 4px; color:var(--text-muted); font-size:0.85rem;"><em>Se não absolver sumariamente:</em></p>
+        <div class="flow">
+          <div class="flow-step">Audiência de Instrução e Julgamento<small>1. Vítima · 2. Test. Acusação (até 8) · 3. Test. Defesa (até 8) · 4. Peritos · 5. Acareação · 6. Reconhecimento · 7. Interrogatório</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Alegações Finais<small>Oral: 20 min cada; escrito (memoriais): 5 dias</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Sentença</div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">📌 Rejeição da Denúncia/Queixa</div>
+          Se a peça for rejeitada (art. 395 CPP), cabe <strong>RESE</strong> (art. 581, I, CPP) pela acusação. Se for recebida, a defesa pode atacar por <em>habeas corpus</em>.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SEC 5 — JUÍZO DE ADMISSIBILIDADE ══════════════ -->
+  <div class="section-card" id="sec5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Juízo de Admissibilidade — Art. 395 CPP</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <h3>5.1 O que é o Juízo de Admissibilidade</h3>
+        <p>Ao receber a denúncia ou queixa, o juiz realiza o <strong>juízo de admissibilidade</strong>, verificando se a peça acusatória preenche os requisitos legais para dar início à persecução penal. Nesse momento, pode reconhecer de ofício: <strong>suspeição, impedimento e incompetência</strong>.</p>
+        <div class="grid2">
+          <div class="inner-card">
+            <strong>Receber (Art. 396 CPP)</strong>
+            <p style="margin-top:6px">Ordena a citação do réu para apresentar Resposta à Acusação em <strong>10 dias</strong>.</p>
+          </div>
+          <div class="inner-card">
+            <strong>Rejeitar (Art. 395 CPP)</strong>
+            <p style="margin-top:6px">Encerra o processo sem julgamento de mérito. Coisa julgada formal. Cabe <strong>RESE</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>5.2 Hipóteses de Rejeição — Art. 395 CPP</h3>
+
+        <h4>a) Inépcia da Peça Acusatória (Art. 395, I, CPP)</h4>
+        <div class="callout blue">
+          <div class="callout-title">📜 Inépcia Formal vs. Inépcia Material</div>
+          <ul>
+            <li><strong>Inépcia Formal:</strong> peça que não atende aos requisitos do art. 41 CPP (ausência de exposição fática, qualificação, classificação). Gera coisa julgada formal — não impede nova denúncia/queixa se ainda dentro do prazo.</li>
+            <li><strong>Inépcia Material / Ausência de Justa Causa:</strong> ausência de indícios de materialidade delitiva ou autoria. Impede o início do processo penal por falta de lastro probatório mínimo.</li>
+          </ul>
+        </div>
+
+        <h4>b) Falta de Pressuposto Processual ou Condição da Ação (Art. 395, II, CPP)</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Vício</th><th>Descrição</th><th>Exemplo</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Ilegitimidade de Parte</strong></td><td>Pertinência subjetiva da ação — quem pode agir e em face de quem</td><td>MP promovendo ação penal privada; queixa em crime de ação pública</td></tr>
+              <tr><td><strong>Impossibilidade Jurídica do Pedido</strong></td><td>Fato atípico — não previsto no ordenamento como crime</td><td>Denunciar por conduta que não constitui infração penal</td></tr>
+              <tr><td><strong>Interesse Processual</strong></td><td>Necessidade + adequação + utilidade do provimento jurisdicional</td><td>Ação penal quando já extinta a punibilidade</td></tr>
+              <tr><td><strong>Condição de Procedibilidade</strong></td><td>Representação do ofendido ou requisição do Ministro da Justiça</td><td>Denúncia em crime de ação pública condicionada sem representação</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>c) Ausência de Justa Causa (Art. 395, III, CPP)</h4>
+        <div class="callout red">
+          <div class="callout-title">❌ Justa Causa</div>
+          Lastro probatório mínimo para a instauração do processo penal — <strong>indícios de materialidade delitiva e autoria</strong>. Não basta a mera suspeita; é preciso que o conjunto probatório do inquérito ou das peças informativas aponte razoavelmente para a existência do crime e participação do acusado. Ausente, a peça deve ser rejeitada.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SEC 6 — RESPOSTA À ACUSAÇÃO E TESES DEFENSIVAS ══════════════ -->
+  <div class="section-card" id="sec6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>Resposta à Acusação e Teses Defensivas</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <h3>6.1 Resposta à Acusação — Art. 396 CPP</h3>
+        <div class="prazo-grid">
+          <div class="prazo-item">
+            <div class="dias">10</div>
+            <div class="label">dias — prazo para apresentar Resposta à Acusação (Art. 396 CPP)</div>
+          </div>
+        </div>
+        <p>Recebida a denúncia ou queixa, o réu é <strong>citado</strong> para apresentar resposta escrita no prazo de 10 dias. A ausência de defensor constituído implica nomeação de defensor dativo pelo juiz (princípio da plenitude de defesa — art. 5º, LXXXVIII, CF/88).</p>
+      </div>
+
+      <div class="subsection">
+        <h3>6.2 Conteúdo da Resposta — Art. 396-A CPP</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tese</th><th>Fundamentação</th><th>Objetivo</th></tr></thead>
+            <tbody>
+              <tr><td><strong>a) Rejeição da denúncia</strong></td><td>Art. 395 CPP</td><td>Extinção do processo sem mérito</td></tr>
+              <tr><td><strong>b) Nulidades processuais</strong></td><td>Art. 564 CPP (preliminares)</td><td>Anulação de atos processuais viciados</td></tr>
+              <tr><td><strong>c) Absolvição sumária</strong></td><td>Art. 397 CPP</td><td>Encerramento imediato com absolvição</td></tr>
+              <tr><td><strong>d) Desclassificação</strong></td><td>—</td><td>Reconhecimento de crime menos grave ou diverso</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <div class="callout-title">📌 Outros Elementos da Resposta</div>
+          <ul>
+            <li><strong>Provas que pretende produzir</strong>: documentais, periciais, rol de testemunhas (máximo 8 no ordinário e 5 no sumário).</li>
+            <li><strong>Exceções</strong>: de suspeição, impedimento, incompetência, litispendência, ilegitimidade de parte — apresentadas em apartado (art. 111 CPP).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>6.3 Nulidades — Art. 564 CPP (Preliminares)</h3>
+        <p>Devem ser arguidas na Resposta à Acusação como <strong>matéria preliminar</strong>. O art. 564 CPP elenca as causas de nulidade:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Hipótese de Nulidade</th><th>Espécie</th></tr></thead>
+            <tbody>
+              <tr><td>Incompetência, suspeição ou suborno do juiz</td><td>Absoluta ou Relativa</td></tr>
+              <tr><td>Ilegitimidade de parte</td><td>Absoluta</td></tr>
+              <tr><td>Ausência de denúncia, queixa, representação ou portaria</td><td>Absoluta</td></tr>
+              <tr><td>Falta de exame do corpo de delito nos crimes que deixam vestígios (ressalvado art. 167 CPP)</td><td>Relativa</td></tr>
+              <tr><td>Ausência de nomeação de defensor ao réu presente sem advogado / ao ausente / curador ao menor de 21 anos</td><td>Absoluta</td></tr>
+              <tr><td>Falta de intervenção do MP em todos os termos da ação pública</td><td>Absoluta</td></tr>
+              <tr><td>Ausência de citação do réu para ver-se processar; ausência de interrogatório quando presente</td><td>Absoluta</td></tr>
+              <tr><td>Falta de intimação para ciência de sentenças e despachos recorríveis</td><td>Relativa</td></tr>
+              <tr><td>Omissão de formalidade essencial do ato</td><td>Relativa</td></tr>
+              <tr><td>Decisão carente de fundamentação (art. 93, IX, CF/88)</td><td>Absoluta</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout yellow">
+          <div class="callout-title">⚠️ Nulidade Absoluta × Relativa</div>
+          <ul>
+            <li><strong>Nulidade absoluta</strong>: viola norma de ordem pública. Pode ser declarada de ofício pelo juiz a qualquer tempo. Não precisa demonstrar prejuízo (<em>pas de nullité sans grief</em> não se aplica).</li>
+            <li><strong>Nulidade relativa</strong>: viola norma de interesse da parte. Deve ser arguida oportunamente (preclusão). Exige demonstração de <strong>prejuízo concreto</strong> ao arguente.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SEC 7 — ABSOLVIÇÃO SUMÁRIA ══════════════ -->
+  <div class="section-card" id="sec7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2>Absolvição Sumária — Art. 397 CPP</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <h3>7.1 Conceito e Momento</h3>
+        <p>Após a apresentação da Resposta à Acusação, o juiz pode — <strong>antes de designar audiência</strong> — absolver sumariamente o réu se verificar uma das hipóteses do art. 397 CPP. É decisão de <strong>mérito</strong> que faz coisa julgada material (se for absolvição por razão que não seja inimputabilidade).</p>
+        <div class="callout yellow">
+          <div class="callout-title">⚠️ Recurso Cabível</div>
+          Da absolvição sumária cabe <strong>Apelação</strong> (art. 593, I, CPP — sentença definitiva de absolvição proferida por juiz singular). Prazo: 5 dias para interposição + 8 dias para razões.
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>7.2 Hipóteses de Absolvição Sumária — Art. 397 CPP</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Inciso</th><th>Hipótese</th><th>Fundamento Penal</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>I</strong></td>
+                <td>Existência manifesta de <strong>causa excludente da ilicitude</strong></td>
+                <td>Art. 23 CP: estado de necessidade, legítima defesa, estrito cumprimento do dever legal, exercício regular de direito</td>
+              </tr>
+              <tr>
+                <td><strong>II</strong></td>
+                <td>Existência manifesta de <strong>causa excludente da culpabilidade</strong> — <em>salvo inimputabilidade</em></td>
+                <td>Coação moral irresistível (art. 22 CP), obediência hierárquica (art. 22 CP), inexigibilidade de conduta diversa, erro de proibição inevitável (art. 21 CP)</td>
+              </tr>
+              <tr>
+                <td><strong>III</strong></td>
+                <td>O fato narrado <strong>evidentemente não constitui crime</strong></td>
+                <td>Atipicidade absoluta — conduta não prevista como infração penal</td>
+              </tr>
+              <tr>
+                <td><strong>IV</strong></td>
+                <td><strong>Extinção da punibilidade</strong> do agente</td>
+                <td>Art. 107 CP: morte, anistia, graça, indulto, retroatividade de lei abolitiva, prescrição, decadência, perempção, renúncia, perdão aceito, retratação, perdão judicial</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout red">
+          <div class="callout-title">❌ Atenção — Inimputabilidade (Art. 397, II, in fine)</div>
+          Quando a causa excludente da culpabilidade for a <strong>inimputabilidade</strong> (art. 26 CP — doença mental / desenvolvimento mental incompleto/retardado), <strong>NÃO</strong> há absolvição sumária. O processo segue e, ao final, o juiz aplica <strong>medida de segurança</strong> (sentença absolutória imprópria).
+        </div>
+        <div class="callout blue">
+          <div class="callout-title">📜 Art. 107 CP — Causas de Extinção da Punibilidade</div>
+          I – morte do agente; II – anistia, graça ou indulto; III – retroatividade de lei abolitiva; IV – prescrição, decadência ou perempção; V – renúncia do direito de queixa ou perdão aceito (crimes de ação privada); VI – retratação do agente, nos casos em que a lei a admite; IX – perdão judicial, nos casos previstos em lei.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SEC 8 — ALEGAÇÕES FINAIS ══════════════ -->
+  <div class="section-card" id="sec8">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2>Alegações Finais / Memoriais</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <h3>8.1 Conceito e Momento</h3>
+        <p>As <strong>alegações finais</strong> são a última manifestação das partes <strong>após o encerramento da instrução probatória</strong>, antes da sentença. Legitimidade: MP, Defesa e Assistente de Acusação.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>8.2 Regra Geral — Audiência Una (Art. 403 CPP)</h3>
+        <div class="art-box">
+          <strong>Art. 403 CPP.</strong> Não havendo requerimento de diligências, ou sendo indeferido, serão oferecidas alegações finais orais por <strong>20 (vinte) minutos</strong>, respectivamente, pela acusação e pela defesa, prorrogáveis por mais 10 (dez), proferindo o juiz, a seguir, sentença. <strong>§1º</strong> Havendo mais de um acusado, o tempo previsto para a defesa de cada um deles será individual. <strong>§2º</strong> Ao assistente do Ministério Público, após o MP, serão concedidos 10 (dez) minutos, prorrogando-se por igual período o tempo de manifestação da defesa.
+        </div>
+        <div class="prazo-grid">
+          <div class="prazo-item">
+            <div class="dias">20</div>
+            <div class="label">min — alegações orais para MP e Defesa (+ 10 min de prorrogação)</div>
+          </div>
+          <div class="prazo-item">
+            <div class="dias">10</div>
+            <div class="label">min — assistente da acusação (+ 10 min de prorrogação da defesa)</div>
+          </div>
+          <div class="prazo-item">
+            <div class="dias">5</div>
+            <div class="label">dias — memoriais escritos (por cada parte, sucessivamente)</div>
+          </div>
+          <div class="prazo-item">
+            <div class="dias">10</div>
+            <div class="label">dias — prazo para o juiz proferir sentença após memoriais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>8.3 Exceções — Memoriais Escritos</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Hipótese</th><th>Fundamento</th><th>Prazo</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>a) Complexidade do caso ou pluralidade de acusados</strong></td>
+                <td>Art. 403, §3º, CPP — faculdade do juiz</td>
+                <td>5 dias sucessivos (acusação, depois defesa) + 10 dias para sentença</td>
+              </tr>
+              <tr>
+                <td><strong>b) Diligência imprescindível determinada de ofício ou a requerimento</strong></td>
+                <td>Art. 404 CPP — audiência encerrada sem alegações</td>
+                <td>Realizadas as diligências: 5 dias sucessivos (acusação, depois defesa) + 10 dias para sentença</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>8.4 Teses nas Alegações Finais — Estrutura</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tese</th><th>Pedido</th><th>Base Legal</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Nulidade processual</strong></td><td>Anulação do processo (total ou parcial)</td><td>Art. 564 CPP</td></tr>
+              <tr><td><strong>Extinção da punibilidade</strong></td><td>Declarar extinta a punibilidade</td><td>Art. 107 CP</td></tr>
+              <tr><td><strong>Mérito — Absolvição</strong></td><td>Absolvição (art. 386 CPP)</td><td>Arts. 386, I a VII, CPP</td></tr>
+              <tr><td><strong>Subsidiária — Desclassificação</strong></td><td>Reconhecimento de tipo penal menos grave</td><td>—</td></tr>
+              <tr><td><strong>Subsidiária — Dosimetria</strong></td><td>Redução da pena / regime mais favorável / substituição</td><td>Arts. 59, 68, 44 CP</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout blue">
+          <div class="callout-title">📜 Art. 386 CPP — Causas de Absolvição</div>
+          O juiz absolverá o réu quando: I – provada inexistência do fato; II – não houver prova da existência do fato; III – o fato não constituir infração penal; IV – provado que o réu não concorreu para a infração; V – não houver prova de ter o réu concorrido para a infração; VI – existirem circunstâncias excludentes de crime ou isenção de pena (arts. 20, 21, 22, 23, 26 e §1º art. 28 CP) ou fundada dúvida sobre sua existência; VII – não houver prova suficiente para condenação.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SEC 9 — APELAÇÃO ══════════════ -->
+  <div class="section-card" id="sec9">
+    <div class="section-header">
+      <div class="section-number">9</div>
+      <h2>Apelação Criminal — Cabimento, Prazo e Procedimento</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <h3>9.1 Cabimento — Art. 593 CPP</h3>
+        <p>A Apelação é o recurso cabível contra:</p>
+
+        <h4>a) Sentenças definitivas de condenação ou absolvição (Art. 593, I, CPP)</h4>
+        <ul>
+          <li>Juiz singular analisa a <strong>pretensão punitiva</strong> — fato típico e autoria delitiva.</li>
+          <li>Inclui a <strong>absolvição sumária</strong> (art. 397 CPP) — encerra o processo com julgamento de mérito.</li>
+          <li><strong>Não inclui</strong> as decisões que apenas extinguem a punibilidade sem analisar o mérito (ex.: extinção pela prescrição antes do trânsito em julgado → RESE, art. 581, VIII).</li>
+        </ul>
+
+        <h4>b) Decisões definitivas ou com força de definitivas (Art. 593, II, CPP)</h4>
+        <ul>
+          <li>Residual — decisões não abrangidas pelo RESE.</li>
+          <li>Decisões em procedimentos incidentais que resolvem o mérito do próprio incidente (não do processo principal).</li>
+          <li>Exemplos: restituição de coisa apreendida, indeferimento de quebra de sigilo, busca e apreensão, interceptação telefônica, recusa de homologação de colaboração premiada.</li>
+        </ul>
+
+        <h4>c) Decisões do Tribunal do Júri (Art. 593, III, CPP) — Fundamentação Vinculada</h4>
+        <div class="callout red">
+          <div class="callout-title">⚠️ Recurso de Fundamentação Vinculada — Rol Taxativo</div>
+          A apelação das decisões do Júri só é cabível nas hipóteses do art. 593, III, CPP. O recorrente deve indicar expressamente a alínea:
+          <ul style="margin-top:6px">
+            <li><strong>Alínea a)</strong> — nulidade posterior à pronúncia (art. 564 CPP)</li>
+            <li><strong>Alínea b)</strong> — sentença do juiz-presidente contrária à lei expressa ou à decisão dos jurados</li>
+            <li><strong>Alínea c)</strong> — erro ou injustiça no tocante à aplicação da pena ou medida de segurança</li>
+            <li><strong>Alínea d)</strong> — decisão dos jurados <em>manifestamente</em> contrária à prova dos autos (possível apenas uma vez para o mesmo fato)</li>
+          </ul>
+        </div>
+
+        <h4>d) JECrim — Lei 9.099/95 (Art. 82)</h4>
+        <div class="art-box">
+          <strong>Art. 82, Lei 9.099/95.</strong> Da decisão de rejeição da denúncia ou queixa e da sentença caberá apelação, que poderá ser julgada por turma composta de três Juízes em exercício no primeiro grau de jurisdição, reunidos na sede do Juizado. §1º A apelação será interposta no prazo de <strong>dez dias</strong>, contados da ciência da sentença pelo Ministério Público, pelo réu e seu defensor, por petição escrita, da qual constarão as razões e o pedido do recorrente.
+        </div>
+
+        <h4>e) Impronúncia e Absolvição Sumária no Júri</h4>
+        <div class="callout blue">
+          <div class="callout-title">📜 Art. 416 CPP</div>
+          Contra a sentença de <strong>impronúncia</strong> ou <strong>absolvição sumária</strong> (proferida na 1ª fase do Júri) caberá <strong>apelação</strong>.
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>9.2 Prazos da Apelação</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Parte</th><th>Prazo de Interposição</th><th>Prazo para Razões</th><th>Termo Inicial</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Acusação (MP)</strong></td><td>5 dias</td><td>8 dias</td><td>Da audiência (se presente) ou da intimação pessoal</td></tr>
+              <tr><td><strong>Acusação (Querelante)</strong></td><td>5 dias</td><td>8 dias</td><td>Da audiência ou intimação pessoal, do advogado ou por edital (10 dias)</td></tr>
+              <tr><td><strong>Defesa</strong></td><td>5 dias</td><td>8 dias</td><td>Da audiência (se presente) ou intimação pessoal do preso / pessoal+defensor do solto</td></tr>
+              <tr><td><strong>Assistente da Acusação habilitado</strong></td><td>5 dias</td><td>3 dias</td><td>Do fim do prazo do MP</td></tr>
+              <tr><td><strong>Assistente da Acusação não habilitado</strong></td><td>15 dias</td><td>—</td><td>Do dia em que terminar o prazo do MP</td></tr>
+              <tr><td><strong>JECrim</strong></td><td colspan="2">10 dias (interposição + razões conjuntos)</td><td>Da ciência da sentença</td></tr>
+              <tr><td><strong>Contravenção penal</strong></td><td>5 dias</td><td>3 dias</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout yellow">
+          <div class="callout-title">⚠️ Pontos Críticos sobre Prazo</div>
+          <ul>
+            <li>Interposição: <strong>Juízo a quo</strong> (1ª instância) — Art. 593 CPP.</li>
+            <li>Razões: podem ser apresentadas em <strong>2º grau</strong>, caso a parte requeira — intimação obrigatória (art. 600, §4º, CPP).</li>
+            <li><strong>Não há juízo de retratação</strong> na apelação criminal (diferente do RESE).</li>
+            <li>Para contravenção penal: prazo de razões é de <strong>3 dias</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>9.3 Fluxograma — Apelação Criminal</h3>
+        <div class="flow">
+          <div class="flow-step">Sentença</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Interposição<small>5 dias — Juízo a quo</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Razões do Apelante<small>8 dias (ou 2º grau)</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Contrarrazões do Apelado<small>8 dias</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Remessa ao Tribunal ad quem</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Julgamento pelo Tribunal</div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>9.4 Razões de Apelação — Estrutura</h3>
+        <div class="art-box">
+          <strong>Estrutura das Razões de Apelação:</strong><br><br>
+          1. <strong>Endereçamento</strong>: Egrégio Tribunal de Justiça/Regional Federal + Colenda Câmara/Turma + Douta Procuradoria de Justiça/Regional da República<br>
+          2. <strong>Qualificação</strong>: Autos n.º, Apelante, Apelado<br>
+          3. <strong>Introdução</strong>: "Em que pese o r. saber jurídico do Meritíssimo Juízo a quo, impõe-se a reforma da respeitável sentença proferida em desfavor do Apelante, pelas razões de fato e de direito a seguir expostas:"<br>
+          4. <strong>DOS FATOS</strong>: narrativa factual<br>
+          5. <strong>DA TEMPESTIVIDADE</strong>: demonstrar que o recurso foi interposto no prazo<br>
+          6. <strong>DO DIREITO</strong>: fundamentação jurídica das teses<br>
+          7. <strong>DOS PEDIDOS</strong>: pedidos principais e subsidiários
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SEC 10 — MODELOS DE PEÇAS ══════════════ -->
+  <div class="section-card" id="sec10">
+    <div class="section-header">
+      <div class="section-number">10</div>
+      <h2>Modelos de Peças Processuais</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <h3>10.1 Modelo de Interposição de Apelação</h3>
+        <div class="art-box">
+          <strong>Endereçamento:</strong> Excelentíssimo Senhor Doutor Juiz de Direito da __ Vara Criminal da Comarca de ___ (ou Juiz Federal da Vara Criminal da Subseção Judiciária de ___)<br><br>
+          Autos n.º ____<br><br>
+          <strong>(FULANO DE TAL)</strong>, já qualificado nos autos de processo crime em epígrafe que lhe move a Justiça Pública, através de seu advogado abaixo-assinado, vem, respeitosamente à presença de Vossa Excelência, no prazo legal disposto no <strong>art. 593 CPP</strong>, não se conformando com a r. decisão/sentença de fls.___, que ________, interpor <strong>RECURSO DE APELAÇÃO</strong>, com fundamento no artigo 593, inciso __, oferecendo, desde logo, as suas razões. <em>(ALTERNATIVA: pugnando pela apresentação de razões junto ao TJ/TRF, após regular intimação).</em><br><br>
+          Requer seja recebido, processado e encaminhado o presente recurso, com as inclusas razões, ao Egrégio Tribunal de Justiça do _____.<br><br>
+          Nestes termos, pede deferimento.<br>
+          Local, data<br>
+          OAB nº ____
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>10.2 Modelo de Razões de Apelação</h3>
+        <div class="art-box">
+          Autos n.º: ___<br>
+          Apelante: ___<br>
+          Apelado: ___<br><br>
+          <strong>RAZÕES DE APELAÇÃO</strong><br><br>
+          Egrégio Tribunal (de Justiça / Regional Federal)<br>
+          Colenda Câmara (Turma)<br>
+          Douta Procuradoria de Justiça / Regional da República<br><br>
+          Em que pese o r. saber jurídico do Meritíssimo Juízo a quo, impõe-se a reforma da respeitável sentença proferida em desfavor do Apelante, pelas razões de fato e de direito a seguir expostas:<br><br>
+          <strong>I — DOS FATOS</strong> [narrar os fatos processuais relevantes]<br>
+          <strong>II — DA TEMPESTIVIDADE</strong> [demonstrar que o recurso é tempestivo]<br>
+          <strong>III — DO DIREITO</strong> [desenvolver as teses jurídicas]<br>
+          <strong>IV — DOS PEDIDOS</strong> [formular os pedidos principais e subsidiários]
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>10.3 Quadro Síntese — Peças Acusatórias</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Peça</th><th>Ação</th><th>Legitimado</th><th>Prazo</th><th>Decadência/Prescrição</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Queixa-Crime</strong></td><td>Penal Privada</td><td>Ofendido / representante / sucessores</td><td>6 meses (decadencial)</td><td>Extinção punibilidade se ultrapassado</td></tr>
+              <tr><td><strong>Denúncia (réu preso)</strong></td><td>Penal Pública</td><td>Ministério Público</td><td>5 dias</td><td>Ação penal privada subsidiária</td></tr>
+              <tr><td><strong>Denúncia (réu solto)</strong></td><td>Penal Pública</td><td>Ministério Público</td><td>15 dias</td><td>Ação penal privada subsidiária</td></tr>
+              <tr><td><strong>Resposta à Acusação</strong></td><td>Defesa</td><td>Réu / Defensor</td><td>10 dias</td><td>—</td></tr>
+              <tr><td><strong>Alegações Finais (oral)</strong></td><td>Ambas as partes</td><td>MP + Defesa + Assistente</td><td>20 min (+10) orais ou 5 dias escritos</td><td>—</td></tr>
+              <tr><td><strong>Apelação (interposição)</strong></td><td>Recurso</td><td>MP / Defesa / Assistente</td><td>5 dias (CPP) / 10 dias (JECrim)</td><td>Sem retratação</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<div style="text-align:center; padding: 28px 20px 40px; background: var(--green-bg); border-top: 2px solid var(--green-light); color: var(--text-muted); font-size:0.82rem;">
+  <p>Universidade Presbiteriana Mackenzie &nbsp;·&nbsp; 7º Semestre — Núcleo de Prática Jurídica I</p>
+  <p style="margin-top:4px">Profa. Cristina Rego de Oliveira &nbsp;·&nbsp; Material de estudos compilado para o 2º Bimestre</p>
+</div>
+
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+<script>
+  const scrollBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 20, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
